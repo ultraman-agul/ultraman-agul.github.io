@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Agul</title>
+    <url>/2020/05/06/agul/</url>
+    <content><![CDATA[<p>gggggggggggggg</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><p>hello</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2020/05/04/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
@@ -19,25 +32,10 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Agul</title>
-    <url>/2020/05/06/agul/</url>
-    <content><![CDATA[<p>gggggggggggggg</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><p>hello</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>WebDesign</title>
     <url>/2020/05/04/test/</url>
     <content><![CDATA[<h1 id="FreeCodeCamp-Projects"><a href="#FreeCodeCamp-Projects" class="headerlink" title="FreeCodeCamp-Projects"></a>FreeCodeCamp-Projects</h1><p>本文记录我在fcc中文社区刷的题，做的小项目。2020/4/1。</p>
 <h2 id="Responsive-Web-Design-Projects"><a href="#Responsive-Web-Design-Projects" class="headerlink" title="Responsive Web Design Projects"></a>Responsive Web Design Projects</h2><p>响应式网页设计项目。在此之前已经学过基本的知识，一天内把前面的小练习做完，现在是时候把学到的技能付诸实践了！通过接下来的项目，fcc让我有机会实践目前所学的技能，原理和概念，HTML，CSS，可视化设计，辅助功能等。</p>
-<a id="more"></a>
-
 <ol>
 <li>搭建致敬页</li>
 <li>搭建调查表格</li>
