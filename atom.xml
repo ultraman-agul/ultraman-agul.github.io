@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ultraman-agul.github.io/"/>
-  <updated>2020-05-06T04:46:53.283Z</updated>
+  <updated>2020-05-07T02:36:35.006Z</updated>
   <id>https://ultraman-agul.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ceshi</title>
+    <link href="https://ultraman-agul.github.io/2020/05/07/ceshi/"/>
+    <id>https://ultraman-agul.github.io/2020/05/07/ceshi/</id>
+    <published>2020-05-07T02:30:56.000Z</published>
+    <updated>2020-05-07T02:36:35.006Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;/.io//1.png&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="测试插入图片" scheme="https://ultraman-agul.github.io/categories/%E6%B5%8B%E8%AF%95%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/"/>
+    
+    
+      <category term="测试 图片" scheme="https://ultraman-agul.github.io/tags/%E6%B5%8B%E8%AF%95-%E5%9B%BE%E7%89%87/"/>
+    
+  </entry>
   
   <entry>
     <title>练习</title>
