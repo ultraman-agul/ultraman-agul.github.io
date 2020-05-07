@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/agul.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/agul.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/agul.png?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="FCC,ECMA标准," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Agul'blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="ECMAScript 6ECMAScript 是 JavaScript 的标准化版本，它旨在统一语言语言的规范和功能。所有主流的浏览器或者 Javascript 的运行环境都支持这个规范，因此 ECMAScript 和 JavaScript 的术语是通用的。 在2015年，ECMAScript 发布了被称为 ECMAScript 6 (ES6) 的最新版本。在这里可以学习新版本添加的许多强大的功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECMAScript 6">
+<meta property="og:url" content="https://ultraman-agul.github.io/2020/05/07/03ES6/index.html">
+<meta property="og:site_name" content="Agul&#39;blog">
+<meta property="og:description" content="ECMAScript 6ECMAScript 是 JavaScript 的标准化版本，它旨在统一语言语言的规范和功能。所有主流的浏览器或者 Javascript 的运行环境都支持这个规范，因此 ECMAScript 和 JavaScript 的术语是通用的。 在2015年，ECMAScript 发布了被称为 ECMAScript 6 (ES6) 的最新版本。在这里可以学习新版本添加的许多强大的功能">
+<meta property="article:published_time" content="2020-05-07T03:18:24.106Z">
+<meta property="article:modified_time" content="2020-05-07T03:30:49.483Z">
+<meta property="article:author" content="agul">
+<meta property="article:tag" content="FCC">
+<meta property="article:tag" content="ECMA标准">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ultraman-agul.github.io/2020/05/07/03ES6/"/>
+
+
+
+
+
+  <title>ECMAScript 6 | Agul'blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Agul'blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Record a good life</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ultraman-agul.github.io/2020/05/07/03ES6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="agul">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/agul1.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Agul'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ECMAScript 6</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-07T11:18:24+08:00">
+                2020-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ECMAScript-6"><a href="#ECMAScript-6" class="headerlink" title="ECMAScript 6"></a>ECMAScript 6</h1><p>ECMAScript 是 JavaScript 的标准化版本，它旨在统一语言语言的规范和功能。所有主流的浏览器或者 Javascript 的运行环境都支持这个规范，因此 <em>ECMAScript</em> 和 <em>JavaScript</em> 的术语是通用的。</p>
+<p>在2015年，ECMAScript 发布了被称为 ECMAScript 6 (ES6) 的最新版本。在这里可以学习新版本添加的许多强大的功能，包括：</p>
+<ul>
+<li><p>箭头函数</p>
+</li>
+<li><p>类</p>
+</li>
+<li><p>模块</p>
+</li>
+<li><p><code>let</code>以及<code>const</code>的语法</p>
+<p><strong>请注意</strong><br>不是所有的浏览器都支持 ES6 的功能，在浏览器支持 ES6 代码之前，如果你想要在你的项目里使用 ES6 规范，你可能需要一些转译工具将 ES6 代码转换成 ES5 的代码。</p>
+</li>
+</ul>
+<h3 id="探索-var-和-let-关键字之间的差异"><a href="#探索-var-和-let-关键字之间的差异" class="headerlink" title="探索 var 和 let 关键字之间的差异"></a>探索 var 和 let 关键字之间的差异</h3><p>使用<code>var</code>关键字来声明变量，会出现重复声明导致变量被覆盖却不会报错的问题：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> camper = <span class="string">'James'</span>;</span><br><span class="line"><span class="keyword">var</span> camper = <span class="string">'David'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(camper);<span class="comment">// 打印出 'David'</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在上面的代码中，<code>camper</code>的初始值为<code>&#39;James&#39;</code>，然后又被覆盖成了<code>&#39;David&#39;</code>。</p>
+<p>在小型的应用中，你可能不会遇到这样的问题，但是当你的代码规模变得更加庞大的时候，就可能会在不经意间覆盖了之前定义的变量。</p>
+<p>这样的行为不会报错，导致了 debug 非常困难。</p>
+<p>在 ES6 中引入了新的关键字<code>let</code>来解决<code>var</code>关键字带来的潜在问题。</p>
+<p>如果你在上面的代码中，使用了<code>let</code>关键字来代替<code>var</code>关键字，结果会是一个报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> camper = <span class="string">'James'</span>;</span><br><span class="line"><span class="keyword">let</span> camper = <span class="string">'David'</span>; <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>你可以在浏览器的控制台里看见这个错误。</p>
+<p><strong>与<code>var</code>不同的是，当使用<code>let</code>的时候，同一名字的变量只能被声明一次。</strong></p>
+<p>请注意<code>&quot;use strict&quot;</code>。这代表着开启了严格模式，用于检测常见的代码错误以及”不安全”的行为，例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line">x = <span class="number">3.14</span>; <span class="comment">// x 没有声明导致了报错</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+</blockquote>
+<h3 id="比较-var-和-let-关键字的作用域"><a href="#比较-var-和-let-关键字的作用域" class="headerlink" title="比较 var 和 let 关键字的作用域"></a>比较 var 和 let 关键字的作用域</h3><p>当你使用<code>var</code>关键字来声明一个变量的时候，这个变量会被声明成全局变量，或是函数内的局部变量。</p>
+<p><code>let</code>关键字的作用类似，但会有一些额外的特性。如果你在代码块、语句或表达式中使用关键字<code>let</code>声明变量，这个变量的作用域就被限制在当前的代码块，语句或表达式之中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="keyword">let</span> printNumTwo;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i === <span class="number">2</span>) &#123;</span><br><span class="line">    printNumTwo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> i;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(printNumTwo());</span><br><span class="line"><span class="comment">// 返回 2</span></span><br><span class="line"><span class="built_in">console</span>.log(i);</span><br><span class="line"><span class="comment">// 返回 "没有定义 i 变量"</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="用-const-关键字声明只读变量"><a href="#用-const-关键字声明只读变量" class="headerlink" title="用 const 关键字声明只读变量"></a>用 const 关键字声明只读变量</h3><p><code>let</code>并不是唯一的新的声明变量的方式。在 ES6里面，你还可以使用<code>const</code>关键字来声明变量。</p>
+<p><code>const</code>拥有<code>let</code>的所有优点，所不同的是，通过<code>const</code>声明的变量是只读的。这意味着通过<code>const</code>声明的变量只能被赋值一次，而不能被再次赋值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">"use strict"</span></span><br><span class="line"><span class="keyword">const</span> FAV_PET = <span class="string">"Cats"</span>;</span><br><span class="line">FAV_PET = <span class="string">"Dogs"</span>; <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>可以看见，尝试给通过<code>const</code>声明的变量再次赋值会报错。你应该使用<code>const</code>关键字来对所有不打算再次赋值的变量进行声明。这有助于你避免给一个常量进行额外的再次赋值。一个最佳实践是对所有常量的命名采用全大写字母，并在单词之间使用下划线进行分隔。</p>
+<p><strong>当变量将会改变的时候使用<code>let</code>关键字，当变量要保持常量的时候使用<code>const</code>关键字。</strong>同时，对使用<code>const</code>声明的变量名中的字母应该都是大写的。</p>
+<p>在现代的 JavaScript 里，<code>const</code>声明有很多用法。</p>
+<p>一些开发者倾向默认使用<code>const</code>来声明所有变量，但如果它们打算在后续的代码中修改某个值，那在声明的时候就会用<code>let</code>。</p>
+<p>然而，你要注意，对象（包括数组和函数）在使用<code>const</code>声明的时候依然是可变的。使用<code>const</code>来声明只会保证它的标识不会被重新赋值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="keyword">const</span> s = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>];</span><br><span class="line">s = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]; <span class="comment">// 试图给 const 变量赋值，报错</span></span><br><span class="line">s[<span class="number">2</span>] = <span class="number">45</span>; <span class="comment">// 与用 var 或 let 声明的数组一样，这个操作也会成功</span></span><br><span class="line"><span class="built_in">console</span>.log(s); <span class="comment">// 返回 [5, 6, 45]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>从以上代码看出，你可以改变<code>[5, 6, 7]</code>自身，所以<code>s</code>变量指向了改变后的数组<code>[5, 6, 45]</code>。和所有数组一样，数组<code>s</code>中的数组元素是可以被改变的，但是因为使用了<code>const</code>关键字，你不能使用赋值操作符将变量标识<code>s</code>指向另外一个数组。</p>
+<h3 id="防止对象改变"><a href="#防止对象改变" class="headerlink" title="防止对象改变"></a>防止对象改变</h3><p><code>const</code>声明并不会真的保护你的数据不被改变。为了确保数据不被改变，JavaScript 提供了一个函数<code>Object.freeze</code>来防止数据改变。</p>
+<p>当一个对象被冻结的时候，你不能再对它的属性再进行增、删、改的操作。任何试图改变对象的操作都会被阻止，却不会报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line"> name:<span class="string">"FreeCodeCamp"</span>,</span><br><span class="line"> review:<span class="string">"Awesome"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">Object</span>.freeze(obj);</span><br><span class="line">obj.review = <span class="string">"bad"</span>; <span class="comment">// obj 对象被冻结了，这个操作会被忽略</span></span><br><span class="line">obj.newProp = <span class="string">"Test"</span>; <span class="comment">// 也会被忽略，不允许数据改变</span></span><br><span class="line"><span class="built_in">console</span>.log(obj);</span><br><span class="line"><span class="comment">// &#123; name: "FreeCodeCamp", review:"Awesome"&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><h3 id="使用箭头函数编写简洁的匿名函数"><a href="#使用箭头函数编写简洁的匿名函数" class="headerlink" title="使用箭头函数编写简洁的匿名函数"></a>使用箭头函数编写简洁的匿名函数</h3><p>在 JavaScript 里，我们会经常遇到不需要给函数命名的情况，尤其是在需要将一个函数作为参数传给另外一个函数的时候。这时，我们会创建匿名函数。因为这些函数不会在其他地方复用，所以我们不需要给它们命名。</p>
+<p>这种情况下，我们通常会使用以下语法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="keyword">const</span> myVar = <span class="string">"value"</span>;</span><br><span class="line"> <span class="keyword">return</span> myVar;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>ES6 提供了其他写匿名函数的方式的语法糖。你可以使用箭头函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"> <span class="keyword">const</span> myVar = <span class="string">"value"</span>;</span><br><span class="line"> <span class="keyword">return</span> myVar;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>当不需要函数体，只返回一个值的时候，箭头函数允许你省略<code>return</code>关键字和外面的大括号。这样就可以将一个简单的函数简化成一个单行语句。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myFunc= <span class="function"><span class="params">()</span> =&gt;</span> <span class="string">"value"</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>这段代码仍然会返回<code>value</code>。</p>
+<h3 id="带参数的箭头函数"><a href="#带参数的箭头函数" class="headerlink" title="带参数的箭头函数"></a>带参数的箭头函数</h3><p>和一般的函数一样，可以给箭头函数传递参数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 给传入的数值乘以 2 并返回结果</span></span><br><span class="line"><span class="keyword">const</span> doubler = <span class="function">(<span class="params">item</span>) =&gt;</span> item * <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>同样可以给箭头函数传递多个参数。</p>
+<h3 id="编写高阶箭头函数"><a href="#编写高阶箭头函数" class="headerlink" title="编写高阶箭头函数"></a>编写高阶箭头函数</h3><p>箭头函数在类似<code>map()</code>，<code>filter()</code>，<code>reduce()</code>等需要其他函数作为参数来处理数据的高阶函数里会很好用。</p>
+<p>阅读以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FBPosts.filter(<span class="function"><span class="keyword">function</span>(<span class="params">post</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> post.thumbnail !== <span class="literal">null</span> &amp;&amp; post.shares &gt; <span class="number">100</span> &amp;&amp; post.likes &gt; <span class="number">500</span>;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>我们写下了<code>filter</code>函数，现在用箭头函数来写同样的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FBPosts.filter(<span class="function">(<span class="params">post</span>) =&gt;</span> post.thumbnail !== <span class="literal">null</span> &amp;&amp; post.shares &gt; <span class="number">100</span> &amp;&amp; post.likes &gt; <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这段代码完成了同样的任务，却变得更加简短易懂。</p>
+<p>三个常用函数。</p>
+<p><strong><code>filter()</code></strong>方法<strong>创建一个新数组，</strong>其中所有元素都<strong>通过</strong>了由提供的功能实现的测试。</p>
+<p><strong><code>map()</code></strong>方法<strong>创建一个新数组，其中</strong>填充了在调用数组中<strong>每个元素上调用</strong>提供的函数的<strong>结果</strong>。</p>
+<p><strong><code>reduce()</code></strong>方法在数组的每个元素上执行<strong>reducer</strong>函数（由您提供），从而产生<strong>单个输出值</strong>。</p>
+<h3 id="设置函数的默认参数"><a href="#设置函数的默认参数" class="headerlink" title="设置函数的默认参数"></a>设置函数的默认参数</h3><p>ES6 里允许给函数传入默认参数，来构建更加灵活的函数。</p>
+<p>请看以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greeting</span>(<span class="params">name = <span class="string">"Anonymous"</span></span>) </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="string">"Hello "</span> + name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(greeting(<span class="string">"John"</span>)); <span class="comment">// Hello John</span></span><br><span class="line"><span class="built_in">console</span>.log(greeting()); <span class="comment">// Hello Anonymous</span></span><br></pre></td></tr></table></figure>
+
+<p>默认参数会在参数没有被指定（值为 undefined ）的时候起作用。在上面的例子中，参数<code>name</code>会在没有得到新的值的时候，默认使用值 “Anonymous”。还可以给多个参数赋予默认值</p>
+<h3 id="将-rest-操作符与函数参数一起使用"><a href="#将-rest-操作符与函数参数一起使用" class="headerlink" title="将 rest 操作符与函数参数一起使用"></a>将 rest 操作符与函数参数一起使用</h3><p>ES6 推出了用于函数参数的 rest 操作符帮助我们创建更加灵活的函数。在<code>rest</code>操作符的帮助下，你可以创建有一个变量来接受多个参数的函数。这些参数被储存在一个可以在函数内部读取的数组中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">howMany</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="string">"You have passed "</span> + args.length + <span class="string">" arguments."</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(howMany(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>)); <span class="comment">// 输出：You have passed 3 arguments.</span></span><br></pre></td></tr></table></figure>
+
+<p><code>rest</code>操作符可以避免查看<code>args</code>数组的需求，并且允许我们在参数数组上使用<code>map()</code>,<code>filter()</code>,和<code>reduce()</code></p>
+<h3 id="使用-spread-运算符展开数组项"><a href="#使用-spread-运算符展开数组项" class="headerlink" title="使用 spread 运算符展开数组项"></a>使用 spread 运算符展开数组项</h3><p>ES6 允许我们使用 展开操作符 来展开数组，以及需要多个参数或元素的表达式。</p>
+<p>下面的 ES5 代码使用了<code>apply()</code>来计算数组的最大值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">6</span>, <span class="number">89</span>, <span class="number">3</span>, <span class="number">45</span>];</span><br><span class="line"><span class="keyword">var</span> maximus = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, arr); <span class="comment">// 返回 89</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>我们必须使用<code>Math.max.apply(null,arr)</code>，是因为直接调用<code>Math.max(arr)</code>会返回<code>NaN</code>。<code>Math.max()</code>函数需要传入的是一系列由逗号分隔的参数，而不是一个数组。</p>
+<p>展开操作符可以提升代码的可读性，这对后续的代码维护是有积极作用的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">6</span>, <span class="number">89</span>, <span class="number">3</span>, <span class="number">45</span>];</span><br><span class="line"><span class="keyword">const</span> maximus = <span class="built_in">Math</span>.max(...arr); <span class="comment">// 返回 89</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>...arr</code>返回了一个“打开”的数组。或者说它 <em>展开</em> 了数组。// …arr = 1,2,5     arr = [1,2,5] </p>
+<p>然而，展开操作符<strong>只能够在函数的参数中，或者数组之中</strong>使用。下面的代码将会报错：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> spreaded = ...arr; <span class="comment">// 将会发生语法错误</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用解构赋值从对象中分配变量"><a href="#使用解构赋值从对象中分配变量" class="headerlink" title="使用解构赋值从对象中分配变量"></a>使用解构赋值从对象中分配变量</h3><p>对于对象，我们也可以做同样的操作。解构赋值 就是可以从对象中直接获取对应值的语法。</p>
+<p>看看以下 ES5 的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> voxel = &#123;<span class="attr">x</span>: <span class="number">3.6</span>, <span class="attr">y</span>: <span class="number">7.4</span>, <span class="attr">z</span>: <span class="number">6.54</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> x = voxel.x; <span class="comment">// x = 3.6</span></span><br><span class="line"><span class="keyword">var</span> y = voxel.y; <span class="comment">// y = 7.4</span></span><br><span class="line"><span class="keyword">var</span> z = voxel.z; <span class="comment">// z = 6.54</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用 ES6 的解构语法可以完成同样的赋值语句：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; x, y, z &#125; = voxel; <span class="comment">// x = 3.6, y = 7.4, z = 6.54</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果你想将<code>voxel.x</code>,<code>voxel.y</code>,<code>voxel.z</code>的值分别赋给<code>a</code>,<code>b</code>,<code>c</code>，可以用以下这种很棒的方式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="attr">x</span> : a, <span class="attr">y</span> : b, <span class="attr">z</span> : c &#125; = voxel; <span class="comment">// a = 3.6, b = 7.4, c = 6.54</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>可以这样理解：“将<code>x</code>地址中的值拷贝到<code>a</code>当中去。”，等等。</p>
+<h3 id="使用解构赋值从嵌套对象中分配变量"><a href="#使用解构赋值从嵌套对象中分配变量" class="headerlink" title="使用解构赋值从嵌套对象中分配变量"></a>使用解构赋值从嵌套对象中分配变量</h3><p>可以将 <em>嵌套的对象</em>解构到变量中。</p>
+<p>请看以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line"> start: &#123; <span class="attr">x</span>: <span class="number">5</span>, <span class="attr">y</span>: <span class="number">6</span>&#125;,</span><br><span class="line"> end: &#123; <span class="attr">x</span>: <span class="number">6</span>, <span class="attr">y</span>: <span class="number">-9</span> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> &#123; <span class="attr">start</span> : &#123; <span class="attr">x</span>: startX, <span class="attr">y</span>: startY &#125;&#125; = a;</span><br><span class="line"><span class="built_in">console</span>.log(startX, startY); <span class="comment">// 5, 6</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在上面的例子里，<code>a.start</code>将值赋给了变量<code>start</code>，<code>start</code>同样也是个对象。</p>
+<h3 id="使用解构赋值从数组中分配变量"><a href="#使用解构赋值从数组中分配变量" class="headerlink" title="使用解构赋值从数组中分配变量"></a>使用解构赋值从数组中分配变量</h3><p>解构数组可以如同解构对象一样简单。</p>
+<p>与数组解构不同，数组的扩展运算会将数组里的所有内容分解成一个由逗号分隔的列表。所以，你不能选择哪个元素来给变量赋值。</p>
+<p>而对数组进行解构却可以让我们做到这一点：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> [a, b] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line"><span class="built_in">console</span>.log(a, b); <span class="comment">// 1, 2</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>变量<code>a</code>以及<code>b</code>分别被数组的第一、第二个元素赋值。</p>
+<p>我们甚至能在数组解构中使用逗号分隔符，来获取任意一个想要的值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [a, b,,, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line"><span class="built_in">console</span>.log(a, b, c); <span class="comment">// 1, 2, 5</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用解构赋值配合-rest-操作符来重新分配数组元素"><a href="#使用解构赋值配合-rest-操作符来重新分配数组元素" class="headerlink" title="使用解构赋值配合 rest 操作符来重新分配数组元素"></a>使用解构赋值配合 rest 操作符来重新分配数组元素</h3><p>在解构数组的某些情况下，我们可能希望将剩下的元素放进另一个数组里面。</p>
+<p>以下代码的结果与使用<code>Array.prototype.slice()</code>相同：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [a, b, ...arr] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>];</span><br><span class="line"><span class="built_in">console</span>.log(a, b); <span class="comment">// 1, 2</span></span><br><span class="line"><span class="built_in">console</span>.log(arr); <span class="comment">// [3, 4, 5, 7]</span></span><br></pre></td></tr></table></figure>
+
+<p>变量<code>a</code>与<code>b</code>分别获取了数组的前两个元素的值。之后，因为<code>rest</code>操作符的存在，<code>arr</code>获取了原数组剩余的元素的值，并构成了一个新的数组。</p>
+<h3 id="使用解构赋值将对象作为函数的参数传递"><a href="#使用解构赋值将对象作为函数的参数传递" class="headerlink" title="使用解构赋值将对象作为函数的参数传递"></a>使用解构赋值将对象作为函数的参数传递</h3><p>可以在函数的参数里直接解构对象。</p>
+<p>请看以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> profileUpdate = <span class="function">(<span class="params">profileData</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="keyword">const</span> &#123; name, age, nationality, location &#125; = profileData;</span><br><span class="line"><span class="comment">// 对这些变量执行某些操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>上面的操作解构了传给函数的对象。这样的操作也可以直接在参数里完成：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> profileUpdate = <span class="function">(<span class="params">&#123; name, age, nationality, location &#125;</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="comment">/* 对这些参数执行某些操作 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>传对象过来，直接解构</p>
+</blockquote>
+<p>这样的操作去除了多余的代码，使代码更加整洁。</p>
+<p>这样做还有个额外的好处：函数不需要再去操作整个对象，而仅仅是操作复制到函数作用域内部的参数。</p>
+<h3 id="使用模板字面量创建字符串"><a href="#使用模板字面量创建字符串" class="headerlink" title="使用模板字面量创建字符串"></a>使用模板字面量创建字符串</h3><p>模板字符串是 ES6 的另外一项新的功能。这是一种可以轻松构建复杂字符串的方法。</p>
+<p>请看以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="keyword">const</span> person = &#123;</span><br><span class="line"> name: <span class="string">"Zodiac Hasbro"</span>,</span><br><span class="line"> age: <span class="number">56</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// string interpolation</span></span><br><span class="line"> <span class="keyword">const</span> greeting = <span class="string">`Hello, my name is <span class="subst">$&#123;person.name&#125;</span>!</span></span><br><span class="line"><span class="string"> I am <span class="subst">$&#123;person.age&#125;</span> years old.`</span>;</span><br><span class="line"></span><br><span class="line"> <span class="built_in">console</span>.log(greeting); <span class="comment">// 打印出</span></span><br><span class="line"> <span class="comment">// Hello, my name is Zodiac Hasbro!</span></span><br><span class="line"> <span class="comment">// I am 56 years old.</span></span><br></pre></td></tr></table></figure>
+
+<p>这段代码有许多的不同：</p>
+<p>首先，上面使用的<code>${variable}</code>语法是一个占位符。这样一来，你将不再需要使用<code>+</code>运算符来连接字符串。当需要在字符串里增加变量的时候，你只需要在变量的外面括上<code>${</code>和<code>}</code>，并将其放在字符串里就可以了。</p>
+<p>其次，在例子使用了反引号，而不是引号，将字符串括了起来，并且这个字符串可以换行。</p>
+<p>这个新的方式使你可以更灵活的创建复杂的字符串。</p>
+<h3 id="使用简单字段编写简洁的对象字面量声明"><a href="#使用简单字段编写简洁的对象字面量声明" class="headerlink" title="使用简单字段编写简洁的对象字面量声明"></a>使用简单字段编写简洁的对象字面量声明</h3><p>ES6 添加了一些很棒的功能，以便于更方便地定义对象。</p>
+<p>请看以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getMousePosition = <span class="function">(<span class="params">x, y</span>) =&gt;</span> (&#123;</span><br><span class="line">x: x,</span><br><span class="line">y: y</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>getMousePosition</code>是一个返回了拥有2个属性的对象的简单函数。</p>
+<p>ES6 提供了一个语法糖，消除了类似<code>x: x</code>这种冗余的写法.你可以仅仅只写一次<code>x，解释器会自动将其转换成x: x。</code></p>
+<p>下面是使用这种语法重写的同样的函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getMousePosition = <span class="function">(<span class="params">x, y</span>) =&gt;</span> (&#123; x, y &#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="用-ES6-编写简洁的函数声明"><a href="#用-ES6-编写简洁的函数声明" class="headerlink" title="用 ES6 编写简洁的函数声明"></a>用 ES6 编写简洁的函数声明</h3><p>在 ES5 中，当我们需要在对象中定义一个函数的时候，我们必须如下面这般使用<code>function</code>关键字：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">name: <span class="string">"Taylor"</span>,</span><br><span class="line">sayHello: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="string">`Hello! My name is <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>.`</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在 ES6 语法的对象中定义函数的时候，你可以完全删除<code>function</code>关键字和冒号。请看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">name: <span class="string">"Taylor"</span>,</span><br><span class="line">sayHello() &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="string">`Hello! My name is <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>.`</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-class-语法定义构造函数"><a href="#使用-class-语法定义构造函数" class="headerlink" title="使用 class 语法定义构造函数"></a>使用 class 语法定义构造函数</h3><p>ES6 提供了一个新的创建对象的语法，使用关键字<code>class</code>。</p>
+<p>值得注意的是，<code>class</code>只是一个语法糖，它并不像 Java、Python 或者 Ruby 这一类的语言一样，严格履行了面向对象的开发规范。</p>
+<p>在 ES5 里面，我们通常会定义一个构造函数，然后使用 <code>new</code>关键字来实例化一个对象：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> SpaceShuttle = <span class="function"><span class="keyword">function</span>(<span class="params">targetPlanet</span>)</span>&#123;</span><br><span class="line"> <span class="keyword">this</span>.targetPlanet = targetPlanet;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">var</span> zeus = <span class="keyword">new</span> SpaceShuttle(<span class="string">'Jupiter'</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>class</code>的语法只是简单地替换了构造函数的写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpaceShuttle</span> </span>&#123;</span><br><span class="line"><span class="keyword">constructor</span>(targetPlanet)&#123;</span><br><span class="line"><span class="keyword">this</span>.targetPlanet = targetPlanet;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> zeus = <span class="keyword">new</span> SpaceShuttle(<span class="string">'Jupiter'</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>注意<code>class</code>关键字声明了一个新的函数，并在其中添加了一个会在使用<code>new</code>关键字创建新对象时调用的构造函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeClass</span>(<span class="params"></span>) </span>&#123;<span class="comment">//函数</span></span><br><span class="line"><span class="meta">  "use strict"</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vegetable</span></span>&#123;  <span class="comment">//类</span></span><br><span class="line">  <span class="keyword">constructor</span>(vagetable)&#123;   <span class="comment">//对象</span></span><br><span class="line">    name = vagetable;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">  <span class="keyword">return</span> Vegetable;  <span class="comment">//返回对象</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> Vegetable = makeClass(); </span><br><span class="line"><span class="keyword">const</span> carrot = <span class="keyword">new</span> Vegetable(<span class="string">'carrot'</span>); <span class="comment">//调用构造方法创建对象</span></span><br><span class="line"><span class="built_in">console</span>.log(carrot.name); <span class="comment">//应该显示 'carrot'</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-getter-和-setter-来控制对象的访问"><a href="#使用-getter-和-setter-来控制对象的访问" class="headerlink" title="使用 getter 和 setter 来控制对象的访问"></a>使用 getter 和 setter 来控制对象的访问</h3><p>可以从对象中获得一个值，也可以给对象的属性赋值。</p>
+<p>这些通常行为被称为 getters 以及 setters。</p>
+<p>Getter 函数的作用是可以让返回一个对象私有变量的值给用户，而不需要直接去访问私有变量。</p>
+<p>Setter 函数的作用是可以基于传进的参数来修改对象中私有变量的值。这些修改可以是计算，或者是直接替换之前的值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span> </span>&#123;</span><br><span class="line"> <span class="keyword">constructor</span>(author) &#123;</span><br><span class="line">  <span class="keyword">this</span>._author = author;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">// getter</span></span><br><span class="line"> <span class="keyword">get</span> writer()&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>._author;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">// setter</span></span><br><span class="line"> <span class="keyword">set</span> writer(updatedAuthor)&#123;</span><br><span class="line">  <span class="keyword">this</span>._author = updatedAuthor;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> lol = <span class="keyword">new</span> Book(<span class="string">'anonymous'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(lol.writer); <span class="comment">// anonymous</span></span><br><span class="line">lol.writer = <span class="string">'wut'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(lol.writer); <span class="comment">// wut</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>注意我们调用 getter 和 setter 的语法，它们看起来并不像一个函数调用。</p>
+<p>Getter 和 Setter 非常重要，因为它们隐藏了内部的实现细节。</p>
+<h3 id="了解-import-和-require-之间的差异"><a href="#了解-import-和-require-之间的差异" class="headerlink" title="了解 import 和 require 之间的差异"></a>了解 import 和 require 之间的差异</h3><p>在过去，我们会使用<code>require()</code>函数来从外部文件或模块中引入函数或者代码。这时候会遇到一个问题：有些文件或者模块会特别大，但你却往往只需要引入其中的一些核心代码。</p>
+<p>ES6 给我们提供了<code>import</code>这个便利的工具。通过它，我们能够从外部的文件或者模块中选择我们需要的部分进行引入，从而节约载入的时间和内存空间。</p>
+<p>请看下面的例子：想象<code>math_array_functions</code>拥有大概20个函数，但是我只需要<code>countItems</code>这一个函数在我当前的文件里。使用老的<code>require()</code>方式会强制我引入所有20个函数。而使用新的<code>import</code>语法，我可以只引入需要的那个函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; countItems &#125; <span class="keyword">from</span> <span class="string">"math_array_functions"</span></span><br></pre></td></tr></table></figure>
+
+<p>下面是对于上面代码的语义描述：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="function"><span class="keyword">function</span> &#125; <span class="title">from</span> "<span class="title">file_path_goes_here</span>"</span></span><br><span class="line"><span class="function">// 我们还可以用同样的方式来引入变量！</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>对<code>import</code>的使用，有许多的写法，但是上面的例子是最常用的写法。</p>
+<p><strong>注意</strong><br>在大括号里的函数名的两侧加上空格是一个最佳实践——这可以帮助我们轻松的阅读<code>import</code>语句。</p>
+<p><strong>注意</strong><br>本节课中进行的是一个非浏览器操作。<code>import</code>以及与其相关的在后面课程中的语句，是无法直接在浏览器上运行的。但是，我们可以通过一些工具来使它可以在浏览器中运行。</p>
+<p><strong>注意</strong><br>在许多的例子中，在文件的路径前会加上<code>./</code>；否则， node.js 会先尝试去<code>node_modules</code>目录中寻找依赖项。</p>
+<h3 id="用-export-来重用代码块"><a href="#用-export-来重用代码块" class="headerlink" title="用 export 来重用代码块"></a>用 export 来重用代码块</h3><p>关于<code>import</code>语句是如何从大文件中引入其中的部分代码的。但是，为了让其正常的工作，我们还必须了解一个与之相关的语句，叫做<code>export</code>。当我们想要一些代码——函数或者变量——在其他文件中使用，我们必须将它们导出来供其他文件导入。和<code>import</code>一样，<code>export</code>也是一个非浏览器的功能。</p>
+<p>下面的例子阐述了如何进行一个命名导出。通过这样，我们可以使用上节课学习的<code>import</code>语法，将导出的代码导入到其他的文件中去。请看下面的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">const</span> capitalizeString = <span class="function">(<span class="params">string</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> string.charAt(<span class="number">0</span>).toUpperCase() + string.slice(<span class="number">1</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">export</span> &#123; capitalizeString &#125; <span class="comment">//如何导出函数。</span></span><br><span class="line"> <span class="keyword">export</span> <span class="keyword">const</span> foo = <span class="string">"bar"</span>; <span class="comment">//如何导出变量。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//另外，如果你想要将你所有的`export`语句打包成一行，你可以像下面这个例子一样实现：</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">const</span> capitalizeString = <span class="function">(<span class="params">string</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> string.charAt(<span class="number">0</span>).toUpperCase() + string.slice(<span class="number">1</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">const</span> foo = <span class="string">"bar"</span>;</span><br><span class="line"> <span class="keyword">export</span> &#123; capitalizeString, foo &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//两种方式都是非常棒的实践。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="用-从文件中导入所有内容"><a href="#用-从文件中导入所有内容" class="headerlink" title="用 * 从文件中导入所有内容"></a>用 * 从文件中导入所有内容</h3><p>们还可以用<code>import</code>语法从文件中导入所有的内容。</p>
+<p>下面是一个从同目录下的<code>&quot;math_functions&quot;</code>文件中导入所有内容的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> myMathModule <span class="keyword">from</span> <span class="string">"math_functions"</span>;</span><br><span class="line">myMathModule.add(<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">myMathModule.subtract(<span class="number">5</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<p>可以在<code>import * as</code>之后添加任意的名称。这个方法接收到的值是一个对象，你可以使用<strong>点表示法</strong>来获取对象里具体的值。</p>
+<h3 id="export-default-默认导出"><a href="#export-default-默认导出" class="headerlink" title="export default 默认导出"></a>export default 默认导出</h3><p>默认导出的<code>export</code>的语法。在文件中只有一个值需要导出的时候，你通常会使用这种语法。它也常常用于给文件或者模块创建返回值。</p>
+<p>下面是一个简单的<code>export default</code>例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="导入一个默认的导出"><a href="#导入一个默认的导出" class="headerlink" title="导入一个默认的导出"></a>导入一个默认的导出</h3><p>在上一个挑战里，你学会了<code>export default</code>的用法。还有一个重要的点，你可能需要另外一种<code>import</code>的语法来导入默认导出。</p>
+<p>在下面的例子里有一个<code>add</code>函数, 它在<code>&quot;math_functions&quot;</code>文件里默认被导出。让我们看看来如何导入它：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> add <span class="keyword">from</span> <span class="string">"math_functions"</span>;</span><br><span class="line">add(<span class="number">5</span>,<span class="number">4</span>); <span class="comment">//将会返回 9</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>这个语法只有一处不同的地方 —— 被导入的<code>add</code>值，并没有被花括号<code>{}</code>所包围。与导出值的方法不同，导入默认导出的写法仅仅只是简单的将变量名写在<code>import</code>之后。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FCC/" rel="tag"># FCC</a>
+          
+            <a href="/tags/ECMA%E6%A0%87%E5%87%86/" rel="tag"># ECMA标准</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/07/02js%E5%9F%BA%E7%A1%80/" rel="next" title="JavaScript基础">
+                <i class="fa fa-chevron-left"></i> JavaScript基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/07/04%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="prev" title="正则表达式">
+                正则表达式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/agul1.png"
+                alt="agul" />
+            
+              <p class="site-author-name" itemprop="name">agul</p>
+              <p class="site-description motion-element" itemprop="description">天行健，君子以自强不息</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ECMAScript-6"><span class="nav-number">1.</span> <span class="nav-text">ECMAScript 6</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#探索-var-和-let-关键字之间的差异"><span class="nav-number">1.0.1.</span> <span class="nav-text">探索 var 和 let 关键字之间的差异</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较-var-和-let-关键字的作用域"><span class="nav-number">1.0.2.</span> <span class="nav-text">比较 var 和 let 关键字的作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用-const-关键字声明只读变量"><span class="nav-number">1.0.3.</span> <span class="nav-text">用 const 关键字声明只读变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#防止对象改变"><span class="nav-number">1.0.4.</span> <span class="nav-text">防止对象改变</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数"><span class="nav-number">1.1.</span> <span class="nav-text">箭头函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用箭头函数编写简洁的匿名函数"><span class="nav-number">1.1.1.</span> <span class="nav-text">使用箭头函数编写简洁的匿名函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带参数的箭头函数"><span class="nav-number">1.1.2.</span> <span class="nav-text">带参数的箭头函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写高阶箭头函数"><span class="nav-number">1.1.3.</span> <span class="nav-text">编写高阶箭头函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置函数的默认参数"><span class="nav-number">1.1.4.</span> <span class="nav-text">设置函数的默认参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将-rest-操作符与函数参数一起使用"><span class="nav-number">1.1.5.</span> <span class="nav-text">将 rest 操作符与函数参数一起使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-spread-运算符展开数组项"><span class="nav-number">1.1.6.</span> <span class="nav-text">使用 spread 运算符展开数组项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用解构赋值从对象中分配变量"><span class="nav-number">1.1.7.</span> <span class="nav-text">使用解构赋值从对象中分配变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用解构赋值从嵌套对象中分配变量"><span class="nav-number">1.1.8.</span> <span class="nav-text">使用解构赋值从嵌套对象中分配变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用解构赋值从数组中分配变量"><span class="nav-number">1.1.9.</span> <span class="nav-text">使用解构赋值从数组中分配变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用解构赋值配合-rest-操作符来重新分配数组元素"><span class="nav-number">1.1.10.</span> <span class="nav-text">使用解构赋值配合 rest 操作符来重新分配数组元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用解构赋值将对象作为函数的参数传递"><span class="nav-number">1.1.11.</span> <span class="nav-text">使用解构赋值将对象作为函数的参数传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用模板字面量创建字符串"><span class="nav-number">1.1.12.</span> <span class="nav-text">使用模板字面量创建字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用简单字段编写简洁的对象字面量声明"><span class="nav-number">1.1.13.</span> <span class="nav-text">使用简单字段编写简洁的对象字面量声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用-ES6-编写简洁的函数声明"><span class="nav-number">1.1.14.</span> <span class="nav-text">用 ES6 编写简洁的函数声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-class-语法定义构造函数"><span class="nav-number">1.1.15.</span> <span class="nav-text">使用 class 语法定义构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-getter-和-setter-来控制对象的访问"><span class="nav-number">1.1.16.</span> <span class="nav-text">使用 getter 和 setter 来控制对象的访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#了解-import-和-require-之间的差异"><span class="nav-number">1.1.17.</span> <span class="nav-text">了解 import 和 require 之间的差异</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用-export-来重用代码块"><span class="nav-number">1.1.18.</span> <span class="nav-text">用 export 来重用代码块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用-从文件中导入所有内容"><span class="nav-number">1.1.19.</span> <span class="nav-text">用 * 从文件中导入所有内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#export-default-默认导出"><span class="nav-number">1.1.20.</span> <span class="nav-text">export default 默认导出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导入一个默认的导出"><span class="nav-number">1.1.21.</span> <span class="nav-text">导入一个默认的导出</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">agul</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

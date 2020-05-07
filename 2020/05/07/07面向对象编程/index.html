@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/agul.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/agul.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/agul.png?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="FCC,编程," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Agul'blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="面向对象编程介绍面向对象编程是软件开发过程的几种主要方法之一。 顾名思义，面向对象编程将代码组织成对象定义。这些有时被称为类，它们将数据和相关行为组合在一起。数据是对象的属性，行为(或函数)是方法。 对象结构能够在程序中灵活使用，比如对象可以通过调用数据并将数据传递给另一个对象的方法来传递信息。此外，新对象可以从基类（或父类）接收或继承所有功能，这有助于减少重复代码。 对于编程方法的选择取决于几个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象编程">
+<meta property="og:url" content="https://ultraman-agul.github.io/2020/05/07/07%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Agul&#39;blog">
+<meta property="og:description" content="面向对象编程介绍面向对象编程是软件开发过程的几种主要方法之一。 顾名思义，面向对象编程将代码组织成对象定义。这些有时被称为类，它们将数据和相关行为组合在一起。数据是对象的属性，行为(或函数)是方法。 对象结构能够在程序中灵活使用，比如对象可以通过调用数据并将数据传递给另一个对象的方法来传递信息。此外，新对象可以从基类（或父类）接收或继承所有功能，这有助于减少重复代码。 对于编程方法的选择取决于几个">
+<meta property="article:published_time" content="2020-05-07T03:18:24.113Z">
+<meta property="article:modified_time" content="2020-05-07T03:30:57.452Z">
+<meta property="article:author" content="agul">
+<meta property="article:tag" content="FCC">
+<meta property="article:tag" content="编程">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ultraman-agul.github.io/2020/05/07/07面向对象编程/"/>
+
+
+
+
+
+  <title>面向对象编程 | Agul'blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Agul'blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Record a good life</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ultraman-agul.github.io/2020/05/07/07%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="agul">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/agul1.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Agul'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面向对象编程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-07T11:18:24+08:00">
+                2020-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/js%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">js笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>面向对象编程是软件开发过程的几种主要方法之一。</p>
+<p>顾名思义，面向对象编程将代码组织成对象定义。这些有时被称为类，它们将数据和相关行为组合在一起。数据是对象的属性，行为(或函数)是方法。</p>
+<p>对象结构能够在程序中灵活使用，比如对象可以通过调用数据并将数据传递给另一个对象的方法来传递信息。此外，新对象可以从基类（或父类）接收或继承所有功能，这有助于减少重复代码。</p>
+<p>对于编程方法的选择取决于几个因素，其中包括问题的类型、如何构造数据以及算法等。这里介绍 JavaScript 中面向对象的编程原则。</p>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> duck = &#123;</span><br><span class="line">  name: <span class="string">"Aflac"</span>,</span><br><span class="line">  numLegs: <span class="number">2</span>,</span><br><span class="line">  sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="keyword">return</span> <span class="string">"The name of this duck is "</span> + <span class="keyword">this</span>.name + <span class="string">"."</span>;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p><code>构造函数</code>遵循一些惯例规则：</p>
+<ul>
+<li><code>构造函数</code>函数名的首字母最好大写，这是为了方便我们区分<code>构造函数</code>和其他非构造函数。</li>
+<li><code>构造函数</code>使用<code>this</code>关键字来给它将创建的这个对象设置新的属性。在<code>构造函数</code>里面，<code>this</code>指向的就是它新创建的这个对象。</li>
+<li><code>构造函数</code>定义了属性和行为就可创建对象，而不是像其他函数一样需要设置返回值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"Wangcai"</span>;</span><br><span class="line">    <span class="keyword">this</span>.color = <span class="string">"green"</span>;</span><br><span class="line">    <span class="keyword">this</span>.numLegs = <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><p>通过构造函数创建对象的时候要使用<code>new</code>操作符。因为只有这样，JavaScript 才知道要给<code>Bird</code>这个构造函数创建一个新的<code>实例</code>：<code>blueBird</code>。如果不使用<code>new</code>操作符来新建对象，那么构造函数里面的<code>this</code>就无法指向新创建的这个对象实例，从而产生不可预见的错误。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Bird</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"Albert"</span>;</span><br><span class="line">  <span class="keyword">this</span>.color = <span class="string">"blue"</span>;</span><br><span class="line">  <span class="keyword">this</span>.numLegs = <span class="number">2</span>;</span><br><span class="line">  <span class="comment">// 构造函数里面的 "this" 总是指向新创建的实例。</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> blueBird = <span class="keyword">new</span> Bird();</span><br></pre></td></tr></table></figure>
+
+<p>每个对象不相同，使用传入参数的构造函数可以方便的创建不同的对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name,color</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.numLegs = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.color = color;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">var</span> terrier = <span class="keyword">new</span> Dog(<span class="string">"旺财"</span>,<span class="string">"green"</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="instance-of"><a href="#instance-of" class="headerlink" title="instance of"></a>instance of</h3><p>凡是通过构造函数创建出的新对象，都叫做这个构造函数的<code>实例</code>。JavaScript 提供了一种很简便的方法来验证这个事实，那就是通过<code>instanceof</code>操作符。<code>instanceof</code>允许你将对象与构造函数之间进行比较，根据对象是否由这个构造函数创建的返回<code>true</code>或者<code>false</code>。以下是一个示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> Bird = <span class="function"><span class="keyword">function</span>(<span class="params">name, color</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">this</span>.name = name;</span><br><span class="line"> <span class="keyword">this</span>.color = color;</span><br><span class="line"> <span class="keyword">this</span>.numLegs = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> crow = <span class="keyword">new</span> Bird(<span class="string">"Alexis"</span>, <span class="string">"black"</span>);</span><br><span class="line"></span><br><span class="line">crow <span class="keyword">instanceof</span> Bird; <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用原型属性来减少重复代码"><a href="#使用原型属性来减少重复代码" class="headerlink" title="使用原型属性来减少重复代码"></a>使用原型属性来减少重复代码</h3><p>所有<code>Bird</code>实例可能会有相同的<code>numLegs</code>值，所以在每一个<code>Bird</code>的实例中本质上都有一个重复的变量<code>numLegs</code>。</p>
+<p>当只有两个实例时可能并不是什么问题，但想象一下如果有数百万个实例，这将会产生许许多多重复的变量。</p>
+<p>这里有一个更好的方法可以解决上述问题，那就是使用<code>Bird</code>的<code>原型</code>。<code>原型</code>是一个可以在所有<code>Bird</code>实例之间共享的对象。以下是一个在<code>Bird prototype</code>中添加<code>numLegs</code>属性的示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bird.prototype.numLegs = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>现在所有的<code>Bird</code>实例都拥有了共同的<code>numLegs</code>属性值。</p>
+<p>由于所有的实例都可以继承<code>原型</code>上的属性，所以可以把<code>原型</code>看作是创建对象的 “配方”。</p>
+<p>请注意：<code>duck</code>和<code>canary</code>的<code>原型</code>是<code>Bird</code>构造函数原型<code>Bird.prototype</code>的一部分。JavaScript 中几乎所有的对象都有一个<code>原型</code>属性，这个属性是属于它所在的构造函数的一部分。</p>
+<h3 id="迭代所有属性"><a href="#迭代所有属性" class="headerlink" title="迭代所有属性"></a>迭代所有属性</h3><p>两种属性: <code>自身</code>属性和<code>原型</code>属性。<code>自身</code>属性是直接在对象上定义的。而<code>原型</code>属性是定义在<code>prototype</code>上的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Bird</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name; <span class="comment">// 自身属性</span></span><br><span class="line">&#125;</span><br><span class="line">Bird.prototype.numLegs = <span class="number">2</span>; <span class="comment">// 原型属性</span></span><br><span class="line"><span class="keyword">let</span> duck = <span class="keyword">new</span> Bird(<span class="string">"Donald"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>将<code>duck</code>的<code>自身</code>属性和<code>原型</code>属性分别添加到<code>ownProps</code>数组和<code>prototypeProps</code>数组里面：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ownProps = [];</span><br><span class="line"><span class="keyword">let</span> prototypeProps = [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> property <span class="keyword">in</span> duck) &#123;</span><br><span class="line">  <span class="keyword">if</span>(duck.hasOwnProperty(property)) &#123;</span><br><span class="line">    ownProps.push(property);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    prototypeProps.push(property);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(ownProps); <span class="comment">// 输出 ["name"]</span></span><br><span class="line"><span class="built_in">console</span>.log(prototypeProps); <span class="comment">// 输出 ["numLegs"]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="了解构造函数属性"><a href="#了解构造函数属性" class="headerlink" title="了解构造函数属性"></a>了解构造函数属性</h3><p>创建的实例对象<code>duck</code>和<code>beagle</code>都有一个特殊的<code>constructor</code>属性：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> duck = <span class="keyword">new</span> Bird();</span><br><span class="line"><span class="keyword">let</span> beagle = <span class="keyword">new</span> Dog();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(duck.constructor === Bird); <span class="comment">//输出 true</span></span><br><span class="line"><span class="built_in">console</span>.log(beagle.constructor === Dog); <span class="comment">//输出 true</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong><br>由于<code>constructor</code>属性可以被重写（在下面两节挑战中将会遇到），所以<strong>使用<code>instanceof</code>方法来检查对象的类型会更好</strong>。</p>
+<h3 id="将原型更改为新对象"><a href="#将原型更改为新对象" class="headerlink" title="将原型更改为新对象"></a>将原型更改为新对象</h3><p>到目前为止，你已经可以单独给<code>prototype</code>添加属性了：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bird.prototype.numLegs = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这将在添加许多属性的时候变得单调乏味。</p>
+<p>一种更有效的方法就是给对象的<code>prototype</code>设置为一个已经包含了属性的新对象。这样一来，所有属性都可以一次性添加进来：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Bird.prototype = &#123;</span><br><span class="line"> numLegs: <span class="number">2</span>,</span><br><span class="line"> eat: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"nom nom nom"</span>);</span><br><span class="line"> &#125;,</span><br><span class="line"> describe: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"My name is "</span> + <span class="keyword">this</span>.name);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+</blockquote>
+<h3 id="更改原型时，记得设置构造函数属性"><a href="#更改原型时，记得设置构造函数属性" class="headerlink" title="更改原型时，记得设置构造函数属性"></a>更改原型时，记得设置构造函数属性</h3><p>手动给新对象重新设置<code>原型</code>对象，会产生一个重要的副作用：删除了<code>constructor</code>属性！</p>
+<p>为了解决这个问题，凡是手动给新对象重新设置过原型对象的，都别忘记在原型对象中定义一个<code>constructor</code>属性：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Bird.prototype = &#123;</span><br><span class="line">  <span class="keyword">constructor</span>: Bird, // 定义 <span class="keyword">constructor</span> 属性</span><br><span class="line">  numLegs: 2,</span><br><span class="line">  eat: function() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"nom nom nom"</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  describe: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"My name is "</span> + <span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="了解对象的原型来自哪里"><a href="#了解对象的原型来自哪里" class="headerlink" title="了解对象的原型来自哪里"></a>了解对象的原型来自哪里</h3><p>就像人们从父母那里继承基因一样，对象也可直接从创建它的构造函数那里继承其<code>原型</code>。请看下面的例子：<code>Bird</code>构造函数创建了一个<code>duck</code>对象：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Bird</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> duck = <span class="keyword">new</span> Bird(<span class="string">"Donald"</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>duck</code>从<code>Bird</code>构造函数那里继承了它的<code>原型</code>，你可以使用<code>isPrototypeOf</code>方法来验证他们之间的关系：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Bird.prototype.isPrototypeOf(duck);</span><br><span class="line"><span class="comment">// 返回 true</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="了解原型链"><a href="#了解原型链" class="headerlink" title="了解原型链"></a>了解原型链</h3><p>JavaScript 中所有的对象（除了少数例外）都有自己的<code>原型</code>。而且，对象的<code>原型</code>本身也是一个对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Bird</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> Bird.prototype; <span class="comment">// =&gt; object</span></span><br></pre></td></tr></table></figure>
+
+<p>正因为<code>原型</code>是一个对象，所以<code>原型</code>对象也有它自己的<code>原型</code>！这样看来的话，<code>Bird.prototype</code>的<code>原型</code>就是<code>Object.prototype</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="built_in">Object</span>.prototype.isPrototypeOf(Bird.prototype);</span><br><span class="line"><span class="comment">// 返回 true</span></span><br></pre></td></tr></table></figure>
+
+<p>这有什么作用呢？你可能还记得我们在上一个挑战中学到的<code>hasOwnProperty</code>方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> duck = <span class="keyword">new</span> Bird(<span class="string">"Donald"</span>);</span><br><span class="line">duck.hasOwnProperty(<span class="string">"name"</span>); <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+
+<p><code>hasOwnProperty</code>是定义在<code>Object.prototype</code>上的一个方法，尽管在<code>Bird.prototype</code>和<code>duck</code>上并没有定义该方法，但是我们依然可以在这两个对象上访问到。这就是一个<code>原型</code>链。</p>
+<p>在这个<code>原型</code>链中，<code>Bird</code>构造函数是<code>父级</code>，<code>duck</code>是<code>子级</code>。<code>Object</code>则是<code>Bird</code>构造函数和<code>duck</code>实例共同的<code>父级</code>。</p>
+<p><code>Object</code>是 JavaScript 中所有对象的<code>父级</code>，也就是原型链的最顶层。因此，所有对象都可以访问<code>hasOwnProperty</code>方法。</p>
+<h3 id="从超类继承行为"><a href="#从超类继承行为" class="headerlink" title="从超类继承行为"></a>从超类继承行为</h3><p>创建一个<code>Animal 超类</code>，用来定义所有动物共有的行为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">Animal.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">"nom nom nom"</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>如何给<code>Bird</code>、<code>Dog</code>重写<code>Animal</code>中的方法，而无需重新定义它们。这里我们会用到构造函数的<code>继承</code>特性。</p>
+<p>第一步：创建一个<code>超类</code>（或者叫父类）的实例。</p>
+<p>你已经学会了一种创建<code>Animal</code>实例的方法，即使用<code>new</code>操作符：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> animal = <span class="keyword">new</span> Animal();</span><br></pre></td></tr></table></figure>
+
+<p>此语法用于<code>继承</code>时会存在一些缺点，这些缺点对于当前我们这个挑战来说太复杂了。相反，我们学习另外一种没有这些缺点的方法来替代<code>new</code>操作：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> animal = <span class="built_in">Object</span>.create(Animal.prototype);</span><br></pre></td></tr></table></figure>
+
+<p><code>Object.create(obj)</code>创建了一个新对象，并指定了<code>obj</code>作为新对象的<code>原型</code>。回忆一下，我们之前说过<code>原型</code>就像是创建对象的“配方”。如果我们把<code>animal</code>的<code>原型</code>设置为与<code>Animal</code>构造函数的<code>原型</code>一样，那么就相当于让<code>animal</code>这个实例的配方与<code>Animal</code>其他实例的配方一样了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">animal.eat(); <span class="comment">// 输出 "nom nom nom"</span></span><br><span class="line">animal <span class="keyword">instanceof</span> Animal; <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="将子辈的原型设置为父辈的实例"><a href="#将子辈的原型设置为父辈的实例" class="headerlink" title="将子辈的原型设置为父辈的实例"></a>将子辈的原型设置为父辈的实例</h3><p>我们学习了从<code>超类（或者叫父类） Animal</code>继承其行为的第一个步骤：创建一个<code>Animal</code>的实例。</p>
+<p>这一节挑战我们将学习第二个步骤：给<code>子类型（或者子类）</code>设置<code>原型</code>。这样一来，<code>Bird</code>就是<code>Animal</code>的一个实例了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bird.prototype = <span class="built_in">Object</span>.create(Animal.prototype);</span><br></pre></td></tr></table></figure>
+
+<p>请记住，<code>原型</code>类似于创建对象的“配方”。从某种意义上来说，<code>Bird</code>对象的配方包含了<code>Animal</code>构造函数的所有关键“成分”。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> duck = <span class="keyword">new</span> Bird(<span class="string">"Donald"</span>);</span><br><span class="line">duck.eat(); <span class="comment">// 输出 "nom nom nom"</span></span><br></pre></td></tr></table></figure>
+
+<p><code>duck</code>继承了<code>Animal</code>构造函数的所有属性，其中包括了<code>eat</code>方法。</p>
+<ul>
+<li>相当于java中： person类—student类—李四</li>
+</ul>
+<h3 id="重置继承的构造函数属性"><a href="#重置继承的构造函数属性" class="headerlink" title="重置继承的构造函数属性"></a>重置继承的构造函数属性</h3><p>当一个对象从另一个对象那里继承了其<code>原型</code>，那它也继承了<code>父类</code>的 constructor 属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Bird</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">Bird.prototype = <span class="built_in">Object</span>.create(Animal.prototype);</span><br><span class="line"><span class="keyword">let</span> duck = <span class="keyword">new</span> Bird();</span><br><span class="line">duck.constructor <span class="comment">// function Animal()&#123;...&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>但是<code>duck</code>和其他所有<code>Bird</code>的实例都应该表明它们是由<code>Bird</code>创建的，而不是由<code>Animal</code>创建的。为此，你可以手动把<code>Bird</code>的 constructor 属性设置为<code>Bird</code>对象：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Bird.prototype.constructor = Bird;</span><br><span class="line">duck.constructor <span class="comment">// function Bird()&#123;...&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="继承后添加方法"><a href="#继承后添加方法" class="headerlink" title="继承后添加方法"></a>继承后添加方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">Animal.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"nom nom nom"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Bird</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">Bird.prototype = <span class="built_in">Object</span>.create(Animal.prototype);</span><br><span class="line">Bird.prototype.constructor = Bird;</span><br><span class="line"><span class="comment">//添加方法</span></span><br><span class="line">Bird.prototype.fly = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"I'm flying!"</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="重写继承的方法"><a href="#重写继承的方法" class="headerlink" title="重写继承的方法"></a>重写继承的方法</h3><p>一个对象可以通过复制另一个对象的<code>原型</code>来继承其属性和行为（或方法）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ChildObject.prototype = <span class="built_in">Object</span>.create(ParentObject.prototype);</span><br></pre></td></tr></table></figure>
+
+<p>然后，<code>ChildObject</code>将自己的方法链接到它的<code>原型</code>中，我们可以像这样访问：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ChildObject.prototype.methodName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;...&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>我们还可以重写继承的方法。以同样的方式——通过使用一个与需要重写的方法相同的方法名，向<code>ChildObject.prototype</code>中添加方法。</p>
+<p>请看下面的举例：<code>Bird</code>重写了从<code>Animal</code>继承来的<code>eat()</code>方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">Animal.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="string">"nom nom nom"</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Bird</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 继承了 Animal 的所有方法</span></span><br><span class="line">Bird.prototype = <span class="built_in">Object</span>.create(Animal.prototype);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Bird.eat() 重写了 Animal.eat() 方法</span></span><br><span class="line">Bird.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="string">"peck peck peck"</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>如果你有一个实例：<code>let duck = new Bird();</code>，然后你调用了<code>duck.eat()</code>，以下就是 JavaScript 在<code>duck</code>的<code>原型</code>链上寻找方法的过程：</p>
+<p>\1. duck =&gt; 这里定义了 eat() 方法吗？没有。</p>
+<p>\2. Bird =&gt; 这里定义了 eat() 方法吗？=&gt; 是的。执行它并停止往上搜索。</p>
+<p>\3. Animal =&gt; 这里也定义了 eat() 方法，但是 JavaScript 在到达这层原型链之前已停止了搜索。</p>
+<p>\4. Object =&gt; JavaScript 在到达这层原型链之前也已经停止了搜索。</p>
+<h3 id="使用-Mixin-在不相关对象之间添加共同行为"><a href="#使用-Mixin-在不相关对象之间添加共同行为" class="headerlink" title="使用 Mixin 在不相关对象之间添加共同行为"></a>使用 Mixin 在不相关对象之间添加共同行为</h3><p>对于不相关的对象，更好的方法是使用<code>mixins</code>。<code>mixin</code>允许其他对象使用函数集合。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> flyMixin = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  obj.fly = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Flying, wooosh!"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><code>flyMixin</code>能接受任何对象，并为其提供<code>fly</code>方法。<code>flyMixin</code>能接受任何对象，并为其提供<code>fly</code>方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bird = &#123;</span><br><span class="line">  name: <span class="string">"Donald"</span>,</span><br><span class="line">  numLegs: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> plane = &#123;</span><br><span class="line">  model: <span class="string">"777"</span>,</span><br><span class="line">  numPassengers: <span class="number">524</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">flyMixin(bird);</span><br><span class="line">flyMixin(plane);</span><br><span class="line"><span class="comment">//这里的flyMixin接收了bird和plane对象，然后将fly方法分配给了每一个对象。现在bird和plane都可以飞行了：</span></span><br><span class="line">bird.fly(); <span class="comment">// 输出 "Flying, wooosh!"</span></span><br><span class="line">plane.fly(); <span class="comment">// 输出 "Flying, wooosh!"</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="了解立即调用函数表达（IIFE）"><a href="#了解立即调用函数表达（IIFE）" class="headerlink" title="了解立即调用函数表达（IIFE）"></a>了解立即调用函数表达（IIFE）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Chirp, chirp!"</span>);</span><br><span class="line">&#125;)(); <span class="comment">// 这是一个立即执行的匿名函数表达式</span></span><br><span class="line"><span class="comment">// 立即输出 "Chirp, chirp!"</span></span><br></pre></td></tr></table></figure>
+
+<p>函数声明后立即执行。函数不存放到任何变量当中</p>
+<h3 id="使用-IIFE-创建一个模块"><a href="#使用-IIFE-创建一个模块" class="headerlink" title="使用 IIFE 创建一个模块"></a>使用 IIFE 创建一个模块</h3><p>一个<code>自执行函数表达式</code>（<code>IIFE</code>）通常用于将相关功能分组到单个对象或者是<code>模块</code>中。例如，先前的挑战中定义了一个混合类</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">glideMixin</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  obj.glide = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Gliding on the water"</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flyMixin</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  obj.fly = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Flying, wooosh!"</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以将这些<code>mixins</code>分成以下一个模块：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> motionModule = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    glideMixin: <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">      obj.glide = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Gliding on the water"</span>);</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    flyMixin: <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">      obj.fly = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Flying, wooosh!"</span>);</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;) (); <span class="comment">// 末尾的两个括号导致函数被立即调用</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：一个<code>自执行函数表达式</code>（<code>IIFE</code>）返回了一个<code>motionModule</code>对象。返回的这个对象包含了作为对象属性的所有<code>mixin</code>行为。</p>
+<p><code>模块</code>模式的优点是，所有的运动行为都可以打包成一个对象，然后由代码的其他部分使用。下面是一个使用它的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">motionModule.glideMixin(duck);</span><br><span class="line">duck.glide();</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FCC/" rel="tag"># FCC</a>
+          
+            <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/07/06%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" rel="next" title="算法基础">
+                <i class="fa fa-chevron-left"></i> 算法基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/07/08%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" rel="prev" title="函数式编程">
+                函数式编程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/agul1.png"
+                alt="agul" />
+            
+              <p class="site-author-name" itemprop="name">agul</p>
+              <p class="site-description motion-element" itemprop="description">天行健，君子以自强不息</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#面向对象编程"><span class="nav-number">1.</span> <span class="nav-text">面向对象编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.0.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象"><span class="nav-number">1.0.2.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数"><span class="nav-number">1.0.3.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建对象"><span class="nav-number">1.0.4.</span> <span class="nav-text">创建对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instance-of"><span class="nav-number">1.0.5.</span> <span class="nav-text">instance of</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用原型属性来减少重复代码"><span class="nav-number">1.0.6.</span> <span class="nav-text">使用原型属性来减少重复代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代所有属性"><span class="nav-number">1.0.7.</span> <span class="nav-text">迭代所有属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#了解构造函数属性"><span class="nav-number">1.0.8.</span> <span class="nav-text">了解构造函数属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将原型更改为新对象"><span class="nav-number">1.0.9.</span> <span class="nav-text">将原型更改为新对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改原型时，记得设置构造函数属性"><span class="nav-number">1.0.10.</span> <span class="nav-text">更改原型时，记得设置构造函数属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#了解对象的原型来自哪里"><span class="nav-number">1.0.11.</span> <span class="nav-text">了解对象的原型来自哪里</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#了解原型链"><span class="nav-number">1.0.12.</span> <span class="nav-text">了解原型链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从超类继承行为"><span class="nav-number">1.0.13.</span> <span class="nav-text">从超类继承行为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将子辈的原型设置为父辈的实例"><span class="nav-number">1.0.14.</span> <span class="nav-text">将子辈的原型设置为父辈的实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重置继承的构造函数属性"><span class="nav-number">1.0.15.</span> <span class="nav-text">重置继承的构造函数属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承后添加方法"><span class="nav-number">1.0.16.</span> <span class="nav-text">继承后添加方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重写继承的方法"><span class="nav-number">1.0.17.</span> <span class="nav-text">重写继承的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Mixin-在不相关对象之间添加共同行为"><span class="nav-number">1.0.18.</span> <span class="nav-text">使用 Mixin 在不相关对象之间添加共同行为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#了解立即调用函数表达（IIFE）"><span class="nav-number">1.0.19.</span> <span class="nav-text">了解立即调用函数表达（IIFE）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-IIFE-创建一个模块"><span class="nav-number">1.0.20.</span> <span class="nav-text">使用 IIFE 创建一个模块</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">agul</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

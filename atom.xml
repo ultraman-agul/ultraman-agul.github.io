@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ultraman-agul.github.io/"/>
-  <updated>2020-05-07T02:36:35.006Z</updated>
+  <updated>2020-05-07T03:30:59.313Z</updated>
   <id>https://ultraman-agul.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ceshi</title>
-    <link href="https://ultraman-agul.github.io/2020/05/07/ceshi/"/>
-    <id>https://ultraman-agul.github.io/2020/05/07/ceshi/</id>
-    <published>2020-05-07T02:30:56.000Z</published>
-    <updated>2020-05-07T02:36:35.006Z</updated>
+    <title>函数式编程</title>
+    <link href="https://ultraman-agul.github.io/2020/05/07/08%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    <id>https://ultraman-agul.github.io/2020/05/07/08%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</id>
+    <published>2020-05-07T03:18:24.115Z</published>
+    <updated>2020-05-07T03:30:59.313Z</updated>
     
     <summary type="html">
     
@@ -29,26 +29,30 @@
       
         
         
-          &lt;p&gt;&lt;img src=&quot;/.io//1.png&quot;
+          &lt;h1 id=&quot;函数式编程&quot;&gt;&lt;a href=&quot;#函数式编程&quot; class=&quot;headerlink&quot; title=&quot;函数式编程&quot;&gt;&lt;/a&gt;函数式编程&lt;/h1&gt;&lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
     
-      <category term="测试插入图片" scheme="https://ultraman-agul.github.io/categories/%E6%B5%8B%E8%AF%95%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/"/>
+      <category term="web前端" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="笔记" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="测试 图片" scheme="https://ultraman-agul.github.io/tags/%E6%B5%8B%E8%AF%95-%E5%9B%BE%E7%89%87/"/>
+      <category term="FCC" scheme="https://ultraman-agul.github.io/tags/FCC/"/>
+    
+      <category term="编程" scheme="https://ultraman-agul.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
-    <title>练习</title>
-    <link href="https://ultraman-agul.github.io/2020/05/06/%E7%BB%83%E4%B9%A0/"/>
-    <id>https://ultraman-agul.github.io/2020/05/06/%E7%BB%83%E4%B9%A0/</id>
-    <published>2020-05-06T04:45:53.000Z</published>
-    <updated>2020-05-06T04:46:53.283Z</updated>
+    <title>面向对象编程</title>
+    <link href="https://ultraman-agul.github.io/2020/05/07/07%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/"/>
+    <id>https://ultraman-agul.github.io/2020/05/07/07%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</id>
+    <published>2020-05-07T03:18:24.113Z</published>
+    <updated>2020-05-07T03:30:57.452Z</updated>
     
     <summary type="html">
     
@@ -56,26 +60,30 @@
       
         
         
-          &lt;p&gt;as we all
+          &lt;h1 id=&quot;面向对象编程&quot;&gt;&lt;a href=&quot;#面向对象编程&quot; class=&quot;headerlink&quot; title=&quot;面向对象编程&quot;&gt;&lt;/a&gt;面向对象编程&lt;/h1&gt;&lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
     
-      <category term="笔记" scheme="https://ultraman-agul.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="web前端" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="js笔记" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/js%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="尝试 学习 拓展" scheme="https://ultraman-agul.github.io/tags/%E5%B0%9D%E8%AF%95-%E5%AD%A6%E4%B9%A0-%E6%8B%93%E5%B1%95/"/>
+      <category term="FCC" scheme="https://ultraman-agul.github.io/tags/FCC/"/>
+    
+      <category term="编程" scheme="https://ultraman-agul.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
-    <title>Agul</title>
-    <link href="https://ultraman-agul.github.io/2020/05/06/agul/"/>
-    <id>https://ultraman-agul.github.io/2020/05/06/agul/</id>
-    <published>2020-05-05T16:00:00.000Z</published>
-    <updated>2020-05-06T04:43:55.388Z</updated>
+    <title>算法基础</title>
+    <link href="https://ultraman-agul.github.io/2020/05/07/06%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <id>https://ultraman-agul.github.io/2020/05/07/06%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/</id>
+    <published>2020-05-07T03:18:24.112Z</published>
+    <updated>2020-05-07T03:30:55.666Z</updated>
     
     <summary type="html">
     
@@ -83,27 +91,158 @@
       
         
         
-          &lt;p&gt;gggggggggggggg&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3
+          &lt;h1 id=&quot;算法基础&quot;&gt;&lt;a href=&quot;#算法基础&quot; class=&quot;headerlink&quot; title=&quot;算法基础&quot;&gt;&lt;/a&gt;算法基础&lt;/h1&gt;&lt;p&gt;&lt;a
         
       
     
     </summary>
     
     
-      <category term="笔记" scheme="https://ultraman-agul.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="web前端" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="笔记" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="js笔记" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/%E7%AC%94%E8%AE%B0/js%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="test" scheme="https://ultraman-agul.github.io/tags/test/"/>
+      <category term="FCC" scheme="https://ultraman-agul.github.io/tags/FCC/"/>
+    
+      <category term="js" scheme="https://ultraman-agul.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基本数据结构</title>
+    <link href="https://ultraman-agul.github.io/2020/05/07/05%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <id>https://ultraman-agul.github.io/2020/05/07/05%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</id>
+    <published>2020-05-07T03:18:24.110Z</published>
+    <updated>2020-05-07T03:30:36.295Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;基本数据结构&quot;&gt;&lt;a href=&quot;#基本数据结构&quot; class=&quot;headerlink&quot; title=&quot;基本数据结构&quot;&gt;&lt;/a&gt;基本数据结构&lt;/h1&gt;&lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="web前端" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="js笔记" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/js%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="FCC" scheme="https://ultraman-agul.github.io/tags/FCC/"/>
+    
+      <category term="基础笔记" scheme="https://ultraman-agul.github.io/tags/%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>正则表达式</title>
+    <link href="https://ultraman-agul.github.io/2020/05/07/04%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>https://ultraman-agul.github.io/2020/05/07/04%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</id>
+    <published>2020-05-07T03:18:24.108Z</published>
+    <updated>2020-05-07T03:24:37.448Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;正则表达式&quot;&gt;&lt;a href=&quot;#正则表达式&quot; class=&quot;headerlink&quot; title=&quot;正则表达式&quot;&gt;&lt;/a&gt;正则表达式&lt;/h1&gt;&lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="web前端" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="笔记" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="正则表达式" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/%E7%AC%94%E8%AE%B0/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+    
+      <category term="FCC" scheme="https://ultraman-agul.github.io/tags/FCC/"/>
+    
+      <category term="正则" scheme="https://ultraman-agul.github.io/tags/%E6%AD%A3%E5%88%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ECMAScript 6</title>
+    <link href="https://ultraman-agul.github.io/2020/05/07/03ES6/"/>
+    <id>https://ultraman-agul.github.io/2020/05/07/03ES6/</id>
+    <published>2020-05-07T03:18:24.106Z</published>
+    <updated>2020-05-07T03:30:49.483Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;ECMAScript-6&quot;&gt;&lt;a href=&quot;#ECMAScript-6&quot; class=&quot;headerlink&quot; title=&quot;ECMAScript 6&quot;&gt;&lt;/a&gt;ECMAScript 6&lt;/h1&gt;&lt;p&gt;ECMAScript 是 JavaScript
+        
+      
+    
+    </summary>
+    
+    
+      <category term="web前端" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="笔记" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="FCC" scheme="https://ultraman-agul.github.io/tags/FCC/"/>
+    
+      <category term="ECMA标准" scheme="https://ultraman-agul.github.io/tags/ECMA%E6%A0%87%E5%87%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript基础</title>
+    <link href="https://ultraman-agul.github.io/2020/05/07/02js%E5%9F%BA%E7%A1%80/"/>
+    <id>https://ultraman-agul.github.io/2020/05/07/02js%E5%9F%BA%E7%A1%80/</id>
+    <published>2020-05-07T03:18:24.104Z</published>
+    <updated>2020-05-07T03:31:00.969Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;JavaScript-基础&quot;&gt;&lt;a href=&quot;#JavaScript-基础&quot; class=&quot;headerlink&quot; title=&quot;JavaScript 基础&quot;&gt;&lt;/a&gt;JavaScript
+        
+      
+    
+    </summary>
+    
+    
+      <category term="web前端" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="笔记" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="FCC" scheme="https://ultraman-agul.github.io/tags/FCC/"/>
+    
+      <category term="JavaScript" scheme="https://ultraman-agul.github.io/tags/JavaScript/"/>
     
   </entry>
   
   <entry>
     <title>WebDesign</title>
-    <link href="https://ultraman-agul.github.io/2020/05/04/test/"/>
-    <id>https://ultraman-agul.github.io/2020/05/04/test/</id>
+    <link href="https://ultraman-agul.github.io/2020/05/04/01Fcc/"/>
+    <id>https://ultraman-agul.github.io/2020/05/04/01Fcc/</id>
     <published>2020-05-04T06:24:58.935Z</published>
-    <updated>2020-05-06T09:04:13.622Z</updated>
+    <updated>2020-05-07T03:41:52.370Z</updated>
     
     <summary type="html">
     
@@ -120,7 +259,7 @@
     
       <category term="web前端" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="笔记" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/%E7%AC%94%E8%AE%B0/"/>
+      <category term="项目笔记" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/"/>
     
     
       <category term="FCC" scheme="https://ultraman-agul.github.io/tags/FCC/"/>
