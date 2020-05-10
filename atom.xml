@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ultraman-agul.github.io/"/>
-  <updated>2020-05-07T03:30:59.313Z</updated>
+  <updated>2020-05-10T01:53:42.579Z</updated>
   <id>https://ultraman-agul.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jQuery</title>
+    <link href="https://ultraman-agul.github.io/2020/05/10/09jQuery/"/>
+    <id>https://ultraman-agul.github.io/2020/05/10/09jQuery/</id>
+    <published>2020-05-10T00:51:40.000Z</published>
+    <updated>2020-05-10T01:53:42.579Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;jQuery&quot;&gt;&lt;a href=&quot;#jQuery&quot; class=&quot;headerlink&quot; title=&quot;jQuery&quot;&gt;&lt;/a&gt;jQuery&lt;/h1&gt;&lt;h2 id=&quot;jQuery简介&quot;&gt;&lt;a href=&quot;#jQuery简介&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="jQuery" scheme="https://ultraman-agul.github.io/categories/jQuery/"/>
+    
+    
+      <category term="jQuery 笔记" scheme="https://ultraman-agul.github.io/tags/jQuery-%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>函数式编程</title>
@@ -267,29 +294,6 @@
       <category term="web项目" scheme="https://ultraman-agul.github.io/tags/web%E9%A1%B9%E7%9B%AE/"/>
     
       <category term="静态网页" scheme="https://ultraman-agul.github.io/tags/%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://ultraman-agul.github.io/2020/05/04/hello-world/"/>
-    <id>https://ultraman-agul.github.io/2020/05/04/hello-world/</id>
-    <published>2020-05-04T05:58:17.157Z</published>
-    <updated>2020-05-04T05:58:17.157Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
-    
-    </summary>
-    
-    
     
   </entry>
   
