@@ -1599,4 +1599,218 @@
         <tag>jQuery 笔记</tag>
       </tags>
   </entry>
+  <entry>
+    <title>服务器开发基础</title>
+    <url>/2020/05/17/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="服务端开发基础"><a href="#服务端开发基础" class="headerlink" title="服务端开发基础"></a>服务端开发基础</h1><p>​    至此，可以独立完成网页开发了，具体能完成的东西就是一个一个的网页，而且还能给这个页面加上一些动态的交互。但是这距离成为一个网站还有一些路要走。</p>
+<h3 id="还需要学习什么？"><a href="#还需要学习什么？" class="headerlink" title="还需要学习什么？"></a>还需要学习什么？</h3><ul>
+<li>搭建WEB服务器（提供网站服务的技术）</li>
+<li>HTTP（浏览器与服务端的通讯协议）</li>
+<li>服务端开发（动态网页技术）</li>
+<li>数据库操作（服务端存储数据方式）</li>
+<li>Ajax(浏览器与服务端的数据交互方式)</li>
+</ul>
+<h3 id="搭建服务器"><a href="#搭建服务器" class="headerlink" title="搭建服务器"></a>搭建服务器</h3><p>我们手头上的这些网页，如果想要成为一个网站，首先要完成的第一件事就是有一台公共的 Web 服务器，把这一 系列的页面放到这台 Web 服务器上，让用户可以通过服务器的地址访问到这些网页。</p>
+<p>我们手头上的电脑都可以是一台服务器，因为只要能提供服务就可以是一个服务器（提供服务的时候就是服务端，使用服务的时候就是客户端）。 </p>
+<p>既然服务器就是安装特定的软件的计算机，那么要让自己的成为 Web 服务器就是要安装一个 Web 服务器软件。</p>
+<p>我这里选择介绍的是 <strong>APACHE ====== PHP</strong></p>
+<p>搭建服务器的流程按照教程就能成功搭建。</p>
+<h3 id="需要掌握的知识"><a href="#需要掌握的知识" class="headerlink" title="需要掌握的知识"></a>需要掌握的知识</h3><ul>
+<li><p>IP 地址（Internet Protocol Address）</p>
+<ul>
+<li>设备在某一个网络中的地址，目前最常见的格式：[0-255].[0-255].[0-255].[0-255] 即为四个 0-255 的数字组成。 </li>
+<li>作用就是标识一个网络设备（计算机、手机、电视）在某一个具体的网络当中的地址。</li>
+<li>127.0.0.1 是本地回环地址。</li>
+</ul>
+</li>
+<li><p>由于 IP 地址都是没有规律的一些数字组成的，很难被人记住，不利于广泛传播，所以就有人想出来要给 IP 起名字 （别名）。 </p>
+<p>记住域名是需要花钱注册的 。</p>
+</li>
+<li><p>DNS</p>
+<ul>
+<li>通过宽带运营商提供的服务器解析一个域名背后对应的 IP，这个过程叫做 DNS 寻址，帮你完成 DNS 寻址过程的服务器叫做 DNS 服务器。</li>
+<li>hosts文件：先检查本机hosts文件是否包含对当前需要解析的域名的配置。如果有就不会再发起对DNS的请求了</li>
+</ul>
+</li>
+<li><p>端口</p>
+<ul>
+<li><p>计算机本身是一个封闭的环境，就像是一个大楼，如果需要有数据通信往来，必须有门，这个门在术语中就叫端口，每一个端口都有一个编号，每台计算机只有 65536 个端口（0-65535）。 </p>
+</li>
+<li><p>一般我们把“占门”的过程叫做监听 。</p>
+</li>
+<li><p>可以通过在命令行中运行： netstat -an 命令监视本机端口使用情况</p>
+<p>http 默认的端口是 80</p>
+<p>https 默认的端口是 443</p>
+</li>
+</ul>
+</li>
+<li><p>URL</p>
+<ul>
+<li>URL（Uniform Resource Locator），统一资源定位符，通俗点来说就是表示网络当中某一个网页的完整访问地址，它具有一定的格式</li>
+</ul>
+</li>
+</ul>
+<h3 id="请求相应流程"><a href="#请求相应流程" class="headerlink" title="请求相应流程"></a>请求相应流程</h3><p><img src="/images/%E6%9C%8D%E5%8A%A1%E7%AB%AF1.png" alt="image-20200517083919143"></p>
+<p>1、用户打开浏览器 </p>
+<p>2、地址栏输入我们需要访问的网站网址（URL） </p>
+<p>3、浏览器通过 DNS 服务器获取即将访问的网站 IP 地址</p>
+<p>4、 浏览器发起一个对这个 IP 的请求 </p>
+<p>5、服务端接收到这个请求，进行相应的处理 </p>
+<p>6、 服务端将处理完的结果返回给客户端浏览器 </p>
+<p>7、浏览器将服务端返回的结果呈现到界面上 </p>
+<h3 id="配置APACHE"><a href="#配置APACHE" class="headerlink" title="配置APACHE"></a>配置APACHE</h3><ul>
+<li>设置监听端口</li>
+<li>设置网站根目录</li>
+<li>设置默认文档</li>
+<li>设置虚拟主机</li>
+</ul>
+<h3 id="静态网站和动态网站"><a href="#静态网站和动态网站" class="headerlink" title="静态网站和动态网站"></a>静态网站和动态网站</h3><p>​    至此，我们已经可以把这些静态页面放到服务器上了，客户端也可以通过域名请求这个网站，但是对于我们来说， Apache 能够完成的事情过于简单，无外乎就是找到你请求对应的文件 → 读取文件 → 将文件内容响应给客户端浏览器（文件原封不动的给你）。无法满足让网页内容动起来（随着数据动态变化）的需求。 </p>
+<p>​    于是乎，就有人提出了服务端动态网页的概念，这种实现这种概念的技术有很多种：JSP、ASP.NET、PHP、Node等等。 </p>
+<p>​    原理：不再将 HTML 固定写死，每次用户请求时，动态执行一段代码，临时生成一个用户想要的 HTML 页面。 </p>
+<p>动态网站指的也就是每次请求时服务端动态生成 HTML 返回给用户的这种网站下图为流程：</p>
+<p><img src="/images/%E6%9C%8D%E5%8A%A1%E7%AB%AF2.png" alt="image-20200517090326530"></p>
+]]></content>
+      <categories>
+        <category>服务端</category>
+      </categories>
+      <tags>
+        <tag>服务端笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>接触php</title>
+    <url>/2020/05/17/%E6%8E%A5%E8%A7%A6php/</url>
+    <content><![CDATA[<h1 id="配置-PHP-支持"><a href="#配置-PHP-支持" class="headerlink" title="配置 PHP 支持"></a>配置 PHP 支持</h1><p>Apache 只能处理静态文件请求，对于后缀名为 .php 这种动态文件，它无法执行，所以就当成是一 个静态文件直接返回。</p>
+<ul>
+<li><p>在服务器上安装 PHP </p>
+<ul>
+<li>解压 php 到纯英文路径目录中</li>
+</ul>
+</li>
+<li><p>在 Apache 中添加支持 PHP 的配置 </p>
+<p> 在 Apache 添加 PHP 处理模块 </p>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">LoadModule php7_module 路径</span><br></pre></td></tr></table></figure>
+
+<pre><code>在 &lt;IfModule mime_module&gt; 节点中添加 .php 扩展名解析支持 </code></pre><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">AddType application/x‐httpd‐php .php</span><br></pre></td></tr></table></figure>
+
+<p>​        默认文档配置节点 <IfModule dir_module> 中添加 index.php，默认文档指的是在访问一个目录而不是具体文件名时，默认执行的文件名</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">&lt;IfModule dir_module&gt; </span><br><span class="line">    DirectoryIndex index.html index.php </span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重启Apache</li>
+</ul>
+<h3 id="Apache与PHP"><a href="#Apache与PHP" class="headerlink" title="Apache与PHP"></a>Apache与PHP</h3><p>我们不能把他们混在一起，他们两者各自有各自负责的领域，各自的职责，但是我们在使用 PHP 做动态网站开发时，两者就会产生联系，具体如下：</p>
+<p><img src="/images/php1.png" alt=""></p>
+<blockquote>
+<p>你可以理解为：Apache 是一家没有太多能力的公司，只能处理一些简单的业务（静态网站），但是心很大想 做更多的事（动态网站），所以就想到了外包，所有额外的业务都需要外包给其他程序，而 PHP 就是理解为 一个专门能够处理 php 业务的外包公司</p>
+</blockquote>
+<h1 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h1><p>类似于在 HTML 中使用 JavaScript，但是不同的是 JavaScript 运行在客户端，而 PHP 运行在服务端。 只有处于 PHP 标记内部的代码才是 PHP 代码，PHP 标记以外都原封不动。</p>
+<ol>
+<li><p>PHP 标记</p>
+<ul>
+<li>&lt;?php  进入PHP模式</li>
+<li>?&gt; 退出PHP模式</li>
+<li>类似于在 HTML 中使用 JavaScript，但是不同的是 JavaScript 运行在客户端，而 PHP 运行在服务端。 只有处于 PHP 标记内部的代码才是 PHP 代码，PHP 标记以外都原封不动。</li>
+<li>省略结束标记：当PHP处于文件末尾时，省略结束标记，方式出现额外空行。</li>
+</ul>
+</li>
+<li><p>输出内容格式</p>
+<ul>
+<li><p>echo </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// echo 是 PHP 中的一个特殊的“指令”，</span></span><br><span class="line"><span class="comment">// 不一定需要像函数那样通过 `()` 去使用 </span></span><br><span class="line"><span class="comment">// 注意：echo 后面紧跟着一个空格 </span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'hello php'</span>; </span><br><span class="line"><span class="keyword">echo</span> <span class="string">'hello'</span>, <span class="string">'world'</span>;  <span class="comment">//可以输出多个参数</span></span><br><span class="line"><span class="comment">// =&gt; `helloworld`</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>print</p>
+<p> print 与 echo 唯一区别就是只能有一个参数 print ‘hello’; </p>
+</li>
+<li><p>var_dump</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="comment">// var_dump 是一个函数，必须跟上 () 调用 </span></span><br><span class="line"><span class="comment">// 可以将数据以及数据的类型打印为特定格式 var_dump('hello php'); </span></span><br><span class="line"><span class="comment">// =&gt; 'string(9) "hello php"'</span></span><br></pre></td></tr></table></figure>
+
+<p>还有一些输出函数，先不说。。</p>
+</li>
+</ul>
+<ol start="3">
+<li><p>与HTML混编</p>
+<ul>
+<li><p>普通嵌入</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;<span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="string">'hello'</span>; <span class="meta">?&gt;</span>&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>语句混编</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">if</span> ($age &gt; <span class="number">18</span>): <span class="meta">?&gt;</span>   </span><br><span class="line">	&lt;p&gt;成年人&lt;/p&gt; </span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">else</span>: <span class="meta">?&gt;</span> </span><br><span class="line"> 	 &lt;p&gt;小朋友&lt;/p&gt; </span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">endif</span> <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>注释</p>
+<ul>
+<li>单行====&gt;  // 或 #</li>
+<li>多行====&gt; /*  内容   */</li>
+</ul>
+</li>
+<li><p>语法</p>
+<ul>
+<li>和其他编程语言大同小异</li>
+</ul>
+</li>
+<li><p>变量</p>
+<ul>
+<li>PHP 中申明一个变量是用一个美元符号后面跟变量名来表示。</li>
+<li>变量名同样是区分大小写的。</li>
+<li>PHP 中变量无需声明类型，变量的类型根据值的类型来推断。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$foo; <span class="comment">// 申明一个变量，变量名为 `foo`，未对其进行赋值 </span></span><br><span class="line">$bar = <span class="string">'baz'</span>; <span class="comment">// 申明一个变量，将一个值为 `baz` 的字符串赋值给它 </span></span><br><span class="line"><span class="keyword">echo</span> $foo; <span class="comment">// 输出一个变量名为 `foo` 的变量 </span></span><br><span class="line">fn($bar); <span class="comment">// 将一个变量名为 `foo` 的变量作为 `fn` 的实参传递</span></span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li><p>超全局变量</p>
+<p>PHP 中的许多预定义变量都是“超全局的”，这意味着它们在一个脚本的全部作用域中都可用。在函数或方法中无需执行 global $variable; 就可以访问它们。</p>
+<p>这些超全局变量是：</p>
+<ul>
+<li>$GLOBALS — 引用全局作用域中可用的全部变量</li>
+<li>$_SERVER — 获取服务端相关信息 </li>
+<li>$_REQUEST — 获取提交参数 </li>
+<li>$_POST — 获取 POST 提交参数 </li>
+<li>$_GET — 获取 GET 提交参数 </li>
+<li>$_FILES — 获取上传文件 </li>
+<li>$_ENV — 操作环境变量 </li>
+<li>$_COOKIE — 操作 Cookie</li>
+<li>$_SESSION — 操作 Session</li>
+</ul>
+</li>
+<li><p>常量</p>
+<ul>
+<li><p>定义</p>
+</li>
+<li><pre><code class="php"><span class="meta">&lt;?php</span> 
+<span class="comment">// 定义常量使用的是内置的 `define` 函数 </span>
+<span class="comment">// 第一个参数是常量的名称，建议采用全大写字母命名，多个单词下划线分隔 </span>
+<span class="comment">// 第二个参数是常量中存放的数据，可以是任意类型 </span>
+<span class="comment">// 第三个参数是常量名称是否区不分大小写，默认 false 区分大小写 </span>
+define(<span class="string">'SYSTEM_NAME'</span>, <span class="string">'大百度'</span>); 
+define(<span class="string">'SYSTEM_ENABLE'</span>, <span class="keyword">true</span>);
+&lt;!--￼<span class="number">8</span>--&gt;
+
+
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>服务端笔记</tag>
+        <tag>php</tag>
+      </tags>
+  </entry>
 </search>

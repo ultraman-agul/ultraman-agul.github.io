@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ultraman-agul.github.io/"/>
-  <updated>2020-05-10T01:53:42.579Z</updated>
+  <updated>2020-05-17T10:31:57.639Z</updated>
   <id>https://ultraman-agul.github.io/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>接触php</title>
+    <link href="https://ultraman-agul.github.io/2020/05/17/%E6%8E%A5%E8%A7%A6php/"/>
+    <id>https://ultraman-agul.github.io/2020/05/17/%E6%8E%A5%E8%A7%A6php/</id>
+    <published>2020-05-17T01:16:44.000Z</published>
+    <updated>2020-05-17T10:31:57.639Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;配置-PHP-支持&quot;&gt;&lt;a href=&quot;#配置-PHP-支持&quot; class=&quot;headerlink&quot; title=&quot;配置 PHP 支持&quot;&gt;&lt;/a&gt;配置 PHP 支持&lt;/h1&gt;&lt;p&gt;Apache 只能处理静态文件请求，对于后缀名为 .php
+        
+      
+    
+    </summary>
+    
+    
+      <category term="php" scheme="https://ultraman-agul.github.io/categories/php/"/>
+    
+    
+      <category term="服务端笔记" scheme="https://ultraman-agul.github.io/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="php" scheme="https://ultraman-agul.github.io/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>服务器开发基础</title>
+    <link href="https://ultraman-agul.github.io/2020/05/17/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/"/>
+    <id>https://ultraman-agul.github.io/2020/05/17/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/</id>
+    <published>2020-05-17T01:07:51.000Z</published>
+    <updated>2020-05-17T01:12:19.587Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;服务端开发基础&quot;&gt;&lt;a href=&quot;#服务端开发基础&quot; class=&quot;headerlink&quot; title=&quot;服务端开发基础&quot;&gt;&lt;/a&gt;服务端开发基础&lt;/h1&gt;&lt;p&gt;​   
+        
+      
+    
+    </summary>
+    
+    
+      <category term="服务端" scheme="https://ultraman-agul.github.io/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/"/>
+    
+    
+      <category term="服务端笔记" scheme="https://ultraman-agul.github.io/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>jQuery</title>
