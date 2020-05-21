@@ -1813,4 +1813,143 @@ define(<span class="string">'SYSTEM_ENABLE'</span>, <span class="keyword">true</
         <tag>php</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Node.js 基础</title>
+    <url>/2020/05/18/Node%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="Node-js-基础"><a href="#Node-js-基础" class="headerlink" title="Node.js 基础"></a>Node.js 基础</h1><h4 id="1-1-为什么学习Node-js-？"><a href="#1-1-为什么学习Node-js-？" class="headerlink" title="1.1 为什么学习Node.js ？"></a>1.1 为什么学习Node.js ？</h4><ul>
+<li>最简单最直接的一点，岗位需要这种技能</li>
+<li>能够和后端程序员更加紧密的配合</li>
+<li>网站业务逻辑前置，学习前端技术需要后端技术支撑</li>
+<li>扩宽知识视野，能够站在更高的角度审视整个项目</li>
+</ul>
+<h4 id="1-2-服务器端需要做的事"><a href="#1-2-服务器端需要做的事" class="headerlink" title="1.2 服务器端需要做的事"></a>1.2 服务器端需要做的事</h4><ul>
+<li>实现网站的业务逻辑</li>
+<li>实现数据的增删改查</li>
+</ul>
+<h4 id="1-3-Node的好处"><a href="#1-3-Node的好处" class="headerlink" title="1.3 Node的好处"></a>1.3 Node的好处</h4><ul>
+<li><p>使用JavaScript语法开发后端应用</p>
+</li>
+<li><p>一些公司要求前端工程师掌握Node开发</p>
+</li>
+<li><p>生态系统活跃，有大量开源库可以使用</p>
+</li>
+<li><p>前端开发工具大多基于Node开发</p>
+</li>
+</ul>
+<h4 id="1-4-Node是什么？"><a href="#1-4-Node是什么？" class="headerlink" title="1.4 Node是什么？"></a>1.4 Node是什么？</h4><blockquote>
+<p> <strong>Node是一个基于Chrome V8引擎的JavaScript代码运行环境。</strong></p>
+</blockquote>
+<h3 id="2-Node下载安装"><a href="#2-Node下载安装" class="headerlink" title="2. Node下载安装"></a>2. Node下载安装</h3><ol>
+<li><p>官网下载：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">链接</a></p>
+</li>
+<li><p>将Node安装目录添加到环境变量中</p>
+</li>
+</ol>
+<h3 id="3-Node基础"><a href="#3-Node基础" class="headerlink" title="3. Node基础"></a>3. Node基础</h3><p>在Node环境下执行代码，使用Node命令执行后缀为.js的文件即可</p>
+<p><img src="/images/node1.PNG" alt=""></p>
+<h4 id="3-1-Node-js全局对象global"><a href="#3-1-Node-js全局对象global" class="headerlink" title="3.1 Node.js全局对象global"></a>3.1 Node.js全局对象global</h4><p>在浏览器中全局对象是window，在Node中全局对象是global。与js的全局对象名字作用一致</p>
+<ul>
+<li>console.log()      在控制台中输出</li>
+<li>setTimeout()      设置超时定时器</li>
+<li>clearTimeout()   清除超时时定时器</li>
+<li>setInterval()       设置间歇定时器</li>
+<li>clearInterval()    清除间歇定时器</li>
+</ul>
+<h3 id="4-Node-js-的模块化开发"><a href="#4-Node-js-的模块化开发" class="headerlink" title="4. Node.js 的模块化开发"></a>4. Node.js 的模块化开发</h3><h4 id="4-1-JavaScript-开发弊端"><a href="#4-1-JavaScript-开发弊端" class="headerlink" title="4.1 JavaScript 开发弊端"></a>4.1 JavaScript 开发弊端</h4><p>JavaScript在使用时存在两大问题，<strong>文件依赖</strong>和<strong>命名冲突</strong>。</p>
+<h4 id="4-2-软件中的模块化开发"><a href="#4-2-软件中的模块化开发" class="headerlink" title="4.2 软件中的模块化开发"></a>4.2 软件中的模块化开发</h4><p>一个功能就是一个模块，多个模块可以组成完整应用，抽离一个模块不会影响其他功能的运行。</p>
+<p><img src="/images/node%E6%A8%A1%E5%9D%97%E5%8C%96.PNG" alt="">))</p>
+<h4 id="4-3-Node-js的模块化开发"><a href="#4-3-Node-js的模块化开发" class="headerlink" title="4.3 Node.js的模块化开发"></a>4.3 Node.js的模块化开发</h4><ul>
+<li>Node.js规定，一个js文件就是一个模块，模块内部的函数、变量默认情况下在外部是无法得到的，被隔离的。</li>
+<li>模块内部可以使用<strong>exports</strong>对象导出成员，使用<strong>require</strong> 导入其他模块。</li>
+</ul>
+<p>模块成员导出：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// a.js</span></span><br><span class="line"> <span class="comment">// 在模块内部定义变量</span></span><br><span class="line"><span class="keyword">let</span> version = <span class="number">1.0</span>;</span><br><span class="line"><span class="comment">// 在模块内部定义方法</span></span><br><span class="line"><span class="keyword">const</span> sayHi = <span class="function"><span class="params">name</span> =&gt;</span> <span class="string">`您好, <span class="subst">$&#123;name&#125;</span>`</span>;</span><br><span class="line"><span class="comment">// 向模块外部导出数据 </span></span><br><span class="line">exports.version = version;</span><br><span class="line">exports.sayHi = sayHi;</span><br></pre></td></tr></table></figure>
+
+<p>模块成员导入：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> <span class="comment">// b.js</span></span><br><span class="line"> <span class="comment">// 在b.js模块中导入模块a</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"> <span class="comment">// 输出b模块中的version变量</span></span><br><span class="line"><span class="built_in">console</span>.log(a.version);</span><br><span class="line"> <span class="comment">// 调用b模块中的sayHi方法 并输出其返回值</span></span><br><span class="line"><span class="built_in">console</span>.log(a.sayHi(<span class="string">'大兄弟'</span>));</span><br></pre></td></tr></table></figure>
+
+<p>其中，导入模块时，后缀名可以省略 （省略.js）</p>
+<h4 id="4-4模块成员的另一种导出方式"><a href="#4-4模块成员的另一种导出方式" class="headerlink" title="4.4模块成员的另一种导出方式"></a>4.4模块成员的另一种导出方式</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports.version = version;</span><br><span class="line"><span class="built_in">module</span>.exports.sayHi = sayHi;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>exports是module.exports的别名(地址引用关系)，导出对象最终以module.exports为准,module.exports才是老大哥了。</p>
+</blockquote>
+<h3 id="5-系统模块"><a href="#5-系统模块" class="headerlink" title="5. 系统模块"></a>5. 系统模块</h3><p>Node运行环境提供的API. 因为这些API都是以模块化的方式进行开发的, 所以称Node运行环境提供的API为系统模块</p>
+<h4 id="5-1-系统模块fs-文件操作"><a href="#5-1-系统模块fs-文件操作" class="headerlink" title="5.1 系统模块fs 文件操作"></a>5.1 系统模块fs 文件操作</h4><p>读取内容</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//导入系统模块</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="comment">//读取文件</span></span><br><span class="line">fs.readFile(<span class="string">'文件路径/名称'</span>编码类型<span class="string">'],callback)</span></span><br></pre></td></tr></table></figure>
+
+<p>写入内容</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//需要写入的内容</span></span><br><span class="line"><span class="keyword">const</span> content = <span class="string">'我是内容，要写入'</span></span><br><span class="line">fs.writeFile(<span class="string">'文件路径'</span>,content,error=&gt;&#123;</span><br><span class="line">	<span class="keyword">if</span>(err!=<span class="literal">null</span>)	</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(err);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'写入成功'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-2-路径操作path"><a href="#5-2-路径操作path" class="headerlink" title="5.2 路径操作path"></a>5.2 路径操作path</h4><p>路径拼接：从url解析出来的路径不一定是服务器中实际上的物理路径，这里往往需要进行路径拼接才能得到实际地址，获取正确的内容。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="comment">//获取当前文件所在的物理路径</span></span><br><span class="line"><span class="built_in">console</span>.log(__dirname);</span><br><span class="line"><span class="keyword">let</span> realPath = path.join(__dirname,<span class="string">'fsRead.js'</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在读取文件或者设置文件路径时都会选择绝对路径，因为相对路径有时候相对的是命令行工具的当前工作目录</p>
+</blockquote>
+<h3 id="6-第三方模块"><a href="#6-第三方模块" class="headerlink" title="6. 第三方模块"></a>6. 第三方模块</h3><p>别人写好的、具有特定f功能的、我们能直接使用的模块即第三方模块，又名包。</p>
+<p>第三方模块的两种存在方式：</p>
+<ul>
+<li>以js文件的形式存在，提供实现项目具体功能的API接口。</li>
+<li>以命令行工具形式存在，辅助项目开发</li>
+</ul>
+<p><code>npmjs.com</code>：第三方模块的存储和分发仓库</p>
+<h4 id="6-1-获取第三方模块"><a href="#6-1-获取第三方模块" class="headerlink" title="6.1 获取第三方模块"></a>6.1 获取第三方模块</h4><p><code>npm (node package manager)</code>： node的第三方模块管理工具</p>
+<p>安装：<code>npm install 模块名</code></p>
+<p>卸载：<code>npm uninstall 模块名</code></p>
+<p>全局安装和本地安装：</p>
+<ul>
+<li>命令行工具：全局安装  后面加 <code>-g</code></li>
+<li>库文件：本地安装</li>
+</ul>
+<h4 id="6-2-Gulp模块"><a href="#6-2-Gulp模块" class="headerlink" title="6.2 Gulp模块"></a>6.2 Gulp模块</h4><p>它是基于node平台开发的前端构建工具</p>
+<p>它可以：</p>
+<ul>
+<li>项目上线，HTML、CSS、JS文件压缩合并</li>
+<li>语法转换（es6、less …）</li>
+<li>公共文件抽离</li>
+<li>修改文件浏览器自动刷新</li>
+</ul>
+<h6 id="gulp的使用"><a href="#gulp的使用" class="headerlink" title="gulp的使用"></a>gulp的使用</h6><ul>
+<li>使用<code>npm install gulp</code>下载gulp库文件</li>
+<li>在项目根目录下建立<code>gulpfile.js</code>文件</li>
+<li>重构项目的文件夹结构 <code>src</code>目录放置源代码文件，<code>dist</code>目录放置构建后的文件</li>
+<li>在<code>gulpfile.js</code>文件中编写任务</li>
+<li>在命令行工具中执行gulp任务</li>
+</ul>
+<p>gulp插件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gulp-htmlmin ：html文件压缩</span><br><span class="line">gulp-csso ：压缩css</span><br><span class="line">gulp-babel ：JavaScript语法转化</span><br><span class="line">gulp-less: less语法转化</span><br><span class="line">gulp-uglify ：压缩混淆JavaScript</span><br><span class="line">gulp-file-include 公共文件包含</span><br><span class="line">browsersync 浏览器实时同步</span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//引入gulp模块</span></span><br><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="comment">//引入htmlmin模块</span></span><br><span class="line"><span class="keyword">const</span> htmlmin = <span class="built_in">require</span>(<span class="string">'gulp-htmlmin'</span>);</span><br><span class="line"><span class="comment">//引入fileinclude模块,用于抽离公共部分的代码</span></span><br><span class="line"><span class="keyword">const</span> fileinclude = <span class="built_in">require</span>(<span class="string">'gulp-file-include'</span>);</span><br><span class="line"><span class="comment">//引入less文件转换成css文件的模块gulp-less</span></span><br><span class="line"><span class="keyword">const</span> less = <span class="built_in">require</span>(<span class="string">'gulp-less'</span>);</span><br><span class="line"><span class="comment">//引入压缩css文件的模块gulp-csso</span></span><br><span class="line"><span class="keyword">const</span> csso = <span class="built_in">require</span>(<span class="string">'gulp-csso'</span>);</span><br><span class="line"><span class="comment">//引入转换js文件的模块gulp-babel</span></span><br><span class="line"><span class="keyword">const</span> babel = <span class="built_in">require</span>(<span class="string">'gulp-babel'</span>);</span><br><span class="line"><span class="comment">//引入压缩js文件的模块gulp-uglify</span></span><br><span class="line"><span class="keyword">const</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</span><br><span class="line"><span class="comment">//gulp使用方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//gulp.task 新建任务</span></span><br><span class="line"><span class="comment">//任务名   函数</span></span><br><span class="line">gulp.task(<span class="string">'first'</span>,done=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"hello,gulp"</span>);</span><br><span class="line">    gulp.src(<span class="string">'./src/css/base.css'</span>)</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./dist/css'</span>));</span><br><span class="line">    done();<span class="comment">//告诉gulp已经完成了</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//html任务 1.将html代码压缩，2、将html中的公共代码抽离</span></span><br><span class="line">gulp.task(<span class="string">'htmlmin'</span>,done=&gt;&#123;</span><br><span class="line">    gulp.src(<span class="string">'./src/*.html'</span>)</span><br><span class="line">        .pipe(fileinclude()) <span class="comment">//文件导入include</span></span><br><span class="line">        .pipe(htmlmin(&#123; <span class="attr">collapseWhitespace</span>: <span class="literal">true</span> &#125;))<span class="comment">//压缩代码</span></span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./dist/'</span>));</span><br><span class="line">        done();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//css任务： 1、将less文件转换成css文件 2、将css文件压缩</span></span><br><span class="line">gulp.task(<span class="string">'cssmin'</span>,done=&gt;&#123;</span><br><span class="line">    gulp.src([<span class="string">'./src/css/*.less'</span>,<span class="string">'./src/css/*.css'</span>])</span><br><span class="line">        .pipe(less())<span class="comment">//less转换成css          </span></span><br><span class="line">        .pipe(csso())<span class="comment">//css压缩</span></span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./dist/css/'</span>))      </span><br><span class="line">        done();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//js任务： 1、es6代码装换 2、代码压缩</span></span><br><span class="line">gulp.task(<span class="string">'jsmin'</span>,done=&gt;&#123;</span><br><span class="line">    gulp.src(<span class="string">'./src/js/*.js'</span>)</span><br><span class="line">        .pipe(babel(&#123;</span><br><span class="line">            presets: [<span class="string">'@babel/env'</span>] <span class="comment">//根据当前环境支持的类型进行转换</span></span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./dist/js/'</span>));</span><br><span class="line">        done();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//复制任务</span></span><br><span class="line">gulp.task(<span class="string">'copy'</span>,done=&gt;&#123;</span><br><span class="line">    gulp.src(<span class="string">'./src/images/*'</span>)<span class="comment">//复制images</span></span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./dist/images/'</span>))</span><br><span class="line"></span><br><span class="line">    gulp.src(<span class="string">'./src/lib/*'</span>)<span class="comment">//复制lib</span></span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./dist/lib'</span>))</span><br><span class="line">        done();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//将任务连起来，一个命令即可执行</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>,gulp.series(<span class="string">'htmlmin'</span>,<span class="string">'cssmin'</span>,<span class="string">'jsmin'</span>,<span class="string">'copy'</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-package-json文件"><a href="#7-package-json文件" class="headerlink" title="7. package.json文件"></a>7. package.json文件</h3><p> 作用：</p>
+<blockquote>
+<p>项目描述文件，记录了当前项目信息，例如项目名称、版本、作者、github地址、当前项目依赖了哪些<strong>第三方模块</strong>等。<br>使用npm init -y命令生成。</p>
+</blockquote>
+<p><strong>项目依赖</strong></p>
+<p>在项目的开发阶段和线上运营阶段，都需要依赖的第三方包，称为项目依赖<br>使用<code>npm install 包名</code>命令下载的文件会默认被添加到 package.json 文件的 dependencies 字段中</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"dependencies": &#123;</span><br><span class="line">  "mime": "^2.4.5"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>开发依赖</strong></p>
+<p>在项目的开发阶段需要依赖，线上运营阶段不需要依赖的第三方包，称为开发依赖<br>使用<code>npm install 包名 --save-dev</code>命令将包添加到package.json文件的devDependencies字段中</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"devDependencies": &#123;</span><br><span class="line">    "gulp": "^4.0.2"</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-package-lock-json"><a href="#8-package-lock-json" class="headerlink" title="8. package-lock.json"></a>8. package-lock.json</h3><p>作用：</p>
+<blockquote>
+<p>锁定包的版本，确保再次下载时不会因为包版本不同而产生问题,可以加快下载速度</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>服务端</category>
+      </categories>
+      <tags>
+        <tag>服务端笔记</tag>
+        <tag>Node</tag>
+      </tags>
+  </entry>
 </search>
