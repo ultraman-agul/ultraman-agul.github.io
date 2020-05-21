@@ -1925,7 +1925,11 @@ define(<span class="string">'SYSTEM_ENABLE'</span>, <span class="keyword">true</
 
 
 
-<h3 id="7-package-json文件"><a href="#7-package-json文件" class="headerlink" title="7. package.json文件"></a>7. package.json文件</h3><p> 作用：</p>
+<h3 id="7-package-json文件"><a href="#7-package-json文件" class="headerlink" title="7. package.json文件"></a>7. package.json文件</h3><p>node_modules文件夹问题</p>
+<p>文件夹以及文件过多过碎，当我们将项目整体拷贝给别人的时候,，传输速度会很慢很慢.  </p>
+<p>当别人下载模块时版本不一致也可能导致运行失败。</p>
+<p>package.json 存储了包的名称，package-lock.json 存储了包的关系，包括版本号，二者方便了人们，可以直接在package.json目录下使用命令<code>npm install</code> 就可以下载项目所需要的包了。</p>
+<p>作用：</p>
 <blockquote>
 <p>项目描述文件，记录了当前项目信息，例如项目名称、版本、作者、github地址、当前项目依赖了哪些<strong>第三方模块</strong>等。<br>使用npm init -y命令生成。</p>
 </blockquote>
@@ -1943,6 +1947,139 @@ define(<span class="string">'SYSTEM_ENABLE'</span>, <span class="keyword">true</
 <blockquote>
 <p>锁定包的版本，确保再次下载时不会因为包版本不同而产生问题,可以加快下载速度</p>
 </blockquote>
+]]></content>
+      <categories>
+        <category>服务端</category>
+      </categories>
+      <tags>
+        <tag>服务端笔记</tag>
+        <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>http协议和Node.js异步编程</title>
+    <url>/2020/05/21/http%E5%8D%8F%E8%AE%AE%E5%92%8CNode.js%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="Node-js-创建Web服务器"><a href="#Node-js-创建Web服务器" class="headerlink" title="Node.js 创建Web服务器"></a>Node.js 创建Web服务器</h1><p>创建文件app.js</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> <span class="comment">// 引用系统模块http</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"> <span class="comment">// 创建web服务器</span></span><br><span class="line"><span class="keyword">const</span> app = http.createServer();</span><br><span class="line"> <span class="comment">// 当客户端发送请求的时候</span></span><br><span class="line">app.on(<span class="string">'request'</span>, (req, res) =&gt; &#123;</span><br><span class="line">       <span class="comment">//  响应</span></span><br><span class="line">      res.end(<span class="string">'&lt;h1&gt;hi, user&lt;/h1&gt;'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"> <span class="comment">// 监听3000端口</span></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'服务器已启动'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>此时只需要在浏览器访问<code>localhost:3000</code>即可访问服务器</p>
+<h1 id="http"><a href="#http" class="headerlink" title="http"></a>http</h1><h3 id="请求报文："><a href="#请求报文：" class="headerlink" title="请求报文："></a>请求报文：</h3><ul>
+<li>GET 请求数据</li>
+<li>POST 发送数据</li>
+</ul>
+<p>获取请求信息：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">app.on(<span class="string">'request'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    req.headers  <span class="comment">// 获取请求报文</span></span><br><span class="line">    req.url      <span class="comment">// 获取请求地址</span></span><br><span class="line">    req.method   <span class="comment">// 获取请求方法</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h3><p>http状态码：</p>
+<ul>
+<li>200 请求成功</li>
+<li>404 Not Found</li>
+<li>500 服务器端错误</li>
+<li>400 客户端请求语法错误</li>
+</ul>
+<p>内容类型：</p>
+<ul>
+<li>text/html</li>
+<li>text/css</li>
+<li>application/javascript</li>
+<li>image/jpeg</li>
+<li>application/json</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 设置响应报文</span></span><br><span class="line">     res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/html;charset=utf8'</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="GET请求参数"><a href="#GET请求参数" class="headerlink" title="GET请求参数"></a>GET请求参数</h3><ul>
+<li>参数被放置在浏览器<strong>地址栏</strong>中，是不安全的，例如：<a href="http://localhost:3000/?name=zhangsan&amp;age=20" target="_blank" rel="noopener">http://localhost:3000/?name=zhangsan&amp;age=20</a></li>
+<li>参数获取需要借助系统模块url，url模块用来处理url地址</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="comment">// 导入url系统模块 用于处理url地址</span></span><br><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="keyword">const</span> app = http.createServer();</span><br><span class="line">app.on(<span class="string">'request'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="comment">// 将url路径的各个部分解析出来并返回对象</span></span><br><span class="line">        <span class="comment">// true 代表将参数解析为对象格式</span></span><br><span class="line">    <span class="keyword">let</span> &#123;query&#125; = url.parse(req.url, <span class="literal">true</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(query);</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="POST请求参数"><a href="#POST请求参数" class="headerlink" title="POST请求参数"></a>POST请求参数</h3><ul>
+<li><p>参数被放置在<strong>请求体</strong>中进行传输</p>
+</li>
+<li><p>获取POST参数需要使用<code>data</code>事件和<code>end</code>事件</p>
+</li>
+<li><p>使用<code>querystring</code>系统模块将参数转换为对象格式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 导入系统模块querystring 用于将HTTP参数转换为对象格式</span></span><br><span class="line"><span class="keyword">const</span> querystring = <span class="built_in">require</span>(<span class="string">'querystring'</span>);</span><br><span class="line">app.on(<span class="string">'request'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> postData = <span class="string">''</span>;</span><br><span class="line">    <span class="comment">// 监听参数传输事件</span></span><br><span class="line">    req.on(<span class="string">'data'</span>, (params) =&gt; postData += params;);</span><br><span class="line">    <span class="comment">// 监听参数传输完毕事件</span></span><br><span class="line">    req.on(<span class="string">'end'</span>, () =&gt; &#123; </span><br><span class="line">        <span class="built_in">console</span>.log(querystring.parse(postData)); </span><br><span class="line">    &#125;); </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><p>路由是指客户端请求地址与服务器端程序代码的对应关系。简单的说，就是请求什么响应什么。</p>
+<p><img src="/images/%E8%B7%AF%E7%94%B1.PNG" alt=""></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//引入http模块</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="comment">//引入url模块</span></span><br><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="comment">//创建服务器</span></span><br><span class="line"><span class="keyword">const</span> app = http.createServer();</span><br><span class="line">app.on(<span class="string">'request'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="comment">//获取请求方式</span></span><br><span class="line">    <span class="keyword">const</span> method = req.method.toLowerCase();</span><br><span class="line">    <span class="comment">//获取请求路径</span></span><br><span class="line">    <span class="keyword">const</span> pathname = url.parse(req.url).pathname;</span><br><span class="line">    res.writeHead(<span class="number">200</span>,&#123;</span><br><span class="line">        <span class="string">'content-type'</span>:<span class="string">'text/html;charset=utf8'</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">if</span>(method == <span class="string">'get'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(pathname==<span class="string">'/index'</span>||pathname==<span class="string">'/'</span>)</span><br><span class="line">            res.end(<span class="string">'欢迎来到首页'</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(pathname==<span class="string">'/list'</span>)</span><br><span class="line">            res.end(<span class="string">'欢迎来到列表页'</span>);</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            res.end(<span class="string">'你查找的页面不存在'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Node-js异步编程"><a href="#Node-js异步编程" class="headerlink" title="Node.js异步编程"></a>Node.js异步编程</h1><p><strong>同步API</strong></p>
+<p>只有当前面API执行完毕后才会执行下面代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'before'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'after'</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>异步API</strong></p>
+<p>当前API的执行不回阻塞后面代码的执行</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'before'</span>);</span><br><span class="line">setTimeout(</span><br><span class="line">	()=&gt;&#123;<span class="built_in">console</span>.log(<span class="string">'last'</span>)</span><br><span class="line">	&#125;,<span class="number">2000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'after'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>二者区别：<strong>获取返回值</strong></p>
+<p><strong>同步API可以从返回值中拿到API执行的结果, 但是异步API是不可以的</strong></p>
+<p>同步API</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">  <span class="comment">// 同步</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params">n1, n2</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">return</span> n1 + n2;</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">const</span> result = sum (<span class="number">10</span>, <span class="number">20</span>);   <span class="comment">//result = 30</span></span><br></pre></td></tr></table></figure>
+
+<p>异步API</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMsg</span> (<span class="params"></span>) </span>&#123; </span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> &#123; <span class="attr">msg</span>: <span class="string">'Hello Node.js'</span> &#125;</span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> msg = getMsg (); <span class="comment">//获取不到结果，但不报错</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="回调函数callback"><a href="#回调函数callback" class="headerlink" title="回调函数callback"></a>回调函数callback</h3><p>自己定义函数让别人去调用。（自己做的饭让别人去吃。。）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> <span class="comment">// getData函数定义</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getData</span> (<span class="params">callback</span>) </span>&#123;&#125;</span><br><span class="line"> <span class="comment">// getData函数调用</span></span><br><span class="line">getData (<span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用回调函数获取异步API-的执行结果"><a href="#使用回调函数获取异步API-的执行结果" class="headerlink" title="使用回调函数获取异步API 的执行结果"></a>使用回调函数获取异步API 的执行结果</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMsg</span> (<span class="params">callback</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        callback (&#123; <span class="attr">msg</span>: <span class="string">'Hello Node.js'</span> &#125;)</span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;</span><br><span class="line">getMsg (<span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>&#123; </span><br><span class="line">    <span class="built_in">console</span>.log(msg);</span><br><span class="line">&#125;); <span class="comment">//得到结果&#123; msg: 'Hello Node.js' &#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>异步API的执行顺序与同步API不同</p>
+<p><strong>如果异步API后面代码的执行依赖当前异步API的执行结果，但实际上后续代码在执行的时候异步API还没有返回结果，这个问题要怎么解决呢？</strong></p>
+<h1 id="Promise对象"><a href="#Promise对象" class="headerlink" title="Promise对象"></a>Promise对象</h1><p>Promise出现的目的是解决Node.js异步编程中回调地狱的问题。回调地狱：函数作为参数，代码全部一层一层的嵌套,看起来就很庞大,很恶心</p>
+<p>使用promise对象解决：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> promiseObj = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            resolve(&#123;<span class="attr">name</span>: <span class="string">'张三'</span>&#125;)</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            reject(<span class="string">'失败了'</span>) </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;);</span><br><span class="line">promiseObj.then(<span class="function"><span class="params">result</span> =&gt;</span> <span class="built_in">console</span>.log(result)) <span class="comment">// &#123;name: '张三'&#125;)</span></span><br><span class="line">       .catch(<span class="function"><span class="params">error</span> =&gt;</span> <span class="built_in">console</span>.log(error))  <span class="comment">//失败了</span></span><br><span class="line"><span class="comment">//输出&#123; name: '张三' &#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="异步函数"><a href="#异步函数" class="headerlink" title="异步函数"></a>异步函数</h3><p><strong>异步函数是异步编程语法的终极解决方案</strong>，它可以让我们将异步代码写成同步的形式，让代码不再有回调函数嵌套，使代码变得清晰明了。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">async</span> () =&gt; &#123;&#125;  <span class="comment">//函数名前面加上async</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>普通函数定义前加<code>async</code>关键字 普通函数变成异步函数</p>
+</li>
+<li><p>异步函数默认返回<code>promise</code>对象</p>
+</li>
+<li><p>在异步函数内部使用return关键字进行结果返回，结果会被包裹的promise对象中，<code>return</code>关键字代替了resolve方法</p>
+</li>
+<li><p>在异步函数内部使用<code>throw</code>关键字抛出程序异常</p>
+</li>
+<li><p>调用异步函数再链式调用<code>then</code>方法获取异步函数执行结果</p>
+</li>
+<li><p>调用异步函数再链式调用<code>catch</code>方法获取异步函数执行的错误信息</p>
+</li>
+</ol>
+<h4 id="await关键字"><a href="#await关键字" class="headerlink" title="await关键字"></a>await关键字</h4><ol>
+<li><p>await关键字只能出现在异步函数中</p>
+</li>
+<li><p><code>await promise</code> await后面只能写promise对象 写其他类型的API是不可以的</p>
+</li>
+<li><p>await关键字可是暂停异步函数向下执行 直到promise返回结果</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">p1</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">'p1'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">p2</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">'p2'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">p3</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">'p3'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> r1 = <span class="keyword">await</span> p1()</span><br><span class="line">	<span class="keyword">let</span> r2 = <span class="keyword">await</span> p2()</span><br><span class="line">	<span class="keyword">let</span> r3 = <span class="keyword">await</span> p3()</span><br><span class="line">	<span class="built_in">console</span>.log(r1)</span><br><span class="line">	<span class="built_in">console</span>.log(r2)</span><br><span class="line">	<span class="built_in">console</span>.log(r3)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">run();</span><br></pre></td></tr></table></figure>
+
+<p>怎么样，相对于回调地狱，是不是整洁了无数倍呢？</p>
 ]]></content>
       <categories>
         <category>服务端</category>
