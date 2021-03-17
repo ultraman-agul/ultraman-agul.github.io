@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ultraman-agul.github.io/"/>
-  <updated>2020-05-21T07:39:22.593Z</updated>
+  <updated>2021-03-17T15:47:50.786Z</updated>
   <id>https://ultraman-agul.github.io/</id>
   
   <author>
@@ -15,6 +15,83 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>fcc算法中级</title>
+    <link href="https://ultraman-agul.github.io/2021/03/17/fcc%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7-0/"/>
+    <id>https://ultraman-agul.github.io/2021/03/17/fcc%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7-0/</id>
+    <published>2021-03-17T15:45:01.000Z</published>
+    <updated>2021-03-17T15:47:50.786Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;FCC算法中级&quot;&gt;&lt;a href=&quot;#FCC算法中级&quot; class=&quot;headerlink&quot; title=&quot;FCC算法中级&quot;&gt;&lt;/a&gt;FCC算法中级&lt;/h1&gt;&lt;h3 id=&quot;范围内数字求和&quot;&gt;&lt;a href=&quot;#范围内数字求和&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="web前端" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="笔记" scheme="https://ultraman-agul.github.io/categories/web%E5%89%8D%E7%AB%AF/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="FCC" scheme="https://ultraman-agul.github.io/tags/FCC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FCC算法中级</title>
+    <link href="https://ultraman-agul.github.io/2021/03/17/FCC%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7/"/>
+    <id>https://ultraman-agul.github.io/2021/03/17/FCC%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7/</id>
+    <published>2021-03-17T13:59:10.002Z</published>
+    <updated>2021-03-17T13:59:10.002Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;FCC算法中级&quot;&gt;&lt;a href=&quot;#FCC算法中级&quot; class=&quot;headerlink&quot; title=&quot;FCC算法中级&quot;&gt;&lt;/a&gt;FCC算法中级&lt;/h1&gt;&lt;h3 id=&quot;范围内数字求和&quot;&gt;&lt;a href=&quot;#范围内数字求和&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>blog</title>
+    <link href="https://ultraman-agul.github.io/2020/05/26/blog/"/>
+    <id>https://ultraman-agul.github.io/2020/05/26/blog/</id>
+    <published>2020-05-26T14:26:32.787Z</published>
+    <updated>2020-05-26T14:26:32.788Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;项目的模板文件的外链资源是浏览器解析的，其相对路径是相对于浏览器的请求路径的，请求路径可能会变化，不安全。所以在模板文件中要使用绝对路径，添加‘&lt;strong&gt;/&lt;/strong&gt;’可以改变成绝对路径。&lt;/li&gt;
+&lt;li&gt;子模板中的路径是用模板引擎解析的，使用相
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>http协议和Node.js异步编程</title>
