@@ -2090,32 +2090,6 @@ define(<span class="string">'SYSTEM_ENABLE'</span>, <span class="keyword">true</
       </tags>
   </entry>
   <entry>
-    <title>FCC算法中级</title>
-    <url>/2021/03/17/FCC%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7/</url>
-    <content><![CDATA[<h1 id="FCC算法中级"><a href="#FCC算法中级" class="headerlink" title="FCC算法中级"></a>FCC算法中级</h1><h3 id="范围内数字求和"><a href="#范围内数字求和" class="headerlink" title="范围内数字求和"></a>范围内数字求和</h3><p>给出一个含有两个数字的数组，我们需要写一个函数，让它返回这两个数字间所有数字（包含这两个数字）的总和。</p>
-<p>注意，较小数不一定总是出现在数组的第一个元素。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumAll</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sumBetween = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="built_in">Math</span>.min(...arr); i &lt;= <span class="built_in">Math</span>.max(...arr); i++) &#123;</span><br><span class="line">    sumBetween += i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sumBetween;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumAll([<span class="number">1</span>, <span class="number">4</span>]);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="区分两个数组"><a href="#区分两个数组" class="headerlink" title="区分两个数组"></a>区分两个数组</h3><p>写一个函数，比较两个数组，返回一个新的数组。这个新数组需要包含传入的两个数组所有元素中，仅在其中一个数组里出现的元素。如果某个元素同时出现在两个数组中，则不应包含在返回的数组里。换言之，我们需要返回这两个数组的对称差。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">diffArray</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = [];</span><br><span class="line">  <span class="comment">// 这是一个党异伐同的过程</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">secondInFirst</span>(<span class="params">first, second</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; second.length; i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(first.indexOf(second[i]) === <span class="number">-1</span>)&#123;</span><br><span class="line">        newArr.push(second[i])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  secondInFirst(arr1, arr2)</span><br><span class="line">  secondInFirst(arr2, arr1)</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">diffArray([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">diffArray</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 这是一个党异伐同的过程</span></span><br><span class="line">  <span class="keyword">return</span> arr1.concat(arr2).filter(<span class="function"><span class="params">item</span>=&gt;</span>arr1.indexOf(item)===<span class="number">-1</span> || arr2.indexOf(item)===<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">diffArray([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="瞄准和消灭"><a href="#瞄准和消灭" class="headerlink" title="瞄准和消灭"></a>瞄准和消灭</h3><p>传给它的第一个参数是数组，我们称他为初始数组。后续的参数数量是不确定的，可能有一个或多个。你需要做的是，从初始数组中移除所有与后续参数相等的元素，并返回移除元素后的数组。使用<code>...</code>，即“剩余参数”（Rest Parameters）语法</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">destroyer</span>(<span class="params">arr, ...arr2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 删掉那些值</span></span><br><span class="line">  <span class="keyword">return</span> arr.filter(<span class="function"><span class="params">item</span>=&gt;</span>!arr2.includes(item));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">destroyer([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="短线连接格式"><a href="#短线连接格式" class="headerlink" title="短线连接格式"></a>短线连接格式</h3><p>写一个函数，把一个字符串转换为“短线连接格式”。短线连接格式的意思是，所有字母都是小写，且用<code>-</code>连接。比如，对于<code>Hello World</code>，应该转换为<code>hello-world</code>；对于<code>I love_Javascript-VeryMuch</code>，应该转换为<code>i-love-javascript-very-much</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">spinalCase</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> str.split(<span class="regexp">/\s|_|(?=[A-Z])/</span>)</span><br><span class="line">    .join(<span class="string">'-'</span>)</span><br><span class="line">    .toLowerCase();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">spinalCase(<span class="string">'This Is Spinal Tap'</span>);</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
     <title>blog</title>
     <url>/2020/05/26/blog/</url>
     <content><![CDATA[<ul>
@@ -2126,7 +2100,7 @@ define(<span class="string">'SYSTEM_ENABLE'</span>, <span class="keyword">true</
   </entry>
   <entry>
     <title>fcc算法中级</title>
-    <url>/2021/03/17/fcc%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7-0/</url>
+    <url>/2021/03/17/fcc%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7/</url>
     <content><![CDATA[<h1 id="FCC算法中级"><a href="#FCC算法中级" class="headerlink" title="FCC算法中级"></a>FCC算法中级</h1><h3 id="范围内数字求和"><a href="#范围内数字求和" class="headerlink" title="范围内数字求和"></a>范围内数字求和</h3><p>给出一个含有两个数字的数组，我们需要写一个函数，让它返回这两个数字间所有数字（包含这两个数字）的总和。</p>
 <p>注意，较小数不一定总是出现在数组的第一个元素。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumAll</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sumBetween = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="built_in">Math</span>.min(...arr); i &lt;= <span class="built_in">Math</span>.max(...arr); i++) &#123;</span><br><span class="line">    sumBetween += i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sumBetween;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumAll([<span class="number">1</span>, <span class="number">4</span>]);</span><br></pre></td></tr></table></figure>
