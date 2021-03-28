@@ -141,84 +141,6 @@
       </tags>
   </entry>
   <entry>
-    <title>基本数据结构</title>
-    <url>/2020/05/07/05%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<h1 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在 JavaScript 和其他编程语言中，我们都可以以多种方式存储和访问数据。本节将教你如何使用数组（array），以及如何访问和复制数组中的信息。本节还将教你如何用点符号和方括号符号来操作和访问 JavaScript 对象（object）中的信息。学习此文档你应该掌握数组和对象的基本属性以及它们之间的区别，并且掌握如何选择它们来实现给定的目标。</p>
-<h3 id="使用数组存储数据集合"><a href="#使用数组存储数据集合" class="headerlink" title="使用数组存储数据集合"></a>使用数组存储数据集合</h3><p>下面是一个关于数组的更复杂的例子。这是一个多维数组（multi-dimensional Array），或者说是一个包含了其他数组的数组。你可以注意到，在它的内部还包含了 JavaScript 中的对象（objects）结构。我们会在后面的小节中讨论该数据结构，但现在你只需要知道<strong>数组能够存储复杂的对象类型数据</strong>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> complexArray = [</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      one: <span class="number">1</span>,</span><br><span class="line">      two: <span class="number">2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      three: <span class="number">3</span>,</span><br><span class="line">      four: <span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      a: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">      b: <span class="string">&quot;b&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      c: <span class="string">&quot;c&quot;</span>,</span><br><span class="line">      d: “d”</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-push-和-unshift-添加项目到数组中"><a href="#使用-push-和-unshift-添加项目到数组中" class="headerlink" title="使用 push() 和 unshift() 添加项目到数组中"></a>使用 push() 和 unshift() 添加项目到数组中</h3><p><code>Array.push()</code>和<code>Array.unshift()</code>。</p>
-<p>这两个方法都接收一个或多个元素作为参数；对一个数组调用这两个方法都可以将输入的元素插入到该数组中；<code>push()</code>方法将元素插入到一个数组的末尾，而<code>unshift()</code>方法将元素插入到一个数组的开头。请看以下例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> twentyThree = <span class="string">&#x27;XXIII&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> romanNumerals = [<span class="string">&#x27;XXI&#x27;</span>, <span class="string">&#x27;XXII&#x27;</span>];</span><br><span class="line"></span><br><span class="line">romanNumerals.unshift(<span class="string">&#x27;XIX&#x27;</span>, <span class="string">&#x27;XX&#x27;</span>);</span><br><span class="line"><span class="comment">// 数组现在为 [&#x27;XIX&#x27;, &#x27;XX&#x27;, &#x27;XXI&#x27;, &#x27;XXII&#x27;]</span></span><br><span class="line"></span><br><span class="line">romanNumerals.push(twentyThree);</span><br><span class="line"><span class="comment">// 数组现在为 [&#x27;XIX&#x27;, &#x27;XX&#x27;, &#x27;XXI&#x27;, &#x27;XXII&#x27;, &#x27;XXIII&#x27;]</span></span><br></pre></td></tr></table></figure>
-
-<p>注意，我们还可以输入变量，这允许我们很灵活地动态改变我们数组中的数据。</p>
-<h3 id="使用-pop-和-shift-从数组中删除项目"><a href="#使用-pop-和-shift-从数组中删除项目" class="headerlink" title="使用 pop() 和 shift() 从数组中删除项目"></a>使用 pop() 和 shift() 从数组中删除项目</h3><p>与前面讲的相反。</p>
-<p>作用分别是删除数组最后一个元素和删除数组第一个元素。并返回其值。</p>
-<h3 id="使用-splice-删除项目"><a href="#使用-splice-删除项目" class="headerlink" title="使用 splice() 删除项目"></a>使用 splice() 删除项目</h3><p>在上面的挑战中，我们已经学到了如何利用<code>shift()</code>和<code>pop()</code>从数组的开头或者末尾移除元素，但如果我们想移除数组中间的一个元素呢？或者想一次移除多个元素呢？这时候我们就需要<code>splice()</code>了。<code>splice()</code>让我们可以从数组中的任意位置<strong>移除任意数量的连续的元素</strong>。</p>
-<p><code>splice()</code>最多可以接受 3 个参数，但现在我们先关注前两个。<code>splice()</code>接收的前两个参数基于调用<code>splice()</code>数组中元素的索引。<code>splice()</code>的第一个参数代表从数组中的哪个索引开始移除元素，而第二个参数指示要从数组中删除多少个元素。例如：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="string">&#x27;today&#x27;</span>, <span class="string">&#x27;was&#x27;</span>, <span class="string">&#x27;not&#x27;</span>, <span class="string">&#x27;so&#x27;</span>, <span class="string">&#x27;great&#x27;</span>];</span><br><span class="line"></span><br><span class="line">array.splice(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// 从第 3 个元素开始，删除 2 个元素</span></span><br><span class="line"><span class="comment">// 现在该数组等于 [&#x27;today&#x27;, &#x27;was&#x27;, &#x27;great&#x27;]</span></span><br></pre></td></tr></table></figure>
-
-<p><code>splice()</code>不仅从被调用的数组中移除元素，还会返回一个包含被移除元素的数组.</p>
-<h3 id="使用-splice-增加项目"><a href="#使用-splice-增加项目" class="headerlink" title="使用 splice() 增加项目"></a>使用 splice() 增加项目</h3><p><code>splice()</code>方法可以接受最多 3 个参数,我们现在可以进一步了解<code>splice()</code>。除了移除元素，我们还可以利用它的第三个参数来向数组中<em>添加</em>元素。第三个参数可以是一个或多个元素，这些元素会被添加到数组中。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">colorChange</span>(<span class="params">arr, index, newColor</span>) </span>&#123;</span><br><span class="line">  arr.splice(index, <span class="number">1</span>, newColor);</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> colorScheme = [<span class="string">&#x27;#878787&#x27;</span>, <span class="string">&#x27;#a08794&#x27;</span>, <span class="string">&#x27;#bb7e8c&#x27;</span>, <span class="string">&#x27;#c9b6be&#x27;</span>, <span class="string">&#x27;#d1becf&#x27;</span>];</span><br><span class="line"></span><br><span class="line">colorScheme = colorChange(colorScheme, <span class="number">2</span>, <span class="string">&#x27;#332327&#x27;</span>);</span><br><span class="line"><span class="comment">// 我们移除了 &#x27;#bb7e8c&#x27; 并在其位置上添加了 &#x27;#332327&#x27;</span></span><br><span class="line"><span class="comment">// colorScheme 现在等于 [&#x27;#878787&#x27;, &#x27;#a08794&#x27;, &#x27;#332327&#x27;, &#x27;#c9b6be&#x27;, &#x27;#d1becf&#x27;]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-slice-拷贝数组项目"><a href="#使用-slice-拷贝数组项目" class="headerlink" title="使用 slice() 拷贝数组项目"></a>使用 slice() 拷贝数组项目</h3><p><code>slice()</code>并不修改数组，而是复制或者说<em>提取（extract）</em>给定数量的元素到一个新数组里，而调用方法的数组则保持不变。<code>slice()</code>只接受 2 个输入参数—<strong>第一个是开始提取元素的位置（索引）</strong>，<strong>第二个是结束提取元素的位置（索引）</strong>。slice 方法会提取直到该索引的元素，但被提取的元素不包括该索引对应的元素。（不包含后面索引对应的值）请看以下例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> weatherConditions = [<span class="string">&#x27;rain&#x27;</span>, <span class="string">&#x27;snow&#x27;</span>, <span class="string">&#x27;sleet&#x27;</span>, <span class="string">&#x27;hail&#x27;</span>, <span class="string">&#x27;clear&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> todaysWeather = weatherConditions.slice(<span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line"><span class="comment">// todaysWeather 等于 [&#x27;snow&#x27;, &#x27;sleet&#x27;];</span></span><br><span class="line"><span class="comment">// weatherConditions 仍然等于 [&#x27;rain&#x27;, &#x27;snow&#x27;, &#x27;sleet&#x27;, &#x27;hail&#x27;, &#x27;clear&#x27;]</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用扩展运算符复制数组"><a href="#使用扩展运算符复制数组" class="headerlink" title="使用扩展运算符复制数组"></a>使用扩展运算符复制数组</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">slice()&#96;已经能让我们从一个数组中选择一些元素来复制到新数组中了，而 ES6 中又新引入了一个简洁且可读性强的语法展开运算符（spread operator），它能让我们方便地复制数组中的*所有*元素。展开语法是这样的：&#96;...</span><br></pre></td></tr></table></figure>
-
-<p>在实践中，我们可以这样用展开运算符来复制一个数组：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> thisArray = [<span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">undefined</span>, <span class="literal">false</span>, <span class="literal">null</span>];</span><br><span class="line"><span class="keyword">let</span> thatArray = [...thisArray];</span><br><span class="line"><span class="comment">// thatArray 等于 [true, true, undefined, false, null]</span></span><br><span class="line"><span class="comment">// thisArray 保持不变，并等于 thatArray</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-indexOf-检查元素是否存在"><a href="#使用-indexOf-检查元素是否存在" class="headerlink" title="使用 indexOf() 检查元素是否存在"></a>使用 indexOf() 检查元素是否存在</h3><p>由于数组可以在任意时间被修改或者说<em>被改变（mutated）</em>，我们不能保证某个数据在一个给定数组中的位置，甚至不能保证该元素还存在于该数组中。幸运的是，JavaScript 给我们提供了另一个内置方法<code>indexOf()</code>。这个方法让我们可以便捷地检查某个元素是否存在于一个数组中。<code>indexOf()</code>方法接受一个元素作为输入参数，并返回该元素在数组中的位置（索引）；若该元素不存在于数组中则返回<code>-1</code>。</p>
-<p>例如：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">&#x27;apples&#x27;</span>, <span class="string">&#x27;pears&#x27;</span>, <span class="string">&#x27;oranges&#x27;</span>, <span class="string">&#x27;peaches&#x27;</span>, <span class="string">&#x27;pears&#x27;</span>];</span><br><span class="line"></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;dates&#x27;</span>) <span class="comment">// 返回 -1</span></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;oranges&#x27;</span>) <span class="comment">// 返回 2</span></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;pears&#x27;</span>) <span class="comment">// 返回 1，即第一个出现的 &#x27;pears&#x27; 元素在数组中的索引为 1</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-For-循环迭代数组的所有项"><a href="#使用-For-循环迭代数组的所有项" class="headerlink" title="使用 For 循环迭代数组的所有项"></a>使用 For 循环迭代数组的所有项</h3><p>在进行与数组有关的编程时，我们有时需要遍历数组的所有元素来找出我们需要的元素，或者对数组执行特定的操作。JavaScript 提供了几个内置的方法，它们以不同的方式遍历数组来获得不同的结果（如<code>every()</code>、<code>forEach()</code>、<code>map()</code>等等）。而简单的<code>for</code>循环不仅能实现这些功能，而且相比之下也更灵活。</p>
-<p>请看以下例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greaterThanTen</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">let</span> newArr = [];</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (arr[i] &gt; <span class="number">10</span>) &#123;</span><br><span class="line">   newArr.push(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greaterThanTen([<span class="number">2</span>, <span class="number">12</span>, <span class="number">8</span>, <span class="number">14</span>, <span class="number">80</span>, <span class="number">0</span>, <span class="number">1</span>]);</span><br><span class="line"><span class="comment">// 返回 [12, 14, 80]</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用方括号访问属性名称"><a href="#使用方括号访问属性名称" class="headerlink" title="使用方括号访问属性名称"></a>使用方括号访问属性名称</h3><p>我们可以使用点操作符和方括号访问对象的属性值。</p>
-<p>假设一个超市的收银台的程序中使用了一个<code>foods</code>对象，并且有一些程序逻辑会设置<code>selectedFood</code>，我们需要查询<code>foods</code>对象来检查某种食物是否存在，我们可以这样写检查逻辑：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> selectedFood = getCurrentFood(scannedItem);</span><br><span class="line"><span class="keyword">let</span> inventory = foods[selectedFood];</span><br></pre></td></tr></table></figure>
-
-
-
-<p>上述代码会先计算<code>selectedFood</code>变量的值，并返回<code>foods</code>对象中以该值命名的属性对应的值，若没有以该值命名的属性则会返回<code>undefined</code>。有时候对象的属性名在运行之前是不确定的，或者我们需要动态地访问对象的属性，这时方括号符号就会很有用。</p>
-<h3 id="使用-delete-关键字删除对象属性"><a href="#使用-delete-关键字删除对象属性" class="headerlink" title="使用 delete 关键字删除对象属性"></a>使用 delete 关键字删除对象属性</h3><p>果我们想移除<code>apples</code>属性，我们可以使用<code>delete</code>关键字：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> foods.apples;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-for…in-语句迭代对象"><a href="#使用-for…in-语句迭代对象" class="headerlink" title="使用 for…in 语句迭代对象"></a>使用 for…in 语句迭代对象</h3><p>有时候你需要遍历一个对象中的所有键。这需要 JavaScript 中的一个特殊语法：for…in 语句。以遍历 <code>users</code>对象的键为例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> user <span class="keyword">in</span> users) &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(user);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出：</span></span><br><span class="line">Alan</span><br><span class="line">Jeff</span><br><span class="line">Sarah</span><br><span class="line">Ryan</span><br></pre></td></tr></table></figure>
-
-<p>在这个语句中，我们定义了一个<code>user</code>变量，你可以看到，这个变量在 for…in 语句对对象的每一个键的遍历中都会被重置。</p>
-<p><strong>注意：</strong><br>跟数组不同，对象中的键是无序的，因此一个对象中某个键的位置，或者说它出现的相对顺序，在引用或访问该键时是不确定的。</p>
-<h3 id="使用-Object-keys-生成对象所有键组成的数组"><a href="#使用-Object-keys-生成对象所有键组成的数组" class="headerlink" title="使用 Object.keys() 生成对象所有键组成的数组"></a>使用 Object.keys() 生成对象所有键组成的数组</h3><p>我们还可以输入一个对象作为参数来调用<code>Object.keys()</code>方法，使其生成一个包含对象中所有键的数组。这会返回一个由对象中所有键的名称（字符串）组成的数组。再次说明，这个数组中的项的顺序是不确定的。</p>
-]]></content>
-      <categories>
-        <category>web前端</category>
-        <category>js笔记</category>
-      </categories>
-      <tags>
-        <tag>FCC</tag>
-        <tag>基础笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>面向对象编程</title>
     <url>/2020/05/07/07%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>面向对象编程是软件开发过程的几种主要方法之一。</p>
@@ -388,6 +310,84 @@
       <tags>
         <tag>FCC</tag>
         <tag>编程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基本数据结构</title>
+    <url>/2020/05/07/05%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<h1 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在 JavaScript 和其他编程语言中，我们都可以以多种方式存储和访问数据。本节将教你如何使用数组（array），以及如何访问和复制数组中的信息。本节还将教你如何用点符号和方括号符号来操作和访问 JavaScript 对象（object）中的信息。学习此文档你应该掌握数组和对象的基本属性以及它们之间的区别，并且掌握如何选择它们来实现给定的目标。</p>
+<h3 id="使用数组存储数据集合"><a href="#使用数组存储数据集合" class="headerlink" title="使用数组存储数据集合"></a>使用数组存储数据集合</h3><p>下面是一个关于数组的更复杂的例子。这是一个多维数组（multi-dimensional Array），或者说是一个包含了其他数组的数组。你可以注意到，在它的内部还包含了 JavaScript 中的对象（objects）结构。我们会在后面的小节中讨论该数据结构，但现在你只需要知道<strong>数组能够存储复杂的对象类型数据</strong>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> complexArray = [</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      one: <span class="number">1</span>,</span><br><span class="line">      two: <span class="number">2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      three: <span class="number">3</span>,</span><br><span class="line">      four: <span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      a: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">      b: <span class="string">&quot;b&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      c: <span class="string">&quot;c&quot;</span>,</span><br><span class="line">      d: “d”</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-push-和-unshift-添加项目到数组中"><a href="#使用-push-和-unshift-添加项目到数组中" class="headerlink" title="使用 push() 和 unshift() 添加项目到数组中"></a>使用 push() 和 unshift() 添加项目到数组中</h3><p><code>Array.push()</code>和<code>Array.unshift()</code>。</p>
+<p>这两个方法都接收一个或多个元素作为参数；对一个数组调用这两个方法都可以将输入的元素插入到该数组中；<code>push()</code>方法将元素插入到一个数组的末尾，而<code>unshift()</code>方法将元素插入到一个数组的开头。请看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> twentyThree = <span class="string">&#x27;XXIII&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> romanNumerals = [<span class="string">&#x27;XXI&#x27;</span>, <span class="string">&#x27;XXII&#x27;</span>];</span><br><span class="line"></span><br><span class="line">romanNumerals.unshift(<span class="string">&#x27;XIX&#x27;</span>, <span class="string">&#x27;XX&#x27;</span>);</span><br><span class="line"><span class="comment">// 数组现在为 [&#x27;XIX&#x27;, &#x27;XX&#x27;, &#x27;XXI&#x27;, &#x27;XXII&#x27;]</span></span><br><span class="line"></span><br><span class="line">romanNumerals.push(twentyThree);</span><br><span class="line"><span class="comment">// 数组现在为 [&#x27;XIX&#x27;, &#x27;XX&#x27;, &#x27;XXI&#x27;, &#x27;XXII&#x27;, &#x27;XXIII&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，我们还可以输入变量，这允许我们很灵活地动态改变我们数组中的数据。</p>
+<h3 id="使用-pop-和-shift-从数组中删除项目"><a href="#使用-pop-和-shift-从数组中删除项目" class="headerlink" title="使用 pop() 和 shift() 从数组中删除项目"></a>使用 pop() 和 shift() 从数组中删除项目</h3><p>与前面讲的相反。</p>
+<p>作用分别是删除数组最后一个元素和删除数组第一个元素。并返回其值。</p>
+<h3 id="使用-splice-删除项目"><a href="#使用-splice-删除项目" class="headerlink" title="使用 splice() 删除项目"></a>使用 splice() 删除项目</h3><p>在上面的挑战中，我们已经学到了如何利用<code>shift()</code>和<code>pop()</code>从数组的开头或者末尾移除元素，但如果我们想移除数组中间的一个元素呢？或者想一次移除多个元素呢？这时候我们就需要<code>splice()</code>了。<code>splice()</code>让我们可以从数组中的任意位置<strong>移除任意数量的连续的元素</strong>。</p>
+<p><code>splice()</code>最多可以接受 3 个参数，但现在我们先关注前两个。<code>splice()</code>接收的前两个参数基于调用<code>splice()</code>数组中元素的索引。<code>splice()</code>的第一个参数代表从数组中的哪个索引开始移除元素，而第二个参数指示要从数组中删除多少个元素。例如：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="string">&#x27;today&#x27;</span>, <span class="string">&#x27;was&#x27;</span>, <span class="string">&#x27;not&#x27;</span>, <span class="string">&#x27;so&#x27;</span>, <span class="string">&#x27;great&#x27;</span>];</span><br><span class="line"></span><br><span class="line">array.splice(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// 从第 3 个元素开始，删除 2 个元素</span></span><br><span class="line"><span class="comment">// 现在该数组等于 [&#x27;today&#x27;, &#x27;was&#x27;, &#x27;great&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>splice()</code>不仅从被调用的数组中移除元素，还会返回一个包含被移除元素的数组.</p>
+<h3 id="使用-splice-增加项目"><a href="#使用-splice-增加项目" class="headerlink" title="使用 splice() 增加项目"></a>使用 splice() 增加项目</h3><p><code>splice()</code>方法可以接受最多 3 个参数,我们现在可以进一步了解<code>splice()</code>。除了移除元素，我们还可以利用它的第三个参数来向数组中<em>添加</em>元素。第三个参数可以是一个或多个元素，这些元素会被添加到数组中。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">colorChange</span>(<span class="params">arr, index, newColor</span>) </span>&#123;</span><br><span class="line">  arr.splice(index, <span class="number">1</span>, newColor);</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> colorScheme = [<span class="string">&#x27;#878787&#x27;</span>, <span class="string">&#x27;#a08794&#x27;</span>, <span class="string">&#x27;#bb7e8c&#x27;</span>, <span class="string">&#x27;#c9b6be&#x27;</span>, <span class="string">&#x27;#d1becf&#x27;</span>];</span><br><span class="line"></span><br><span class="line">colorScheme = colorChange(colorScheme, <span class="number">2</span>, <span class="string">&#x27;#332327&#x27;</span>);</span><br><span class="line"><span class="comment">// 我们移除了 &#x27;#bb7e8c&#x27; 并在其位置上添加了 &#x27;#332327&#x27;</span></span><br><span class="line"><span class="comment">// colorScheme 现在等于 [&#x27;#878787&#x27;, &#x27;#a08794&#x27;, &#x27;#332327&#x27;, &#x27;#c9b6be&#x27;, &#x27;#d1becf&#x27;]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-slice-拷贝数组项目"><a href="#使用-slice-拷贝数组项目" class="headerlink" title="使用 slice() 拷贝数组项目"></a>使用 slice() 拷贝数组项目</h3><p><code>slice()</code>并不修改数组，而是复制或者说<em>提取（extract）</em>给定数量的元素到一个新数组里，而调用方法的数组则保持不变。<code>slice()</code>只接受 2 个输入参数—<strong>第一个是开始提取元素的位置（索引）</strong>，<strong>第二个是结束提取元素的位置（索引）</strong>。slice 方法会提取直到该索引的元素，但被提取的元素不包括该索引对应的元素。（不包含后面索引对应的值）请看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> weatherConditions = [<span class="string">&#x27;rain&#x27;</span>, <span class="string">&#x27;snow&#x27;</span>, <span class="string">&#x27;sleet&#x27;</span>, <span class="string">&#x27;hail&#x27;</span>, <span class="string">&#x27;clear&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> todaysWeather = weatherConditions.slice(<span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line"><span class="comment">// todaysWeather 等于 [&#x27;snow&#x27;, &#x27;sleet&#x27;];</span></span><br><span class="line"><span class="comment">// weatherConditions 仍然等于 [&#x27;rain&#x27;, &#x27;snow&#x27;, &#x27;sleet&#x27;, &#x27;hail&#x27;, &#x27;clear&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用扩展运算符复制数组"><a href="#使用扩展运算符复制数组" class="headerlink" title="使用扩展运算符复制数组"></a>使用扩展运算符复制数组</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">slice()&#96;已经能让我们从一个数组中选择一些元素来复制到新数组中了，而 ES6 中又新引入了一个简洁且可读性强的语法展开运算符（spread operator），它能让我们方便地复制数组中的*所有*元素。展开语法是这样的：&#96;...</span><br></pre></td></tr></table></figure>
+
+<p>在实践中，我们可以这样用展开运算符来复制一个数组：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> thisArray = [<span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">undefined</span>, <span class="literal">false</span>, <span class="literal">null</span>];</span><br><span class="line"><span class="keyword">let</span> thatArray = [...thisArray];</span><br><span class="line"><span class="comment">// thatArray 等于 [true, true, undefined, false, null]</span></span><br><span class="line"><span class="comment">// thisArray 保持不变，并等于 thatArray</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-indexOf-检查元素是否存在"><a href="#使用-indexOf-检查元素是否存在" class="headerlink" title="使用 indexOf() 检查元素是否存在"></a>使用 indexOf() 检查元素是否存在</h3><p>由于数组可以在任意时间被修改或者说<em>被改变（mutated）</em>，我们不能保证某个数据在一个给定数组中的位置，甚至不能保证该元素还存在于该数组中。幸运的是，JavaScript 给我们提供了另一个内置方法<code>indexOf()</code>。这个方法让我们可以便捷地检查某个元素是否存在于一个数组中。<code>indexOf()</code>方法接受一个元素作为输入参数，并返回该元素在数组中的位置（索引）；若该元素不存在于数组中则返回<code>-1</code>。</p>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">&#x27;apples&#x27;</span>, <span class="string">&#x27;pears&#x27;</span>, <span class="string">&#x27;oranges&#x27;</span>, <span class="string">&#x27;peaches&#x27;</span>, <span class="string">&#x27;pears&#x27;</span>];</span><br><span class="line"></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;dates&#x27;</span>) <span class="comment">// 返回 -1</span></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;oranges&#x27;</span>) <span class="comment">// 返回 2</span></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;pears&#x27;</span>) <span class="comment">// 返回 1，即第一个出现的 &#x27;pears&#x27; 元素在数组中的索引为 1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-For-循环迭代数组的所有项"><a href="#使用-For-循环迭代数组的所有项" class="headerlink" title="使用 For 循环迭代数组的所有项"></a>使用 For 循环迭代数组的所有项</h3><p>在进行与数组有关的编程时，我们有时需要遍历数组的所有元素来找出我们需要的元素，或者对数组执行特定的操作。JavaScript 提供了几个内置的方法，它们以不同的方式遍历数组来获得不同的结果（如<code>every()</code>、<code>forEach()</code>、<code>map()</code>等等）。而简单的<code>for</code>循环不仅能实现这些功能，而且相比之下也更灵活。</p>
+<p>请看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greaterThanTen</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">let</span> newArr = [];</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (arr[i] &gt; <span class="number">10</span>) &#123;</span><br><span class="line">   newArr.push(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greaterThanTen([<span class="number">2</span>, <span class="number">12</span>, <span class="number">8</span>, <span class="number">14</span>, <span class="number">80</span>, <span class="number">0</span>, <span class="number">1</span>]);</span><br><span class="line"><span class="comment">// 返回 [12, 14, 80]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用方括号访问属性名称"><a href="#使用方括号访问属性名称" class="headerlink" title="使用方括号访问属性名称"></a>使用方括号访问属性名称</h3><p>我们可以使用点操作符和方括号访问对象的属性值。</p>
+<p>假设一个超市的收银台的程序中使用了一个<code>foods</code>对象，并且有一些程序逻辑会设置<code>selectedFood</code>，我们需要查询<code>foods</code>对象来检查某种食物是否存在，我们可以这样写检查逻辑：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> selectedFood = getCurrentFood(scannedItem);</span><br><span class="line"><span class="keyword">let</span> inventory = foods[selectedFood];</span><br></pre></td></tr></table></figure>
+
+
+
+<p>上述代码会先计算<code>selectedFood</code>变量的值，并返回<code>foods</code>对象中以该值命名的属性对应的值，若没有以该值命名的属性则会返回<code>undefined</code>。有时候对象的属性名在运行之前是不确定的，或者我们需要动态地访问对象的属性，这时方括号符号就会很有用。</p>
+<h3 id="使用-delete-关键字删除对象属性"><a href="#使用-delete-关键字删除对象属性" class="headerlink" title="使用 delete 关键字删除对象属性"></a>使用 delete 关键字删除对象属性</h3><p>果我们想移除<code>apples</code>属性，我们可以使用<code>delete</code>关键字：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> foods.apples;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-for…in-语句迭代对象"><a href="#使用-for…in-语句迭代对象" class="headerlink" title="使用 for…in 语句迭代对象"></a>使用 for…in 语句迭代对象</h3><p>有时候你需要遍历一个对象中的所有键。这需要 JavaScript 中的一个特殊语法：for…in 语句。以遍历 <code>users</code>对象的键为例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> user <span class="keyword">in</span> users) &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(user);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出：</span></span><br><span class="line">Alan</span><br><span class="line">Jeff</span><br><span class="line">Sarah</span><br><span class="line">Ryan</span><br></pre></td></tr></table></figure>
+
+<p>在这个语句中，我们定义了一个<code>user</code>变量，你可以看到，这个变量在 for…in 语句对对象的每一个键的遍历中都会被重置。</p>
+<p><strong>注意：</strong><br>跟数组不同，对象中的键是无序的，因此一个对象中某个键的位置，或者说它出现的相对顺序，在引用或访问该键时是不确定的。</p>
+<h3 id="使用-Object-keys-生成对象所有键组成的数组"><a href="#使用-Object-keys-生成对象所有键组成的数组" class="headerlink" title="使用 Object.keys() 生成对象所有键组成的数组"></a>使用 Object.keys() 生成对象所有键组成的数组</h3><p>我们还可以输入一个对象作为参数来调用<code>Object.keys()</code>方法，使其生成一个包含对象中所有键的数组。这会返回一个由对象中所有键的名称（字符串）组成的数组。再次说明，这个数组中的项的顺序是不确定的。</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+        <category>js笔记</category>
+      </categories>
+      <tags>
+        <tag>FCC</tag>
+        <tag>基础笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -732,6 +732,100 @@
       </tags>
   </entry>
   <entry>
+    <title>Sass</title>
+    <url>/2021/03/25/11Sass/</url>
+    <content><![CDATA[<h1 id="Introduction-to-the-Sass"><a href="#Introduction-to-the-Sass" class="headerlink" title="Introduction to the Sass"></a>Introduction to the Sass</h1><p>Sass，英文全称“Syntactically Awesome StyleSheets”，是对 CSS 的扩展。它添加了一些 CSS 语法不具有的新特性。Sass 让开发者维护样式表变得更简单。</p>
+<p>Sass 完全兼容 CSS，因为它是一个预处理器。它用 Sass 语法写代码，然后转换成标准的 CSS。它允许你使用变量、嵌套规则、导入等众多功能。有助于保持大型样式表结构良好，让 CSS 语言更强大，优雅。</p>
+<p>Sass 有两种语法。第一种被称为 SCSS（Sassy CSS），也是我们接下来的挑战采用的语法，它是 CSS 语法的扩充版本。也就是说，CSS 样式表也是合法的 SCSS 文件。这种语法的样式表文件以 .scss 为扩展名。</p>
+<p>第二种比较古老的语法，就是所说的缩排语法（或者直接就称为“Sass”），它不使用花括号，而是通过缩排的方式来表达选择符的嵌套层级，它也不使用分号，而是用换行符来分隔属性。此种语法的样式表文件需要以 .sass 作为扩展名</p>
+<h3 id="用-Sass-变量存储数据"><a href="#用-Sass-变量存储数据" class="headerlink" title="用 Sass 变量存储数据"></a>用 Sass 变量存储数据</h3><p>Sass 不同于 CSS 的一个特点是它允许使用变量。我们可以在 Sass 中声明变量，并为它赋值，就像我们在 JavaScript 中一样。</p>
+<p>在 JavaScript 中，变量是使用<code>let</code>和<code>const</code>关键字定义的。在 Sass 中，变量以<code>$</code>开头的，后跟变量名。</p>
+<p>这里有个例子：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$main-fonts: Arial, sans-serif;</span><br><span class="line">$headings-color: green;</span><br><span class="line"></span><br><span class="line">//<span class="selector-tag">To</span> use variables:</span><br><span class="line">h1 &#123;</span><br><span class="line">  font-family: $main-fonts;</span><br><span class="line">  <span class="attribute">color</span>: $headings-color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当需要把多个元素设置成相同颜色时，变量就会很有用。一旦我们需要更改颜色，只需要改变这个变量的值就好。</p>
+<h3 id="用-Sass-嵌套-CSS"><a href="#用-Sass-嵌套-CSS" class="headerlink" title="用 Sass 嵌套 CSS"></a>用 Sass 嵌套 CSS</h3><p>对于一个大型项目，CSS 规则会很复杂。这时，引入<code>嵌套</code>功能（即在对应的父元素中写子元素的样式）可以有效地简化代码：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">nav</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line"></span><br><span class="line">  <span class="selector-tag">ul</span> &#123;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">li</span> &#123;</span><br><span class="line">      <span class="attribute">display</span>: inline-block;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="用-Mixins-创建可重用-CSS"><a href="#用-Mixins-创建可重用-CSS" class="headerlink" title="用 Mixins 创建可重用 CSS"></a>用 Mixins 创建可重用 CSS</h3><p>在 Sass 中，<code>mixin</code>是一组 CSS 声明，可以在整个样式表中重复使用。</p>
+<p>CSS 的新功能需要一段时间适配后，所有浏览器后才能完全使用。随着浏览器的不断升级，使用这些 CSS 规则时可能需要添加浏览器前缀。比如 “box-shadow”:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  -webkit-<span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  -moz-<span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  -ms-<span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于所有具有<code>box-shadow</code>属性的元素重写此规则，或者更改每个值以测试不同的效果，需要花费大量的精力。</p>
+<p><code>Mixins</code>就像 CSS 的函数。以下是一个例子：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> box-shadow($x, $y, $blur, $c)&#123;</span><br><span class="line">  -webkit-<span class="attribute">box-shadow</span>: $x, $y, $blur, $c;</span><br><span class="line">  -moz-<span class="attribute">box-shadow</span>: $x, $y, $blur, $c;</span><br><span class="line">  -ms-<span class="attribute">box-shadow</span>: $x, $y, $blur, $c;</span><br><span class="line">  <span class="attribute">box-shadow</span>: $x, $y, $blur, $c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>定义以<code>@mixin</code>开头，后跟自定义名称。参数（<code>$x</code>，<code>$y</code>，<code>$blur</code>，以及上例中的<code>$c</code>是可选的。</p>
+<p>现在，只要在需要的地方使用<code>@include</code>调用上面定义的<code>mixin</code>，就可以自动添加好所有的浏览器前缀：<code>mixin</code>使用<code>@include</code>指令调用：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> box-shadow(<span class="number">0px</span>, <span class="number">0px</span>, <span class="number">4px</span>, #fff);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-if-和-else-为你的样式添加逻辑"><a href="#使用-if-和-else-为你的样式添加逻辑" class="headerlink" title="使用 @if 和 @else 为你的样式添加逻辑"></a>使用 @if 和 @else 为你的样式添加逻辑</h3><p>Sass 中的<code>@if</code>指令对于测试特定情况非常有用–它的工作方式与 JavaScript中的<code>if</code>语句类似。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> make-bold($bool) &#123;</span><br><span class="line">  <span class="keyword">@if</span> $bool == true &#123;</span><br><span class="line">    <span class="attribute">font-weight</span>: bold;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类似 JavaScript，你可以在 Sass 中使用<code>@else if</code>和<code>@else</code>添加更多条件：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> text-effect($val) &#123;</span><br><span class="line">  <span class="keyword">@if</span> $val == danger &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> if $val == alert &#123;</span><br><span class="line">    <span class="attribute">color</span>: yellow;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> if $val == success &#123;</span><br><span class="line">    <span class="attribute">color</span>: green;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: black;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-for-创建一个-Sass-循环"><a href="#使用-for-创建一个-Sass-循环" class="headerlink" title="使用 @for 创建一个 Sass 循环"></a>使用 @for 创建一个 Sass 循环</h3><p>在 Sass 中使用<code>@for</code>循环，它的表现类似与 JavaScript 中的<code>for</code>循环。</p>
+<p><code>@for</code>以两种方式使用：”start through end” 或 “start to end”。主要区别在于“开始结束” <em>排除</em> 结束号码，而“开始结束” <em>包括</em> 结束号码。</p>
+<p>这是一个开始 <strong>到</strong> 结束示例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@for</span> $i from <span class="number">1</span> through <span class="number">12</span> &#123;</span><br><span class="line">    // through包括<span class="number">12</span>    <span class="selector-tag">to</span>不包括<span class="number">12</span></span><br><span class="line">  .col-#&#123;$i&#125; &#123; width: 100%/12 * $i; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>#&#123;$i&#125;</code>部分是将变量（<code>i</code>）与文本组合成字符串的语法。当 Sass 文件转换为 CSS 时，它看起来像这样：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.col-1</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">8.33333%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.col-2</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">16.66667%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.col-12</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是创建网格布局的有效方法。现在，你有 12 个可用作 CSS classes 的列宽选项。</p>
+<h3 id="使用-each-遍历列表中的项目"><a href="#使用-each-遍历列表中的项目" class="headerlink" title="使用 @each 遍历列表中的项目"></a>使用 @each 遍历列表中的项目</h3><p>最后一个挑战显示了<code>@for</code>指令如何使用起始值和结束值循环一定次数。Sass 还提供<code>@each</code>指令，该指令循环遍历列表或映射中的每个项目。</p>
+<p>在每次迭代时，变量将从列表映射赋值给当前值。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@each</span> $<span class="attribute">color</span> in blue, red, green &#123;</span><br><span class="line">  .#&#123;$color&#125;-text &#123;color: $color;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>map 的语法略有不同。这是一个例子：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$colors: (color1: blue, color2: red, color3: green);</span><br><span class="line"></span><br><span class="line"><span class="keyword">@each</span> $key, $<span class="attribute">color</span> in $colors &#123;</span><br><span class="line">  .#&#123;$color&#125;-text &#123;color: $color;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>请注意，需要<code>$key</code>变量来引用 map 中的键。否则，编译后的 CSS 将包含<code>color1</code>，<code>color2</code>……</p>
+<p>以上两个代码示例都转换为以下 CSS：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.blue-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.red-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.green-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-while-当条件满足时样式生效"><a href="#使用-while-当条件满足时样式生效" class="headerlink" title="使用 @while 当条件满足时样式生效"></a>使用 @while 当条件满足时样式生效</h3><p>Sass 中的<code>@while</code>指令与 JavaScript 中的<code>while</code>类似。只要满足条件，它就会一直创建 CSS 代码。</p>
+<p><code>@for</code>挑战提供了一个创建简单网格系统的示例。这也适用于<code>@while</code>。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$x: 1;</span><br><span class="line"><span class="keyword">@while</span> $x&lt; <span class="number">13</span> &#123;</span><br><span class="line">  .col-#&#123;$x&#125; &#123; width: 100%/12 * $x;&#125;</span><br><span class="line">  $x: $x + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先，定义变量<code>$x</code>并将其设置为 1。接下来，使用<code>@while</code>指令，当<code>$x</code>小于 13 时创建网格系统 。</p>
+<p>在设置<code>width</code>的 CSS 规则后，<code>$x</code>增加 1 以避免无限循环。</p>
+<h3 id="用-Partials-将你的样式分成小块"><a href="#用-Partials-将你的样式分成小块" class="headerlink" title="用 Partials 将你的样式分成小块"></a>用 Partials 将你的样式分成小块</h3><p>Sass 中的<code>Partials</code>是包含 CSS 代码段的单独文件。这些是在其他 Sass 文件中导入和使用的。我们可以把类似代码放到模块中，以保持代码结构规整且易于管理。</p>
+<p><code>partials</code>的名称以下划线（<code>_</code>）字符开头，告诉 Sass 它是 CSS 的一小部分，而不是将其转换为 CSS 文件。此外，Sass 文件以<code>.scss</code>文件扩展名结尾。要将<code>partial</code>中的代码放入另一个 Sass 文件中，请使用<code>@import</code>指令。</p>
+<p>例如，如果所有<code>mixins</code>都保存在名为 “_mixins.scss “ 的<code>partial</code>中，并且在”main.scss “文件中需要它们，这是如何在主文件中使用它们：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">// In the <span class="selector-tag">main</span><span class="selector-class">.scss</span> file</span><br><span class="line"></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;mixins&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>请注意，<code>import</code>语句中不需要下划线——Sass 知道它是<code>partial</code>。将<code>partial</code>导入文件后，可以使用所有变量<code>mixins</code>和其他代码。</p>
+<h3 id="将一组CSS样式扩展到另一个元素"><a href="#将一组CSS样式扩展到另一个元素" class="headerlink" title="将一组CSS样式扩展到另一个元素"></a>将一组CSS样式扩展到另一个元素</h3><p>Sass 有一个名为<code>extend</code>的功能，可以很容易地从一个元素中借用 CSS 规则并在另一个元素上重用它们。</p>
+<p>例如，下面的 CSS 规则块设置了<code>.panel</code>class 的样式。它有<code>background-color</code>，<code>height</code>和<code>border</code>。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.panel</span>&#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">70px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">2px</span> solid green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在你需要另一个名为<code>.big-panel</code>的面板。它具有与<code>.panel</code>相同的基本属性，但还需要<code>width</code>和<code>font-size</code>。</p>
+<p>可以从<code>.panel</code>复制并粘贴初始 CSS 规则，但是当你添加更多类型的面板时，代码会变得重复。</p>
+<p><code>extend</code>指令是一种重用为一个元素编写的规则的简单方法，然后为另一个元素添加更多：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.big-panel</span>&#123;</span><br><span class="line">  <span class="keyword">@extend</span> .panel;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>除了新样式之外，<code>.big-panel</code>将具有与<code>.panel</code>相同的属性。</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>FCC</tag>
+        <tag>Sass</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>React</title>
     <url>/2021/03/28/12React/</url>
     <content><![CDATA[<h1 id="Introduction-to-the-React"><a href="#Introduction-to-the-React" class="headerlink" title="Introduction to the React"></a>Introduction to the React</h1><p>React，由 FaceBook 普及，是一个用于构建用户界面的开源 JavaScript 库。通过 JSX 创建组件，处理 state 和 props，利用事件监听和指定的生命周期钩子动态更新数据。</p>
@@ -836,100 +930,6 @@
       <tags>
         <tag>FCC</tag>
         <tag>React</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Sass</title>
-    <url>/2021/03/25/11Sass/</url>
-    <content><![CDATA[<h1 id="Introduction-to-the-Sass"><a href="#Introduction-to-the-Sass" class="headerlink" title="Introduction to the Sass"></a>Introduction to the Sass</h1><p>Sass，英文全称“Syntactically Awesome StyleSheets”，是对 CSS 的扩展。它添加了一些 CSS 语法不具有的新特性。Sass 让开发者维护样式表变得更简单。</p>
-<p>Sass 完全兼容 CSS，因为它是一个预处理器。它用 Sass 语法写代码，然后转换成标准的 CSS。它允许你使用变量、嵌套规则、导入等众多功能。有助于保持大型样式表结构良好，让 CSS 语言更强大，优雅。</p>
-<p>Sass 有两种语法。第一种被称为 SCSS（Sassy CSS），也是我们接下来的挑战采用的语法，它是 CSS 语法的扩充版本。也就是说，CSS 样式表也是合法的 SCSS 文件。这种语法的样式表文件以 .scss 为扩展名。</p>
-<p>第二种比较古老的语法，就是所说的缩排语法（或者直接就称为“Sass”），它不使用花括号，而是通过缩排的方式来表达选择符的嵌套层级，它也不使用分号，而是用换行符来分隔属性。此种语法的样式表文件需要以 .sass 作为扩展名</p>
-<h3 id="用-Sass-变量存储数据"><a href="#用-Sass-变量存储数据" class="headerlink" title="用 Sass 变量存储数据"></a>用 Sass 变量存储数据</h3><p>Sass 不同于 CSS 的一个特点是它允许使用变量。我们可以在 Sass 中声明变量，并为它赋值，就像我们在 JavaScript 中一样。</p>
-<p>在 JavaScript 中，变量是使用<code>let</code>和<code>const</code>关键字定义的。在 Sass 中，变量以<code>$</code>开头的，后跟变量名。</p>
-<p>这里有个例子：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$main-fonts: Arial, sans-serif;</span><br><span class="line">$headings-color: green;</span><br><span class="line"></span><br><span class="line">//<span class="selector-tag">To</span> use variables:</span><br><span class="line">h1 &#123;</span><br><span class="line">  font-family: $main-fonts;</span><br><span class="line">  <span class="attribute">color</span>: $headings-color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当需要把多个元素设置成相同颜色时，变量就会很有用。一旦我们需要更改颜色，只需要改变这个变量的值就好。</p>
-<h3 id="用-Sass-嵌套-CSS"><a href="#用-Sass-嵌套-CSS" class="headerlink" title="用 Sass 嵌套 CSS"></a>用 Sass 嵌套 CSS</h3><p>对于一个大型项目，CSS 规则会很复杂。这时，引入<code>嵌套</code>功能（即在对应的父元素中写子元素的样式）可以有效地简化代码：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">nav</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line"></span><br><span class="line">  <span class="selector-tag">ul</span> &#123;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">li</span> &#123;</span><br><span class="line">      <span class="attribute">display</span>: inline-block;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="用-Mixins-创建可重用-CSS"><a href="#用-Mixins-创建可重用-CSS" class="headerlink" title="用 Mixins 创建可重用 CSS"></a>用 Mixins 创建可重用 CSS</h3><p>在 Sass 中，<code>mixin</code>是一组 CSS 声明，可以在整个样式表中重复使用。</p>
-<p>CSS 的新功能需要一段时间适配后，所有浏览器后才能完全使用。随着浏览器的不断升级，使用这些 CSS 规则时可能需要添加浏览器前缀。比如 “box-shadow”:</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  -webkit-<span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  -moz-<span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  -ms-<span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对于所有具有<code>box-shadow</code>属性的元素重写此规则，或者更改每个值以测试不同的效果，需要花费大量的精力。</p>
-<p><code>Mixins</code>就像 CSS 的函数。以下是一个例子：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> box-shadow($x, $y, $blur, $c)&#123;</span><br><span class="line">  -webkit-<span class="attribute">box-shadow</span>: $x, $y, $blur, $c;</span><br><span class="line">  -moz-<span class="attribute">box-shadow</span>: $x, $y, $blur, $c;</span><br><span class="line">  -ms-<span class="attribute">box-shadow</span>: $x, $y, $blur, $c;</span><br><span class="line">  <span class="attribute">box-shadow</span>: $x, $y, $blur, $c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>定义以<code>@mixin</code>开头，后跟自定义名称。参数（<code>$x</code>，<code>$y</code>，<code>$blur</code>，以及上例中的<code>$c</code>是可选的。</p>
-<p>现在，只要在需要的地方使用<code>@include</code>调用上面定义的<code>mixin</code>，就可以自动添加好所有的浏览器前缀：<code>mixin</code>使用<code>@include</code>指令调用：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> box-shadow(<span class="number">0px</span>, <span class="number">0px</span>, <span class="number">4px</span>, #fff);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-if-和-else-为你的样式添加逻辑"><a href="#使用-if-和-else-为你的样式添加逻辑" class="headerlink" title="使用 @if 和 @else 为你的样式添加逻辑"></a>使用 @if 和 @else 为你的样式添加逻辑</h3><p>Sass 中的<code>@if</code>指令对于测试特定情况非常有用–它的工作方式与 JavaScript中的<code>if</code>语句类似。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> make-bold($bool) &#123;</span><br><span class="line">  <span class="keyword">@if</span> $bool == true &#123;</span><br><span class="line">    <span class="attribute">font-weight</span>: bold;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>类似 JavaScript，你可以在 Sass 中使用<code>@else if</code>和<code>@else</code>添加更多条件：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> text-effect($val) &#123;</span><br><span class="line">  <span class="keyword">@if</span> $val == danger &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> if $val == alert &#123;</span><br><span class="line">    <span class="attribute">color</span>: yellow;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> if $val == success &#123;</span><br><span class="line">    <span class="attribute">color</span>: green;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: black;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-for-创建一个-Sass-循环"><a href="#使用-for-创建一个-Sass-循环" class="headerlink" title="使用 @for 创建一个 Sass 循环"></a>使用 @for 创建一个 Sass 循环</h3><p>在 Sass 中使用<code>@for</code>循环，它的表现类似与 JavaScript 中的<code>for</code>循环。</p>
-<p><code>@for</code>以两种方式使用：”start through end” 或 “start to end”。主要区别在于“开始结束” <em>排除</em> 结束号码，而“开始结束” <em>包括</em> 结束号码。</p>
-<p>这是一个开始 <strong>到</strong> 结束示例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@for</span> $i from <span class="number">1</span> through <span class="number">12</span> &#123;</span><br><span class="line">    // through包括<span class="number">12</span>    <span class="selector-tag">to</span>不包括<span class="number">12</span></span><br><span class="line">  .col-#&#123;$i&#125; &#123; width: 100%/12 * $i; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>#&#123;$i&#125;</code>部分是将变量（<code>i</code>）与文本组合成字符串的语法。当 Sass 文件转换为 CSS 时，它看起来像这样：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.col-1</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">8.33333%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.col-2</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">16.66667%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.col-12</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这是创建网格布局的有效方法。现在，你有 12 个可用作 CSS classes 的列宽选项。</p>
-<h3 id="使用-each-遍历列表中的项目"><a href="#使用-each-遍历列表中的项目" class="headerlink" title="使用 @each 遍历列表中的项目"></a>使用 @each 遍历列表中的项目</h3><p>最后一个挑战显示了<code>@for</code>指令如何使用起始值和结束值循环一定次数。Sass 还提供<code>@each</code>指令，该指令循环遍历列表或映射中的每个项目。</p>
-<p>在每次迭代时，变量将从列表映射赋值给当前值。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@each</span> $<span class="attribute">color</span> in blue, red, green &#123;</span><br><span class="line">  .#&#123;$color&#125;-text &#123;color: $color;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>map 的语法略有不同。这是一个例子：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$colors: (color1: blue, color2: red, color3: green);</span><br><span class="line"></span><br><span class="line"><span class="keyword">@each</span> $key, $<span class="attribute">color</span> in $colors &#123;</span><br><span class="line">  .#&#123;$color&#125;-text &#123;color: $color;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>请注意，需要<code>$key</code>变量来引用 map 中的键。否则，编译后的 CSS 将包含<code>color1</code>，<code>color2</code>……</p>
-<p>以上两个代码示例都转换为以下 CSS：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.blue-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.red-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.green-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-while-当条件满足时样式生效"><a href="#使用-while-当条件满足时样式生效" class="headerlink" title="使用 @while 当条件满足时样式生效"></a>使用 @while 当条件满足时样式生效</h3><p>Sass 中的<code>@while</code>指令与 JavaScript 中的<code>while</code>类似。只要满足条件，它就会一直创建 CSS 代码。</p>
-<p><code>@for</code>挑战提供了一个创建简单网格系统的示例。这也适用于<code>@while</code>。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$x: 1;</span><br><span class="line"><span class="keyword">@while</span> $x&lt; <span class="number">13</span> &#123;</span><br><span class="line">  .col-#&#123;$x&#125; &#123; width: 100%/12 * $x;&#125;</span><br><span class="line">  $x: $x + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>首先，定义变量<code>$x</code>并将其设置为 1。接下来，使用<code>@while</code>指令，当<code>$x</code>小于 13 时创建网格系统 。</p>
-<p>在设置<code>width</code>的 CSS 规则后，<code>$x</code>增加 1 以避免无限循环。</p>
-<h3 id="用-Partials-将你的样式分成小块"><a href="#用-Partials-将你的样式分成小块" class="headerlink" title="用 Partials 将你的样式分成小块"></a>用 Partials 将你的样式分成小块</h3><p>Sass 中的<code>Partials</code>是包含 CSS 代码段的单独文件。这些是在其他 Sass 文件中导入和使用的。我们可以把类似代码放到模块中，以保持代码结构规整且易于管理。</p>
-<p><code>partials</code>的名称以下划线（<code>_</code>）字符开头，告诉 Sass 它是 CSS 的一小部分，而不是将其转换为 CSS 文件。此外，Sass 文件以<code>.scss</code>文件扩展名结尾。要将<code>partial</code>中的代码放入另一个 Sass 文件中，请使用<code>@import</code>指令。</p>
-<p>例如，如果所有<code>mixins</code>都保存在名为 “_mixins.scss “ 的<code>partial</code>中，并且在”main.scss “文件中需要它们，这是如何在主文件中使用它们：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">// In the <span class="selector-tag">main</span><span class="selector-class">.scss</span> file</span><br><span class="line"></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;mixins&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>请注意，<code>import</code>语句中不需要下划线——Sass 知道它是<code>partial</code>。将<code>partial</code>导入文件后，可以使用所有变量<code>mixins</code>和其他代码。</p>
-<h3 id="将一组CSS样式扩展到另一个元素"><a href="#将一组CSS样式扩展到另一个元素" class="headerlink" title="将一组CSS样式扩展到另一个元素"></a>将一组CSS样式扩展到另一个元素</h3><p>Sass 有一个名为<code>extend</code>的功能，可以很容易地从一个元素中借用 CSS 规则并在另一个元素上重用它们。</p>
-<p>例如，下面的 CSS 规则块设置了<code>.panel</code>class 的样式。它有<code>background-color</code>，<code>height</code>和<code>border</code>。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.panel</span>&#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">70px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">2px</span> solid green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>现在你需要另一个名为<code>.big-panel</code>的面板。它具有与<code>.panel</code>相同的基本属性，但还需要<code>width</code>和<code>font-size</code>。</p>
-<p>可以从<code>.panel</code>复制并粘贴初始 CSS 规则，但是当你添加更多类型的面板时，代码会变得重复。</p>
-<p><code>extend</code>指令是一种重用为一个元素编写的规则的简单方法，然后为另一个元素添加更多：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.big-panel</span>&#123;</span><br><span class="line">  <span class="keyword">@extend</span> .panel;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>除了新样式之外，<code>.big-panel</code>将具有与<code>.panel</code>相同的属性。</p>
-]]></content>
-      <categories>
-        <category>web前端</category>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>FCC</tag>
-        <tag>Sass</tag>
       </tags>
   </entry>
   <entry>
@@ -1170,6 +1170,15 @@
       </tags>
   </entry>
   <entry>
+    <title></title>
+    <url>/2020/05/26/blog/</url>
+    <content><![CDATA[<ul>
+<li>项目的模板文件的外链资源是浏览器解析的，其相对路径是相对于浏览器的请求路径的，请求路径可能会变化，不安全。所以在模板文件中要使用绝对路径，添加‘<strong>/</strong>’可以改变成绝对路径。</li>
+<li>子模板中的路径是用模板引擎解析的，使用相对路径相对的就是当前路径</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>http协议和Node.js异步编程</title>
     <url>/2020/05/21/http%E5%8D%8F%E8%AE%AE%E5%92%8CNode.js%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="Node-js-创建Web服务器"><a href="#Node-js-创建Web服务器" class="headerlink" title="Node.js 创建Web服务器"></a>Node.js 创建Web服务器</h1><p>创建文件app.js</p>
@@ -1303,13 +1312,82 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2020/05/26/blog/</url>
-    <content><![CDATA[<ul>
-<li>项目的模板文件的外链资源是浏览器解析的，其相对路径是相对于浏览器的请求路径的，请求路径可能会变化，不安全。所以在模板文件中要使用绝对路径，添加‘<strong>/</strong>’可以改变成绝对路径。</li>
-<li>子模板中的路径是用模板引擎解析的，使用相对路径相对的就是当前路径</li>
+    <title>服务器开发基础</title>
+    <url>/2020/05/17/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="服务端开发基础"><a href="#服务端开发基础" class="headerlink" title="服务端开发基础"></a>服务端开发基础</h1><p>​    至此，可以独立完成网页开发了，具体能完成的东西就是一个一个的网页，而且还能给这个页面加上一些动态的交互。但是这距离成为一个网站还有一些路要走。</p>
+<h3 id="还需要学习什么？"><a href="#还需要学习什么？" class="headerlink" title="还需要学习什么？"></a>还需要学习什么？</h3><ul>
+<li>搭建WEB服务器（提供网站服务的技术）</li>
+<li>HTTP（浏览器与服务端的通讯协议）</li>
+<li>服务端开发（动态网页技术）</li>
+<li>数据库操作（服务端存储数据方式）</li>
+<li>Ajax(浏览器与服务端的数据交互方式)</li>
 </ul>
+<h3 id="搭建服务器"><a href="#搭建服务器" class="headerlink" title="搭建服务器"></a>搭建服务器</h3><p>我们手头上的这些网页，如果想要成为一个网站，首先要完成的第一件事就是有一台公共的 Web 服务器，把这一 系列的页面放到这台 Web 服务器上，让用户可以通过服务器的地址访问到这些网页。</p>
+<p>我们手头上的电脑都可以是一台服务器，因为只要能提供服务就可以是一个服务器（提供服务的时候就是服务端，使用服务的时候就是客户端）。 </p>
+<p>既然服务器就是安装特定的软件的计算机，那么要让自己的成为 Web 服务器就是要安装一个 Web 服务器软件。</p>
+<p>我这里选择介绍的是 <strong>APACHE ====== PHP</strong></p>
+<p>搭建服务器的流程按照教程就能成功搭建。</p>
+<h3 id="需要掌握的知识"><a href="#需要掌握的知识" class="headerlink" title="需要掌握的知识"></a>需要掌握的知识</h3><ul>
+<li><p>IP 地址（Internet Protocol Address）</p>
+<ul>
+<li>设备在某一个网络中的地址，目前最常见的格式：[0-255].[0-255].[0-255].[0-255] 即为四个 0-255 的数字组成。 </li>
+<li>作用就是标识一个网络设备（计算机、手机、电视）在某一个具体的网络当中的地址。</li>
+<li>127.0.0.1 是本地回环地址。</li>
+</ul>
+</li>
+<li><p>由于 IP 地址都是没有规律的一些数字组成的，很难被人记住，不利于广泛传播，所以就有人想出来要给 IP 起名字 （别名）。 </p>
+<p>记住域名是需要花钱注册的 。</p>
+</li>
+<li><p>DNS</p>
+<ul>
+<li>通过宽带运营商提供的服务器解析一个域名背后对应的 IP，这个过程叫做 DNS 寻址，帮你完成 DNS 寻址过程的服务器叫做 DNS 服务器。</li>
+<li>hosts文件：先检查本机hosts文件是否包含对当前需要解析的域名的配置。如果有就不会再发起对DNS的请求了</li>
+</ul>
+</li>
+<li><p>端口</p>
+<ul>
+<li><p>计算机本身是一个封闭的环境，就像是一个大楼，如果需要有数据通信往来，必须有门，这个门在术语中就叫端口，每一个端口都有一个编号，每台计算机只有 65536 个端口（0-65535）。 </p>
+</li>
+<li><p>一般我们把“占门”的过程叫做监听 。</p>
+</li>
+<li><p>可以通过在命令行中运行： netstat -an 命令监视本机端口使用情况</p>
+<p>http 默认的端口是 80</p>
+<p>https 默认的端口是 443</p>
+</li>
+</ul>
+</li>
+<li><p>URL</p>
+<ul>
+<li>URL（Uniform Resource Locator），统一资源定位符，通俗点来说就是表示网络当中某一个网页的完整访问地址，它具有一定的格式</li>
+</ul>
+</li>
+</ul>
+<h3 id="请求相应流程"><a href="#请求相应流程" class="headerlink" title="请求相应流程"></a>请求相应流程</h3><p><img src="/images/%E6%9C%8D%E5%8A%A1%E7%AB%AF1.png" alt="image-20200517083919143"></p>
+<p>1、用户打开浏览器 </p>
+<p>2、地址栏输入我们需要访问的网站网址（URL） </p>
+<p>3、浏览器通过 DNS 服务器获取即将访问的网站 IP 地址</p>
+<p>4、 浏览器发起一个对这个 IP 的请求 </p>
+<p>5、服务端接收到这个请求，进行相应的处理 </p>
+<p>6、 服务端将处理完的结果返回给客户端浏览器 </p>
+<p>7、浏览器将服务端返回的结果呈现到界面上 </p>
+<h3 id="配置APACHE"><a href="#配置APACHE" class="headerlink" title="配置APACHE"></a>配置APACHE</h3><ul>
+<li>设置监听端口</li>
+<li>设置网站根目录</li>
+<li>设置默认文档</li>
+<li>设置虚拟主机</li>
+</ul>
+<h3 id="静态网站和动态网站"><a href="#静态网站和动态网站" class="headerlink" title="静态网站和动态网站"></a>静态网站和动态网站</h3><p>​    至此，我们已经可以把这些静态页面放到服务器上了，客户端也可以通过域名请求这个网站，但是对于我们来说， Apache 能够完成的事情过于简单，无外乎就是找到你请求对应的文件 → 读取文件 → 将文件内容响应给客户端浏览器（文件原封不动的给你）。无法满足让网页内容动起来（随着数据动态变化）的需求。 </p>
+<p>​    于是乎，就有人提出了服务端动态网页的概念，这种实现这种概念的技术有很多种：JSP、ASP.NET、PHP、Node等等。 </p>
+<p>​    原理：不再将 HTML 固定写死，每次用户请求时，动态执行一段代码，临时生成一个用户想要的 HTML 页面。 </p>
+<p>动态网站指的也就是每次请求时服务端动态生成 HTML 返回给用户的这种网站下图为流程：</p>
+<p><img src="/images/%E6%9C%8D%E5%8A%A1%E7%AB%AF2.png" alt="image-20200517090326530"></p>
 ]]></content>
+      <categories>
+        <category>服务端</category>
+      </categories>
+      <tags>
+        <tag>服务端笔记</tag>
+      </tags>
   </entry>
   <entry>
     <title>接触php</title>
@@ -1445,84 +1523,6 @@ define(<span class="string">'SYSTEM_ENABLE'</span>, <span class="keyword">true</
       <tags>
         <tag>服务端笔记</tag>
         <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>服务器开发基础</title>
-    <url>/2020/05/17/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h1 id="服务端开发基础"><a href="#服务端开发基础" class="headerlink" title="服务端开发基础"></a>服务端开发基础</h1><p>​    至此，可以独立完成网页开发了，具体能完成的东西就是一个一个的网页，而且还能给这个页面加上一些动态的交互。但是这距离成为一个网站还有一些路要走。</p>
-<h3 id="还需要学习什么？"><a href="#还需要学习什么？" class="headerlink" title="还需要学习什么？"></a>还需要学习什么？</h3><ul>
-<li>搭建WEB服务器（提供网站服务的技术）</li>
-<li>HTTP（浏览器与服务端的通讯协议）</li>
-<li>服务端开发（动态网页技术）</li>
-<li>数据库操作（服务端存储数据方式）</li>
-<li>Ajax(浏览器与服务端的数据交互方式)</li>
-</ul>
-<h3 id="搭建服务器"><a href="#搭建服务器" class="headerlink" title="搭建服务器"></a>搭建服务器</h3><p>我们手头上的这些网页，如果想要成为一个网站，首先要完成的第一件事就是有一台公共的 Web 服务器，把这一 系列的页面放到这台 Web 服务器上，让用户可以通过服务器的地址访问到这些网页。</p>
-<p>我们手头上的电脑都可以是一台服务器，因为只要能提供服务就可以是一个服务器（提供服务的时候就是服务端，使用服务的时候就是客户端）。 </p>
-<p>既然服务器就是安装特定的软件的计算机，那么要让自己的成为 Web 服务器就是要安装一个 Web 服务器软件。</p>
-<p>我这里选择介绍的是 <strong>APACHE ====== PHP</strong></p>
-<p>搭建服务器的流程按照教程就能成功搭建。</p>
-<h3 id="需要掌握的知识"><a href="#需要掌握的知识" class="headerlink" title="需要掌握的知识"></a>需要掌握的知识</h3><ul>
-<li><p>IP 地址（Internet Protocol Address）</p>
-<ul>
-<li>设备在某一个网络中的地址，目前最常见的格式：[0-255].[0-255].[0-255].[0-255] 即为四个 0-255 的数字组成。 </li>
-<li>作用就是标识一个网络设备（计算机、手机、电视）在某一个具体的网络当中的地址。</li>
-<li>127.0.0.1 是本地回环地址。</li>
-</ul>
-</li>
-<li><p>由于 IP 地址都是没有规律的一些数字组成的，很难被人记住，不利于广泛传播，所以就有人想出来要给 IP 起名字 （别名）。 </p>
-<p>记住域名是需要花钱注册的 。</p>
-</li>
-<li><p>DNS</p>
-<ul>
-<li>通过宽带运营商提供的服务器解析一个域名背后对应的 IP，这个过程叫做 DNS 寻址，帮你完成 DNS 寻址过程的服务器叫做 DNS 服务器。</li>
-<li>hosts文件：先检查本机hosts文件是否包含对当前需要解析的域名的配置。如果有就不会再发起对DNS的请求了</li>
-</ul>
-</li>
-<li><p>端口</p>
-<ul>
-<li><p>计算机本身是一个封闭的环境，就像是一个大楼，如果需要有数据通信往来，必须有门，这个门在术语中就叫端口，每一个端口都有一个编号，每台计算机只有 65536 个端口（0-65535）。 </p>
-</li>
-<li><p>一般我们把“占门”的过程叫做监听 。</p>
-</li>
-<li><p>可以通过在命令行中运行： netstat -an 命令监视本机端口使用情况</p>
-<p>http 默认的端口是 80</p>
-<p>https 默认的端口是 443</p>
-</li>
-</ul>
-</li>
-<li><p>URL</p>
-<ul>
-<li>URL（Uniform Resource Locator），统一资源定位符，通俗点来说就是表示网络当中某一个网页的完整访问地址，它具有一定的格式</li>
-</ul>
-</li>
-</ul>
-<h3 id="请求相应流程"><a href="#请求相应流程" class="headerlink" title="请求相应流程"></a>请求相应流程</h3><p><img src="/images/%E6%9C%8D%E5%8A%A1%E7%AB%AF1.png" alt="image-20200517083919143"></p>
-<p>1、用户打开浏览器 </p>
-<p>2、地址栏输入我们需要访问的网站网址（URL） </p>
-<p>3、浏览器通过 DNS 服务器获取即将访问的网站 IP 地址</p>
-<p>4、 浏览器发起一个对这个 IP 的请求 </p>
-<p>5、服务端接收到这个请求，进行相应的处理 </p>
-<p>6、 服务端将处理完的结果返回给客户端浏览器 </p>
-<p>7、浏览器将服务端返回的结果呈现到界面上 </p>
-<h3 id="配置APACHE"><a href="#配置APACHE" class="headerlink" title="配置APACHE"></a>配置APACHE</h3><ul>
-<li>设置监听端口</li>
-<li>设置网站根目录</li>
-<li>设置默认文档</li>
-<li>设置虚拟主机</li>
-</ul>
-<h3 id="静态网站和动态网站"><a href="#静态网站和动态网站" class="headerlink" title="静态网站和动态网站"></a>静态网站和动态网站</h3><p>​    至此，我们已经可以把这些静态页面放到服务器上了，客户端也可以通过域名请求这个网站，但是对于我们来说， Apache 能够完成的事情过于简单，无外乎就是找到你请求对应的文件 → 读取文件 → 将文件内容响应给客户端浏览器（文件原封不动的给你）。无法满足让网页内容动起来（随着数据动态变化）的需求。 </p>
-<p>​    于是乎，就有人提出了服务端动态网页的概念，这种实现这种概念的技术有很多种：JSP、ASP.NET、PHP、Node等等。 </p>
-<p>​    原理：不再将 HTML 固定写死，每次用户请求时，动态执行一段代码，临时生成一个用户想要的 HTML 页面。 </p>
-<p>动态网站指的也就是每次请求时服务端动态生成 HTML 返回给用户的这种网站下图为流程：</p>
-<p><img src="/images/%E6%9C%8D%E5%8A%A1%E7%AB%AF2.png" alt="image-20200517090326530"></p>
-]]></content>
-      <categories>
-        <category>服务端</category>
-      </categories>
-      <tags>
-        <tag>服务端笔记</tag>
       </tags>
   </entry>
   <entry>
