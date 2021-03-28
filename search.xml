@@ -141,6 +141,84 @@
       </tags>
   </entry>
   <entry>
+    <title>基本数据结构</title>
+    <url>/2020/05/07/05%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<h1 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在 JavaScript 和其他编程语言中，我们都可以以多种方式存储和访问数据。本节将教你如何使用数组（array），以及如何访问和复制数组中的信息。本节还将教你如何用点符号和方括号符号来操作和访问 JavaScript 对象（object）中的信息。学习此文档你应该掌握数组和对象的基本属性以及它们之间的区别，并且掌握如何选择它们来实现给定的目标。</p>
+<h3 id="使用数组存储数据集合"><a href="#使用数组存储数据集合" class="headerlink" title="使用数组存储数据集合"></a>使用数组存储数据集合</h3><p>下面是一个关于数组的更复杂的例子。这是一个多维数组（multi-dimensional Array），或者说是一个包含了其他数组的数组。你可以注意到，在它的内部还包含了 JavaScript 中的对象（objects）结构。我们会在后面的小节中讨论该数据结构，但现在你只需要知道<strong>数组能够存储复杂的对象类型数据</strong>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> complexArray = [</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      one: <span class="number">1</span>,</span><br><span class="line">      two: <span class="number">2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      three: <span class="number">3</span>,</span><br><span class="line">      four: <span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      a: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">      b: <span class="string">&quot;b&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      c: <span class="string">&quot;c&quot;</span>,</span><br><span class="line">      d: “d”</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-push-和-unshift-添加项目到数组中"><a href="#使用-push-和-unshift-添加项目到数组中" class="headerlink" title="使用 push() 和 unshift() 添加项目到数组中"></a>使用 push() 和 unshift() 添加项目到数组中</h3><p><code>Array.push()</code>和<code>Array.unshift()</code>。</p>
+<p>这两个方法都接收一个或多个元素作为参数；对一个数组调用这两个方法都可以将输入的元素插入到该数组中；<code>push()</code>方法将元素插入到一个数组的末尾，而<code>unshift()</code>方法将元素插入到一个数组的开头。请看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> twentyThree = <span class="string">&#x27;XXIII&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> romanNumerals = [<span class="string">&#x27;XXI&#x27;</span>, <span class="string">&#x27;XXII&#x27;</span>];</span><br><span class="line"></span><br><span class="line">romanNumerals.unshift(<span class="string">&#x27;XIX&#x27;</span>, <span class="string">&#x27;XX&#x27;</span>);</span><br><span class="line"><span class="comment">// 数组现在为 [&#x27;XIX&#x27;, &#x27;XX&#x27;, &#x27;XXI&#x27;, &#x27;XXII&#x27;]</span></span><br><span class="line"></span><br><span class="line">romanNumerals.push(twentyThree);</span><br><span class="line"><span class="comment">// 数组现在为 [&#x27;XIX&#x27;, &#x27;XX&#x27;, &#x27;XXI&#x27;, &#x27;XXII&#x27;, &#x27;XXIII&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，我们还可以输入变量，这允许我们很灵活地动态改变我们数组中的数据。</p>
+<h3 id="使用-pop-和-shift-从数组中删除项目"><a href="#使用-pop-和-shift-从数组中删除项目" class="headerlink" title="使用 pop() 和 shift() 从数组中删除项目"></a>使用 pop() 和 shift() 从数组中删除项目</h3><p>与前面讲的相反。</p>
+<p>作用分别是删除数组最后一个元素和删除数组第一个元素。并返回其值。</p>
+<h3 id="使用-splice-删除项目"><a href="#使用-splice-删除项目" class="headerlink" title="使用 splice() 删除项目"></a>使用 splice() 删除项目</h3><p>在上面的挑战中，我们已经学到了如何利用<code>shift()</code>和<code>pop()</code>从数组的开头或者末尾移除元素，但如果我们想移除数组中间的一个元素呢？或者想一次移除多个元素呢？这时候我们就需要<code>splice()</code>了。<code>splice()</code>让我们可以从数组中的任意位置<strong>移除任意数量的连续的元素</strong>。</p>
+<p><code>splice()</code>最多可以接受 3 个参数，但现在我们先关注前两个。<code>splice()</code>接收的前两个参数基于调用<code>splice()</code>数组中元素的索引。<code>splice()</code>的第一个参数代表从数组中的哪个索引开始移除元素，而第二个参数指示要从数组中删除多少个元素。例如：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="string">&#x27;today&#x27;</span>, <span class="string">&#x27;was&#x27;</span>, <span class="string">&#x27;not&#x27;</span>, <span class="string">&#x27;so&#x27;</span>, <span class="string">&#x27;great&#x27;</span>];</span><br><span class="line"></span><br><span class="line">array.splice(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// 从第 3 个元素开始，删除 2 个元素</span></span><br><span class="line"><span class="comment">// 现在该数组等于 [&#x27;today&#x27;, &#x27;was&#x27;, &#x27;great&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>splice()</code>不仅从被调用的数组中移除元素，还会返回一个包含被移除元素的数组.</p>
+<h3 id="使用-splice-增加项目"><a href="#使用-splice-增加项目" class="headerlink" title="使用 splice() 增加项目"></a>使用 splice() 增加项目</h3><p><code>splice()</code>方法可以接受最多 3 个参数,我们现在可以进一步了解<code>splice()</code>。除了移除元素，我们还可以利用它的第三个参数来向数组中<em>添加</em>元素。第三个参数可以是一个或多个元素，这些元素会被添加到数组中。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">colorChange</span>(<span class="params">arr, index, newColor</span>) </span>&#123;</span><br><span class="line">  arr.splice(index, <span class="number">1</span>, newColor);</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> colorScheme = [<span class="string">&#x27;#878787&#x27;</span>, <span class="string">&#x27;#a08794&#x27;</span>, <span class="string">&#x27;#bb7e8c&#x27;</span>, <span class="string">&#x27;#c9b6be&#x27;</span>, <span class="string">&#x27;#d1becf&#x27;</span>];</span><br><span class="line"></span><br><span class="line">colorScheme = colorChange(colorScheme, <span class="number">2</span>, <span class="string">&#x27;#332327&#x27;</span>);</span><br><span class="line"><span class="comment">// 我们移除了 &#x27;#bb7e8c&#x27; 并在其位置上添加了 &#x27;#332327&#x27;</span></span><br><span class="line"><span class="comment">// colorScheme 现在等于 [&#x27;#878787&#x27;, &#x27;#a08794&#x27;, &#x27;#332327&#x27;, &#x27;#c9b6be&#x27;, &#x27;#d1becf&#x27;]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-slice-拷贝数组项目"><a href="#使用-slice-拷贝数组项目" class="headerlink" title="使用 slice() 拷贝数组项目"></a>使用 slice() 拷贝数组项目</h3><p><code>slice()</code>并不修改数组，而是复制或者说<em>提取（extract）</em>给定数量的元素到一个新数组里，而调用方法的数组则保持不变。<code>slice()</code>只接受 2 个输入参数—<strong>第一个是开始提取元素的位置（索引）</strong>，<strong>第二个是结束提取元素的位置（索引）</strong>。slice 方法会提取直到该索引的元素，但被提取的元素不包括该索引对应的元素。（不包含后面索引对应的值）请看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> weatherConditions = [<span class="string">&#x27;rain&#x27;</span>, <span class="string">&#x27;snow&#x27;</span>, <span class="string">&#x27;sleet&#x27;</span>, <span class="string">&#x27;hail&#x27;</span>, <span class="string">&#x27;clear&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> todaysWeather = weatherConditions.slice(<span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line"><span class="comment">// todaysWeather 等于 [&#x27;snow&#x27;, &#x27;sleet&#x27;];</span></span><br><span class="line"><span class="comment">// weatherConditions 仍然等于 [&#x27;rain&#x27;, &#x27;snow&#x27;, &#x27;sleet&#x27;, &#x27;hail&#x27;, &#x27;clear&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用扩展运算符复制数组"><a href="#使用扩展运算符复制数组" class="headerlink" title="使用扩展运算符复制数组"></a>使用扩展运算符复制数组</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">slice()&#96;已经能让我们从一个数组中选择一些元素来复制到新数组中了，而 ES6 中又新引入了一个简洁且可读性强的语法展开运算符（spread operator），它能让我们方便地复制数组中的*所有*元素。展开语法是这样的：&#96;...</span><br></pre></td></tr></table></figure>
+
+<p>在实践中，我们可以这样用展开运算符来复制一个数组：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> thisArray = [<span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">undefined</span>, <span class="literal">false</span>, <span class="literal">null</span>];</span><br><span class="line"><span class="keyword">let</span> thatArray = [...thisArray];</span><br><span class="line"><span class="comment">// thatArray 等于 [true, true, undefined, false, null]</span></span><br><span class="line"><span class="comment">// thisArray 保持不变，并等于 thatArray</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-indexOf-检查元素是否存在"><a href="#使用-indexOf-检查元素是否存在" class="headerlink" title="使用 indexOf() 检查元素是否存在"></a>使用 indexOf() 检查元素是否存在</h3><p>由于数组可以在任意时间被修改或者说<em>被改变（mutated）</em>，我们不能保证某个数据在一个给定数组中的位置，甚至不能保证该元素还存在于该数组中。幸运的是，JavaScript 给我们提供了另一个内置方法<code>indexOf()</code>。这个方法让我们可以便捷地检查某个元素是否存在于一个数组中。<code>indexOf()</code>方法接受一个元素作为输入参数，并返回该元素在数组中的位置（索引）；若该元素不存在于数组中则返回<code>-1</code>。</p>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">&#x27;apples&#x27;</span>, <span class="string">&#x27;pears&#x27;</span>, <span class="string">&#x27;oranges&#x27;</span>, <span class="string">&#x27;peaches&#x27;</span>, <span class="string">&#x27;pears&#x27;</span>];</span><br><span class="line"></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;dates&#x27;</span>) <span class="comment">// 返回 -1</span></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;oranges&#x27;</span>) <span class="comment">// 返回 2</span></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;pears&#x27;</span>) <span class="comment">// 返回 1，即第一个出现的 &#x27;pears&#x27; 元素在数组中的索引为 1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-For-循环迭代数组的所有项"><a href="#使用-For-循环迭代数组的所有项" class="headerlink" title="使用 For 循环迭代数组的所有项"></a>使用 For 循环迭代数组的所有项</h3><p>在进行与数组有关的编程时，我们有时需要遍历数组的所有元素来找出我们需要的元素，或者对数组执行特定的操作。JavaScript 提供了几个内置的方法，它们以不同的方式遍历数组来获得不同的结果（如<code>every()</code>、<code>forEach()</code>、<code>map()</code>等等）。而简单的<code>for</code>循环不仅能实现这些功能，而且相比之下也更灵活。</p>
+<p>请看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greaterThanTen</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">let</span> newArr = [];</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (arr[i] &gt; <span class="number">10</span>) &#123;</span><br><span class="line">   newArr.push(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greaterThanTen([<span class="number">2</span>, <span class="number">12</span>, <span class="number">8</span>, <span class="number">14</span>, <span class="number">80</span>, <span class="number">0</span>, <span class="number">1</span>]);</span><br><span class="line"><span class="comment">// 返回 [12, 14, 80]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用方括号访问属性名称"><a href="#使用方括号访问属性名称" class="headerlink" title="使用方括号访问属性名称"></a>使用方括号访问属性名称</h3><p>我们可以使用点操作符和方括号访问对象的属性值。</p>
+<p>假设一个超市的收银台的程序中使用了一个<code>foods</code>对象，并且有一些程序逻辑会设置<code>selectedFood</code>，我们需要查询<code>foods</code>对象来检查某种食物是否存在，我们可以这样写检查逻辑：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> selectedFood = getCurrentFood(scannedItem);</span><br><span class="line"><span class="keyword">let</span> inventory = foods[selectedFood];</span><br></pre></td></tr></table></figure>
+
+
+
+<p>上述代码会先计算<code>selectedFood</code>变量的值，并返回<code>foods</code>对象中以该值命名的属性对应的值，若没有以该值命名的属性则会返回<code>undefined</code>。有时候对象的属性名在运行之前是不确定的，或者我们需要动态地访问对象的属性，这时方括号符号就会很有用。</p>
+<h3 id="使用-delete-关键字删除对象属性"><a href="#使用-delete-关键字删除对象属性" class="headerlink" title="使用 delete 关键字删除对象属性"></a>使用 delete 关键字删除对象属性</h3><p>果我们想移除<code>apples</code>属性，我们可以使用<code>delete</code>关键字：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> foods.apples;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-for…in-语句迭代对象"><a href="#使用-for…in-语句迭代对象" class="headerlink" title="使用 for…in 语句迭代对象"></a>使用 for…in 语句迭代对象</h3><p>有时候你需要遍历一个对象中的所有键。这需要 JavaScript 中的一个特殊语法：for…in 语句。以遍历 <code>users</code>对象的键为例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> user <span class="keyword">in</span> users) &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(user);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出：</span></span><br><span class="line">Alan</span><br><span class="line">Jeff</span><br><span class="line">Sarah</span><br><span class="line">Ryan</span><br></pre></td></tr></table></figure>
+
+<p>在这个语句中，我们定义了一个<code>user</code>变量，你可以看到，这个变量在 for…in 语句对对象的每一个键的遍历中都会被重置。</p>
+<p><strong>注意：</strong><br>跟数组不同，对象中的键是无序的，因此一个对象中某个键的位置，或者说它出现的相对顺序，在引用或访问该键时是不确定的。</p>
+<h3 id="使用-Object-keys-生成对象所有键组成的数组"><a href="#使用-Object-keys-生成对象所有键组成的数组" class="headerlink" title="使用 Object.keys() 生成对象所有键组成的数组"></a>使用 Object.keys() 生成对象所有键组成的数组</h3><p>我们还可以输入一个对象作为参数来调用<code>Object.keys()</code>方法，使其生成一个包含对象中所有键的数组。这会返回一个由对象中所有键的名称（字符串）组成的数组。再次说明，这个数组中的项的顺序是不确定的。</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+        <category>js笔记</category>
+      </categories>
+      <tags>
+        <tag>FCC</tag>
+        <tag>基础笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>面向对象编程</title>
     <url>/2020/05/07/07%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>面向对象编程是软件开发过程的几种主要方法之一。</p>
@@ -313,84 +391,6 @@
       </tags>
   </entry>
   <entry>
-    <title>基本数据结构</title>
-    <url>/2020/05/07/05%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<h1 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在 JavaScript 和其他编程语言中，我们都可以以多种方式存储和访问数据。本节将教你如何使用数组（array），以及如何访问和复制数组中的信息。本节还将教你如何用点符号和方括号符号来操作和访问 JavaScript 对象（object）中的信息。学习此文档你应该掌握数组和对象的基本属性以及它们之间的区别，并且掌握如何选择它们来实现给定的目标。</p>
-<h3 id="使用数组存储数据集合"><a href="#使用数组存储数据集合" class="headerlink" title="使用数组存储数据集合"></a>使用数组存储数据集合</h3><p>下面是一个关于数组的更复杂的例子。这是一个多维数组（multi-dimensional Array），或者说是一个包含了其他数组的数组。你可以注意到，在它的内部还包含了 JavaScript 中的对象（objects）结构。我们会在后面的小节中讨论该数据结构，但现在你只需要知道<strong>数组能够存储复杂的对象类型数据</strong>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> complexArray = [</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      one: <span class="number">1</span>,</span><br><span class="line">      two: <span class="number">2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      three: <span class="number">3</span>,</span><br><span class="line">      four: <span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      a: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">      b: <span class="string">&quot;b&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      c: <span class="string">&quot;c&quot;</span>,</span><br><span class="line">      d: “d”</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-push-和-unshift-添加项目到数组中"><a href="#使用-push-和-unshift-添加项目到数组中" class="headerlink" title="使用 push() 和 unshift() 添加项目到数组中"></a>使用 push() 和 unshift() 添加项目到数组中</h3><p><code>Array.push()</code>和<code>Array.unshift()</code>。</p>
-<p>这两个方法都接收一个或多个元素作为参数；对一个数组调用这两个方法都可以将输入的元素插入到该数组中；<code>push()</code>方法将元素插入到一个数组的末尾，而<code>unshift()</code>方法将元素插入到一个数组的开头。请看以下例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> twentyThree = <span class="string">&#x27;XXIII&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> romanNumerals = [<span class="string">&#x27;XXI&#x27;</span>, <span class="string">&#x27;XXII&#x27;</span>];</span><br><span class="line"></span><br><span class="line">romanNumerals.unshift(<span class="string">&#x27;XIX&#x27;</span>, <span class="string">&#x27;XX&#x27;</span>);</span><br><span class="line"><span class="comment">// 数组现在为 [&#x27;XIX&#x27;, &#x27;XX&#x27;, &#x27;XXI&#x27;, &#x27;XXII&#x27;]</span></span><br><span class="line"></span><br><span class="line">romanNumerals.push(twentyThree);</span><br><span class="line"><span class="comment">// 数组现在为 [&#x27;XIX&#x27;, &#x27;XX&#x27;, &#x27;XXI&#x27;, &#x27;XXII&#x27;, &#x27;XXIII&#x27;]</span></span><br></pre></td></tr></table></figure>
-
-<p>注意，我们还可以输入变量，这允许我们很灵活地动态改变我们数组中的数据。</p>
-<h3 id="使用-pop-和-shift-从数组中删除项目"><a href="#使用-pop-和-shift-从数组中删除项目" class="headerlink" title="使用 pop() 和 shift() 从数组中删除项目"></a>使用 pop() 和 shift() 从数组中删除项目</h3><p>与前面讲的相反。</p>
-<p>作用分别是删除数组最后一个元素和删除数组第一个元素。并返回其值。</p>
-<h3 id="使用-splice-删除项目"><a href="#使用-splice-删除项目" class="headerlink" title="使用 splice() 删除项目"></a>使用 splice() 删除项目</h3><p>在上面的挑战中，我们已经学到了如何利用<code>shift()</code>和<code>pop()</code>从数组的开头或者末尾移除元素，但如果我们想移除数组中间的一个元素呢？或者想一次移除多个元素呢？这时候我们就需要<code>splice()</code>了。<code>splice()</code>让我们可以从数组中的任意位置<strong>移除任意数量的连续的元素</strong>。</p>
-<p><code>splice()</code>最多可以接受 3 个参数，但现在我们先关注前两个。<code>splice()</code>接收的前两个参数基于调用<code>splice()</code>数组中元素的索引。<code>splice()</code>的第一个参数代表从数组中的哪个索引开始移除元素，而第二个参数指示要从数组中删除多少个元素。例如：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="string">&#x27;today&#x27;</span>, <span class="string">&#x27;was&#x27;</span>, <span class="string">&#x27;not&#x27;</span>, <span class="string">&#x27;so&#x27;</span>, <span class="string">&#x27;great&#x27;</span>];</span><br><span class="line"></span><br><span class="line">array.splice(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// 从第 3 个元素开始，删除 2 个元素</span></span><br><span class="line"><span class="comment">// 现在该数组等于 [&#x27;today&#x27;, &#x27;was&#x27;, &#x27;great&#x27;]</span></span><br></pre></td></tr></table></figure>
-
-<p><code>splice()</code>不仅从被调用的数组中移除元素，还会返回一个包含被移除元素的数组.</p>
-<h3 id="使用-splice-增加项目"><a href="#使用-splice-增加项目" class="headerlink" title="使用 splice() 增加项目"></a>使用 splice() 增加项目</h3><p><code>splice()</code>方法可以接受最多 3 个参数,我们现在可以进一步了解<code>splice()</code>。除了移除元素，我们还可以利用它的第三个参数来向数组中<em>添加</em>元素。第三个参数可以是一个或多个元素，这些元素会被添加到数组中。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">colorChange</span>(<span class="params">arr, index, newColor</span>) </span>&#123;</span><br><span class="line">  arr.splice(index, <span class="number">1</span>, newColor);</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> colorScheme = [<span class="string">&#x27;#878787&#x27;</span>, <span class="string">&#x27;#a08794&#x27;</span>, <span class="string">&#x27;#bb7e8c&#x27;</span>, <span class="string">&#x27;#c9b6be&#x27;</span>, <span class="string">&#x27;#d1becf&#x27;</span>];</span><br><span class="line"></span><br><span class="line">colorScheme = colorChange(colorScheme, <span class="number">2</span>, <span class="string">&#x27;#332327&#x27;</span>);</span><br><span class="line"><span class="comment">// 我们移除了 &#x27;#bb7e8c&#x27; 并在其位置上添加了 &#x27;#332327&#x27;</span></span><br><span class="line"><span class="comment">// colorScheme 现在等于 [&#x27;#878787&#x27;, &#x27;#a08794&#x27;, &#x27;#332327&#x27;, &#x27;#c9b6be&#x27;, &#x27;#d1becf&#x27;]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-slice-拷贝数组项目"><a href="#使用-slice-拷贝数组项目" class="headerlink" title="使用 slice() 拷贝数组项目"></a>使用 slice() 拷贝数组项目</h3><p><code>slice()</code>并不修改数组，而是复制或者说<em>提取（extract）</em>给定数量的元素到一个新数组里，而调用方法的数组则保持不变。<code>slice()</code>只接受 2 个输入参数—<strong>第一个是开始提取元素的位置（索引）</strong>，<strong>第二个是结束提取元素的位置（索引）</strong>。slice 方法会提取直到该索引的元素，但被提取的元素不包括该索引对应的元素。（不包含后面索引对应的值）请看以下例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> weatherConditions = [<span class="string">&#x27;rain&#x27;</span>, <span class="string">&#x27;snow&#x27;</span>, <span class="string">&#x27;sleet&#x27;</span>, <span class="string">&#x27;hail&#x27;</span>, <span class="string">&#x27;clear&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> todaysWeather = weatherConditions.slice(<span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line"><span class="comment">// todaysWeather 等于 [&#x27;snow&#x27;, &#x27;sleet&#x27;];</span></span><br><span class="line"><span class="comment">// weatherConditions 仍然等于 [&#x27;rain&#x27;, &#x27;snow&#x27;, &#x27;sleet&#x27;, &#x27;hail&#x27;, &#x27;clear&#x27;]</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用扩展运算符复制数组"><a href="#使用扩展运算符复制数组" class="headerlink" title="使用扩展运算符复制数组"></a>使用扩展运算符复制数组</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">slice()&#96;已经能让我们从一个数组中选择一些元素来复制到新数组中了，而 ES6 中又新引入了一个简洁且可读性强的语法展开运算符（spread operator），它能让我们方便地复制数组中的*所有*元素。展开语法是这样的：&#96;...</span><br></pre></td></tr></table></figure>
-
-<p>在实践中，我们可以这样用展开运算符来复制一个数组：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> thisArray = [<span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">undefined</span>, <span class="literal">false</span>, <span class="literal">null</span>];</span><br><span class="line"><span class="keyword">let</span> thatArray = [...thisArray];</span><br><span class="line"><span class="comment">// thatArray 等于 [true, true, undefined, false, null]</span></span><br><span class="line"><span class="comment">// thisArray 保持不变，并等于 thatArray</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-indexOf-检查元素是否存在"><a href="#使用-indexOf-检查元素是否存在" class="headerlink" title="使用 indexOf() 检查元素是否存在"></a>使用 indexOf() 检查元素是否存在</h3><p>由于数组可以在任意时间被修改或者说<em>被改变（mutated）</em>，我们不能保证某个数据在一个给定数组中的位置，甚至不能保证该元素还存在于该数组中。幸运的是，JavaScript 给我们提供了另一个内置方法<code>indexOf()</code>。这个方法让我们可以便捷地检查某个元素是否存在于一个数组中。<code>indexOf()</code>方法接受一个元素作为输入参数，并返回该元素在数组中的位置（索引）；若该元素不存在于数组中则返回<code>-1</code>。</p>
-<p>例如：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">&#x27;apples&#x27;</span>, <span class="string">&#x27;pears&#x27;</span>, <span class="string">&#x27;oranges&#x27;</span>, <span class="string">&#x27;peaches&#x27;</span>, <span class="string">&#x27;pears&#x27;</span>];</span><br><span class="line"></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;dates&#x27;</span>) <span class="comment">// 返回 -1</span></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;oranges&#x27;</span>) <span class="comment">// 返回 2</span></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;pears&#x27;</span>) <span class="comment">// 返回 1，即第一个出现的 &#x27;pears&#x27; 元素在数组中的索引为 1</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-For-循环迭代数组的所有项"><a href="#使用-For-循环迭代数组的所有项" class="headerlink" title="使用 For 循环迭代数组的所有项"></a>使用 For 循环迭代数组的所有项</h3><p>在进行与数组有关的编程时，我们有时需要遍历数组的所有元素来找出我们需要的元素，或者对数组执行特定的操作。JavaScript 提供了几个内置的方法，它们以不同的方式遍历数组来获得不同的结果（如<code>every()</code>、<code>forEach()</code>、<code>map()</code>等等）。而简单的<code>for</code>循环不仅能实现这些功能，而且相比之下也更灵活。</p>
-<p>请看以下例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greaterThanTen</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">let</span> newArr = [];</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (arr[i] &gt; <span class="number">10</span>) &#123;</span><br><span class="line">   newArr.push(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greaterThanTen([<span class="number">2</span>, <span class="number">12</span>, <span class="number">8</span>, <span class="number">14</span>, <span class="number">80</span>, <span class="number">0</span>, <span class="number">1</span>]);</span><br><span class="line"><span class="comment">// 返回 [12, 14, 80]</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用方括号访问属性名称"><a href="#使用方括号访问属性名称" class="headerlink" title="使用方括号访问属性名称"></a>使用方括号访问属性名称</h3><p>我们可以使用点操作符和方括号访问对象的属性值。</p>
-<p>假设一个超市的收银台的程序中使用了一个<code>foods</code>对象，并且有一些程序逻辑会设置<code>selectedFood</code>，我们需要查询<code>foods</code>对象来检查某种食物是否存在，我们可以这样写检查逻辑：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> selectedFood = getCurrentFood(scannedItem);</span><br><span class="line"><span class="keyword">let</span> inventory = foods[selectedFood];</span><br></pre></td></tr></table></figure>
-
-
-
-<p>上述代码会先计算<code>selectedFood</code>变量的值，并返回<code>foods</code>对象中以该值命名的属性对应的值，若没有以该值命名的属性则会返回<code>undefined</code>。有时候对象的属性名在运行之前是不确定的，或者我们需要动态地访问对象的属性，这时方括号符号就会很有用。</p>
-<h3 id="使用-delete-关键字删除对象属性"><a href="#使用-delete-关键字删除对象属性" class="headerlink" title="使用 delete 关键字删除对象属性"></a>使用 delete 关键字删除对象属性</h3><p>果我们想移除<code>apples</code>属性，我们可以使用<code>delete</code>关键字：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> foods.apples;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-for…in-语句迭代对象"><a href="#使用-for…in-语句迭代对象" class="headerlink" title="使用 for…in 语句迭代对象"></a>使用 for…in 语句迭代对象</h3><p>有时候你需要遍历一个对象中的所有键。这需要 JavaScript 中的一个特殊语法：for…in 语句。以遍历 <code>users</code>对象的键为例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> user <span class="keyword">in</span> users) &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(user);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出：</span></span><br><span class="line">Alan</span><br><span class="line">Jeff</span><br><span class="line">Sarah</span><br><span class="line">Ryan</span><br></pre></td></tr></table></figure>
-
-<p>在这个语句中，我们定义了一个<code>user</code>变量，你可以看到，这个变量在 for…in 语句对对象的每一个键的遍历中都会被重置。</p>
-<p><strong>注意：</strong><br>跟数组不同，对象中的键是无序的，因此一个对象中某个键的位置，或者说它出现的相对顺序，在引用或访问该键时是不确定的。</p>
-<h3 id="使用-Object-keys-生成对象所有键组成的数组"><a href="#使用-Object-keys-生成对象所有键组成的数组" class="headerlink" title="使用 Object.keys() 生成对象所有键组成的数组"></a>使用 Object.keys() 生成对象所有键组成的数组</h3><p>我们还可以输入一个对象作为参数来调用<code>Object.keys()</code>方法，使其生成一个包含对象中所有键的数组。这会返回一个由对象中所有键的名称（字符串）组成的数组。再次说明，这个数组中的项的顺序是不确定的。</p>
-]]></content>
-      <categories>
-        <category>web前端</category>
-        <category>js笔记</category>
-      </categories>
-      <tags>
-        <tag>FCC</tag>
-        <tag>基础笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>算法基础</title>
     <url>/2020/05/07/06%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="算法基础"><a href="#算法基础" class="headerlink" title="算法基础"></a>算法基础</h1><p><a href="https://blog.csdn.net/qq_35809245/article/details/54895612">常用的jsAPI –孤枫_J</a></p>
@@ -528,6 +528,107 @@
       </tags>
   </entry>
   <entry>
+    <title>fcc算法中级</title>
+    <url>/2021/03/17/10FCC%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7/</url>
+    <content><![CDATA[<h1 id="FCC算法中级"><a href="#FCC算法中级" class="headerlink" title="FCC算法中级"></a>FCC算法中级</h1><h3 id="范围内数字求和"><a href="#范围内数字求和" class="headerlink" title="范围内数字求和"></a>范围内数字求和</h3><p>给出一个含有两个数字的数组，我们需要写一个函数，让它返回这两个数字间所有数字（包含这两个数字）的总和。</p>
+<p>注意，较小数不一定总是出现在数组的第一个元素。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumAll</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sumBetween = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="built_in">Math</span>.min(...arr); i &lt;= <span class="built_in">Math</span>.max(...arr); i++) &#123;</span><br><span class="line">    sumBetween += i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sumBetween;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumAll([<span class="number">1</span>, <span class="number">4</span>]);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="区分两个数组"><a href="#区分两个数组" class="headerlink" title="区分两个数组"></a>区分两个数组</h3><p>写一个函数，比较两个数组，返回一个新的数组。这个新数组需要包含传入的两个数组所有元素中，仅在其中一个数组里出现的元素。如果某个元素同时出现在两个数组中，则不应包含在返回的数组里。换言之，我们需要返回这两个数组的对称差。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">diffArray</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = [];</span><br><span class="line">  <span class="comment">// 这是一个党异伐同的过程</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">secondInFirst</span>(<span class="params">first, second</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; second.length; i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(first.indexOf(second[i]) === -<span class="number">1</span>)&#123;</span><br><span class="line">        newArr.push(second[i])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  secondInFirst(arr1, arr2)</span><br><span class="line">  secondInFirst(arr2, arr1)</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">diffArray([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">diffArray</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 这是一个党异伐同的过程</span></span><br><span class="line">  <span class="keyword">return</span> arr1.concat(arr2).filter(<span class="function"><span class="params">item</span>=&gt;</span>arr1.indexOf(item)===-<span class="number">1</span> || arr2.indexOf(item)===-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">diffArray([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="瞄准和消灭"><a href="#瞄准和消灭" class="headerlink" title="瞄准和消灭"></a>瞄准和消灭</h3><p>传给它的第一个参数是数组，我们称他为初始数组。后续的参数数量是不确定的，可能有一个或多个。你需要做的是，从初始数组中移除所有与后续参数相等的元素，并返回移除元素后的数组。使用<code>...</code>，即“剩余参数”（Rest Parameters）语法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">destroyer</span>(<span class="params">arr, ...arr2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 删掉那些值</span></span><br><span class="line">  <span class="keyword">return</span> arr.filter(<span class="function"><span class="params">item</span>=&gt;</span>!arr2.includes(item));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">destroyer([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="短线连接格式"><a href="#短线连接格式" class="headerlink" title="短线连接格式"></a>短线连接格式</h3><p>写一个函数，把一个字符串转换为“短线连接格式”。短线连接格式的意思是，所有字母都是小写，且用<code>-</code>连接。比如，对于<code>Hello World</code>，应该转换为<code>hello-world</code>；对于<code>I love_Javascript-VeryMuch</code>，应该转换为<code>i-love-javascript-very-much</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">spinalCase</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> str.split(<span class="regexp">/\s|_|(?=[A-Z])/</span>)</span><br><span class="line">    .join(<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">    .toLowerCase();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">spinalCase(<span class="string">&#x27;This Is Spinal Tap&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="儿童黑话"><a href="#儿童黑话" class="headerlink" title="儿童黑话"></a>儿童黑话</h3><p>写一个函数，把传入的字符串翻译成“儿童黑话”。</p>
+<p><a href="http://en.wikipedia.org/wiki/Pig_Latin">儿童黑话</a>的基本转换规则很简单，只需要把一个英文单词的第一个辅音字母或第一组辅音从移到单词的结尾，并在后面加上<code>ay</code>即可。在英语中，字母 a、e、i、o、u 为元音，其余的字母均为辅音。辅音从的意思是连续的多个辅音字母。</p>
+<p>额外地，如果单词本身是以元音开头的，那只需要在结尾加上<code>way</code>。</p>
+<p>在本题中，传入的单词一定会是英文单词，且所有字母均为小写。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">translatePigLatin</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> consonantRegex = <span class="regexp">/^[^aeiou]+/</span>;</span><br><span class="line">  <span class="keyword">let</span> myConsonants = str.match(consonantRegex);</span><br><span class="line">  <span class="keyword">return</span> myConsonants !== <span class="literal">null</span></span><br><span class="line">    ? str</span><br><span class="line">        .replace(consonantRegex, <span class="string">&quot;&quot;</span>)</span><br><span class="line">        .concat(myConsonants)</span><br><span class="line">        .concat(<span class="string">&quot;ay&quot;</span>)</span><br><span class="line">    : str.concat(<span class="string">&quot;way&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">translatePigLatin(<span class="string">&quot;consonant&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="搜索和替换"><a href="#搜索和替换" class="headerlink" title="搜索和替换"></a>搜索和替换</h3><p>在这道题目中，我们需要写一个字符串的搜索与替换函数，它的返回值为完成替换后的新字符串。</p>
+<p>这个函数接收的第一个参数为待替换的句子。</p>
+<p>第二个参数为句中需要被替换的单词。</p>
+<p>第三个参数为替换后的单词。</p>
+<p><strong>注意：</strong><br>你需要保留被替换单词首字母的大小写格式。即如果传入的第二个参数为 “Book”，第三个参数为 “dog”，那么替换后的结果应为 “Dog”</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">myReplace</span>(<span class="params">str, before, after</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(<span class="regexp">/^[A-Z]/</span>.test(before))&#123;</span><br><span class="line">         after = after[<span class="number">0</span>].toUpperCase() + after.substring(<span class="number">1</span>)</span><br><span class="line">     &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         after = after[<span class="number">0</span>].toLowerCase() + after.substring(<span class="number">1</span>)</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> str.replace(before, after)  <span class="comment">// 不会改变原字符串，会生成新的字符串</span></span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">var</span> strr = myReplace(<span class="string">&quot;A quick brown fox jumped over the lazy dog&quot;</span>, <span class="string">&quot;jumped&quot;</span>, <span class="string">&quot;leaped&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(strr)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="DNA-配对"><a href="#DNA-配对" class="headerlink" title="DNA 配对"></a>DNA 配对</h3><p>在这道题目中，我们需要写一个函数，为 DNA 中的碱基配对。这个函数只接收一个表示碱基的字符串为参数，最后返回完成配对的二维数组。</p>
+<p><a href="http://en.wikipedia.org/wiki/Base_pair">碱基对</a> 由一对碱基组成。碱基有四种，分别为 A（腺嘌呤）、T（胸腺嘧啶）、G（鸟嘌呤）和 C（胞嘧啶）。配对原则是：A 与 T 配对，C 与 G 配对。我们需要根据这个原则对传入的所有碱基进行配对。</p>
+<p>对于每个传入的碱基，我们应采用数组的形式展示配对结果。其中，传入的碱基需要作为数组的第一个元素出现。最终返回的数组中应当包含参数中每一个碱基的配对结果。</p>
+<p>比如，传入的参数是 GCG，那么函数的返回值应为 [[“G”, “C”], [“C”,”G”],[“G”, “C”]]</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pairElement</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = str.split(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">var</span> arr2 = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i ++)&#123;</span><br><span class="line">        <span class="keyword">switch</span>(arr[i])&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;A&#x27;</span>: </span><br><span class="line">                arr2.push([<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;T&#x27;</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;T&#x27;</span>: </span><br><span class="line">                arr2.push([<span class="string">&#x27;T&#x27;</span>,<span class="string">&#x27;A&#x27;</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;G&#x27;</span>: </span><br><span class="line">                arr2.push([<span class="string">&#x27;G&#x27;</span>,<span class="string">&#x27;C&#x27;</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;C&#x27;</span>: </span><br><span class="line">                arr2.push([<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;G&#x27;</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr3 = pairElement(<span class="string">&quot;GCG&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr3)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="丢失的字母"><a href="#丢失的字母" class="headerlink" title="丢失的字母"></a>丢失的字母</h3><p>写一个函数，找到传入的字符串里缺失的字母并返回它。</p>
+<p>判断缺失的依据是字母顺序，比如 abcdfg 中缺失了 e。而 abcdef 中就没有字母缺失，此时我们需要返回<code>undefined</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fearNotLetter</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> num = str[<span class="number">0</span>].charCodeAt()</span><br><span class="line">  <span class="keyword">var</span> flag</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,j=<span class="number">1</span>; i &lt; str.length-<span class="number">1</span>; i++, j++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(str[i].charCodeAt() + <span class="number">1</span> == str[j].charCodeAt())&#123;</span><br><span class="line">          </span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          flag = <span class="built_in">String</span>.fromCharCode(str[i].charCodeAt() + <span class="number">1</span>)</span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> flag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fearNotLetter(<span class="string">&quot;abce&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="集合排序"><a href="#集合排序" class="headerlink" title="集合排序"></a>集合排序</h3><p>写一个函数，它接收两个或多个数组为参数。我们需要对这些数组中所有元素进行去除重复元素的处理，并以数组的形式返回去重结果。</p>
+<p>需要注意的是，结果数组中的元素顺序必须与其传入的顺序保持一致。</p>
+<p><code>uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1])</code>应该返回<code>[1, 3, 2, 5, 4]</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniteUnique</span>(<span class="params">...arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [...new <span class="built_in">Set</span>(arr.flat())]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">uniteUnique([<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>], [<span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>], [<span class="number">2</span>, <span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat">flat()用法</a></p>
+<h3 id="转换HTML"><a href="#转换HTML" class="headerlink" title="转换HTML"></a>转换HTML</h3><p>写一个转换 HTML entity 的函数。需要转换的 HTML entity 有<code>&amp;</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&quot;</code>（双引号）和<code>&#39;</code>（单引号）。转换的规则你可以在 <a href="https://dev.w3.org/html5/html-author/charref">W3C</a> 官网找到。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertHTML</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = str.split(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i&lt; arr.length; i++)&#123;</span><br><span class="line">        <span class="keyword">switch</span>(arr[i])&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;&lt;&quot;</span>:</span><br><span class="line">                arr[i] = <span class="string">&quot;&amp;lt;&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;&amp;&quot;</span>:</span><br><span class="line">                arr[i] = <span class="string">&quot;&amp;amp;&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;&gt;&quot;</span>:</span><br><span class="line">                arr[i] = <span class="string">&quot;&amp;gt;&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;&quot;&#x27;</span>:</span><br><span class="line">                arr[i] = <span class="string">&quot;&amp;quot;&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;&#x27;&quot;</span>:</span><br><span class="line">                arr[i] = <span class="string">&quot;&amp;apos;&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr.join(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(convertHTML(<span class="string">&quot;Dolce &amp; Gabbana&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="求斐波那契数列奇数和"><a href="#求斐波那契数列奇数和" class="headerlink" title="求斐波那契数列奇数和"></a>求斐波那契数列奇数和</h3><p>写一个函数，参数为一个正整数<code>num</code>。它的作用是计算斐波那契数列中，小于或等于<code>num</code>的奇数之和。</p>
+<p>斐波那契数列中，第一和第二个数字都是 1，后面的每个数字由之前两数相加得出。斐波那契数列的前六个数字分别为：1、1、2、3、5、8。</p>
+<p>比如，<code>sumFibs(10)</code>应该返回<code>10</code>。因为斐波那契数列中，比<code>10</code>小的数字只有 1、1、3、5。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumFibs</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> preNum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> curNum = <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span>(curNum &lt;= num)&#123;</span><br><span class="line">      <span class="keyword">if</span>(curNum % <span class="number">2</span> !== <span class="number">0</span>)&#123;</span><br><span class="line">          result += curNum</span><br><span class="line">      &#125;</span><br><span class="line">      curNum += preNum</span><br><span class="line">      preNum = curNum - preNum</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumFibs(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="对所有素数求和"><a href="#对所有素数求和" class="headerlink" title="对所有素数求和"></a>对所有素数求和</h3><p>写一个函数，它接收一个数字参数<code>num</code>，返回值为不大于这个数字的所有质数之和。</p>
+<p>质数是大于 1 且仅可以被 1 和自己整除的数。比如，2 就是一个质数，因为它只可以被 1 和 2（它本身）整除。</p>
+<p>注意，传入函数的<code>num</code>不一定是质数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumPrimes</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">2</span>; i &lt;= num; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">2</span>; j &lt;= <span class="built_in">Math</span>.sqrt(i); j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i % j === <span class="number">0</span>)&#123;</span><br><span class="line">                flag = <span class="number">1</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span>(flag === <span class="number">0</span>)&#123;</span><br><span class="line">            result += i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sumPrimes(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="最小公倍数"><a href="#最小公倍数" class="headerlink" title="最小公倍数"></a>最小公倍数</h3><p>写一个函数，它接收一个包含两个数字的数组参数<code>arr</code>，它的返回值为这两个数字范围内所有数字（包含这两个数字）的最小公倍数。</p>
+<p>注意，较小数不一定总是出现在数组的第一个元素。</p>
+<p>比如，传入<code>[1, 3]</code>，那么函数的返回结果应为 1、2、3 的最小公倍数，即为 6。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">smallestCommons</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">1</span></span><br><span class="line">    <span class="keyword">const</span> [min, max] = arr.sort(<span class="function">(<span class="params">a, b</span>)=&gt;</span>a - b)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = min; j &lt;= max; j++)&#123;</span><br><span class="line">        result *= j</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> geshu = max - min + <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=max; i &lt;= result; i+=<span class="number">5</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> shijigeshu = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> k=min; k &lt;= max; k++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i % k === <span class="number">0</span>)&#123;</span><br><span class="line">                shijigeshu++</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(shijigeshu === geshu)&#123;</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="built_in">console</span>.log(smallestCommons([<span class="number">1</span>,<span class="number">5</span>]));</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">container-fluid	 <span class="selector-tag">div</span>适应页面宽度</span><br><span class="line"><span class="selector-tag">img</span>-responsive   <span class="selector-tag">img</span>适应页面的宽度</span><br><span class="line">text-center      文本居中  例如：<span class="selector-tag">h2</span></span><br><span class="line">btn-block 		 <span class="selector-tag">button</span>成为块级元素独占一行</span><br><span class="line"><span class="selector-tag">form</span>-control 	 表单元素占满一行</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>web前端</category>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>FCC</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>函数式编程</title>
     <url>/2020/05/07/08%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>函数式编程是一种基于函数计算的软件开发方法。像数学一样，函数在编程中通过输入产生输出。你可以通过多种方式组合基本功能来构建越来越复杂的程序。</p>
@@ -628,107 +729,6 @@
       <tags>
         <tag>FCC</tag>
         <tag>编程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>fcc算法中级</title>
-    <url>/2021/03/17/10FCC%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7/</url>
-    <content><![CDATA[<h1 id="FCC算法中级"><a href="#FCC算法中级" class="headerlink" title="FCC算法中级"></a>FCC算法中级</h1><h3 id="范围内数字求和"><a href="#范围内数字求和" class="headerlink" title="范围内数字求和"></a>范围内数字求和</h3><p>给出一个含有两个数字的数组，我们需要写一个函数，让它返回这两个数字间所有数字（包含这两个数字）的总和。</p>
-<p>注意，较小数不一定总是出现在数组的第一个元素。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumAll</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sumBetween = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="built_in">Math</span>.min(...arr); i &lt;= <span class="built_in">Math</span>.max(...arr); i++) &#123;</span><br><span class="line">    sumBetween += i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sumBetween;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumAll([<span class="number">1</span>, <span class="number">4</span>]);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="区分两个数组"><a href="#区分两个数组" class="headerlink" title="区分两个数组"></a>区分两个数组</h3><p>写一个函数，比较两个数组，返回一个新的数组。这个新数组需要包含传入的两个数组所有元素中，仅在其中一个数组里出现的元素。如果某个元素同时出现在两个数组中，则不应包含在返回的数组里。换言之，我们需要返回这两个数组的对称差。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">diffArray</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = [];</span><br><span class="line">  <span class="comment">// 这是一个党异伐同的过程</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">secondInFirst</span>(<span class="params">first, second</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; second.length; i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(first.indexOf(second[i]) === -<span class="number">1</span>)&#123;</span><br><span class="line">        newArr.push(second[i])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  secondInFirst(arr1, arr2)</span><br><span class="line">  secondInFirst(arr2, arr1)</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">diffArray([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">diffArray</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 这是一个党异伐同的过程</span></span><br><span class="line">  <span class="keyword">return</span> arr1.concat(arr2).filter(<span class="function"><span class="params">item</span>=&gt;</span>arr1.indexOf(item)===-<span class="number">1</span> || arr2.indexOf(item)===-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">diffArray([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="瞄准和消灭"><a href="#瞄准和消灭" class="headerlink" title="瞄准和消灭"></a>瞄准和消灭</h3><p>传给它的第一个参数是数组，我们称他为初始数组。后续的参数数量是不确定的，可能有一个或多个。你需要做的是，从初始数组中移除所有与后续参数相等的元素，并返回移除元素后的数组。使用<code>...</code>，即“剩余参数”（Rest Parameters）语法</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">destroyer</span>(<span class="params">arr, ...arr2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 删掉那些值</span></span><br><span class="line">  <span class="keyword">return</span> arr.filter(<span class="function"><span class="params">item</span>=&gt;</span>!arr2.includes(item));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">destroyer([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="短线连接格式"><a href="#短线连接格式" class="headerlink" title="短线连接格式"></a>短线连接格式</h3><p>写一个函数，把一个字符串转换为“短线连接格式”。短线连接格式的意思是，所有字母都是小写，且用<code>-</code>连接。比如，对于<code>Hello World</code>，应该转换为<code>hello-world</code>；对于<code>I love_Javascript-VeryMuch</code>，应该转换为<code>i-love-javascript-very-much</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">spinalCase</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> str.split(<span class="regexp">/\s|_|(?=[A-Z])/</span>)</span><br><span class="line">    .join(<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">    .toLowerCase();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">spinalCase(<span class="string">&#x27;This Is Spinal Tap&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="儿童黑话"><a href="#儿童黑话" class="headerlink" title="儿童黑话"></a>儿童黑话</h3><p>写一个函数，把传入的字符串翻译成“儿童黑话”。</p>
-<p><a href="http://en.wikipedia.org/wiki/Pig_Latin">儿童黑话</a>的基本转换规则很简单，只需要把一个英文单词的第一个辅音字母或第一组辅音从移到单词的结尾，并在后面加上<code>ay</code>即可。在英语中，字母 a、e、i、o、u 为元音，其余的字母均为辅音。辅音从的意思是连续的多个辅音字母。</p>
-<p>额外地，如果单词本身是以元音开头的，那只需要在结尾加上<code>way</code>。</p>
-<p>在本题中，传入的单词一定会是英文单词，且所有字母均为小写。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">translatePigLatin</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> consonantRegex = <span class="regexp">/^[^aeiou]+/</span>;</span><br><span class="line">  <span class="keyword">let</span> myConsonants = str.match(consonantRegex);</span><br><span class="line">  <span class="keyword">return</span> myConsonants !== <span class="literal">null</span></span><br><span class="line">    ? str</span><br><span class="line">        .replace(consonantRegex, <span class="string">&quot;&quot;</span>)</span><br><span class="line">        .concat(myConsonants)</span><br><span class="line">        .concat(<span class="string">&quot;ay&quot;</span>)</span><br><span class="line">    : str.concat(<span class="string">&quot;way&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">translatePigLatin(<span class="string">&quot;consonant&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="搜索和替换"><a href="#搜索和替换" class="headerlink" title="搜索和替换"></a>搜索和替换</h3><p>在这道题目中，我们需要写一个字符串的搜索与替换函数，它的返回值为完成替换后的新字符串。</p>
-<p>这个函数接收的第一个参数为待替换的句子。</p>
-<p>第二个参数为句中需要被替换的单词。</p>
-<p>第三个参数为替换后的单词。</p>
-<p><strong>注意：</strong><br>你需要保留被替换单词首字母的大小写格式。即如果传入的第二个参数为 “Book”，第三个参数为 “dog”，那么替换后的结果应为 “Dog”</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">myReplace</span>(<span class="params">str, before, after</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(<span class="regexp">/^[A-Z]/</span>.test(before))&#123;</span><br><span class="line">         after = after[<span class="number">0</span>].toUpperCase() + after.substring(<span class="number">1</span>)</span><br><span class="line">     &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         after = after[<span class="number">0</span>].toLowerCase() + after.substring(<span class="number">1</span>)</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> str.replace(before, after)  <span class="comment">// 不会改变原字符串，会生成新的字符串</span></span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">var</span> strr = myReplace(<span class="string">&quot;A quick brown fox jumped over the lazy dog&quot;</span>, <span class="string">&quot;jumped&quot;</span>, <span class="string">&quot;leaped&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(strr)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="DNA-配对"><a href="#DNA-配对" class="headerlink" title="DNA 配对"></a>DNA 配对</h3><p>在这道题目中，我们需要写一个函数，为 DNA 中的碱基配对。这个函数只接收一个表示碱基的字符串为参数，最后返回完成配对的二维数组。</p>
-<p><a href="http://en.wikipedia.org/wiki/Base_pair">碱基对</a> 由一对碱基组成。碱基有四种，分别为 A（腺嘌呤）、T（胸腺嘧啶）、G（鸟嘌呤）和 C（胞嘧啶）。配对原则是：A 与 T 配对，C 与 G 配对。我们需要根据这个原则对传入的所有碱基进行配对。</p>
-<p>对于每个传入的碱基，我们应采用数组的形式展示配对结果。其中，传入的碱基需要作为数组的第一个元素出现。最终返回的数组中应当包含参数中每一个碱基的配对结果。</p>
-<p>比如，传入的参数是 GCG，那么函数的返回值应为 [[“G”, “C”], [“C”,”G”],[“G”, “C”]]</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pairElement</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = str.split(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">var</span> arr2 = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i ++)&#123;</span><br><span class="line">        <span class="keyword">switch</span>(arr[i])&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;A&#x27;</span>: </span><br><span class="line">                arr2.push([<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;T&#x27;</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;T&#x27;</span>: </span><br><span class="line">                arr2.push([<span class="string">&#x27;T&#x27;</span>,<span class="string">&#x27;A&#x27;</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;G&#x27;</span>: </span><br><span class="line">                arr2.push([<span class="string">&#x27;G&#x27;</span>,<span class="string">&#x27;C&#x27;</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;C&#x27;</span>: </span><br><span class="line">                arr2.push([<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;G&#x27;</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr3 = pairElement(<span class="string">&quot;GCG&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr3)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="丢失的字母"><a href="#丢失的字母" class="headerlink" title="丢失的字母"></a>丢失的字母</h3><p>写一个函数，找到传入的字符串里缺失的字母并返回它。</p>
-<p>判断缺失的依据是字母顺序，比如 abcdfg 中缺失了 e。而 abcdef 中就没有字母缺失，此时我们需要返回<code>undefined</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fearNotLetter</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> num = str[<span class="number">0</span>].charCodeAt()</span><br><span class="line">  <span class="keyword">var</span> flag</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,j=<span class="number">1</span>; i &lt; str.length-<span class="number">1</span>; i++, j++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(str[i].charCodeAt() + <span class="number">1</span> == str[j].charCodeAt())&#123;</span><br><span class="line">          </span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          flag = <span class="built_in">String</span>.fromCharCode(str[i].charCodeAt() + <span class="number">1</span>)</span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> flag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fearNotLetter(<span class="string">&quot;abce&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="集合排序"><a href="#集合排序" class="headerlink" title="集合排序"></a>集合排序</h3><p>写一个函数，它接收两个或多个数组为参数。我们需要对这些数组中所有元素进行去除重复元素的处理，并以数组的形式返回去重结果。</p>
-<p>需要注意的是，结果数组中的元素顺序必须与其传入的顺序保持一致。</p>
-<p><code>uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1])</code>应该返回<code>[1, 3, 2, 5, 4]</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniteUnique</span>(<span class="params">...arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [...new <span class="built_in">Set</span>(arr.flat())]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">uniteUnique([<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>], [<span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>], [<span class="number">2</span>, <span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat">flat()用法</a></p>
-<h3 id="转换HTML"><a href="#转换HTML" class="headerlink" title="转换HTML"></a>转换HTML</h3><p>写一个转换 HTML entity 的函数。需要转换的 HTML entity 有<code>&amp;</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&quot;</code>（双引号）和<code>&#39;</code>（单引号）。转换的规则你可以在 <a href="https://dev.w3.org/html5/html-author/charref">W3C</a> 官网找到。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertHTML</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = str.split(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i&lt; arr.length; i++)&#123;</span><br><span class="line">        <span class="keyword">switch</span>(arr[i])&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;&lt;&quot;</span>:</span><br><span class="line">                arr[i] = <span class="string">&quot;&amp;lt;&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;&amp;&quot;</span>:</span><br><span class="line">                arr[i] = <span class="string">&quot;&amp;amp;&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;&gt;&quot;</span>:</span><br><span class="line">                arr[i] = <span class="string">&quot;&amp;gt;&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;&quot;&#x27;</span>:</span><br><span class="line">                arr[i] = <span class="string">&quot;&amp;quot;&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;&#x27;&quot;</span>:</span><br><span class="line">                arr[i] = <span class="string">&quot;&amp;apos;&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr.join(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(convertHTML(<span class="string">&quot;Dolce &amp; Gabbana&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="求斐波那契数列奇数和"><a href="#求斐波那契数列奇数和" class="headerlink" title="求斐波那契数列奇数和"></a>求斐波那契数列奇数和</h3><p>写一个函数，参数为一个正整数<code>num</code>。它的作用是计算斐波那契数列中，小于或等于<code>num</code>的奇数之和。</p>
-<p>斐波那契数列中，第一和第二个数字都是 1，后面的每个数字由之前两数相加得出。斐波那契数列的前六个数字分别为：1、1、2、3、5、8。</p>
-<p>比如，<code>sumFibs(10)</code>应该返回<code>10</code>。因为斐波那契数列中，比<code>10</code>小的数字只有 1、1、3、5。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumFibs</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> preNum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> curNum = <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span>(curNum &lt;= num)&#123;</span><br><span class="line">      <span class="keyword">if</span>(curNum % <span class="number">2</span> !== <span class="number">0</span>)&#123;</span><br><span class="line">          result += curNum</span><br><span class="line">      &#125;</span><br><span class="line">      curNum += preNum</span><br><span class="line">      preNum = curNum - preNum</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumFibs(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="对所有素数求和"><a href="#对所有素数求和" class="headerlink" title="对所有素数求和"></a>对所有素数求和</h3><p>写一个函数，它接收一个数字参数<code>num</code>，返回值为不大于这个数字的所有质数之和。</p>
-<p>质数是大于 1 且仅可以被 1 和自己整除的数。比如，2 就是一个质数，因为它只可以被 1 和 2（它本身）整除。</p>
-<p>注意，传入函数的<code>num</code>不一定是质数。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumPrimes</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">2</span>; i &lt;= num; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">2</span>; j &lt;= <span class="built_in">Math</span>.sqrt(i); j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i % j === <span class="number">0</span>)&#123;</span><br><span class="line">                flag = <span class="number">1</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span>(flag === <span class="number">0</span>)&#123;</span><br><span class="line">            result += i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sumPrimes(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="最小公倍数"><a href="#最小公倍数" class="headerlink" title="最小公倍数"></a>最小公倍数</h3><p>写一个函数，它接收一个包含两个数字的数组参数<code>arr</code>，它的返回值为这两个数字范围内所有数字（包含这两个数字）的最小公倍数。</p>
-<p>注意，较小数不一定总是出现在数组的第一个元素。</p>
-<p>比如，传入<code>[1, 3]</code>，那么函数的返回结果应为 1、2、3 的最小公倍数，即为 6。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">smallestCommons</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">1</span></span><br><span class="line">    <span class="keyword">const</span> [min, max] = arr.sort(<span class="function">(<span class="params">a, b</span>)=&gt;</span>a - b)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = min; j &lt;= max; j++)&#123;</span><br><span class="line">        result *= j</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> geshu = max - min + <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=max; i &lt;= result; i+=<span class="number">5</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> shijigeshu = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> k=min; k &lt;= max; k++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i % k === <span class="number">0</span>)&#123;</span><br><span class="line">                shijigeshu++</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(shijigeshu === geshu)&#123;</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="built_in">console</span>.log(smallestCommons([<span class="number">1</span>,<span class="number">5</span>]));</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">container-fluid	 <span class="selector-tag">div</span>适应页面宽度</span><br><span class="line"><span class="selector-tag">img</span>-responsive   <span class="selector-tag">img</span>适应页面的宽度</span><br><span class="line">text-center      文本居中  例如：<span class="selector-tag">h2</span></span><br><span class="line">btn-block 		 <span class="selector-tag">button</span>成为块级元素独占一行</span><br><span class="line"><span class="selector-tag">form</span>-control 	 表单元素占满一行</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>web前端</category>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>FCC</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1312,84 +1312,6 @@
       </tags>
   </entry>
   <entry>
-    <title>服务器开发基础</title>
-    <url>/2020/05/17/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h1 id="服务端开发基础"><a href="#服务端开发基础" class="headerlink" title="服务端开发基础"></a>服务端开发基础</h1><p>​    至此，可以独立完成网页开发了，具体能完成的东西就是一个一个的网页，而且还能给这个页面加上一些动态的交互。但是这距离成为一个网站还有一些路要走。</p>
-<h3 id="还需要学习什么？"><a href="#还需要学习什么？" class="headerlink" title="还需要学习什么？"></a>还需要学习什么？</h3><ul>
-<li>搭建WEB服务器（提供网站服务的技术）</li>
-<li>HTTP（浏览器与服务端的通讯协议）</li>
-<li>服务端开发（动态网页技术）</li>
-<li>数据库操作（服务端存储数据方式）</li>
-<li>Ajax(浏览器与服务端的数据交互方式)</li>
-</ul>
-<h3 id="搭建服务器"><a href="#搭建服务器" class="headerlink" title="搭建服务器"></a>搭建服务器</h3><p>我们手头上的这些网页，如果想要成为一个网站，首先要完成的第一件事就是有一台公共的 Web 服务器，把这一 系列的页面放到这台 Web 服务器上，让用户可以通过服务器的地址访问到这些网页。</p>
-<p>我们手头上的电脑都可以是一台服务器，因为只要能提供服务就可以是一个服务器（提供服务的时候就是服务端，使用服务的时候就是客户端）。 </p>
-<p>既然服务器就是安装特定的软件的计算机，那么要让自己的成为 Web 服务器就是要安装一个 Web 服务器软件。</p>
-<p>我这里选择介绍的是 <strong>APACHE ====== PHP</strong></p>
-<p>搭建服务器的流程按照教程就能成功搭建。</p>
-<h3 id="需要掌握的知识"><a href="#需要掌握的知识" class="headerlink" title="需要掌握的知识"></a>需要掌握的知识</h3><ul>
-<li><p>IP 地址（Internet Protocol Address）</p>
-<ul>
-<li>设备在某一个网络中的地址，目前最常见的格式：[0-255].[0-255].[0-255].[0-255] 即为四个 0-255 的数字组成。 </li>
-<li>作用就是标识一个网络设备（计算机、手机、电视）在某一个具体的网络当中的地址。</li>
-<li>127.0.0.1 是本地回环地址。</li>
-</ul>
-</li>
-<li><p>由于 IP 地址都是没有规律的一些数字组成的，很难被人记住，不利于广泛传播，所以就有人想出来要给 IP 起名字 （别名）。 </p>
-<p>记住域名是需要花钱注册的 。</p>
-</li>
-<li><p>DNS</p>
-<ul>
-<li>通过宽带运营商提供的服务器解析一个域名背后对应的 IP，这个过程叫做 DNS 寻址，帮你完成 DNS 寻址过程的服务器叫做 DNS 服务器。</li>
-<li>hosts文件：先检查本机hosts文件是否包含对当前需要解析的域名的配置。如果有就不会再发起对DNS的请求了</li>
-</ul>
-</li>
-<li><p>端口</p>
-<ul>
-<li><p>计算机本身是一个封闭的环境，就像是一个大楼，如果需要有数据通信往来，必须有门，这个门在术语中就叫端口，每一个端口都有一个编号，每台计算机只有 65536 个端口（0-65535）。 </p>
-</li>
-<li><p>一般我们把“占门”的过程叫做监听 。</p>
-</li>
-<li><p>可以通过在命令行中运行： netstat -an 命令监视本机端口使用情况</p>
-<p>http 默认的端口是 80</p>
-<p>https 默认的端口是 443</p>
-</li>
-</ul>
-</li>
-<li><p>URL</p>
-<ul>
-<li>URL（Uniform Resource Locator），统一资源定位符，通俗点来说就是表示网络当中某一个网页的完整访问地址，它具有一定的格式</li>
-</ul>
-</li>
-</ul>
-<h3 id="请求相应流程"><a href="#请求相应流程" class="headerlink" title="请求相应流程"></a>请求相应流程</h3><p><img src="/images/%E6%9C%8D%E5%8A%A1%E7%AB%AF1.png" alt="image-20200517083919143"></p>
-<p>1、用户打开浏览器 </p>
-<p>2、地址栏输入我们需要访问的网站网址（URL） </p>
-<p>3、浏览器通过 DNS 服务器获取即将访问的网站 IP 地址</p>
-<p>4、 浏览器发起一个对这个 IP 的请求 </p>
-<p>5、服务端接收到这个请求，进行相应的处理 </p>
-<p>6、 服务端将处理完的结果返回给客户端浏览器 </p>
-<p>7、浏览器将服务端返回的结果呈现到界面上 </p>
-<h3 id="配置APACHE"><a href="#配置APACHE" class="headerlink" title="配置APACHE"></a>配置APACHE</h3><ul>
-<li>设置监听端口</li>
-<li>设置网站根目录</li>
-<li>设置默认文档</li>
-<li>设置虚拟主机</li>
-</ul>
-<h3 id="静态网站和动态网站"><a href="#静态网站和动态网站" class="headerlink" title="静态网站和动态网站"></a>静态网站和动态网站</h3><p>​    至此，我们已经可以把这些静态页面放到服务器上了，客户端也可以通过域名请求这个网站，但是对于我们来说， Apache 能够完成的事情过于简单，无外乎就是找到你请求对应的文件 → 读取文件 → 将文件内容响应给客户端浏览器（文件原封不动的给你）。无法满足让网页内容动起来（随着数据动态变化）的需求。 </p>
-<p>​    于是乎，就有人提出了服务端动态网页的概念，这种实现这种概念的技术有很多种：JSP、ASP.NET、PHP、Node等等。 </p>
-<p>​    原理：不再将 HTML 固定写死，每次用户请求时，动态执行一段代码，临时生成一个用户想要的 HTML 页面。 </p>
-<p>动态网站指的也就是每次请求时服务端动态生成 HTML 返回给用户的这种网站下图为流程：</p>
-<p><img src="/images/%E6%9C%8D%E5%8A%A1%E7%AB%AF2.png" alt="image-20200517090326530"></p>
-]]></content>
-      <categories>
-        <category>服务端</category>
-      </categories>
-      <tags>
-        <tag>服务端笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>接触php</title>
     <url>/2020/05/17/%E6%8E%A5%E8%A7%A6php/</url>
     <content><![CDATA[<h1 id="配置-PHP-支持"><a href="#配置-PHP-支持" class="headerlink" title="配置 PHP 支持"></a>配置 PHP 支持</h1><p>Apache 只能处理静态文件请求，对于后缀名为 .php 这种动态文件，它无法执行，所以就当成是一 个静态文件直接返回。</p>
@@ -1523,6 +1445,84 @@ define(<span class="string">'SYSTEM_ENABLE'</span>, <span class="keyword">true</
       <tags>
         <tag>服务端笔记</tag>
         <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>服务器开发基础</title>
+    <url>/2020/05/17/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="服务端开发基础"><a href="#服务端开发基础" class="headerlink" title="服务端开发基础"></a>服务端开发基础</h1><p>​    至此，可以独立完成网页开发了，具体能完成的东西就是一个一个的网页，而且还能给这个页面加上一些动态的交互。但是这距离成为一个网站还有一些路要走。</p>
+<h3 id="还需要学习什么？"><a href="#还需要学习什么？" class="headerlink" title="还需要学习什么？"></a>还需要学习什么？</h3><ul>
+<li>搭建WEB服务器（提供网站服务的技术）</li>
+<li>HTTP（浏览器与服务端的通讯协议）</li>
+<li>服务端开发（动态网页技术）</li>
+<li>数据库操作（服务端存储数据方式）</li>
+<li>Ajax(浏览器与服务端的数据交互方式)</li>
+</ul>
+<h3 id="搭建服务器"><a href="#搭建服务器" class="headerlink" title="搭建服务器"></a>搭建服务器</h3><p>我们手头上的这些网页，如果想要成为一个网站，首先要完成的第一件事就是有一台公共的 Web 服务器，把这一 系列的页面放到这台 Web 服务器上，让用户可以通过服务器的地址访问到这些网页。</p>
+<p>我们手头上的电脑都可以是一台服务器，因为只要能提供服务就可以是一个服务器（提供服务的时候就是服务端，使用服务的时候就是客户端）。 </p>
+<p>既然服务器就是安装特定的软件的计算机，那么要让自己的成为 Web 服务器就是要安装一个 Web 服务器软件。</p>
+<p>我这里选择介绍的是 <strong>APACHE ====== PHP</strong></p>
+<p>搭建服务器的流程按照教程就能成功搭建。</p>
+<h3 id="需要掌握的知识"><a href="#需要掌握的知识" class="headerlink" title="需要掌握的知识"></a>需要掌握的知识</h3><ul>
+<li><p>IP 地址（Internet Protocol Address）</p>
+<ul>
+<li>设备在某一个网络中的地址，目前最常见的格式：[0-255].[0-255].[0-255].[0-255] 即为四个 0-255 的数字组成。 </li>
+<li>作用就是标识一个网络设备（计算机、手机、电视）在某一个具体的网络当中的地址。</li>
+<li>127.0.0.1 是本地回环地址。</li>
+</ul>
+</li>
+<li><p>由于 IP 地址都是没有规律的一些数字组成的，很难被人记住，不利于广泛传播，所以就有人想出来要给 IP 起名字 （别名）。 </p>
+<p>记住域名是需要花钱注册的 。</p>
+</li>
+<li><p>DNS</p>
+<ul>
+<li>通过宽带运营商提供的服务器解析一个域名背后对应的 IP，这个过程叫做 DNS 寻址，帮你完成 DNS 寻址过程的服务器叫做 DNS 服务器。</li>
+<li>hosts文件：先检查本机hosts文件是否包含对当前需要解析的域名的配置。如果有就不会再发起对DNS的请求了</li>
+</ul>
+</li>
+<li><p>端口</p>
+<ul>
+<li><p>计算机本身是一个封闭的环境，就像是一个大楼，如果需要有数据通信往来，必须有门，这个门在术语中就叫端口，每一个端口都有一个编号，每台计算机只有 65536 个端口（0-65535）。 </p>
+</li>
+<li><p>一般我们把“占门”的过程叫做监听 。</p>
+</li>
+<li><p>可以通过在命令行中运行： netstat -an 命令监视本机端口使用情况</p>
+<p>http 默认的端口是 80</p>
+<p>https 默认的端口是 443</p>
+</li>
+</ul>
+</li>
+<li><p>URL</p>
+<ul>
+<li>URL（Uniform Resource Locator），统一资源定位符，通俗点来说就是表示网络当中某一个网页的完整访问地址，它具有一定的格式</li>
+</ul>
+</li>
+</ul>
+<h3 id="请求相应流程"><a href="#请求相应流程" class="headerlink" title="请求相应流程"></a>请求相应流程</h3><p><img src="/images/%E6%9C%8D%E5%8A%A1%E7%AB%AF1.png" alt="image-20200517083919143"></p>
+<p>1、用户打开浏览器 </p>
+<p>2、地址栏输入我们需要访问的网站网址（URL） </p>
+<p>3、浏览器通过 DNS 服务器获取即将访问的网站 IP 地址</p>
+<p>4、 浏览器发起一个对这个 IP 的请求 </p>
+<p>5、服务端接收到这个请求，进行相应的处理 </p>
+<p>6、 服务端将处理完的结果返回给客户端浏览器 </p>
+<p>7、浏览器将服务端返回的结果呈现到界面上 </p>
+<h3 id="配置APACHE"><a href="#配置APACHE" class="headerlink" title="配置APACHE"></a>配置APACHE</h3><ul>
+<li>设置监听端口</li>
+<li>设置网站根目录</li>
+<li>设置默认文档</li>
+<li>设置虚拟主机</li>
+</ul>
+<h3 id="静态网站和动态网站"><a href="#静态网站和动态网站" class="headerlink" title="静态网站和动态网站"></a>静态网站和动态网站</h3><p>​    至此，我们已经可以把这些静态页面放到服务器上了，客户端也可以通过域名请求这个网站，但是对于我们来说， Apache 能够完成的事情过于简单，无外乎就是找到你请求对应的文件 → 读取文件 → 将文件内容响应给客户端浏览器（文件原封不动的给你）。无法满足让网页内容动起来（随着数据动态变化）的需求。 </p>
+<p>​    于是乎，就有人提出了服务端动态网页的概念，这种实现这种概念的技术有很多种：JSP、ASP.NET、PHP、Node等等。 </p>
+<p>​    原理：不再将 HTML 固定写死，每次用户请求时，动态执行一段代码，临时生成一个用户想要的 HTML 页面。 </p>
+<p>动态网站指的也就是每次请求时服务端动态生成 HTML 返回给用户的这种网站下图为流程：</p>
+<p><img src="/images/%E6%9C%8D%E5%8A%A1%E7%AB%AF2.png" alt="image-20200517090326530"></p>
+]]></content>
+      <categories>
+        <category>服务端</category>
+      </categories>
+      <tags>
+        <tag>服务端笔记</tag>
       </tags>
   </entry>
   <entry>

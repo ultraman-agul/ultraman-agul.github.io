@@ -1,37 +1,880 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/agul.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/agul.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/agul.png?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="服务端笔记,Node," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Agul'blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Node.js 基础1.1 为什么学习Node.js ？ 最简单最直接的一点，岗位需要这种技能 能够和后端程序员更加紧密的配合 网站业务逻辑前置，学习前端技术需要后端技术支撑 扩宽知识视野，能够站在更高的角度审视整个项目  1.2 服务器端需要做的事 实现网站的业务逻辑 实现数据的增删改查  1.3 Node的好处 使用JavaScript语法开发后端应用  一些公司要求前端工程师掌握Node开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js 基础">
+<meta property="og:url" content="https://ultraman-agul.github.io/2020/05/18/Node%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Agul&#39;blog">
+<meta property="og:description" content="Node.js 基础1.1 为什么学习Node.js ？ 最简单最直接的一点，岗位需要这种技能 能够和后端程序员更加紧密的配合 网站业务逻辑前置，学习前端技术需要后端技术支撑 扩宽知识视野，能够站在更高的角度审视整个项目  1.2 服务器端需要做的事 实现网站的业务逻辑 实现数据的增删改查  1.3 Node的好处 使用JavaScript语法开发后端应用  一些公司要求前端工程师掌握Node开发">
+<meta property="og:locale">
+<meta property="og:image" content="https://ultraman-agul.github.io/images/node1.PNG">
+<meta property="og:image" content="https://ultraman-agul.github.io/images/node%E6%A8%A1%E5%9D%97%E5%8C%96.PNG">
+<meta property="article:published_time" content="2020-05-18T10:49:58.392Z">
+<meta property="article:modified_time" content="2020-05-21T04:42:14.126Z">
+<meta property="article:author" content="agul">
+<meta property="article:tag" content="服务端笔记">
+<meta property="article:tag" content="Node">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ultraman-agul.github.io/images/node1.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ultraman-agul.github.io/2020/05/18/Node基础/"/>
+
+
+
+
+
+  <title>Node.js 基础 | Agul'blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Agul'blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Record a good life</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ultraman-agul.github.io/2020/05/18/Node%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/agul1.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Agul'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Node.js 基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-18T18:49:58+08:00">
+                2020-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">服务端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Node-js-基础"><a href="#Node-js-基础" class="headerlink" title="Node.js 基础"></a>Node.js 基础</h1><h4 id="1-1-为什么学习Node-js-？"><a href="#1-1-为什么学习Node-js-？" class="headerlink" title="1.1 为什么学习Node.js ？"></a>1.1 为什么学习Node.js ？</h4><ul>
+<li>最简单最直接的一点，岗位需要这种技能</li>
+<li>能够和后端程序员更加紧密的配合</li>
+<li>网站业务逻辑前置，学习前端技术需要后端技术支撑</li>
+<li>扩宽知识视野，能够站在更高的角度审视整个项目</li>
+</ul>
+<h4 id="1-2-服务器端需要做的事"><a href="#1-2-服务器端需要做的事" class="headerlink" title="1.2 服务器端需要做的事"></a>1.2 服务器端需要做的事</h4><ul>
+<li>实现网站的业务逻辑</li>
+<li>实现数据的增删改查</li>
+</ul>
+<h4 id="1-3-Node的好处"><a href="#1-3-Node的好处" class="headerlink" title="1.3 Node的好处"></a>1.3 Node的好处</h4><ul>
+<li><p>使用JavaScript语法开发后端应用</p>
+</li>
+<li><p>一些公司要求前端工程师掌握Node开发</p>
+</li>
+<li><p>生态系统活跃，有大量开源库可以使用</p>
+</li>
+<li><p>前端开发工具大多基于Node开发</p>
+</li>
+</ul>
+<h4 id="1-4-Node是什么？"><a href="#1-4-Node是什么？" class="headerlink" title="1.4 Node是什么？"></a>1.4 Node是什么？</h4><blockquote>
+<p> <strong>Node是一个基于Chrome V8引擎的JavaScript代码运行环境。</strong></p>
+</blockquote>
+<h3 id="2-Node下载安装"><a href="#2-Node下载安装" class="headerlink" title="2. Node下载安装"></a>2. Node下载安装</h3><ol>
+<li><p>官网下载：<a target="_blank" rel="noopener" href="https://nodejs.org/en/">链接</a></p>
+</li>
+<li><p>将Node安装目录添加到环境变量中</p>
+</li>
+</ol>
+<h3 id="3-Node基础"><a href="#3-Node基础" class="headerlink" title="3. Node基础"></a>3. Node基础</h3><p>在Node环境下执行代码，使用Node命令执行后缀为.js的文件即可</p>
+<p><img src="/images/node1.PNG" alt=""></p>
+<h4 id="3-1-Node-js全局对象global"><a href="#3-1-Node-js全局对象global" class="headerlink" title="3.1 Node.js全局对象global"></a>3.1 Node.js全局对象global</h4><p>在浏览器中全局对象是window，在Node中全局对象是global。与js的全局对象名字作用一致</p>
+<ul>
+<li>console.log()      在控制台中输出</li>
+<li>setTimeout()      设置超时定时器</li>
+<li>clearTimeout()   清除超时时定时器</li>
+<li>setInterval()       设置间歇定时器</li>
+<li>clearInterval()    清除间歇定时器</li>
+</ul>
+<h3 id="4-Node-js-的模块化开发"><a href="#4-Node-js-的模块化开发" class="headerlink" title="4. Node.js 的模块化开发"></a>4. Node.js 的模块化开发</h3><h4 id="4-1-JavaScript-开发弊端"><a href="#4-1-JavaScript-开发弊端" class="headerlink" title="4.1 JavaScript 开发弊端"></a>4.1 JavaScript 开发弊端</h4><p>JavaScript在使用时存在两大问题，<strong>文件依赖</strong>和<strong>命名冲突</strong>。</p>
+<h4 id="4-2-软件中的模块化开发"><a href="#4-2-软件中的模块化开发" class="headerlink" title="4.2 软件中的模块化开发"></a>4.2 软件中的模块化开发</h4><p>一个功能就是一个模块，多个模块可以组成完整应用，抽离一个模块不会影响其他功能的运行。</p>
+<p><img src="/images/node%E6%A8%A1%E5%9D%97%E5%8C%96.PNG" alt="">))</p>
+<h4 id="4-3-Node-js的模块化开发"><a href="#4-3-Node-js的模块化开发" class="headerlink" title="4.3 Node.js的模块化开发"></a>4.3 Node.js的模块化开发</h4><ul>
+<li>Node.js规定，一个js文件就是一个模块，模块内部的函数、变量默认情况下在外部是无法得到的，被隔离的。</li>
+<li>模块内部可以使用<strong>exports</strong>对象导出成员，使用<strong>require</strong> 导入其他模块。</li>
+</ul>
+<p>模块成员导出：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a.js</span></span><br><span class="line"> <span class="comment">// 在模块内部定义变量</span></span><br><span class="line"><span class="keyword">let</span> version = <span class="number">1.0</span>;</span><br><span class="line"><span class="comment">// 在模块内部定义方法</span></span><br><span class="line"><span class="keyword">const</span> sayHi = <span class="function"><span class="params">name</span> =&gt;</span> <span class="string">`您好, <span class="subst">$&#123;name&#125;</span>`</span>;</span><br><span class="line"><span class="comment">// 向模块外部导出数据 </span></span><br><span class="line"><span class="built_in">exports</span>.version = version;</span><br><span class="line"><span class="built_in">exports</span>.sayHi = sayHi;</span><br></pre></td></tr></table></figure>
+
+<p>模块成员导入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// b.js</span></span><br><span class="line"> <span class="comment">// 在b.js模块中导入模块a</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="built_in">require</span>(<span class="string">&#x27;./b.js&#x27;</span>);</span><br><span class="line"> <span class="comment">// 输出b模块中的version变量</span></span><br><span class="line"><span class="built_in">console</span>.log(a.version);</span><br><span class="line"> <span class="comment">// 调用b模块中的sayHi方法 并输出其返回值</span></span><br><span class="line"><span class="built_in">console</span>.log(a.sayHi(<span class="string">&#x27;大兄弟&#x27;</span>)); </span><br></pre></td></tr></table></figure>
+
+<p>其中，导入模块时，后缀名可以省略 （省略.js）</p>
+<h4 id="4-4模块成员的另一种导出方式"><a href="#4-4模块成员的另一种导出方式" class="headerlink" title="4.4模块成员的另一种导出方式"></a>4.4模块成员的另一种导出方式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports.version = version;</span><br><span class="line"><span class="built_in">module</span>.exports.sayHi = sayHi;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>exports是module.exports的别名(地址引用关系)，导出对象最终以module.exports为准,module.exports才是老大哥了。</p>
+</blockquote>
+<h3 id="5-系统模块"><a href="#5-系统模块" class="headerlink" title="5. 系统模块"></a>5. 系统模块</h3><p>Node运行环境提供的API. 因为这些API都是以模块化的方式进行开发的, 所以称Node运行环境提供的API为系统模块</p>
+<h4 id="5-1-系统模块fs-文件操作"><a href="#5-1-系统模块fs-文件操作" class="headerlink" title="5.1 系统模块fs 文件操作"></a>5.1 系统模块fs 文件操作</h4><p>读取内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导入系统模块</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"><span class="comment">//读取文件</span></span><br><span class="line">fs.readFile(<span class="string">&#x27;文件路径/名称&#x27;</span>编码类型<span class="string">&#x27;],callback)</span></span><br></pre></td></tr></table></figure>
+
+<p>写入内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//需要写入的内容</span></span><br><span class="line"><span class="keyword">const</span> content = <span class="string">&#x27;我是内容，要写入&#x27;</span></span><br><span class="line">fs.writeFile(<span class="string">&#x27;文件路径&#x27;</span>,content,<span class="function"><span class="params">error</span>=&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(err!=<span class="literal">null</span>)	</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(err);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;写入成功&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-2-路径操作path"><a href="#5-2-路径操作path" class="headerlink" title="5.2 路径操作path"></a>5.2 路径操作path</h4><p>路径拼接：从url解析出来的路径不一定是服务器中实际上的物理路径，这里往往需要进行路径拼接才能得到实际地址，获取正确的内容。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="comment">//获取当前文件所在的物理路径</span></span><br><span class="line"><span class="built_in">console</span>.log(__dirname);</span><br><span class="line"><span class="keyword">let</span> realPath = path.join(__dirname,<span class="string">&#x27;fsRead.js&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在读取文件或者设置文件路径时都会选择绝对路径，因为相对路径有时候相对的是命令行工具的当前工作目录</p>
+</blockquote>
+<h3 id="6-第三方模块"><a href="#6-第三方模块" class="headerlink" title="6. 第三方模块"></a>6. 第三方模块</h3><p>别人写好的、具有特定f功能的、我们能直接使用的模块即第三方模块，又名包。</p>
+<p>第三方模块的两种存在方式：</p>
+<ul>
+<li>以js文件的形式存在，提供实现项目具体功能的API接口。</li>
+<li>以命令行工具形式存在，辅助项目开发</li>
+</ul>
+<p><code>npmjs.com</code>：第三方模块的存储和分发仓库</p>
+<h4 id="6-1-获取第三方模块"><a href="#6-1-获取第三方模块" class="headerlink" title="6.1 获取第三方模块"></a>6.1 获取第三方模块</h4><p><code>npm (node package manager)</code>： node的第三方模块管理工具</p>
+<p>安装：<code>npm install 模块名</code></p>
+<p>卸载：<code>npm uninstall 模块名</code></p>
+<p>全局安装和本地安装：</p>
+<ul>
+<li>命令行工具：全局安装  后面加 <code>-g</code></li>
+<li>库文件：本地安装</li>
+</ul>
+<h4 id="6-2-Gulp模块"><a href="#6-2-Gulp模块" class="headerlink" title="6.2 Gulp模块"></a>6.2 Gulp模块</h4><p>它是基于node平台开发的前端构建工具</p>
+<p>它可以：</p>
+<ul>
+<li>项目上线，HTML、CSS、JS文件压缩合并</li>
+<li>语法转换（es6、less …）</li>
+<li>公共文件抽离</li>
+<li>修改文件浏览器自动刷新</li>
+</ul>
+<h6 id="gulp的使用"><a href="#gulp的使用" class="headerlink" title="gulp的使用"></a>gulp的使用</h6><ul>
+<li>使用<code>npm install gulp</code>下载gulp库文件</li>
+<li>在项目根目录下建立<code>gulpfile.js</code>文件</li>
+<li>重构项目的文件夹结构 <code>src</code>目录放置源代码文件，<code>dist</code>目录放置构建后的文件</li>
+<li>在<code>gulpfile.js</code>文件中编写任务</li>
+<li>在命令行工具中执行gulp任务</li>
+</ul>
+<p>gulp插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gulp-htmlmin ：html文件压缩</span><br><span class="line">gulp-csso ：压缩css</span><br><span class="line">gulp-babel ：JavaScript语法转化</span><br><span class="line">gulp-less: less语法转化</span><br><span class="line">gulp-uglify ：压缩混淆JavaScript</span><br><span class="line">gulp-file-include 公共文件包含</span><br><span class="line">browsersync 浏览器实时同步</span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入gulp模块</span></span><br><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">&#x27;gulp&#x27;</span>);</span><br><span class="line"><span class="comment">//引入htmlmin模块</span></span><br><span class="line"><span class="keyword">const</span> htmlmin = <span class="built_in">require</span>(<span class="string">&#x27;gulp-htmlmin&#x27;</span>);</span><br><span class="line"><span class="comment">//引入fileinclude模块,用于抽离公共部分的代码</span></span><br><span class="line"><span class="keyword">const</span> fileinclude = <span class="built_in">require</span>(<span class="string">&#x27;gulp-file-include&#x27;</span>);</span><br><span class="line"><span class="comment">//引入less文件转换成css文件的模块gulp-less</span></span><br><span class="line"><span class="keyword">const</span> less = <span class="built_in">require</span>(<span class="string">&#x27;gulp-less&#x27;</span>);</span><br><span class="line"><span class="comment">//引入压缩css文件的模块gulp-csso</span></span><br><span class="line"><span class="keyword">const</span> csso = <span class="built_in">require</span>(<span class="string">&#x27;gulp-csso&#x27;</span>);</span><br><span class="line"><span class="comment">//引入转换js文件的模块gulp-babel</span></span><br><span class="line"><span class="keyword">const</span> babel = <span class="built_in">require</span>(<span class="string">&#x27;gulp-babel&#x27;</span>);</span><br><span class="line"><span class="comment">//引入压缩js文件的模块gulp-uglify</span></span><br><span class="line"><span class="keyword">const</span> uglify = <span class="built_in">require</span>(<span class="string">&#x27;gulp-uglify&#x27;</span>);</span><br><span class="line"><span class="comment">//gulp使用方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//gulp.task 新建任务</span></span><br><span class="line"><span class="comment">//任务名   函数</span></span><br><span class="line">gulp.task(<span class="string">&#x27;first&#x27;</span>,<span class="function"><span class="params">done</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello,gulp&quot;</span>);</span><br><span class="line">    gulp.src(<span class="string">&#x27;./src/css/base.css&#x27;</span>)</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./dist/css&#x27;</span>));</span><br><span class="line">    done();<span class="comment">//告诉gulp已经完成了</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//html任务 1.将html代码压缩，2、将html中的公共代码抽离</span></span><br><span class="line">gulp.task(<span class="string">&#x27;htmlmin&#x27;</span>,<span class="function"><span class="params">done</span>=&gt;</span>&#123;</span><br><span class="line">    gulp.src(<span class="string">&#x27;./src/*.html&#x27;</span>)</span><br><span class="line">        .pipe(fileinclude()) <span class="comment">//文件导入include</span></span><br><span class="line">        .pipe(htmlmin(&#123; <span class="attr">collapseWhitespace</span>: <span class="literal">true</span> &#125;))<span class="comment">//压缩代码</span></span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./dist/&#x27;</span>));</span><br><span class="line">        done();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//css任务： 1、将less文件转换成css文件 2、将css文件压缩</span></span><br><span class="line">gulp.task(<span class="string">&#x27;cssmin&#x27;</span>,<span class="function"><span class="params">done</span>=&gt;</span>&#123;</span><br><span class="line">    gulp.src([<span class="string">&#x27;./src/css/*.less&#x27;</span>,<span class="string">&#x27;./src/css/*.css&#x27;</span>])</span><br><span class="line">        .pipe(less())<span class="comment">//less转换成css          </span></span><br><span class="line">        .pipe(csso())<span class="comment">//css压缩</span></span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./dist/css/&#x27;</span>))      </span><br><span class="line">        done();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//js任务： 1、es6代码装换 2、代码压缩</span></span><br><span class="line">gulp.task(<span class="string">&#x27;jsmin&#x27;</span>,<span class="function"><span class="params">done</span>=&gt;</span>&#123;</span><br><span class="line">    gulp.src(<span class="string">&#x27;./src/js/*.js&#x27;</span>)</span><br><span class="line">        .pipe(babel(&#123;</span><br><span class="line">            presets: [<span class="string">&#x27;@babel/env&#x27;</span>] <span class="comment">//根据当前环境支持的类型进行转换</span></span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./dist/js/&#x27;</span>));</span><br><span class="line">        done();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//复制任务</span></span><br><span class="line">gulp.task(<span class="string">&#x27;copy&#x27;</span>,<span class="function"><span class="params">done</span>=&gt;</span>&#123;</span><br><span class="line">    gulp.src(<span class="string">&#x27;./src/images/*&#x27;</span>)<span class="comment">//复制images</span></span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./dist/images/&#x27;</span>))</span><br><span class="line"></span><br><span class="line">    gulp.src(<span class="string">&#x27;./src/lib/*&#x27;</span>)<span class="comment">//复制lib</span></span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;./dist/lib&#x27;</span>))</span><br><span class="line">        done();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//将任务连起来，一个命令即可执行</span></span><br><span class="line">gulp.task(<span class="string">&#x27;default&#x27;</span>,gulp.series(<span class="string">&#x27;htmlmin&#x27;</span>,<span class="string">&#x27;cssmin&#x27;</span>,<span class="string">&#x27;jsmin&#x27;</span>,<span class="string">&#x27;copy&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-package-json文件"><a href="#7-package-json文件" class="headerlink" title="7. package.json文件"></a>7. package.json文件</h3><p>node_modules文件夹问题</p>
+<p>文件夹以及文件过多过碎，当我们将项目整体拷贝给别人的时候,，传输速度会很慢很慢.  </p>
+<p>当别人下载模块时版本不一致也可能导致运行失败。</p>
+<p>package.json 存储了包的名称，package-lock.json 存储了包的关系，包括版本号，二者方便了人们，可以直接在package.json目录下使用命令<code>npm install</code> 就可以下载项目所需要的包了。</p>
+<p>作用：</p>
+<blockquote>
+<p>项目描述文件，记录了当前项目信息，例如项目名称、版本、作者、github地址、当前项目依赖了哪些<strong>第三方模块</strong>等。<br>使用npm init -y命令生成。</p>
+</blockquote>
+<p><strong>项目依赖</strong></p>
+<p>在项目的开发阶段和线上运营阶段，都需要依赖的第三方包，称为项目依赖<br>使用<code>npm install 包名</code>命令下载的文件会默认被添加到 package.json 文件的 dependencies 字段中</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">  &quot;mime&quot;: &quot;^2.4.5&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>开发依赖</strong></p>
+<p>在项目的开发阶段需要依赖，线上运营阶段不需要依赖的第三方包，称为开发依赖<br>使用<code>npm install 包名 --save-dev</code>命令将包添加到package.json文件的devDependencies字段中</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;devDependencies&quot;: &#123;</span><br><span class="line">    &quot;gulp&quot;: &quot;^4.0.2&quot;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-package-lock-json"><a href="#8-package-lock-json" class="headerlink" title="8. package-lock.json"></a>8. package-lock.json</h3><p>作用：</p>
+<blockquote>
+<p>锁定包的版本，确保再次下载时不会因为包版本不同而产生问题,可以加快下载速度</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%AC%94%E8%AE%B0/" rel="tag"># 服务端笔记</a>
+          
+            <a href="/tags/Node/" rel="tag"># Node</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/17/%E6%8E%A5%E8%A7%A6php/" rel="next" title="接触php">
+                <i class="fa fa-chevron-left"></i> 接触php
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/21/http%E5%8D%8F%E8%AE%AE%E5%92%8CNode.js%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/" rel="prev" title="http协议和Node.js异步编程">
+                http协议和Node.js异步编程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/agul1.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Node-js-%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">Node.js 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AD%A6%E4%B9%A0Node-js-%EF%BC%9F"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1.1 为什么学习Node.js ？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E9%9C%80%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">1.2 服务器端需要做的事</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-Node%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">1.3 Node的好处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-Node%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">1.4 Node是什么？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Node%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.1.</span> <span class="nav-text">2. Node下载安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Node%E5%9F%BA%E7%A1%80"><span class="nav-number">1.0.2.</span> <span class="nav-text">3. Node基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Node-js%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1global"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">3.1 Node.js全局对象global</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Node-js-%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91"><span class="nav-number">1.0.3.</span> <span class="nav-text">4. Node.js 的模块化开发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-JavaScript-%E5%BC%80%E5%8F%91%E5%BC%8A%E7%AB%AF"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">4.1 JavaScript 开发弊端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-%E8%BD%AF%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">4.2 软件中的模块化开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-Node-js%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">4.3 Node.js的模块化开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4%E6%A8%A1%E5%9D%97%E6%88%90%E5%91%98%E7%9A%84%E5%8F%A6%E4%B8%80%E7%A7%8D%E5%AF%BC%E5%87%BA%E6%96%B9%E5%BC%8F"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">4.4模块成员的另一种导出方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97"><span class="nav-number">1.0.4.</span> <span class="nav-text">5. 系统模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97fs-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">5.1 系统模块fs 文件操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-%E8%B7%AF%E5%BE%84%E6%93%8D%E4%BD%9Cpath"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">5.2 路径操作path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97"><span class="nav-number">1.0.5.</span> <span class="nav-text">6. 第三方模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-%E8%8E%B7%E5%8F%96%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">6.1 获取第三方模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-Gulp%E6%A8%A1%E5%9D%97"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">6.2 Gulp模块</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#gulp%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.0.5.2.0.1.</span> <span class="nav-text">gulp的使用</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-package-json%E6%96%87%E4%BB%B6"><span class="nav-number">1.0.6.</span> <span class="nav-text">7. package.json文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-package-lock-json"><span class="nav-number">1.0.7.</span> <span class="nav-text">8. package-lock.json</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">agul</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

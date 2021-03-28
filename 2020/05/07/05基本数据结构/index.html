@@ -1,37 +1,822 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/agul.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/agul.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/agul.png?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="FCC,基础笔记," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Agul'blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="基本数据结构介绍在 JavaScript 和其他编程语言中，我们都可以以多种方式存储和访问数据。本节将教你如何使用数组（array），以及如何访问和复制数组中的信息。本节还将教你如何用点符号和方括号符号来操作和访问 JavaScript 对象（object）中的信息。学习此文档你应该掌握数组和对象的基本属性以及它们之间的区别，并且掌握如何选择它们来实现给定的目标。 使用数组存储数据集合下面是一个关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基本数据结构">
+<meta property="og:url" content="https://ultraman-agul.github.io/2020/05/07/05%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="Agul&#39;blog">
+<meta property="og:description" content="基本数据结构介绍在 JavaScript 和其他编程语言中，我们都可以以多种方式存储和访问数据。本节将教你如何使用数组（array），以及如何访问和复制数组中的信息。本节还将教你如何用点符号和方括号符号来操作和访问 JavaScript 对象（object）中的信息。学习此文档你应该掌握数组和对象的基本属性以及它们之间的区别，并且掌握如何选择它们来实现给定的目标。 使用数组存储数据集合下面是一个关">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-05-07T03:18:24.110Z">
+<meta property="article:modified_time" content="2020-05-07T03:30:36.295Z">
+<meta property="article:author" content="agul">
+<meta property="article:tag" content="FCC">
+<meta property="article:tag" content="基础笔记">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ultraman-agul.github.io/2020/05/07/05基本数据结构/"/>
+
+
+
+
+
+  <title>基本数据结构 | Agul'blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Agul'blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Record a good life</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ultraman-agul.github.io/2020/05/07/05%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/agul1.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Agul'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基本数据结构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-07T11:18:24+08:00">
+                2020-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/js%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">js笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在 JavaScript 和其他编程语言中，我们都可以以多种方式存储和访问数据。本节将教你如何使用数组（array），以及如何访问和复制数组中的信息。本节还将教你如何用点符号和方括号符号来操作和访问 JavaScript 对象（object）中的信息。学习此文档你应该掌握数组和对象的基本属性以及它们之间的区别，并且掌握如何选择它们来实现给定的目标。</p>
+<h3 id="使用数组存储数据集合"><a href="#使用数组存储数据集合" class="headerlink" title="使用数组存储数据集合"></a>使用数组存储数据集合</h3><p>下面是一个关于数组的更复杂的例子。这是一个多维数组（multi-dimensional Array），或者说是一个包含了其他数组的数组。你可以注意到，在它的内部还包含了 JavaScript 中的对象（objects）结构。我们会在后面的小节中讨论该数据结构，但现在你只需要知道<strong>数组能够存储复杂的对象类型数据</strong>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> complexArray = [</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      one: <span class="number">1</span>,</span><br><span class="line">      two: <span class="number">2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      three: <span class="number">3</span>,</span><br><span class="line">      four: <span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      a: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">      b: <span class="string">&quot;b&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      c: <span class="string">&quot;c&quot;</span>,</span><br><span class="line">      d: “d”</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-push-和-unshift-添加项目到数组中"><a href="#使用-push-和-unshift-添加项目到数组中" class="headerlink" title="使用 push() 和 unshift() 添加项目到数组中"></a>使用 push() 和 unshift() 添加项目到数组中</h3><p><code>Array.push()</code>和<code>Array.unshift()</code>。</p>
+<p>这两个方法都接收一个或多个元素作为参数；对一个数组调用这两个方法都可以将输入的元素插入到该数组中；<code>push()</code>方法将元素插入到一个数组的末尾，而<code>unshift()</code>方法将元素插入到一个数组的开头。请看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> twentyThree = <span class="string">&#x27;XXIII&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> romanNumerals = [<span class="string">&#x27;XXI&#x27;</span>, <span class="string">&#x27;XXII&#x27;</span>];</span><br><span class="line"></span><br><span class="line">romanNumerals.unshift(<span class="string">&#x27;XIX&#x27;</span>, <span class="string">&#x27;XX&#x27;</span>);</span><br><span class="line"><span class="comment">// 数组现在为 [&#x27;XIX&#x27;, &#x27;XX&#x27;, &#x27;XXI&#x27;, &#x27;XXII&#x27;]</span></span><br><span class="line"></span><br><span class="line">romanNumerals.push(twentyThree);</span><br><span class="line"><span class="comment">// 数组现在为 [&#x27;XIX&#x27;, &#x27;XX&#x27;, &#x27;XXI&#x27;, &#x27;XXII&#x27;, &#x27;XXIII&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，我们还可以输入变量，这允许我们很灵活地动态改变我们数组中的数据。</p>
+<h3 id="使用-pop-和-shift-从数组中删除项目"><a href="#使用-pop-和-shift-从数组中删除项目" class="headerlink" title="使用 pop() 和 shift() 从数组中删除项目"></a>使用 pop() 和 shift() 从数组中删除项目</h3><p>与前面讲的相反。</p>
+<p>作用分别是删除数组最后一个元素和删除数组第一个元素。并返回其值。</p>
+<h3 id="使用-splice-删除项目"><a href="#使用-splice-删除项目" class="headerlink" title="使用 splice() 删除项目"></a>使用 splice() 删除项目</h3><p>在上面的挑战中，我们已经学到了如何利用<code>shift()</code>和<code>pop()</code>从数组的开头或者末尾移除元素，但如果我们想移除数组中间的一个元素呢？或者想一次移除多个元素呢？这时候我们就需要<code>splice()</code>了。<code>splice()</code>让我们可以从数组中的任意位置<strong>移除任意数量的连续的元素</strong>。</p>
+<p><code>splice()</code>最多可以接受 3 个参数，但现在我们先关注前两个。<code>splice()</code>接收的前两个参数基于调用<code>splice()</code>数组中元素的索引。<code>splice()</code>的第一个参数代表从数组中的哪个索引开始移除元素，而第二个参数指示要从数组中删除多少个元素。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="string">&#x27;today&#x27;</span>, <span class="string">&#x27;was&#x27;</span>, <span class="string">&#x27;not&#x27;</span>, <span class="string">&#x27;so&#x27;</span>, <span class="string">&#x27;great&#x27;</span>];</span><br><span class="line"></span><br><span class="line">array.splice(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// 从第 3 个元素开始，删除 2 个元素</span></span><br><span class="line"><span class="comment">// 现在该数组等于 [&#x27;today&#x27;, &#x27;was&#x27;, &#x27;great&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>splice()</code>不仅从被调用的数组中移除元素，还会返回一个包含被移除元素的数组.</p>
+<h3 id="使用-splice-增加项目"><a href="#使用-splice-增加项目" class="headerlink" title="使用 splice() 增加项目"></a>使用 splice() 增加项目</h3><p><code>splice()</code>方法可以接受最多 3 个参数,我们现在可以进一步了解<code>splice()</code>。除了移除元素，我们还可以利用它的第三个参数来向数组中<em>添加</em>元素。第三个参数可以是一个或多个元素，这些元素会被添加到数组中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">colorChange</span>(<span class="params">arr, index, newColor</span>) </span>&#123;</span><br><span class="line">  arr.splice(index, <span class="number">1</span>, newColor);</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> colorScheme = [<span class="string">&#x27;#878787&#x27;</span>, <span class="string">&#x27;#a08794&#x27;</span>, <span class="string">&#x27;#bb7e8c&#x27;</span>, <span class="string">&#x27;#c9b6be&#x27;</span>, <span class="string">&#x27;#d1becf&#x27;</span>];</span><br><span class="line"></span><br><span class="line">colorScheme = colorChange(colorScheme, <span class="number">2</span>, <span class="string">&#x27;#332327&#x27;</span>);</span><br><span class="line"><span class="comment">// 我们移除了 &#x27;#bb7e8c&#x27; 并在其位置上添加了 &#x27;#332327&#x27;</span></span><br><span class="line"><span class="comment">// colorScheme 现在等于 [&#x27;#878787&#x27;, &#x27;#a08794&#x27;, &#x27;#332327&#x27;, &#x27;#c9b6be&#x27;, &#x27;#d1becf&#x27;]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-slice-拷贝数组项目"><a href="#使用-slice-拷贝数组项目" class="headerlink" title="使用 slice() 拷贝数组项目"></a>使用 slice() 拷贝数组项目</h3><p><code>slice()</code>并不修改数组，而是复制或者说<em>提取（extract）</em>给定数量的元素到一个新数组里，而调用方法的数组则保持不变。<code>slice()</code>只接受 2 个输入参数—<strong>第一个是开始提取元素的位置（索引）</strong>，<strong>第二个是结束提取元素的位置（索引）</strong>。slice 方法会提取直到该索引的元素，但被提取的元素不包括该索引对应的元素。（不包含后面索引对应的值）请看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> weatherConditions = [<span class="string">&#x27;rain&#x27;</span>, <span class="string">&#x27;snow&#x27;</span>, <span class="string">&#x27;sleet&#x27;</span>, <span class="string">&#x27;hail&#x27;</span>, <span class="string">&#x27;clear&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> todaysWeather = weatherConditions.slice(<span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line"><span class="comment">// todaysWeather 等于 [&#x27;snow&#x27;, &#x27;sleet&#x27;];</span></span><br><span class="line"><span class="comment">// weatherConditions 仍然等于 [&#x27;rain&#x27;, &#x27;snow&#x27;, &#x27;sleet&#x27;, &#x27;hail&#x27;, &#x27;clear&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用扩展运算符复制数组"><a href="#使用扩展运算符复制数组" class="headerlink" title="使用扩展运算符复制数组"></a>使用扩展运算符复制数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slice()&#96;已经能让我们从一个数组中选择一些元素来复制到新数组中了，而 ES6 中又新引入了一个简洁且可读性强的语法展开运算符（spread operator），它能让我们方便地复制数组中的*所有*元素。展开语法是这样的：&#96;...</span><br></pre></td></tr></table></figure>
+
+<p>在实践中，我们可以这样用展开运算符来复制一个数组：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> thisArray = [<span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">undefined</span>, <span class="literal">false</span>, <span class="literal">null</span>];</span><br><span class="line"><span class="keyword">let</span> thatArray = [...thisArray];</span><br><span class="line"><span class="comment">// thatArray 等于 [true, true, undefined, false, null]</span></span><br><span class="line"><span class="comment">// thisArray 保持不变，并等于 thatArray</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-indexOf-检查元素是否存在"><a href="#使用-indexOf-检查元素是否存在" class="headerlink" title="使用 indexOf() 检查元素是否存在"></a>使用 indexOf() 检查元素是否存在</h3><p>由于数组可以在任意时间被修改或者说<em>被改变（mutated）</em>，我们不能保证某个数据在一个给定数组中的位置，甚至不能保证该元素还存在于该数组中。幸运的是，JavaScript 给我们提供了另一个内置方法<code>indexOf()</code>。这个方法让我们可以便捷地检查某个元素是否存在于一个数组中。<code>indexOf()</code>方法接受一个元素作为输入参数，并返回该元素在数组中的位置（索引）；若该元素不存在于数组中则返回<code>-1</code>。</p>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">&#x27;apples&#x27;</span>, <span class="string">&#x27;pears&#x27;</span>, <span class="string">&#x27;oranges&#x27;</span>, <span class="string">&#x27;peaches&#x27;</span>, <span class="string">&#x27;pears&#x27;</span>];</span><br><span class="line"></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;dates&#x27;</span>) <span class="comment">// 返回 -1</span></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;oranges&#x27;</span>) <span class="comment">// 返回 2</span></span><br><span class="line">fruits.indexOf(<span class="string">&#x27;pears&#x27;</span>) <span class="comment">// 返回 1，即第一个出现的 &#x27;pears&#x27; 元素在数组中的索引为 1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-For-循环迭代数组的所有项"><a href="#使用-For-循环迭代数组的所有项" class="headerlink" title="使用 For 循环迭代数组的所有项"></a>使用 For 循环迭代数组的所有项</h3><p>在进行与数组有关的编程时，我们有时需要遍历数组的所有元素来找出我们需要的元素，或者对数组执行特定的操作。JavaScript 提供了几个内置的方法，它们以不同的方式遍历数组来获得不同的结果（如<code>every()</code>、<code>forEach()</code>、<code>map()</code>等等）。而简单的<code>for</code>循环不仅能实现这些功能，而且相比之下也更灵活。</p>
+<p>请看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greaterThanTen</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">let</span> newArr = [];</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (arr[i] &gt; <span class="number">10</span>) &#123;</span><br><span class="line">   newArr.push(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greaterThanTen([<span class="number">2</span>, <span class="number">12</span>, <span class="number">8</span>, <span class="number">14</span>, <span class="number">80</span>, <span class="number">0</span>, <span class="number">1</span>]);</span><br><span class="line"><span class="comment">// 返回 [12, 14, 80]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用方括号访问属性名称"><a href="#使用方括号访问属性名称" class="headerlink" title="使用方括号访问属性名称"></a>使用方括号访问属性名称</h3><p>我们可以使用点操作符和方括号访问对象的属性值。</p>
+<p>假设一个超市的收银台的程序中使用了一个<code>foods</code>对象，并且有一些程序逻辑会设置<code>selectedFood</code>，我们需要查询<code>foods</code>对象来检查某种食物是否存在，我们可以这样写检查逻辑：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> selectedFood = getCurrentFood(scannedItem);</span><br><span class="line"><span class="keyword">let</span> inventory = foods[selectedFood];</span><br></pre></td></tr></table></figure>
+
+
+
+<p>上述代码会先计算<code>selectedFood</code>变量的值，并返回<code>foods</code>对象中以该值命名的属性对应的值，若没有以该值命名的属性则会返回<code>undefined</code>。有时候对象的属性名在运行之前是不确定的，或者我们需要动态地访问对象的属性，这时方括号符号就会很有用。</p>
+<h3 id="使用-delete-关键字删除对象属性"><a href="#使用-delete-关键字删除对象属性" class="headerlink" title="使用 delete 关键字删除对象属性"></a>使用 delete 关键字删除对象属性</h3><p>果我们想移除<code>apples</code>属性，我们可以使用<code>delete</code>关键字：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> foods.apples;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-for…in-语句迭代对象"><a href="#使用-for…in-语句迭代对象" class="headerlink" title="使用 for…in 语句迭代对象"></a>使用 for…in 语句迭代对象</h3><p>有时候你需要遍历一个对象中的所有键。这需要 JavaScript 中的一个特殊语法：for…in 语句。以遍历 <code>users</code>对象的键为例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> user <span class="keyword">in</span> users) &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(user);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出：</span></span><br><span class="line">Alan</span><br><span class="line">Jeff</span><br><span class="line">Sarah</span><br><span class="line">Ryan</span><br></pre></td></tr></table></figure>
+
+<p>在这个语句中，我们定义了一个<code>user</code>变量，你可以看到，这个变量在 for…in 语句对对象的每一个键的遍历中都会被重置。</p>
+<p><strong>注意：</strong><br>跟数组不同，对象中的键是无序的，因此一个对象中某个键的位置，或者说它出现的相对顺序，在引用或访问该键时是不确定的。</p>
+<h3 id="使用-Object-keys-生成对象所有键组成的数组"><a href="#使用-Object-keys-生成对象所有键组成的数组" class="headerlink" title="使用 Object.keys() 生成对象所有键组成的数组"></a>使用 Object.keys() 生成对象所有键组成的数组</h3><p>我们还可以输入一个对象作为参数来调用<code>Object.keys()</code>方法，使其生成一个包含对象中所有键的数组。这会返回一个由对象中所有键的名称（字符串）组成的数组。再次说明，这个数组中的项的顺序是不确定的。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FCC/" rel="tag"># FCC</a>
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/" rel="tag"># 基础笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/07/04%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="next" title="正则表达式">
+                <i class="fa fa-chevron-left"></i> 正则表达式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/07/06%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" rel="prev" title="算法基础">
+                算法基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/agul1.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">基本数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88"><span class="nav-number">1.1.1.</span> <span class="nav-text">使用数组存储数据集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-push-%E5%92%8C-unshift-%E6%B7%BB%E5%8A%A0%E9%A1%B9%E7%9B%AE%E5%88%B0%E6%95%B0%E7%BB%84%E4%B8%AD"><span class="nav-number">1.1.2.</span> <span class="nav-text">使用 push() 和 unshift() 添加项目到数组中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-pop-%E5%92%8C-shift-%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%88%A0%E9%99%A4%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.1.3.</span> <span class="nav-text">使用 pop() 和 shift() 从数组中删除项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-splice-%E5%88%A0%E9%99%A4%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.1.4.</span> <span class="nav-text">使用 splice() 删除项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-splice-%E5%A2%9E%E5%8A%A0%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.1.5.</span> <span class="nav-text">使用 splice() 增加项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-slice-%E6%8B%B7%E8%B4%9D%E6%95%B0%E7%BB%84%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.1.6.</span> <span class="nav-text">使用 slice() 拷贝数组项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6%E5%A4%8D%E5%88%B6%E6%95%B0%E7%BB%84"><span class="nav-number">1.1.7.</span> <span class="nav-text">使用扩展运算符复制数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-indexOf-%E6%A3%80%E6%9F%A5%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-number">1.1.8.</span> <span class="nav-text">使用 indexOf() 检查元素是否存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-For-%E5%BE%AA%E7%8E%AF%E8%BF%AD%E4%BB%A3%E6%95%B0%E7%BB%84%E7%9A%84%E6%89%80%E6%9C%89%E9%A1%B9"><span class="nav-number">1.1.9.</span> <span class="nav-text">使用 For 循环迭代数组的所有项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%8B%AC%E5%8F%B7%E8%AE%BF%E9%97%AE%E5%B1%9E%E6%80%A7%E5%90%8D%E7%A7%B0"><span class="nav-number">1.1.10.</span> <span class="nav-text">使用方括号访问属性名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-delete-%E5%85%B3%E9%94%AE%E5%AD%97%E5%88%A0%E9%99%A4%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7"><span class="nav-number">1.1.11.</span> <span class="nav-text">使用 delete 关键字删除对象属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-for%E2%80%A6in-%E8%AF%AD%E5%8F%A5%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.1.12.</span> <span class="nav-text">使用 for…in 语句迭代对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Object-keys-%E7%94%9F%E6%88%90%E5%AF%B9%E8%B1%A1%E6%89%80%E6%9C%89%E9%94%AE%E7%BB%84%E6%88%90%E7%9A%84%E6%95%B0%E7%BB%84"><span class="nav-number">1.1.13.</span> <span class="nav-text">使用 Object.keys() 生成对象所有键组成的数组</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">agul</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
