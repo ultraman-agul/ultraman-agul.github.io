@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JavaScript基础</title>
+    <url>/2020/05/07/02js%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h2 id="JavaScript-基础"><a href="#JavaScript-基础" class="headerlink" title="JavaScript 基础"></a>JavaScript 基础</h2><p>对象属性名带有空格时，引用必须使用中括号：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> mydog=&#123;</span><br><span class="line"><span class="string">"my name"</span> : <span class="string">"wangcai"</span>,</span><br><span class="line"><span class="string">"legs"</span> : <span class="number">4</span>,</span><br><span class="line"> <span class="string">"tails"</span> : <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> hi = mydog[<span class="string">"my name"</span>];</span><br><span class="line"><span class="keyword">var</span> feet = mydog.legs;</span><br></pre></td></tr></table></figure>
+
+<p>当我们通过变量名访问属性的时候，不需要给变量名包裹引号。因为实际上我们使用的是变量的值，而不是变量的名称。</p>
+<p>给<code>myDog</code>添加一个<code>&quot;bark&quot;</code>属性，设置它的值为狗的声音，例如：”woof”。下面代码如果对象不存在<code>bark</code>属性则新建属性赋值，已经存在则修改值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myDog.bark = <span class="string">"woof"</span>;</span><br><span class="line">或</span><br><span class="line">myDog[<span class="string">"bark"</span>] = <span class="string">"woof"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>从<code>myDog</code>中删除<code>&quot;tails&quot;</code>属性</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> myDog.tails;</span><br></pre></td></tr></table></figure>
+
+<p>先后顺序</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">phoneticLookup</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> result = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">var</span> lookup = &#123;</span><br><span class="line">  <span class="string">"alpha"</span> : <span class="string">"Adams"</span>,</span><br><span class="line">  <span class="string">"bravo"</span> : <span class="string">"Boston"</span>,</span><br><span class="line">  <span class="string">"charlie"</span> : <span class="string">"Chicago"</span>,</span><br><span class="line">  <span class="string">"delta"</span> : <span class="string">"Denver"</span>,</span><br><span class="line">  <span class="string">"echo"</span> : <span class="string">"Easy"</span>,</span><br><span class="line">  <span class="string">"foxtrot"</span> :<span class="string">"Frank"</span></span><br><span class="line">&#125;;</span><br><span class="line">result = lookup[val]; <span class="comment">//调用对象语句必须要在对象语句后面，否则无法调用</span></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">phoneticLookup(<span class="string">"charlie"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>有时检查一个对象属性是否存在是非常有用的，我们可以用<code>.hasOwnProperty(propname)</code>方法来检查对象是否有该属性。如果有返回<code>true</code>，反之返回<code>false</code>。</p>
+<p>对象将数据以一种键-值对的形式保存。在上面的示例中，<code>&quot;artist&quot;: &quot;Daft Punk&quot;</code>是一个具有<code>&quot;artist&quot;</code>键和<code>&quot;Daft Punk&quot;</code>值的属性。</p>
+<p><a href="http://www.json.org/" target="_blank" rel="noopener">JavaScript Object Notation</a> 简称<code>JSON</code>是用于存储数据的相关数据交换格式。数组中有多个 JSON 对象的时候，对象与对象之间要用逗号隔开。</p>
+<p>与访问嵌套对象一样，用中括号操作符同样可以访问嵌套数组。嵌套对象和嵌套数组可以灵活使用<strong>中括号操作符[]和点操作符.</strong>进行访问。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Math</span>.random() <span class="comment">//返回一个0~1的随机小数，可能为0，不可能为1</span></span><br></pre></td></tr></table></figure>
+
+<p>生成随机整数：<br><code>Math.random()</code>生成一个随机小数。<br>把这个随机小数乘以20。<br>用<code>Math.floor()</code>向下取整 获得它最近的整数。</p>
+<p>返回范围内随机整数</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (max - min + <span class="number">1</span>)) + min  <span class="comment">//包含max和min</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>parseInt()</code>函数解析一个字符串并返回一个整数。它同时可接受第二个参数，一个介于2和36之间的整数，表示字符串的基数。</p>
+<p>函数调用如下所示：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(string, radix);</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">parseInt</span>(<span class="string">"11"</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<p>参数 2 表示 “11” 使用二进制数值系统。此示例将字符串 “11” 转换为整数 3。</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>FCC</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WebDesign</title>
     <url>/2020/05/04/01htmlCss/</url>
     <content><![CDATA[<h1 id="FreeCodeCamp-Projects"><a href="#FreeCodeCamp-Projects" class="headerlink" title="FreeCodeCamp-Projects"></a>FreeCodeCamp-Projects</h1><p>本文记录我在fcc中文社区刷的题，做的小项目。2020/4/1。</p>
@@ -92,52 +138,6 @@
         <tag>FCC</tag>
         <tag>web项目</tag>
         <tag>静态网页</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript基础</title>
-    <url>/2020/05/07/02js%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h2 id="JavaScript-基础"><a href="#JavaScript-基础" class="headerlink" title="JavaScript 基础"></a>JavaScript 基础</h2><p>对象属性名带有空格时，引用必须使用中括号：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> mydog=&#123;</span><br><span class="line"><span class="string">"my name"</span> : <span class="string">"wangcai"</span>,</span><br><span class="line"><span class="string">"legs"</span> : <span class="number">4</span>,</span><br><span class="line"> <span class="string">"tails"</span> : <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> hi = mydog[<span class="string">"my name"</span>];</span><br><span class="line"><span class="keyword">var</span> feet = mydog.legs;</span><br></pre></td></tr></table></figure>
-
-<p>当我们通过变量名访问属性的时候，不需要给变量名包裹引号。因为实际上我们使用的是变量的值，而不是变量的名称。</p>
-<p>给<code>myDog</code>添加一个<code>&quot;bark&quot;</code>属性，设置它的值为狗的声音，例如：”woof”。下面代码如果对象不存在<code>bark</code>属性则新建属性赋值，已经存在则修改值。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myDog.bark = <span class="string">"woof"</span>;</span><br><span class="line">或</span><br><span class="line">myDog[<span class="string">"bark"</span>] = <span class="string">"woof"</span>;</span><br></pre></td></tr></table></figure>
-
-<p>从<code>myDog</code>中删除<code>&quot;tails&quot;</code>属性</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> myDog.tails;</span><br></pre></td></tr></table></figure>
-
-<p>先后顺序</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">phoneticLookup</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> result = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">var</span> lookup = &#123;</span><br><span class="line">  <span class="string">"alpha"</span> : <span class="string">"Adams"</span>,</span><br><span class="line">  <span class="string">"bravo"</span> : <span class="string">"Boston"</span>,</span><br><span class="line">  <span class="string">"charlie"</span> : <span class="string">"Chicago"</span>,</span><br><span class="line">  <span class="string">"delta"</span> : <span class="string">"Denver"</span>,</span><br><span class="line">  <span class="string">"echo"</span> : <span class="string">"Easy"</span>,</span><br><span class="line">  <span class="string">"foxtrot"</span> :<span class="string">"Frank"</span></span><br><span class="line">&#125;;</span><br><span class="line">result = lookup[val]; <span class="comment">//调用对象语句必须要在对象语句后面，否则无法调用</span></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">phoneticLookup(<span class="string">"charlie"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>有时检查一个对象属性是否存在是非常有用的，我们可以用<code>.hasOwnProperty(propname)</code>方法来检查对象是否有该属性。如果有返回<code>true</code>，反之返回<code>false</code>。</p>
-<p>对象将数据以一种键-值对的形式保存。在上面的示例中，<code>&quot;artist&quot;: &quot;Daft Punk&quot;</code>是一个具有<code>&quot;artist&quot;</code>键和<code>&quot;Daft Punk&quot;</code>值的属性。</p>
-<p><a href="http://www.json.org/" target="_blank" rel="noopener">JavaScript Object Notation</a> 简称<code>JSON</code>是用于存储数据的相关数据交换格式。数组中有多个 JSON 对象的时候，对象与对象之间要用逗号隔开。</p>
-<p>与访问嵌套对象一样，用中括号操作符同样可以访问嵌套数组。嵌套对象和嵌套数组可以灵活使用<strong>中括号操作符[]和点操作符.</strong>进行访问。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Math</span>.random() <span class="comment">//返回一个0~1的随机小数，可能为0，不可能为1</span></span><br></pre></td></tr></table></figure>
-
-<p>生成随机整数：<br><code>Math.random()</code>生成一个随机小数。<br>把这个随机小数乘以20。<br>用<code>Math.floor()</code>向下取整 获得它最近的整数。</p>
-<p>返回范围内随机整数</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (max - min + <span class="number">1</span>)) + min  <span class="comment">//包含max和min</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p><code>parseInt()</code>函数解析一个字符串并返回一个整数。它同时可接受第二个参数，一个介于2和36之间的整数，表示字符串的基数。</p>
-<p>函数调用如下所示：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(string, radix);</span><br></pre></td></tr></table></figure>
-
-<p>示例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">parseInt</span>(<span class="string">"11"</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-
-<p>参数 2 表示 “11” 使用二进制数值系统。此示例将字符串 “11” 转换为整数 3。</p>
-]]></content>
-      <categories>
-        <category>web前端</category>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>FCC</tag>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -1138,107 +1138,6 @@
       </tags>
   </entry>
   <entry>
-    <title>fcc算法中级</title>
-    <url>/2021/03/17/10FCC%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7/</url>
-    <content><![CDATA[<h1 id="FCC算法中级"><a href="#FCC算法中级" class="headerlink" title="FCC算法中级"></a>FCC算法中级</h1><h3 id="范围内数字求和"><a href="#范围内数字求和" class="headerlink" title="范围内数字求和"></a>范围内数字求和</h3><p>给出一个含有两个数字的数组，我们需要写一个函数，让它返回这两个数字间所有数字（包含这两个数字）的总和。</p>
-<p>注意，较小数不一定总是出现在数组的第一个元素。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumAll</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sumBetween = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="built_in">Math</span>.min(...arr); i &lt;= <span class="built_in">Math</span>.max(...arr); i++) &#123;</span><br><span class="line">    sumBetween += i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sumBetween;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumAll([<span class="number">1</span>, <span class="number">4</span>]);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="区分两个数组"><a href="#区分两个数组" class="headerlink" title="区分两个数组"></a>区分两个数组</h3><p>写一个函数，比较两个数组，返回一个新的数组。这个新数组需要包含传入的两个数组所有元素中，仅在其中一个数组里出现的元素。如果某个元素同时出现在两个数组中，则不应包含在返回的数组里。换言之，我们需要返回这两个数组的对称差。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">diffArray</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = [];</span><br><span class="line">  <span class="comment">// 这是一个党异伐同的过程</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">secondInFirst</span>(<span class="params">first, second</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; second.length; i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(first.indexOf(second[i]) === <span class="number">-1</span>)&#123;</span><br><span class="line">        newArr.push(second[i])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  secondInFirst(arr1, arr2)</span><br><span class="line">  secondInFirst(arr2, arr1)</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">diffArray([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">diffArray</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 这是一个党异伐同的过程</span></span><br><span class="line">  <span class="keyword">return</span> arr1.concat(arr2).filter(<span class="function"><span class="params">item</span>=&gt;</span>arr1.indexOf(item)===<span class="number">-1</span> || arr2.indexOf(item)===<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">diffArray([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="瞄准和消灭"><a href="#瞄准和消灭" class="headerlink" title="瞄准和消灭"></a>瞄准和消灭</h3><p>传给它的第一个参数是数组，我们称他为初始数组。后续的参数数量是不确定的，可能有一个或多个。你需要做的是，从初始数组中移除所有与后续参数相等的元素，并返回移除元素后的数组。使用<code>...</code>，即“剩余参数”（Rest Parameters）语法</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">destroyer</span>(<span class="params">arr, ...arr2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 删掉那些值</span></span><br><span class="line">  <span class="keyword">return</span> arr.filter(<span class="function"><span class="params">item</span>=&gt;</span>!arr2.includes(item));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">destroyer([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="短线连接格式"><a href="#短线连接格式" class="headerlink" title="短线连接格式"></a>短线连接格式</h3><p>写一个函数，把一个字符串转换为“短线连接格式”。短线连接格式的意思是，所有字母都是小写，且用<code>-</code>连接。比如，对于<code>Hello World</code>，应该转换为<code>hello-world</code>；对于<code>I love_Javascript-VeryMuch</code>，应该转换为<code>i-love-javascript-very-much</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">spinalCase</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> str.split(<span class="regexp">/\s|_|(?=[A-Z])/</span>)</span><br><span class="line">    .join(<span class="string">'-'</span>)</span><br><span class="line">    .toLowerCase();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">spinalCase(<span class="string">'This Is Spinal Tap'</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="儿童黑话"><a href="#儿童黑话" class="headerlink" title="儿童黑话"></a>儿童黑话</h3><p>写一个函数，把传入的字符串翻译成“儿童黑话”。</p>
-<p><a href="http://en.wikipedia.org/wiki/Pig_Latin" target="_blank" rel="noopener">儿童黑话</a>的基本转换规则很简单，只需要把一个英文单词的第一个辅音字母或第一组辅音从移到单词的结尾，并在后面加上<code>ay</code>即可。在英语中，字母 a、e、i、o、u 为元音，其余的字母均为辅音。辅音从的意思是连续的多个辅音字母。</p>
-<p>额外地，如果单词本身是以元音开头的，那只需要在结尾加上<code>way</code>。</p>
-<p>在本题中，传入的单词一定会是英文单词，且所有字母均为小写。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">translatePigLatin</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> consonantRegex = <span class="regexp">/^[^aeiou]+/</span>;</span><br><span class="line">  <span class="keyword">let</span> myConsonants = str.match(consonantRegex);</span><br><span class="line">  <span class="keyword">return</span> myConsonants !== <span class="literal">null</span></span><br><span class="line">    ? str</span><br><span class="line">        .replace(consonantRegex, <span class="string">""</span>)</span><br><span class="line">        .concat(myConsonants)</span><br><span class="line">        .concat(<span class="string">"ay"</span>)</span><br><span class="line">    : str.concat(<span class="string">"way"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">translatePigLatin(<span class="string">"consonant"</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="搜索和替换"><a href="#搜索和替换" class="headerlink" title="搜索和替换"></a>搜索和替换</h3><p>在这道题目中，我们需要写一个字符串的搜索与替换函数，它的返回值为完成替换后的新字符串。</p>
-<p>这个函数接收的第一个参数为待替换的句子。</p>
-<p>第二个参数为句中需要被替换的单词。</p>
-<p>第三个参数为替换后的单词。</p>
-<p><strong>注意：</strong><br>你需要保留被替换单词首字母的大小写格式。即如果传入的第二个参数为 “Book”，第三个参数为 “dog”，那么替换后的结果应为 “Dog”</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">myReplace</span>(<span class="params">str, before, after</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(<span class="regexp">/^[A-Z]/</span>.test(before))&#123;</span><br><span class="line">         after = after[<span class="number">0</span>].toUpperCase() + after.substring(<span class="number">1</span>)</span><br><span class="line">     &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         after = after[<span class="number">0</span>].toLowerCase() + after.substring(<span class="number">1</span>)</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> str.replace(before, after)  <span class="comment">// 不会改变原字符串，会生成新的字符串</span></span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">var</span> strr = myReplace(<span class="string">"A quick brown fox jumped over the lazy dog"</span>, <span class="string">"jumped"</span>, <span class="string">"leaped"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(strr)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="DNA-配对"><a href="#DNA-配对" class="headerlink" title="DNA 配对"></a>DNA 配对</h3><p>在这道题目中，我们需要写一个函数，为 DNA 中的碱基配对。这个函数只接收一个表示碱基的字符串为参数，最后返回完成配对的二维数组。</p>
-<p><a href="http://en.wikipedia.org/wiki/Base_pair" target="_blank" rel="noopener">碱基对</a> 由一对碱基组成。碱基有四种，分别为 A（腺嘌呤）、T（胸腺嘧啶）、G（鸟嘌呤）和 C（胞嘧啶）。配对原则是：A 与 T 配对，C 与 G 配对。我们需要根据这个原则对传入的所有碱基进行配对。</p>
-<p>对于每个传入的碱基，我们应采用数组的形式展示配对结果。其中，传入的碱基需要作为数组的第一个元素出现。最终返回的数组中应当包含参数中每一个碱基的配对结果。</p>
-<p>比如，传入的参数是 GCG，那么函数的返回值应为 [[“G”, “C”], [“C”,”G”],[“G”, “C”]]</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pairElement</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = str.split(<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">var</span> arr2 = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i ++)&#123;</span><br><span class="line">        <span class="keyword">switch</span>(arr[i])&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'A'</span>: </span><br><span class="line">                arr2.push([<span class="string">'A'</span>,<span class="string">'T'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">'T'</span>: </span><br><span class="line">                arr2.push([<span class="string">'T'</span>,<span class="string">'A'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">'G'</span>: </span><br><span class="line">                arr2.push([<span class="string">'G'</span>,<span class="string">'C'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">'C'</span>: </span><br><span class="line">                arr2.push([<span class="string">'C'</span>,<span class="string">'G'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr3 = pairElement(<span class="string">"GCG"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr3)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="丢失的字母"><a href="#丢失的字母" class="headerlink" title="丢失的字母"></a>丢失的字母</h3><p>写一个函数，找到传入的字符串里缺失的字母并返回它。</p>
-<p>判断缺失的依据是字母顺序，比如 abcdfg 中缺失了 e。而 abcdef 中就没有字母缺失，此时我们需要返回<code>undefined</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fearNotLetter</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> num = str[<span class="number">0</span>].charCodeAt()</span><br><span class="line">  <span class="keyword">var</span> flag</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,j=<span class="number">1</span>; i &lt; str.length<span class="number">-1</span>; i++, j++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(str[i].charCodeAt() + <span class="number">1</span> == str[j].charCodeAt())&#123;</span><br><span class="line">          </span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          flag = <span class="built_in">String</span>.fromCharCode(str[i].charCodeAt() + <span class="number">1</span>)</span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> flag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fearNotLetter(<span class="string">"abce"</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="集合排序"><a href="#集合排序" class="headerlink" title="集合排序"></a>集合排序</h3><p>写一个函数，它接收两个或多个数组为参数。我们需要对这些数组中所有元素进行去除重复元素的处理，并以数组的形式返回去重结果。</p>
-<p>需要注意的是，结果数组中的元素顺序必须与其传入的顺序保持一致。</p>
-<p><code>uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1])</code>应该返回<code>[1, 3, 2, 5, 4]</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniteUnique</span>(<span class="params">...arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [...new <span class="built_in">Set</span>(arr.flat())]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">uniteUnique([<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>], [<span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>], [<span class="number">2</span>, <span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat" target="_blank" rel="noopener">flat()用法</a></p>
-<h3 id="转换HTML"><a href="#转换HTML" class="headerlink" title="转换HTML"></a>转换HTML</h3><p>写一个转换 HTML entity 的函数。需要转换的 HTML entity 有<code>&amp;</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&quot;</code>（双引号）和<code>&#39;</code>（单引号）。转换的规则你可以在 <a href="https://dev.w3.org/html5/html-author/charref" target="_blank" rel="noopener">W3C</a> 官网找到。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertHTML</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = str.split(<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i&lt; arr.length; i++)&#123;</span><br><span class="line">        <span class="keyword">switch</span>(arr[i])&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"&lt;"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;lt;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"&amp;"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;amp;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"&gt;"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;gt;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'"'</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;quot;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"'"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;apos;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr.join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(convertHTML(<span class="string">"Dolce &amp; Gabbana"</span>));</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="求斐波那契数列奇数和"><a href="#求斐波那契数列奇数和" class="headerlink" title="求斐波那契数列奇数和"></a>求斐波那契数列奇数和</h3><p>写一个函数，参数为一个正整数<code>num</code>。它的作用是计算斐波那契数列中，小于或等于<code>num</code>的奇数之和。</p>
-<p>斐波那契数列中，第一和第二个数字都是 1，后面的每个数字由之前两数相加得出。斐波那契数列的前六个数字分别为：1、1、2、3、5、8。</p>
-<p>比如，<code>sumFibs(10)</code>应该返回<code>10</code>。因为斐波那契数列中，比<code>10</code>小的数字只有 1、1、3、5。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumFibs</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> preNum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> curNum = <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span>(curNum &lt;= num)&#123;</span><br><span class="line">      <span class="keyword">if</span>(curNum % <span class="number">2</span> !== <span class="number">0</span>)&#123;</span><br><span class="line">          result += curNum</span><br><span class="line">      &#125;</span><br><span class="line">      curNum += preNum</span><br><span class="line">      preNum = curNum - preNum</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumFibs(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="对所有素数求和"><a href="#对所有素数求和" class="headerlink" title="对所有素数求和"></a>对所有素数求和</h3><p>写一个函数，它接收一个数字参数<code>num</code>，返回值为不大于这个数字的所有质数之和。</p>
-<p>质数是大于 1 且仅可以被 1 和自己整除的数。比如，2 就是一个质数，因为它只可以被 1 和 2（它本身）整除。</p>
-<p>注意，传入函数的<code>num</code>不一定是质数。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumPrimes</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">2</span>; i &lt;= num; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">2</span>; j &lt;= <span class="built_in">Math</span>.sqrt(i); j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i % j === <span class="number">0</span>)&#123;</span><br><span class="line">                flag = <span class="number">1</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span>(flag === <span class="number">0</span>)&#123;</span><br><span class="line">            result += i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sumPrimes(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="最小公倍数"><a href="#最小公倍数" class="headerlink" title="最小公倍数"></a>最小公倍数</h3><p>写一个函数，它接收一个包含两个数字的数组参数<code>arr</code>，它的返回值为这两个数字范围内所有数字（包含这两个数字）的最小公倍数。</p>
-<p>注意，较小数不一定总是出现在数组的第一个元素。</p>
-<p>比如，传入<code>[1, 3]</code>，那么函数的返回结果应为 1、2、3 的最小公倍数，即为 6。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">smallestCommons</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">1</span></span><br><span class="line">    <span class="keyword">const</span> [min, max] = arr.sort(<span class="function">(<span class="params">a, b</span>)=&gt;</span>a - b)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = min; j &lt;= max; j++)&#123;</span><br><span class="line">        result *= j</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> geshu = max - min + <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=max; i &lt;= result; i+=<span class="number">5</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> shijigeshu = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> k=min; k &lt;= max; k++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i % k === <span class="number">0</span>)&#123;</span><br><span class="line">                shijigeshu++</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(shijigeshu === geshu)&#123;</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="built_in">console</span>.log(smallestCommons([<span class="number">1</span>,<span class="number">5</span>]));</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">container-fluid</span>	 <span class="selector-tag">div</span>适应页面宽度</span><br><span class="line"><span class="selector-tag">img-responsive</span>   <span class="selector-tag">img</span>适应页面的宽度</span><br><span class="line"><span class="selector-tag">text-center</span>      文本居中  例如：<span class="selector-tag">h2</span></span><br><span class="line"><span class="selector-tag">btn-block</span> 		 <span class="selector-tag">button</span>成为块级元素独占一行</span><br><span class="line"><span class="selector-tag">form-control</span> 	 表单元素占满一行</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>web前端</category>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>FCC</tag>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>jQuery</title>
     <url>/2020/05/10/09jQuery/</url>
     <content><![CDATA[<h1 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h1><h2 id="jQuery简介"><a href="#jQuery简介" class="headerlink" title="jQuery简介"></a>jQuery简介</h2><h3 id="JavaScript库的概念"><a href="#JavaScript库的概念" class="headerlink" title="JavaScript库的概念"></a>JavaScript库的概念</h3><p>JavaScript开发的过程中，处理浏览器的兼容很复杂而且很耗时，于是一些封装了这些操作的库应运而生。这些库还会把一些常用的代码进行封装。</p>
@@ -1701,89 +1600,96 @@
       </tags>
   </entry>
   <entry>
-    <title>Sass</title>
-    <url>/2021/03/25/11Sass/</url>
-    <content><![CDATA[<h1 id="Introduction-to-the-Sass"><a href="#Introduction-to-the-Sass" class="headerlink" title="Introduction to the Sass"></a>Introduction to the Sass</h1><p>Sass，英文全称“Syntactically Awesome StyleSheets”，是对 CSS 的扩展。它添加了一些 CSS 语法不具有的新特性。Sass 让开发者维护样式表变得更简单。</p>
-<p>Sass 完全兼容 CSS，因为它是一个预处理器。它用 Sass 语法写代码，然后转换成标准的 CSS。它允许你使用变量、嵌套规则、导入等众多功能。有助于保持大型样式表结构良好，让 CSS 语言更强大，优雅。</p>
-<p>Sass 有两种语法。第一种被称为 SCSS（Sassy CSS），也是我们接下来的挑战采用的语法，它是 CSS 语法的扩充版本。也就是说，CSS 样式表也是合法的 SCSS 文件。这种语法的样式表文件以 .scss 为扩展名。</p>
-<p>第二种比较古老的语法，就是所说的缩排语法（或者直接就称为“Sass”），它不使用花括号，而是通过缩排的方式来表达选择符的嵌套层级，它也不使用分号，而是用换行符来分隔属性。此种语法的样式表文件需要以 .sass 作为扩展名</p>
-<h3 id="用-Sass-变量存储数据"><a href="#用-Sass-变量存储数据" class="headerlink" title="用 Sass 变量存储数据"></a>用 Sass 变量存储数据</h3><p>Sass 不同于 CSS 的一个特点是它允许使用变量。我们可以在 Sass 中声明变量，并为它赋值，就像我们在 JavaScript 中一样。</p>
-<p>在 JavaScript 中，变量是使用<code>let</code>和<code>const</code>关键字定义的。在 Sass 中，变量以<code>$</code>开头的，后跟变量名。</p>
-<p>这里有个例子：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$main-fonts: Arial, sans-serif;</span><br><span class="line">$headings-color: green;</span><br><span class="line"></span><br><span class="line">//To use variables:</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: $main-fonts;</span><br><span class="line">  <span class="attribute">color</span>: $headings-color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当需要把多个元素设置成相同颜色时，变量就会很有用。一旦我们需要更改颜色，只需要改变这个变量的值就好。</p>
-<h3 id="用-Sass-嵌套-CSS"><a href="#用-Sass-嵌套-CSS" class="headerlink" title="用 Sass 嵌套 CSS"></a>用 Sass 嵌套 CSS</h3><p>对于一个大型项目，CSS 规则会很复杂。这时，引入<code>嵌套</code>功能（即在对应的父元素中写子元素的样式）可以有效地简化代码：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">nav</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line"></span><br><span class="line">  ul &#123;</span><br><span class="line">    <span class="selector-tag">list-style</span>: <span class="selector-tag">none</span>;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">li</span> &#123;</span><br><span class="line">      <span class="attribute">display</span>: inline-block;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>fcc算法中级</title>
+    <url>/2021/03/17/10FCC%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7/</url>
+    <content><![CDATA[<h1 id="FCC算法中级"><a href="#FCC算法中级" class="headerlink" title="FCC算法中级"></a>FCC算法中级</h1><h3 id="范围内数字求和"><a href="#范围内数字求和" class="headerlink" title="范围内数字求和"></a>范围内数字求和</h3><p>给出一个含有两个数字的数组，我们需要写一个函数，让它返回这两个数字间所有数字（包含这两个数字）的总和。</p>
+<p>注意，较小数不一定总是出现在数组的第一个元素。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumAll</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sumBetween = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="built_in">Math</span>.min(...arr); i &lt;= <span class="built_in">Math</span>.max(...arr); i++) &#123;</span><br><span class="line">    sumBetween += i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sumBetween;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumAll([<span class="number">1</span>, <span class="number">4</span>]);</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="用-Mixins-创建可重用-CSS"><a href="#用-Mixins-创建可重用-CSS" class="headerlink" title="用 Mixins 创建可重用 CSS"></a>用 Mixins 创建可重用 CSS</h3><p>在 Sass 中，<code>mixin</code>是一组 CSS 声明，可以在整个样式表中重复使用。</p>
-<p>CSS 的新功能需要一段时间适配后，所有浏览器后才能完全使用。随着浏览器的不断升级，使用这些 CSS 规则时可能需要添加浏览器前缀。比如 “box-shadow”:</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">-webkit-box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">-moz-box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">-ms-box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="区分两个数组"><a href="#区分两个数组" class="headerlink" title="区分两个数组"></a>区分两个数组</h3><p>写一个函数，比较两个数组，返回一个新的数组。这个新数组需要包含传入的两个数组所有元素中，仅在其中一个数组里出现的元素。如果某个元素同时出现在两个数组中，则不应包含在返回的数组里。换言之，我们需要返回这两个数组的对称差。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">diffArray</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = [];</span><br><span class="line">  <span class="comment">// 这是一个党异伐同的过程</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">secondInFirst</span>(<span class="params">first, second</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; second.length; i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(first.indexOf(second[i]) === <span class="number">-1</span>)&#123;</span><br><span class="line">        newArr.push(second[i])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  secondInFirst(arr1, arr2)</span><br><span class="line">  secondInFirst(arr2, arr1)</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">diffArray([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
 
-<p>对于所有具有<code>box-shadow</code>属性的元素重写此规则，或者更改每个值以测试不同的效果，需要花费大量的精力。</p>
-<p><code>Mixins</code>就像 CSS 的函数。以下是一个例子：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> box-shadow($x, $y, $blur, $c)&#123;</span><br><span class="line">  -webkit-box-shadow: $x, $y, $blur, $c;</span><br><span class="line">  -moz-box-shadow: $x, $y, $blur, $c;</span><br><span class="line">  -ms-box-shadow: $x, $y, $blur, $c;</span><br><span class="line">  box-shadow: $x, $y, $blur, $c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>定义以<code>@mixin</code>开头，后跟自定义名称。参数（<code>$x</code>，<code>$y</code>，<code>$blur</code>，以及上例中的<code>$c</code>是可选的。</p>
-<p>现在，只要在需要的地方使用<code>@include</code>调用上面定义的<code>mixin</code>，就可以自动添加好所有的浏览器前缀：<code>mixin</code>使用<code>@include</code>指令调用：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  @include box-shadow(0px, 0px, 4px, #fff);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">diffArray</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 这是一个党异伐同的过程</span></span><br><span class="line">  <span class="keyword">return</span> arr1.concat(arr2).filter(<span class="function"><span class="params">item</span>=&gt;</span>arr1.indexOf(item)===<span class="number">-1</span> || arr2.indexOf(item)===<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">diffArray([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="使用-if-和-else-为你的样式添加逻辑"><a href="#使用-if-和-else-为你的样式添加逻辑" class="headerlink" title="使用 @if 和 @else 为你的样式添加逻辑"></a>使用 @if 和 @else 为你的样式添加逻辑</h3><p>Sass 中的<code>@if</code>指令对于测试特定情况非常有用–它的工作方式与 JavaScript中的<code>if</code>语句类似。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> make-bold($bool) &#123;</span><br><span class="line">  <span class="keyword">@if</span> $bool == true &#123;</span><br><span class="line">    <span class="selector-tag">font-weight</span>: <span class="selector-tag">bold</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>类似 JavaScript，你可以在 Sass 中使用<code>@else if</code>和<code>@else</code>添加更多条件：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> text-effect($val) &#123;</span><br><span class="line">  <span class="keyword">@if</span> $val == danger &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">red</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> if $val == alert &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">yellow</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> if $val == success &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">green</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">black</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="瞄准和消灭"><a href="#瞄准和消灭" class="headerlink" title="瞄准和消灭"></a>瞄准和消灭</h3><p>传给它的第一个参数是数组，我们称他为初始数组。后续的参数数量是不确定的，可能有一个或多个。你需要做的是，从初始数组中移除所有与后续参数相等的元素，并返回移除元素后的数组。使用<code>...</code>，即“剩余参数”（Rest Parameters）语法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">destroyer</span>(<span class="params">arr, ...arr2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 删掉那些值</span></span><br><span class="line">  <span class="keyword">return</span> arr.filter(<span class="function"><span class="params">item</span>=&gt;</span>!arr2.includes(item));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">destroyer([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="使用-for-创建一个-Sass-循环"><a href="#使用-for-创建一个-Sass-循环" class="headerlink" title="使用 @for 创建一个 Sass 循环"></a>使用 @for 创建一个 Sass 循环</h3><p>在 Sass 中使用<code>@for</code>循环，它的表现类似与 JavaScript 中的<code>for</code>循环。</p>
-<p><code>@for</code>以两种方式使用：”start through end” 或 “start to end”。主要区别在于“开始结束” <em>排除</em> 结束号码，而“开始结束” <em>包括</em> 结束号码。</p>
-<p>这是一个开始 <strong>到</strong> 结束示例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@for</span> $i from <span class="number">1</span> through <span class="number">12</span> &#123;</span><br><span class="line">    // through包括12    to不包括12</span><br><span class="line">  .col-#&#123;$i&#125; &#123; width: 100%/12 * $i; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>#{$i}</code>部分是将变量（<code>i</code>）与文本组合成字符串的语法。当 Sass 文件转换为 CSS 时，它看起来像这样：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.col-1</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">8.33333%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.col-2</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">16.66667%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.col-12</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这是创建网格布局的有效方法。现在，你有 12 个可用作 CSS classes 的列宽选项。</p>
-<h3 id="使用-each-遍历列表中的项目"><a href="#使用-each-遍历列表中的项目" class="headerlink" title="使用 @each 遍历列表中的项目"></a>使用 @each 遍历列表中的项目</h3><p>最后一个挑战显示了<code>@for</code>指令如何使用起始值和结束值循环一定次数。Sass 还提供<code>@each</code>指令，该指令循环遍历列表或映射中的每个项目。</p>
-<p>在每次迭代时，变量将从列表映射赋值给当前值。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@each</span> $color in blue, red, green &#123;</span><br><span class="line">  .#&#123;$color&#125;-text &#123;color: $color;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>map 的语法略有不同。这是一个例子：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$colors: (color1: blue, color2: red, color3: green);</span><br><span class="line"></span><br><span class="line"><span class="keyword">@each</span> $key, $color in $colors &#123;</span><br><span class="line">  .#&#123;$color&#125;-text &#123;color: $color;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>请注意，需要<code>$key</code>变量来引用 map 中的键。否则，编译后的 CSS 将包含<code>color1</code>，<code>color2</code>……</p>
-<p>以上两个代码示例都转换为以下 CSS：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.blue-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.red-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.green-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="短线连接格式"><a href="#短线连接格式" class="headerlink" title="短线连接格式"></a>短线连接格式</h3><p>写一个函数，把一个字符串转换为“短线连接格式”。短线连接格式的意思是，所有字母都是小写，且用<code>-</code>连接。比如，对于<code>Hello World</code>，应该转换为<code>hello-world</code>；对于<code>I love_Javascript-VeryMuch</code>，应该转换为<code>i-love-javascript-very-much</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">spinalCase</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> str.split(<span class="regexp">/\s|_|(?=[A-Z])/</span>)</span><br><span class="line">    .join(<span class="string">'-'</span>)</span><br><span class="line">    .toLowerCase();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">spinalCase(<span class="string">'This Is Spinal Tap'</span>);</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="使用-while-当条件满足时样式生效"><a href="#使用-while-当条件满足时样式生效" class="headerlink" title="使用 @while 当条件满足时样式生效"></a>使用 @while 当条件满足时样式生效</h3><p>Sass 中的<code>@while</code>指令与 JavaScript 中的<code>while</code>类似。只要满足条件，它就会一直创建 CSS 代码。</p>
-<p><code>@for</code>挑战提供了一个创建简单网格系统的示例。这也适用于<code>@while</code>。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$x: 1;</span><br><span class="line"><span class="keyword">@while</span> $x&lt; <span class="number">13</span> &#123;</span><br><span class="line">  .col-#&#123;$x&#125; &#123; width: 100%/12 * $x;&#125;</span><br><span class="line">  $x: $x + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="儿童黑话"><a href="#儿童黑话" class="headerlink" title="儿童黑话"></a>儿童黑话</h3><p>写一个函数，把传入的字符串翻译成“儿童黑话”。</p>
+<p><a href="http://en.wikipedia.org/wiki/Pig_Latin" target="_blank" rel="noopener">儿童黑话</a>的基本转换规则很简单，只需要把一个英文单词的第一个辅音字母或第一组辅音从移到单词的结尾，并在后面加上<code>ay</code>即可。在英语中，字母 a、e、i、o、u 为元音，其余的字母均为辅音。辅音从的意思是连续的多个辅音字母。</p>
+<p>额外地，如果单词本身是以元音开头的，那只需要在结尾加上<code>way</code>。</p>
+<p>在本题中，传入的单词一定会是英文单词，且所有字母均为小写。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">translatePigLatin</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> consonantRegex = <span class="regexp">/^[^aeiou]+/</span>;</span><br><span class="line">  <span class="keyword">let</span> myConsonants = str.match(consonantRegex);</span><br><span class="line">  <span class="keyword">return</span> myConsonants !== <span class="literal">null</span></span><br><span class="line">    ? str</span><br><span class="line">        .replace(consonantRegex, <span class="string">""</span>)</span><br><span class="line">        .concat(myConsonants)</span><br><span class="line">        .concat(<span class="string">"ay"</span>)</span><br><span class="line">    : str.concat(<span class="string">"way"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">translatePigLatin(<span class="string">"consonant"</span>);</span><br></pre></td></tr></table></figure>
 
-<p>首先，定义变量<code>$x</code>并将其设置为 1。接下来，使用<code>@while</code>指令，当<code>$x</code>小于 13 时创建网格系统 。</p>
-<p>在设置<code>width</code>的 CSS 规则后，<code>$x</code>增加 1 以避免无限循环。</p>
-<h3 id="用-Partials-将你的样式分成小块"><a href="#用-Partials-将你的样式分成小块" class="headerlink" title="用 Partials 将你的样式分成小块"></a>用 Partials 将你的样式分成小块</h3><p>Sass 中的<code>Partials</code>是包含 CSS 代码段的单独文件。这些是在其他 Sass 文件中导入和使用的。我们可以把类似代码放到模块中，以保持代码结构规整且易于管理。</p>
-<p><code>partials</code>的名称以下划线（<code>_</code>）字符开头，告诉 Sass 它是 CSS 的一小部分，而不是将其转换为 CSS 文件。此外，Sass 文件以<code>.scss</code>文件扩展名结尾。要将<code>partial</code>中的代码放入另一个 Sass 文件中，请使用<code>@import</code>指令。</p>
-<p>例如，如果所有<code>mixins</code>都保存在名为 “_mixins.scss “ 的<code>partial</code>中，并且在”main.scss “文件中需要它们，这是如何在主文件中使用它们：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">// In the main.scss file</span><br><span class="line"></span><br><span class="line"><span class="keyword">@import</span> <span class="string">'mixins'</span></span><br></pre></td></tr></table></figure>
 
-<p>请注意，<code>import</code>语句中不需要下划线——Sass 知道它是<code>partial</code>。将<code>partial</code>导入文件后，可以使用所有变量<code>mixins</code>和其他代码。</p>
-<h3 id="将一组CSS样式扩展到另一个元素"><a href="#将一组CSS样式扩展到另一个元素" class="headerlink" title="将一组CSS样式扩展到另一个元素"></a>将一组CSS样式扩展到另一个元素</h3><p>Sass 有一个名为<code>extend</code>的功能，可以很容易地从一个元素中借用 CSS 规则并在另一个元素上重用它们。</p>
-<p>例如，下面的 CSS 规则块设置了<code>.panel</code>class 的样式。它有<code>background-color</code>，<code>height</code>和<code>border</code>。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.panel</span>&#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">70px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">2px</span> solid green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>现在你需要另一个名为<code>.big-panel</code>的面板。它具有与<code>.panel</code>相同的基本属性，但还需要<code>width</code>和<code>font-size</code>。</p>
-<p>可以从<code>.panel</code>复制并粘贴初始 CSS 规则，但是当你添加更多类型的面板时，代码会变得重复。</p>
-<p><code>extend</code>指令是一种重用为一个元素编写的规则的简单方法，然后为另一个元素添加更多：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.big-panel</span>&#123;</span><br><span class="line">  @extend .panel;</span><br><span class="line">  <span class="selector-tag">width</span>: 150<span class="selector-tag">px</span>;</span><br><span class="line">  <span class="selector-tag">font-size</span>: 2<span class="selector-tag">em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="搜索和替换"><a href="#搜索和替换" class="headerlink" title="搜索和替换"></a>搜索和替换</h3><p>在这道题目中，我们需要写一个字符串的搜索与替换函数，它的返回值为完成替换后的新字符串。</p>
+<p>这个函数接收的第一个参数为待替换的句子。</p>
+<p>第二个参数为句中需要被替换的单词。</p>
+<p>第三个参数为替换后的单词。</p>
+<p><strong>注意：</strong><br>你需要保留被替换单词首字母的大小写格式。即如果传入的第二个参数为 “Book”，第三个参数为 “dog”，那么替换后的结果应为 “Dog”</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">myReplace</span>(<span class="params">str, before, after</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(<span class="regexp">/^[A-Z]/</span>.test(before))&#123;</span><br><span class="line">         after = after[<span class="number">0</span>].toUpperCase() + after.substring(<span class="number">1</span>)</span><br><span class="line">     &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         after = after[<span class="number">0</span>].toLowerCase() + after.substring(<span class="number">1</span>)</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> str.replace(before, after)  <span class="comment">// 不会改变原字符串，会生成新的字符串</span></span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">var</span> strr = myReplace(<span class="string">"A quick brown fox jumped over the lazy dog"</span>, <span class="string">"jumped"</span>, <span class="string">"leaped"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(strr)</span><br></pre></td></tr></table></figure>
 
-<p>除了新样式之外，<code>.big-panel</code>将具有与<code>.panel</code>相同的属性。</p>
+
+
+<h3 id="DNA-配对"><a href="#DNA-配对" class="headerlink" title="DNA 配对"></a>DNA 配对</h3><p>在这道题目中，我们需要写一个函数，为 DNA 中的碱基配对。这个函数只接收一个表示碱基的字符串为参数，最后返回完成配对的二维数组。</p>
+<p><a href="http://en.wikipedia.org/wiki/Base_pair" target="_blank" rel="noopener">碱基对</a> 由一对碱基组成。碱基有四种，分别为 A（腺嘌呤）、T（胸腺嘧啶）、G（鸟嘌呤）和 C（胞嘧啶）。配对原则是：A 与 T 配对，C 与 G 配对。我们需要根据这个原则对传入的所有碱基进行配对。</p>
+<p>对于每个传入的碱基，我们应采用数组的形式展示配对结果。其中，传入的碱基需要作为数组的第一个元素出现。最终返回的数组中应当包含参数中每一个碱基的配对结果。</p>
+<p>比如，传入的参数是 GCG，那么函数的返回值应为 [[“G”, “C”], [“C”,”G”],[“G”, “C”]]</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pairElement</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = str.split(<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">var</span> arr2 = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i ++)&#123;</span><br><span class="line">        <span class="keyword">switch</span>(arr[i])&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'A'</span>: </span><br><span class="line">                arr2.push([<span class="string">'A'</span>,<span class="string">'T'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">'T'</span>: </span><br><span class="line">                arr2.push([<span class="string">'T'</span>,<span class="string">'A'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">'G'</span>: </span><br><span class="line">                arr2.push([<span class="string">'G'</span>,<span class="string">'C'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">'C'</span>: </span><br><span class="line">                arr2.push([<span class="string">'C'</span>,<span class="string">'G'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr3 = pairElement(<span class="string">"GCG"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr3)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="丢失的字母"><a href="#丢失的字母" class="headerlink" title="丢失的字母"></a>丢失的字母</h3><p>写一个函数，找到传入的字符串里缺失的字母并返回它。</p>
+<p>判断缺失的依据是字母顺序，比如 abcdfg 中缺失了 e。而 abcdef 中就没有字母缺失，此时我们需要返回<code>undefined</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fearNotLetter</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> num = str[<span class="number">0</span>].charCodeAt()</span><br><span class="line">  <span class="keyword">var</span> flag</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,j=<span class="number">1</span>; i &lt; str.length<span class="number">-1</span>; i++, j++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(str[i].charCodeAt() + <span class="number">1</span> == str[j].charCodeAt())&#123;</span><br><span class="line">          </span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          flag = <span class="built_in">String</span>.fromCharCode(str[i].charCodeAt() + <span class="number">1</span>)</span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> flag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fearNotLetter(<span class="string">"abce"</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="集合排序"><a href="#集合排序" class="headerlink" title="集合排序"></a>集合排序</h3><p>写一个函数，它接收两个或多个数组为参数。我们需要对这些数组中所有元素进行去除重复元素的处理，并以数组的形式返回去重结果。</p>
+<p>需要注意的是，结果数组中的元素顺序必须与其传入的顺序保持一致。</p>
+<p><code>uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1])</code>应该返回<code>[1, 3, 2, 5, 4]</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniteUnique</span>(<span class="params">...arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [...new <span class="built_in">Set</span>(arr.flat())]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">uniteUnique([<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>], [<span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>], [<span class="number">2</span>, <span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat" target="_blank" rel="noopener">flat()用法</a></p>
+<h3 id="转换HTML"><a href="#转换HTML" class="headerlink" title="转换HTML"></a>转换HTML</h3><p>写一个转换 HTML entity 的函数。需要转换的 HTML entity 有<code>&amp;</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&quot;</code>（双引号）和<code>&#39;</code>（单引号）。转换的规则你可以在 <a href="https://dev.w3.org/html5/html-author/charref" target="_blank" rel="noopener">W3C</a> 官网找到。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertHTML</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = str.split(<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i&lt; arr.length; i++)&#123;</span><br><span class="line">        <span class="keyword">switch</span>(arr[i])&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"&lt;"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;lt;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"&amp;"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;amp;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"&gt;"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;gt;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'"'</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;quot;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"'"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;apos;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr.join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(convertHTML(<span class="string">"Dolce &amp; Gabbana"</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="求斐波那契数列奇数和"><a href="#求斐波那契数列奇数和" class="headerlink" title="求斐波那契数列奇数和"></a>求斐波那契数列奇数和</h3><p>写一个函数，参数为一个正整数<code>num</code>。它的作用是计算斐波那契数列中，小于或等于<code>num</code>的奇数之和。</p>
+<p>斐波那契数列中，第一和第二个数字都是 1，后面的每个数字由之前两数相加得出。斐波那契数列的前六个数字分别为：1、1、2、3、5、8。</p>
+<p>比如，<code>sumFibs(10)</code>应该返回<code>10</code>。因为斐波那契数列中，比<code>10</code>小的数字只有 1、1、3、5。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumFibs</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> preNum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> curNum = <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span>(curNum &lt;= num)&#123;</span><br><span class="line">      <span class="keyword">if</span>(curNum % <span class="number">2</span> !== <span class="number">0</span>)&#123;</span><br><span class="line">          result += curNum</span><br><span class="line">      &#125;</span><br><span class="line">      curNum += preNum</span><br><span class="line">      preNum = curNum - preNum</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumFibs(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="对所有素数求和"><a href="#对所有素数求和" class="headerlink" title="对所有素数求和"></a>对所有素数求和</h3><p>写一个函数，它接收一个数字参数<code>num</code>，返回值为不大于这个数字的所有质数之和。</p>
+<p>质数是大于 1 且仅可以被 1 和自己整除的数。比如，2 就是一个质数，因为它只可以被 1 和 2（它本身）整除。</p>
+<p>注意，传入函数的<code>num</code>不一定是质数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumPrimes</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">2</span>; i &lt;= num; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">2</span>; j &lt;= <span class="built_in">Math</span>.sqrt(i); j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i % j === <span class="number">0</span>)&#123;</span><br><span class="line">                flag = <span class="number">1</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span>(flag === <span class="number">0</span>)&#123;</span><br><span class="line">            result += i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sumPrimes(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="最小公倍数"><a href="#最小公倍数" class="headerlink" title="最小公倍数"></a>最小公倍数</h3><p>写一个函数，它接收一个包含两个数字的数组参数<code>arr</code>，它的返回值为这两个数字范围内所有数字（包含这两个数字）的最小公倍数。</p>
+<p>注意，较小数不一定总是出现在数组的第一个元素。</p>
+<p>比如，传入<code>[1, 3]</code>，那么函数的返回结果应为 1、2、3 的最小公倍数，即为 6。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">smallestCommons</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">1</span></span><br><span class="line">    <span class="keyword">const</span> [min, max] = arr.sort(<span class="function">(<span class="params">a, b</span>)=&gt;</span>a - b)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = min; j &lt;= max; j++)&#123;</span><br><span class="line">        result *= j</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> geshu = max - min + <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=max; i &lt;= result; i+=<span class="number">5</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> shijigeshu = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> k=min; k &lt;= max; k++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i % k === <span class="number">0</span>)&#123;</span><br><span class="line">                shijigeshu++</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(shijigeshu === geshu)&#123;</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="built_in">console</span>.log(smallestCommons([<span class="number">1</span>,<span class="number">5</span>]));</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">container-fluid</span>	 <span class="selector-tag">div</span>适应页面宽度</span><br><span class="line"><span class="selector-tag">img-responsive</span>   <span class="selector-tag">img</span>适应页面的宽度</span><br><span class="line"><span class="selector-tag">text-center</span>      文本居中  例如：<span class="selector-tag">h2</span></span><br><span class="line"><span class="selector-tag">btn-block</span> 		 <span class="selector-tag">button</span>成为块级元素独占一行</span><br><span class="line"><span class="selector-tag">form-control</span> 	 表单元素占满一行</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>web前端</category>
@@ -1791,12 +1697,12 @@
       </categories>
       <tags>
         <tag>FCC</tag>
-        <tag>Sass</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
     <title>Sass</title>
-    <url>/2021/03/28/Sass/</url>
+    <url>/2021/03/25/11Sass/</url>
     <content><![CDATA[<h1 id="Introduction-to-the-Sass"><a href="#Introduction-to-the-Sass" class="headerlink" title="Introduction to the Sass"></a>Introduction to the Sass</h1><p>Sass，英文全称“Syntactically Awesome StyleSheets”，是对 CSS 的扩展。它添加了一些 CSS 语法不具有的新特性。Sass 让开发者维护样式表变得更简单。</p>
 <p>Sass 完全兼容 CSS，因为它是一个预处理器。它用 Sass 语法写代码，然后转换成标准的 CSS。它允许你使用变量、嵌套规则、导入等众多功能。有助于保持大型样式表结构良好，让 CSS 语言更强大，优雅。</p>
 <p>Sass 有两种语法。第一种被称为 SCSS（Sassy CSS），也是我们接下来的挑战采用的语法，它是 CSS 语法的扩充版本。也就是说，CSS 样式表也是合法的 SCSS 文件。这种语法的样式表文件以 .scss 为扩展名。</p>
@@ -2030,6 +1936,216 @@
         <tag>服务端笔记</tag>
         <tag>Node</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>React</title>
+    <url>/2021/03/28/12React/</url>
+    <content><![CDATA[<h1 id="Introduction-to-the-React"><a href="#Introduction-to-the-React" class="headerlink" title="Introduction to the React"></a>Introduction to the React</h1><p>React，由 FaceBook 普及，是一个用于构建用户界面的开源 JavaScript 库。通过 JSX 创建组件，处理 state 和 props，利用事件监听和指定的生命周期钩子动态更新数据。</p>
+<p>React 混合了 HTML 和 JavaScript 的函数性创建了一个新的标签语言，JSX。</p>
+<h3 id="创建一个简单的-JSX-元素"><a href="#创建一个简单的-JSX-元素" class="headerlink" title="创建一个简单的 JSX 元素"></a>创建一个简单的 JSX 元素</h3><p><strong>简介：</strong>React 是由 Facebook 创建和维护的开源视图库。它是渲染当代 Web 应用程序用户界面（UI）的绝佳工具。</p>
+<p>React 使用名为 JSX 的 JavaScript 语法扩展，允许你直接在 JavaScript 中编写 HTML。这有几个好处。它允许你在 HTML 中使用 JavaScript 的完整程序功能，并有助于保持代码的可读性。在大多数情况下，JSX 类似于已经学过的 HTML</p>
+<p>例如，因为 JSX 是 JavaScript 的语法扩展，所以实际上可以直接在 JSX 中编写 JavaScript。要做到这一点，只需在花括号中包含你希望被视为 JavaScript 的代码：<code>{“这被视为 JavaScript 代码”}</code>。</p>
+<p>但是，由于浏览器不能解析 JSX，因此必须将 JSX 代码编译为 JavaScript。在这个过程中，转换器 Babel 是一个很受欢迎的工具。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> JSX = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello JSX!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建一个复杂的-JSX-元素"><a href="#创建一个复杂的-JSX-元素" class="headerlink" title="创建一个复杂的 JSX 元素"></a>创建一个复杂的 JSX 元素</h3><p>JSX 也可以表示更复杂的 HTML。</p>
+<p>关于嵌套的 JSX，需要知道的一件重要的事情，那就是它必须返回单个元素。</p>
+<p>父元素将包裹所有其他级别的嵌套元素。</p>
+<p>例如，几个作为兄弟元素而编写的JSX元素没有父元素包裹将不会被转换</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;!--有效的JSX--&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;p&gt;Paragraph One&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">  &lt;p&gt;Paragraph Two&lt;/</span>p&gt;</span><br><span class="line">  &lt;p&gt;Paragraph Three&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="在-JSX-中添加注释"><a href="#在-JSX-中添加注释" class="headerlink" title="在 JSX 中添加注释"></a>在 JSX 中添加注释</h3><p>使用<code>{/* */}</code>语法来包裹注释文本</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> JSX = (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &#123;<span class="comment">/*就离谱*/</span>&#125;</span><br><span class="line">    &lt;h1&gt;This is a block <span class="keyword">of</span> JSX&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;p&gt;Here's a subtitle&lt;/</span>p&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="渲染-HTML-元素为-DOM-树"><a href="#渲染-HTML-元素为-DOM-树" class="headerlink" title="渲染 HTML 元素为 DOM 树"></a>渲染 HTML 元素为 DOM 树</h3><p>渲染 API（ReactDOM）将此 JSX 直接渲染到 HTML DOM。</p>
+<p>ReactDOM 提供了一个简单的方法来将 React 元素呈现给 DOM，如下所示：<code>ReactDOM.render(componentToRender, targetNode)</code>，其中第一个参数是要渲染的 React 元素或组件，第二个参数是要将组件渲染到的 DOM 节点。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> JSX = (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;Hello World&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;p&gt;Lets render this to the DOM&lt;/</span>p&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDOM.render(JSX, document.getElementById('challenge-node'))</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="在-JSX-中定义一个-HTML-Class"><a href="#在-JSX-中定义一个-HTML-Class" class="headerlink" title="在 JSX 中定义一个 HTML Class"></a>在 JSX 中定义一个 HTML Class</h3><p>到目前为止，HTML 和 JSX 似乎完全相同。</p>
+<p>JSX 的一个关键区别是你不能再使用<code>class</code>这个单词来定义 HTML 的 class 名。这是因为<code>class</code>是 JavaScript 中的关键字。JSX 使用<code>className</code>代替。</p>
+<p>事实上，JSX 中所有 HTML 属性和事件引用的命名约定都变成了驼峰式。例如，JSX 中的单击事件是 <code>onClick</code>，而不是 <code>onclick</code>。同样，<code>onchange</code>变成了<code>onChange</code>。虽然这是一个微妙的差异，但一定要记住。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> JSX = (</span><br><span class="line">  &lt;div className=<span class="string">'myDiv'</span>&gt;</span><br><span class="line">    &lt;h1&gt;Add a <span class="class"><span class="keyword">class</span> <span class="title">to</span> <span class="title">this</span> <span class="title">div</span>&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line"><span class="class">  &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="了解自动闭合的-JSX-标记"><a href="#了解自动闭合的-JSX-标记" class="headerlink" title="了解自动闭合的 JSX 标记"></a>了解自动闭合的 JSX 标记</h3><p>JSX 不同于 HTML 的另一个重要方面是自闭合标签在 JSX 中，规则略有不同。任何 JSX 元素都可以使用自闭合标签编写，并且每个元素都必须关闭。例如，换行标签必须始终编写为<code>&lt;br /&gt;</code>。另一方面<code>&lt;div&gt;</code>可以写成<code>&lt;div /&gt;</code>或者<code>&lt;div&gt;&lt;/div&gt;</code>。不同之处在于，在第一个语法版本中，无法在<code>&lt;div /&gt;</code>中包含任何内容。</p>
+<h3 id="创建一个无状态的函数组件"><a href="#创建一个无状态的函数组件" class="headerlink" title="创建一个无状态的函数组件"></a>创建一个无状态的函数组件</h3><p>使用 JavaScript 函数创建React组件，以这种方式定义组件会创建<em>无状态功能组件</em>。</p>
+<p>无状态组件视为可以接收数据并对其进行渲染的组件，但是它不管理或跟踪对数据的更改.</p>
+<p>要用函数创建组件，只需编写一个返回 JSX 或<code>null</code>的 JavaScript 函数。需要注意的一点是，React 要求你的函数名以大写字母开头。下面是一个无状态功能组件的示例，该组件在 JSX 中分配一个 HTML 的 class：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> DemoComponent = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">'customClass'</span> /&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建一个-React-组件"><a href="#创建一个-React-组件" class="headerlink" title="创建一个 React 组件"></a>创建一个 React 组件</h3><p>定义 React 组件的另一种方法是使用 ES6 的<code>class</code>语法。在以下示例中，<code>Kitten</code>扩展了<code>React.Component</code>：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Kitten</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;h1&gt;Hi&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="用组合的方式创建一个-React-组件"><a href="#用组合的方式创建一个-React-组件" class="headerlink" title="用组合的方式创建一个 React 组件"></a>用组合的方式创建一个 React 组件</h3><p>创建了三个组件：<code>Navbar</code>、<code>Dashboard</code>和<code>Footer</code>。创建一个<code>App</code><em>父组件</em>，将这三个组件分别渲染成为<em>子组件</em>，在<code>render</code>方法中，你可以这样编写：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">&lt;App&gt;</span><br><span class="line">  &lt;Navbar /&gt;</span><br><span class="line">  &lt;Dashboard /&gt;</span><br><span class="line">  &lt;Footer /&gt;</span><br><span class="line">&lt;<span class="regexp">/App&gt;</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure>
+
+<p>当 React 遇到引用另一个组件的自定义 HTML 标签时（如本例所示，组件名称包含在<code>&lt; /&gt;</code>中），它在标签的位置渲染该组件的标签。这可以说明<code>App</code>组件和<code>Navbar</code>、<code>Dashboard</code>以及<code>Footer</code>之间的父子关系。</p>
+<h3 id="渲染-class-组件为-Dom-树"><a href="#渲染-class-组件为-Dom-树" class="headerlink" title="渲染 class 组件为 Dom 树"></a>渲染 class 组件为 Dom 树</h3><p>如果不调用 ReactDOM API，你编写的任何 React 代码都不会渲染到 DOM。</p>
+<p><code>ReactDOM.render(componentToRender, targetNode)</code>。第一个参数是要渲染的 React 组件。第二个参数是要在其中渲染该组件的 DOM 节点</p>
+<p>React 组件传递到<code>ReactDOM.render()</code>与 JSX 元素略有不同。对于 JSX 元素，你传入的是要渲染的元素的名称。但是，对于 React 组件，你需要使用与渲染嵌套组件相同的语法:</p>
+<p><code>ReactDOM.render(&lt;ComponentToRender /&gt;, targetNode)</code>。</p>
+<h3 id="写一个-React-组件"><a href="#写一个-React-组件" class="headerlink" title="写一个 React 组件"></a>写一个 React 组件</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(prop)&#123;</span><br><span class="line">    <span class="keyword">super</span>(prop);</span><br><span class="line">  &#125;</span><br><span class="line">  render()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">h1</span>&gt;</span>My First React Component!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">MyComponent</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">'challenge-node'</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="将-Props-传递给无状态函数组件"><a href="#将-Props-传递给无状态函数组件" class="headerlink" title="将 Props 传递给无状态函数组件"></a>将 Props 传递给无状态函数组件</h3><p>现在是时候看看 React 中的另一个常见特性 <strong>props</strong> 了。在 React 中，你可以将属性传递给子组件。假设你有一个<code>App</code>组件，该组件渲染了一个名为<code>Welcome</code>的子组件，它是一个无状态函数组件。可以通过以下方式给<code>Welcome</code>传递一个<code>user</code>属性：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;App&gt;</span><br><span class="line">  &lt;Welcome user=<span class="string">'Mark'</span> /&gt;</span><br><span class="line">&lt;<span class="regexp">/App&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用<strong>自定义 HTML 属性</strong>，React 支持将属性<code>user</code>传递给组件<code>Welcome</code>。由于<code>Welcome</code>是一个无状态函数组件，它可以像这样访问该值：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Welcome = <span class="function">(<span class="params">props</span>) =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;props.user&#125;!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>调用<code>props</code>这个值是常见做法，当处理无状态函数组件时，基本上可以将其视为返回 JSX 的函数的参数。这样，就可以在函数体中访问该值。但对于类组件，访问方式会略有不同。</p>
+<h3 id="传递一个数组作为-Props"><a href="#传递一个数组作为-Props" class="headerlink" title="传递一个数组作为 Props"></a>传递一个数组作为 Props</h3><p>要将数组传递给 JSX 元素，必须将其视为 JavaScript 并用花括号括起来。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;ParentComponent&gt;</span><br><span class="line">  &lt;ChildComponent colors=&#123;[<span class="string">"green"</span>, <span class="string">"blue"</span>, <span class="string">"red"</span>]&#125; /&gt;</span><br><span class="line">&lt;<span class="regexp">/ParentComponent&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样，子组件就可以访问数组属性<code>colors</code>。访问属性时可以使用<code>join()</code>等数组方法。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ChildComponent = <span class="function">(<span class="params">props</span>) =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;props.colors.join(', ')&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">&lt;!--将会生成  &lt;p&gt;green, blue, red&lt;<span class="regexp">/p&gt; --&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用默认的-Props"><a href="#使用默认的-Props" class="headerlink" title="使用默认的 Props"></a>使用默认的 Props</h3><p>React 还有一个设置默认 props 的选项。将默认 props 作为组件本身的属性分配给组件，React 会在必要时分配默认 prop。例如，如果你声明<code>MyComponent.defaultProps = { location: &#39;San Francisco&#39; }</code>，即定义一个 location 属性，并且其值在没有另行制定的情况下被设置为字符串<code>San Francisco</code>。如果 props 未定义，则 React 会分配默认 props，但如果你将<code>null</code>作为 prop 的值，它将保持<code>null</code>。</p>
+<h3 id="覆盖默认的-Props"><a href="#覆盖默认的-Props" class="headerlink" title="覆盖默认的 Props"></a>覆盖默认的 Props</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Items = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Current Quantity of Items in Cart: &#123;props.quantity&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Items.defaultProps = &#123;</span><br><span class="line">  quantity: <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShoppingCart</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Items</span> <span class="attr">quantity</span>=<span class="string">&#123;10&#125;/</span>&gt;</span></span></span><br><span class="line">    &#123; <span class="comment">/* above this line */</span> &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-PropTypes-来定义你期望的-Props"><a href="#使用-PropTypes-来定义你期望的-Props" class="headerlink" title="使用 PropTypes 来定义你期望的 Props"></a>使用 PropTypes 来定义你期望的 Props</h3><p>你可以在组件上设置<code>propTypes</code>，以要求数据的类型为<code>array</code>。当数据是任何其他类型时，都会抛出警告。当你提前知道 prop 的类型时，最好的做法是设置<code>propTypes</code>。可以为组件定义<code>propTypes</code>属性，方法与定义<code>defaultProps</code>相同。这样做将检查给定键的 prop 是否是给定类型。这里有一个示例，名为<code>handleClick</code>的 prop 应为<code>function</code>类型：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">MyComponent.propTypes = &#123; <span class="attr">handleClick</span>: PropTypes.func.isRequired &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>PropTypes.func</code>部分检查<code>handleClick</code>是否为函数。添加<code>isRequired</code>是为了告诉 React<code>handleClick</code>是该组件的必需属性。如果未提供该 prop，你将看到警告信息。另请注意，<code>func</code>表示<code>function</code>。在 7 种 JavaScript 基本类型中，<code>function</code>和<code>boolean</code>（写为<code>bool</code>）是仅有的使用异常拼写的两种类型。除了基本类型，还有其他类型可用</p>
+<p><code>PropTypes</code>可以从 React 中单独引入，如下所示：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; PropTypes &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-this-props-访问-Props"><a href="#使用-this-props-访问-Props" class="headerlink" title="使用 this.props 访问 Props"></a>使用 this.props 访问 Props</h3><p>倘若接收 prop 的子组件不是无状态函数组件，而是一个 ES6 类组件又当如何呢？ES6 类组件访问 props 的方法略有不同。</p>
+<p>任何时候，只要引用类组件本身，就要使用<code>this</code>关键字。要访问类组件中的 props，需要在在访问它的代码前面添加<code>this</code>。例如，如果 ES6 类组件有一个名为<code>data</code>的 prop，可以在 JSX 中这样写：<code>{this.props.data}</code>。</p>
+<h3 id="使用-Props-和无状态函数组件"><a href="#使用-Props-和无状态函数组件" class="headerlink" title="使用 Props 和无状态函数组件"></a>使用 Props 和无状态函数组件</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CampSite</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;Camper /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const Camper = (props)=&gt;&#123;</span></span><br><span class="line"><span class="regexp">    return &lt;p&gt;&#123;props.name&#125;&lt;/</span>p&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Camper.defaultProps = &#123;</span><br><span class="line">  name: <span class="string">'CamperBot'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Camper.propTypes = &#123;</span><br><span class="line">  name: PropTypes.string.isRequired</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>web前端</category>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>FCC</tag>
+        <tag>React</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Sass</title>
+    <url>/2021/03/28/Sass/</url>
+    <content><![CDATA[<h1 id="Introduction-to-the-Sass"><a href="#Introduction-to-the-Sass" class="headerlink" title="Introduction to the Sass"></a>Introduction to the Sass</h1><p>Sass，英文全称“Syntactically Awesome StyleSheets”，是对 CSS 的扩展。它添加了一些 CSS 语法不具有的新特性。Sass 让开发者维护样式表变得更简单。</p>
+<p>Sass 完全兼容 CSS，因为它是一个预处理器。它用 Sass 语法写代码，然后转换成标准的 CSS。它允许你使用变量、嵌套规则、导入等众多功能。有助于保持大型样式表结构良好，让 CSS 语言更强大，优雅。</p>
+<p>Sass 有两种语法。第一种被称为 SCSS（Sassy CSS），也是我们接下来的挑战采用的语法，它是 CSS 语法的扩充版本。也就是说，CSS 样式表也是合法的 SCSS 文件。这种语法的样式表文件以 .scss 为扩展名。</p>
+<p>第二种比较古老的语法，就是所说的缩排语法（或者直接就称为“Sass”），它不使用花括号，而是通过缩排的方式来表达选择符的嵌套层级，它也不使用分号，而是用换行符来分隔属性。此种语法的样式表文件需要以 .sass 作为扩展名</p>
+<h3 id="用-Sass-变量存储数据"><a href="#用-Sass-变量存储数据" class="headerlink" title="用 Sass 变量存储数据"></a>用 Sass 变量存储数据</h3><p>Sass 不同于 CSS 的一个特点是它允许使用变量。我们可以在 Sass 中声明变量，并为它赋值，就像我们在 JavaScript 中一样。</p>
+<p>在 JavaScript 中，变量是使用<code>let</code>和<code>const</code>关键字定义的。在 Sass 中，变量以<code>$</code>开头的，后跟变量名。</p>
+<p>这里有个例子：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$main-fonts: Arial, sans-serif;</span><br><span class="line">$headings-color: green;</span><br><span class="line"></span><br><span class="line">//To use variables:</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: $main-fonts;</span><br><span class="line">  <span class="attribute">color</span>: $headings-color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当需要把多个元素设置成相同颜色时，变量就会很有用。一旦我们需要更改颜色，只需要改变这个变量的值就好。</p>
+<h3 id="用-Sass-嵌套-CSS"><a href="#用-Sass-嵌套-CSS" class="headerlink" title="用 Sass 嵌套 CSS"></a>用 Sass 嵌套 CSS</h3><p>对于一个大型项目，CSS 规则会很复杂。这时，引入<code>嵌套</code>功能（即在对应的父元素中写子元素的样式）可以有效地简化代码：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">nav</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line"></span><br><span class="line">  ul &#123;</span><br><span class="line">    <span class="selector-tag">list-style</span>: <span class="selector-tag">none</span>;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">li</span> &#123;</span><br><span class="line">      <span class="attribute">display</span>: inline-block;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="用-Mixins-创建可重用-CSS"><a href="#用-Mixins-创建可重用-CSS" class="headerlink" title="用 Mixins 创建可重用 CSS"></a>用 Mixins 创建可重用 CSS</h3><p>在 Sass 中，<code>mixin</code>是一组 CSS 声明，可以在整个样式表中重复使用。</p>
+<p>CSS 的新功能需要一段时间适配后，所有浏览器后才能完全使用。随着浏览器的不断升级，使用这些 CSS 规则时可能需要添加浏览器前缀。比如 “box-shadow”:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">-webkit-box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">-moz-box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">-ms-box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于所有具有<code>box-shadow</code>属性的元素重写此规则，或者更改每个值以测试不同的效果，需要花费大量的精力。</p>
+<p><code>Mixins</code>就像 CSS 的函数。以下是一个例子：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> box-shadow($x, $y, $blur, $c)&#123;</span><br><span class="line">  -webkit-box-shadow: $x, $y, $blur, $c;</span><br><span class="line">  -moz-box-shadow: $x, $y, $blur, $c;</span><br><span class="line">  -ms-box-shadow: $x, $y, $blur, $c;</span><br><span class="line">  box-shadow: $x, $y, $blur, $c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>定义以<code>@mixin</code>开头，后跟自定义名称。参数（<code>$x</code>，<code>$y</code>，<code>$blur</code>，以及上例中的<code>$c</code>是可选的。</p>
+<p>现在，只要在需要的地方使用<code>@include</code>调用上面定义的<code>mixin</code>，就可以自动添加好所有的浏览器前缀：<code>mixin</code>使用<code>@include</code>指令调用：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  @include box-shadow(0px, 0px, 4px, #fff);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-if-和-else-为你的样式添加逻辑"><a href="#使用-if-和-else-为你的样式添加逻辑" class="headerlink" title="使用 @if 和 @else 为你的样式添加逻辑"></a>使用 @if 和 @else 为你的样式添加逻辑</h3><p>Sass 中的<code>@if</code>指令对于测试特定情况非常有用–它的工作方式与 JavaScript中的<code>if</code>语句类似。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> make-bold($bool) &#123;</span><br><span class="line">  <span class="keyword">@if</span> $bool == true &#123;</span><br><span class="line">    <span class="selector-tag">font-weight</span>: <span class="selector-tag">bold</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类似 JavaScript，你可以在 Sass 中使用<code>@else if</code>和<code>@else</code>添加更多条件：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> text-effect($val) &#123;</span><br><span class="line">  <span class="keyword">@if</span> $val == danger &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">red</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> if $val == alert &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">yellow</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> if $val == success &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">green</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">black</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-for-创建一个-Sass-循环"><a href="#使用-for-创建一个-Sass-循环" class="headerlink" title="使用 @for 创建一个 Sass 循环"></a>使用 @for 创建一个 Sass 循环</h3><p>在 Sass 中使用<code>@for</code>循环，它的表现类似与 JavaScript 中的<code>for</code>循环。</p>
+<p><code>@for</code>以两种方式使用：”start through end” 或 “start to end”。主要区别在于“开始结束” <em>排除</em> 结束号码，而“开始结束” <em>包括</em> 结束号码。</p>
+<p>这是一个开始 <strong>到</strong> 结束示例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@for</span> $i from <span class="number">1</span> through <span class="number">12</span> &#123;</span><br><span class="line">    // through包括12    to不包括12</span><br><span class="line">  .col-#&#123;$i&#125; &#123; width: 100%/12 * $i; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>#{$i}</code>部分是将变量（<code>i</code>）与文本组合成字符串的语法。当 Sass 文件转换为 CSS 时，它看起来像这样：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.col-1</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">8.33333%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.col-2</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">16.66667%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.col-12</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是创建网格布局的有效方法。现在，你有 12 个可用作 CSS classes 的列宽选项。</p>
+<h3 id="使用-each-遍历列表中的项目"><a href="#使用-each-遍历列表中的项目" class="headerlink" title="使用 @each 遍历列表中的项目"></a>使用 @each 遍历列表中的项目</h3><p>最后一个挑战显示了<code>@for</code>指令如何使用起始值和结束值循环一定次数。Sass 还提供<code>@each</code>指令，该指令循环遍历列表或映射中的每个项目。</p>
+<p>在每次迭代时，变量将从列表映射赋值给当前值。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@each</span> $color in blue, red, green &#123;</span><br><span class="line">  .#&#123;$color&#125;-text &#123;color: $color;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>map 的语法略有不同。这是一个例子：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$colors: (color1: blue, color2: red, color3: green);</span><br><span class="line"></span><br><span class="line"><span class="keyword">@each</span> $key, $color in $colors &#123;</span><br><span class="line">  .#&#123;$color&#125;-text &#123;color: $color;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>请注意，需要<code>$key</code>变量来引用 map 中的键。否则，编译后的 CSS 将包含<code>color1</code>，<code>color2</code>……</p>
+<p>以上两个代码示例都转换为以下 CSS：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.blue-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.red-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.green-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-while-当条件满足时样式生效"><a href="#使用-while-当条件满足时样式生效" class="headerlink" title="使用 @while 当条件满足时样式生效"></a>使用 @while 当条件满足时样式生效</h3><p>Sass 中的<code>@while</code>指令与 JavaScript 中的<code>while</code>类似。只要满足条件，它就会一直创建 CSS 代码。</p>
+<p><code>@for</code>挑战提供了一个创建简单网格系统的示例。这也适用于<code>@while</code>。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$x: 1;</span><br><span class="line"><span class="keyword">@while</span> $x&lt; <span class="number">13</span> &#123;</span><br><span class="line">  .col-#&#123;$x&#125; &#123; width: 100%/12 * $x;&#125;</span><br><span class="line">  $x: $x + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先，定义变量<code>$x</code>并将其设置为 1。接下来，使用<code>@while</code>指令，当<code>$x</code>小于 13 时创建网格系统 。</p>
+<p>在设置<code>width</code>的 CSS 规则后，<code>$x</code>增加 1 以避免无限循环。</p>
+<h3 id="用-Partials-将你的样式分成小块"><a href="#用-Partials-将你的样式分成小块" class="headerlink" title="用 Partials 将你的样式分成小块"></a>用 Partials 将你的样式分成小块</h3><p>Sass 中的<code>Partials</code>是包含 CSS 代码段的单独文件。这些是在其他 Sass 文件中导入和使用的。我们可以把类似代码放到模块中，以保持代码结构规整且易于管理。</p>
+<p><code>partials</code>的名称以下划线（<code>_</code>）字符开头，告诉 Sass 它是 CSS 的一小部分，而不是将其转换为 CSS 文件。此外，Sass 文件以<code>.scss</code>文件扩展名结尾。要将<code>partial</code>中的代码放入另一个 Sass 文件中，请使用<code>@import</code>指令。</p>
+<p>例如，如果所有<code>mixins</code>都保存在名为 “_mixins.scss “ 的<code>partial</code>中，并且在”main.scss “文件中需要它们，这是如何在主文件中使用它们：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">// In the main.scss file</span><br><span class="line"></span><br><span class="line"><span class="keyword">@import</span> <span class="string">'mixins'</span></span><br></pre></td></tr></table></figure>
+
+<p>请注意，<code>import</code>语句中不需要下划线——Sass 知道它是<code>partial</code>。将<code>partial</code>导入文件后，可以使用所有变量<code>mixins</code>和其他代码。</p>
+<h3 id="将一组CSS样式扩展到另一个元素"><a href="#将一组CSS样式扩展到另一个元素" class="headerlink" title="将一组CSS样式扩展到另一个元素"></a>将一组CSS样式扩展到另一个元素</h3><p>Sass 有一个名为<code>extend</code>的功能，可以很容易地从一个元素中借用 CSS 规则并在另一个元素上重用它们。</p>
+<p>例如，下面的 CSS 规则块设置了<code>.panel</code>class 的样式。它有<code>background-color</code>，<code>height</code>和<code>border</code>。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.panel</span>&#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">70px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">2px</span> solid green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在你需要另一个名为<code>.big-panel</code>的面板。它具有与<code>.panel</code>相同的基本属性，但还需要<code>width</code>和<code>font-size</code>。</p>
+<p>可以从<code>.panel</code>复制并粘贴初始 CSS 规则，但是当你添加更多类型的面板时，代码会变得重复。</p>
+<p><code>extend</code>指令是一种重用为一个元素编写的规则的简单方法，然后为另一个元素添加更多：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.big-panel</span>&#123;</span><br><span class="line">  @extend .panel;</span><br><span class="line">  <span class="selector-tag">width</span>: 150<span class="selector-tag">px</span>;</span><br><span class="line">  <span class="selector-tag">font-size</span>: 2<span class="selector-tag">em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>除了新样式之外，<code>.big-panel</code>将具有与<code>.panel</code>相同的属性。</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>FCC</tag>
+        <tag>Sass</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>blog</title>
+    <url>/2020/05/26/blog/</url>
+    <content><![CDATA[<ul>
+<li>项目的模板文件的外链资源是浏览器解析的，其相对路径是相对于浏览器的请求路径的，请求路径可能会变化，不安全。所以在模板文件中要使用绝对路径，添加‘<strong>/</strong>’可以改变成绝对路径。</li>
+<li>子模板中的路径是用模板引擎解析的，使用相对路径相对的就是当前路径</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>http协议和Node.js异步编程</title>
@@ -2299,15 +2415,6 @@ define(<span class="string">'SYSTEM_ENABLE'</span>, <span class="keyword">true</
         <tag>服务端笔记</tag>
         <tag>php</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>blog</title>
-    <url>/2020/05/26/blog/</url>
-    <content><![CDATA[<ul>
-<li>项目的模板文件的外链资源是浏览器解析的，其相对路径是相对于浏览器的请求路径的，请求路径可能会变化，不安全。所以在模板文件中要使用绝对路径，添加‘<strong>/</strong>’可以改变成绝对路径。</li>
-<li>子模板中的路径是用模板引擎解析的，使用相对路径相对的就是当前路径</li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>服务器开发基础</title>
