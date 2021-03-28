@@ -432,84 +432,6 @@
       </tags>
   </entry>
   <entry>
-    <title>基本数据结构</title>
-    <url>/2020/05/07/05%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<h1 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在 JavaScript 和其他编程语言中，我们都可以以多种方式存储和访问数据。本节将教你如何使用数组（array），以及如何访问和复制数组中的信息。本节还将教你如何用点符号和方括号符号来操作和访问 JavaScript 对象（object）中的信息。学习此文档你应该掌握数组和对象的基本属性以及它们之间的区别，并且掌握如何选择它们来实现给定的目标。</p>
-<h3 id="使用数组存储数据集合"><a href="#使用数组存储数据集合" class="headerlink" title="使用数组存储数据集合"></a>使用数组存储数据集合</h3><p>下面是一个关于数组的更复杂的例子。这是一个多维数组（multi-dimensional Array），或者说是一个包含了其他数组的数组。你可以注意到，在它的内部还包含了 JavaScript 中的对象（objects）结构。我们会在后面的小节中讨论该数据结构，但现在你只需要知道<strong>数组能够存储复杂的对象类型数据</strong>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> complexArray = [</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      one: <span class="number">1</span>,</span><br><span class="line">      two: <span class="number">2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      three: <span class="number">3</span>,</span><br><span class="line">      four: <span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      a: <span class="string">"a"</span>,</span><br><span class="line">      b: <span class="string">"b"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      c: <span class="string">"c"</span>,</span><br><span class="line">      d: “d”</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-push-和-unshift-添加项目到数组中"><a href="#使用-push-和-unshift-添加项目到数组中" class="headerlink" title="使用 push() 和 unshift() 添加项目到数组中"></a>使用 push() 和 unshift() 添加项目到数组中</h3><p><code>Array.push()</code>和<code>Array.unshift()</code>。</p>
-<p>这两个方法都接收一个或多个元素作为参数；对一个数组调用这两个方法都可以将输入的元素插入到该数组中；<code>push()</code>方法将元素插入到一个数组的末尾，而<code>unshift()</code>方法将元素插入到一个数组的开头。请看以下例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> twentyThree = <span class="string">'XXIII'</span>;</span><br><span class="line"><span class="keyword">let</span> romanNumerals = [<span class="string">'XXI'</span>, <span class="string">'XXII'</span>];</span><br><span class="line"></span><br><span class="line">romanNumerals.unshift(<span class="string">'XIX'</span>, <span class="string">'XX'</span>);</span><br><span class="line"><span class="comment">// 数组现在为 ['XIX', 'XX', 'XXI', 'XXII']</span></span><br><span class="line"></span><br><span class="line">romanNumerals.push(twentyThree);</span><br><span class="line"><span class="comment">// 数组现在为 ['XIX', 'XX', 'XXI', 'XXII', 'XXIII']</span></span><br></pre></td></tr></table></figure>
-
-<p>注意，我们还可以输入变量，这允许我们很灵活地动态改变我们数组中的数据。</p>
-<h3 id="使用-pop-和-shift-从数组中删除项目"><a href="#使用-pop-和-shift-从数组中删除项目" class="headerlink" title="使用 pop() 和 shift() 从数组中删除项目"></a>使用 pop() 和 shift() 从数组中删除项目</h3><p>与前面讲的相反。</p>
-<p>作用分别是删除数组最后一个元素和删除数组第一个元素。并返回其值。</p>
-<h3 id="使用-splice-删除项目"><a href="#使用-splice-删除项目" class="headerlink" title="使用 splice() 删除项目"></a>使用 splice() 删除项目</h3><p>在上面的挑战中，我们已经学到了如何利用<code>shift()</code>和<code>pop()</code>从数组的开头或者末尾移除元素，但如果我们想移除数组中间的一个元素呢？或者想一次移除多个元素呢？这时候我们就需要<code>splice()</code>了。<code>splice()</code>让我们可以从数组中的任意位置<strong>移除任意数量的连续的元素</strong>。</p>
-<p><code>splice()</code>最多可以接受 3 个参数，但现在我们先关注前两个。<code>splice()</code>接收的前两个参数基于调用<code>splice()</code>数组中元素的索引。<code>splice()</code>的第一个参数代表从数组中的哪个索引开始移除元素，而第二个参数指示要从数组中删除多少个元素。例如：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="string">'today'</span>, <span class="string">'was'</span>, <span class="string">'not'</span>, <span class="string">'so'</span>, <span class="string">'great'</span>];</span><br><span class="line"></span><br><span class="line">array.splice(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// 从第 3 个元素开始，删除 2 个元素</span></span><br><span class="line"><span class="comment">// 现在该数组等于 ['today', 'was', 'great']</span></span><br></pre></td></tr></table></figure>
-
-<p><code>splice()</code>不仅从被调用的数组中移除元素，还会返回一个包含被移除元素的数组.</p>
-<h3 id="使用-splice-增加项目"><a href="#使用-splice-增加项目" class="headerlink" title="使用 splice() 增加项目"></a>使用 splice() 增加项目</h3><p><code>splice()</code>方法可以接受最多 3 个参数,我们现在可以进一步了解<code>splice()</code>。除了移除元素，我们还可以利用它的第三个参数来向数组中<em>添加</em>元素。第三个参数可以是一个或多个元素，这些元素会被添加到数组中。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">colorChange</span>(<span class="params">arr, index, newColor</span>) </span>&#123;</span><br><span class="line">  arr.splice(index, <span class="number">1</span>, newColor);</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> colorScheme = [<span class="string">'#878787'</span>, <span class="string">'#a08794'</span>, <span class="string">'#bb7e8c'</span>, <span class="string">'#c9b6be'</span>, <span class="string">'#d1becf'</span>];</span><br><span class="line"></span><br><span class="line">colorScheme = colorChange(colorScheme, <span class="number">2</span>, <span class="string">'#332327'</span>);</span><br><span class="line"><span class="comment">// 我们移除了 '#bb7e8c' 并在其位置上添加了 '#332327'</span></span><br><span class="line"><span class="comment">// colorScheme 现在等于 ['#878787', '#a08794', '#332327', '#c9b6be', '#d1becf']</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-slice-拷贝数组项目"><a href="#使用-slice-拷贝数组项目" class="headerlink" title="使用 slice() 拷贝数组项目"></a>使用 slice() 拷贝数组项目</h3><p><code>slice()</code>并不修改数组，而是复制或者说<em>提取（extract）</em>给定数量的元素到一个新数组里，而调用方法的数组则保持不变。<code>slice()</code>只接受 2 个输入参数—<strong>第一个是开始提取元素的位置（索引）</strong>，<strong>第二个是结束提取元素的位置（索引）</strong>。slice 方法会提取直到该索引的元素，但被提取的元素不包括该索引对应的元素。（不包含后面索引对应的值）请看以下例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> weatherConditions = [<span class="string">'rain'</span>, <span class="string">'snow'</span>, <span class="string">'sleet'</span>, <span class="string">'hail'</span>, <span class="string">'clear'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> todaysWeather = weatherConditions.slice(<span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line"><span class="comment">// todaysWeather 等于 ['snow', 'sleet'];</span></span><br><span class="line"><span class="comment">// weatherConditions 仍然等于 ['rain', 'snow', 'sleet', 'hail', 'clear']</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用扩展运算符复制数组"><a href="#使用扩展运算符复制数组" class="headerlink" title="使用扩展运算符复制数组"></a>使用扩展运算符复制数组</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">slice()&#96;已经能让我们从一个数组中选择一些元素来复制到新数组中了，而 ES6 中又新引入了一个简洁且可读性强的语法展开运算符（spread operator），它能让我们方便地复制数组中的*所有*元素。展开语法是这样的：&#96;...</span><br></pre></td></tr></table></figure>
-
-<p>在实践中，我们可以这样用展开运算符来复制一个数组：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> thisArray = [<span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">undefined</span>, <span class="literal">false</span>, <span class="literal">null</span>];</span><br><span class="line"><span class="keyword">let</span> thatArray = [...thisArray];</span><br><span class="line"><span class="comment">// thatArray 等于 [true, true, undefined, false, null]</span></span><br><span class="line"><span class="comment">// thisArray 保持不变，并等于 thatArray</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-indexOf-检查元素是否存在"><a href="#使用-indexOf-检查元素是否存在" class="headerlink" title="使用 indexOf() 检查元素是否存在"></a>使用 indexOf() 检查元素是否存在</h3><p>由于数组可以在任意时间被修改或者说<em>被改变（mutated）</em>，我们不能保证某个数据在一个给定数组中的位置，甚至不能保证该元素还存在于该数组中。幸运的是，JavaScript 给我们提供了另一个内置方法<code>indexOf()</code>。这个方法让我们可以便捷地检查某个元素是否存在于一个数组中。<code>indexOf()</code>方法接受一个元素作为输入参数，并返回该元素在数组中的位置（索引）；若该元素不存在于数组中则返回<code>-1</code>。</p>
-<p>例如：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">'apples'</span>, <span class="string">'pears'</span>, <span class="string">'oranges'</span>, <span class="string">'peaches'</span>, <span class="string">'pears'</span>];</span><br><span class="line"></span><br><span class="line">fruits.indexOf(<span class="string">'dates'</span>) <span class="comment">// 返回 -1</span></span><br><span class="line">fruits.indexOf(<span class="string">'oranges'</span>) <span class="comment">// 返回 2</span></span><br><span class="line">fruits.indexOf(<span class="string">'pears'</span>) <span class="comment">// 返回 1，即第一个出现的 'pears' 元素在数组中的索引为 1</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-For-循环迭代数组的所有项"><a href="#使用-For-循环迭代数组的所有项" class="headerlink" title="使用 For 循环迭代数组的所有项"></a>使用 For 循环迭代数组的所有项</h3><p>在进行与数组有关的编程时，我们有时需要遍历数组的所有元素来找出我们需要的元素，或者对数组执行特定的操作。JavaScript 提供了几个内置的方法，它们以不同的方式遍历数组来获得不同的结果（如<code>every()</code>、<code>forEach()</code>、<code>map()</code>等等）。而简单的<code>for</code>循环不仅能实现这些功能，而且相比之下也更灵活。</p>
-<p>请看以下例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greaterThanTen</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">let</span> newArr = [];</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (arr[i] &gt; <span class="number">10</span>) &#123;</span><br><span class="line">   newArr.push(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greaterThanTen([<span class="number">2</span>, <span class="number">12</span>, <span class="number">8</span>, <span class="number">14</span>, <span class="number">80</span>, <span class="number">0</span>, <span class="number">1</span>]);</span><br><span class="line"><span class="comment">// 返回 [12, 14, 80]</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用方括号访问属性名称"><a href="#使用方括号访问属性名称" class="headerlink" title="使用方括号访问属性名称"></a>使用方括号访问属性名称</h3><p>我们可以使用点操作符和方括号访问对象的属性值。</p>
-<p>假设一个超市的收银台的程序中使用了一个<code>foods</code>对象，并且有一些程序逻辑会设置<code>selectedFood</code>，我们需要查询<code>foods</code>对象来检查某种食物是否存在，我们可以这样写检查逻辑：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> selectedFood = getCurrentFood(scannedItem);</span><br><span class="line"><span class="keyword">let</span> inventory = foods[selectedFood];</span><br></pre></td></tr></table></figure>
-
-
-
-<p>上述代码会先计算<code>selectedFood</code>变量的值，并返回<code>foods</code>对象中以该值命名的属性对应的值，若没有以该值命名的属性则会返回<code>undefined</code>。有时候对象的属性名在运行之前是不确定的，或者我们需要动态地访问对象的属性，这时方括号符号就会很有用。</p>
-<h3 id="使用-delete-关键字删除对象属性"><a href="#使用-delete-关键字删除对象属性" class="headerlink" title="使用 delete 关键字删除对象属性"></a>使用 delete 关键字删除对象属性</h3><p>果我们想移除<code>apples</code>属性，我们可以使用<code>delete</code>关键字：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> foods.apples;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-for…in-语句迭代对象"><a href="#使用-for…in-语句迭代对象" class="headerlink" title="使用 for…in 语句迭代对象"></a>使用 for…in 语句迭代对象</h3><p>有时候你需要遍历一个对象中的所有键。这需要 JavaScript 中的一个特殊语法：for…in 语句。以遍历 <code>users</code>对象的键为例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> user <span class="keyword">in</span> users) &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(user);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出：</span></span><br><span class="line">Alan</span><br><span class="line">Jeff</span><br><span class="line">Sarah</span><br><span class="line">Ryan</span><br></pre></td></tr></table></figure>
-
-<p>在这个语句中，我们定义了一个<code>user</code>变量，你可以看到，这个变量在 for…in 语句对对象的每一个键的遍历中都会被重置。</p>
-<p><strong>注意：</strong><br>跟数组不同，对象中的键是无序的，因此一个对象中某个键的位置，或者说它出现的相对顺序，在引用或访问该键时是不确定的。</p>
-<h3 id="使用-Object-keys-生成对象所有键组成的数组"><a href="#使用-Object-keys-生成对象所有键组成的数组" class="headerlink" title="使用 Object.keys() 生成对象所有键组成的数组"></a>使用 Object.keys() 生成对象所有键组成的数组</h3><p>我们还可以输入一个对象作为参数来调用<code>Object.keys()</code>方法，使其生成一个包含对象中所有键的数组。这会返回一个由对象中所有键的名称（字符串）组成的数组。再次说明，这个数组中的项的顺序是不确定的。</p>
-]]></content>
-      <categories>
-        <category>web前端</category>
-        <category>js笔记</category>
-      </categories>
-      <tags>
-        <tag>FCC</tag>
-        <tag>基础笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>正则表达式</title>
     <url>/2020/05/07/04%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
     <content><![CDATA[<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>正则表达式是表示搜索模式的特殊字符串。也被称为“regex”或“regexp”，它们可以帮助程序员匹配、搜索和替换文本。由于一些字符具有特殊的含义，正则表达式可能会显得晦涩难懂。我们的目标是将这些符号和文本组合成一个你想要的匹配模式，但这只是你想要的。本节将介绍字符、一些快捷方式以及编写正则表达式的常用用法。</p>
@@ -723,6 +645,84 @@
       <tags>
         <tag>FCC</tag>
         <tag>正则</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基本数据结构</title>
+    <url>/2020/05/07/05%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<h1 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在 JavaScript 和其他编程语言中，我们都可以以多种方式存储和访问数据。本节将教你如何使用数组（array），以及如何访问和复制数组中的信息。本节还将教你如何用点符号和方括号符号来操作和访问 JavaScript 对象（object）中的信息。学习此文档你应该掌握数组和对象的基本属性以及它们之间的区别，并且掌握如何选择它们来实现给定的目标。</p>
+<h3 id="使用数组存储数据集合"><a href="#使用数组存储数据集合" class="headerlink" title="使用数组存储数据集合"></a>使用数组存储数据集合</h3><p>下面是一个关于数组的更复杂的例子。这是一个多维数组（multi-dimensional Array），或者说是一个包含了其他数组的数组。你可以注意到，在它的内部还包含了 JavaScript 中的对象（objects）结构。我们会在后面的小节中讨论该数据结构，但现在你只需要知道<strong>数组能够存储复杂的对象类型数据</strong>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> complexArray = [</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      one: <span class="number">1</span>,</span><br><span class="line">      two: <span class="number">2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      three: <span class="number">3</span>,</span><br><span class="line">      four: <span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      a: <span class="string">"a"</span>,</span><br><span class="line">      b: <span class="string">"b"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      c: <span class="string">"c"</span>,</span><br><span class="line">      d: “d”</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-push-和-unshift-添加项目到数组中"><a href="#使用-push-和-unshift-添加项目到数组中" class="headerlink" title="使用 push() 和 unshift() 添加项目到数组中"></a>使用 push() 和 unshift() 添加项目到数组中</h3><p><code>Array.push()</code>和<code>Array.unshift()</code>。</p>
+<p>这两个方法都接收一个或多个元素作为参数；对一个数组调用这两个方法都可以将输入的元素插入到该数组中；<code>push()</code>方法将元素插入到一个数组的末尾，而<code>unshift()</code>方法将元素插入到一个数组的开头。请看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> twentyThree = <span class="string">'XXIII'</span>;</span><br><span class="line"><span class="keyword">let</span> romanNumerals = [<span class="string">'XXI'</span>, <span class="string">'XXII'</span>];</span><br><span class="line"></span><br><span class="line">romanNumerals.unshift(<span class="string">'XIX'</span>, <span class="string">'XX'</span>);</span><br><span class="line"><span class="comment">// 数组现在为 ['XIX', 'XX', 'XXI', 'XXII']</span></span><br><span class="line"></span><br><span class="line">romanNumerals.push(twentyThree);</span><br><span class="line"><span class="comment">// 数组现在为 ['XIX', 'XX', 'XXI', 'XXII', 'XXIII']</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，我们还可以输入变量，这允许我们很灵活地动态改变我们数组中的数据。</p>
+<h3 id="使用-pop-和-shift-从数组中删除项目"><a href="#使用-pop-和-shift-从数组中删除项目" class="headerlink" title="使用 pop() 和 shift() 从数组中删除项目"></a>使用 pop() 和 shift() 从数组中删除项目</h3><p>与前面讲的相反。</p>
+<p>作用分别是删除数组最后一个元素和删除数组第一个元素。并返回其值。</p>
+<h3 id="使用-splice-删除项目"><a href="#使用-splice-删除项目" class="headerlink" title="使用 splice() 删除项目"></a>使用 splice() 删除项目</h3><p>在上面的挑战中，我们已经学到了如何利用<code>shift()</code>和<code>pop()</code>从数组的开头或者末尾移除元素，但如果我们想移除数组中间的一个元素呢？或者想一次移除多个元素呢？这时候我们就需要<code>splice()</code>了。<code>splice()</code>让我们可以从数组中的任意位置<strong>移除任意数量的连续的元素</strong>。</p>
+<p><code>splice()</code>最多可以接受 3 个参数，但现在我们先关注前两个。<code>splice()</code>接收的前两个参数基于调用<code>splice()</code>数组中元素的索引。<code>splice()</code>的第一个参数代表从数组中的哪个索引开始移除元素，而第二个参数指示要从数组中删除多少个元素。例如：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="string">'today'</span>, <span class="string">'was'</span>, <span class="string">'not'</span>, <span class="string">'so'</span>, <span class="string">'great'</span>];</span><br><span class="line"></span><br><span class="line">array.splice(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// 从第 3 个元素开始，删除 2 个元素</span></span><br><span class="line"><span class="comment">// 现在该数组等于 ['today', 'was', 'great']</span></span><br></pre></td></tr></table></figure>
+
+<p><code>splice()</code>不仅从被调用的数组中移除元素，还会返回一个包含被移除元素的数组.</p>
+<h3 id="使用-splice-增加项目"><a href="#使用-splice-增加项目" class="headerlink" title="使用 splice() 增加项目"></a>使用 splice() 增加项目</h3><p><code>splice()</code>方法可以接受最多 3 个参数,我们现在可以进一步了解<code>splice()</code>。除了移除元素，我们还可以利用它的第三个参数来向数组中<em>添加</em>元素。第三个参数可以是一个或多个元素，这些元素会被添加到数组中。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">colorChange</span>(<span class="params">arr, index, newColor</span>) </span>&#123;</span><br><span class="line">  arr.splice(index, <span class="number">1</span>, newColor);</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> colorScheme = [<span class="string">'#878787'</span>, <span class="string">'#a08794'</span>, <span class="string">'#bb7e8c'</span>, <span class="string">'#c9b6be'</span>, <span class="string">'#d1becf'</span>];</span><br><span class="line"></span><br><span class="line">colorScheme = colorChange(colorScheme, <span class="number">2</span>, <span class="string">'#332327'</span>);</span><br><span class="line"><span class="comment">// 我们移除了 '#bb7e8c' 并在其位置上添加了 '#332327'</span></span><br><span class="line"><span class="comment">// colorScheme 现在等于 ['#878787', '#a08794', '#332327', '#c9b6be', '#d1becf']</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-slice-拷贝数组项目"><a href="#使用-slice-拷贝数组项目" class="headerlink" title="使用 slice() 拷贝数组项目"></a>使用 slice() 拷贝数组项目</h3><p><code>slice()</code>并不修改数组，而是复制或者说<em>提取（extract）</em>给定数量的元素到一个新数组里，而调用方法的数组则保持不变。<code>slice()</code>只接受 2 个输入参数—<strong>第一个是开始提取元素的位置（索引）</strong>，<strong>第二个是结束提取元素的位置（索引）</strong>。slice 方法会提取直到该索引的元素，但被提取的元素不包括该索引对应的元素。（不包含后面索引对应的值）请看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> weatherConditions = [<span class="string">'rain'</span>, <span class="string">'snow'</span>, <span class="string">'sleet'</span>, <span class="string">'hail'</span>, <span class="string">'clear'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> todaysWeather = weatherConditions.slice(<span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line"><span class="comment">// todaysWeather 等于 ['snow', 'sleet'];</span></span><br><span class="line"><span class="comment">// weatherConditions 仍然等于 ['rain', 'snow', 'sleet', 'hail', 'clear']</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用扩展运算符复制数组"><a href="#使用扩展运算符复制数组" class="headerlink" title="使用扩展运算符复制数组"></a>使用扩展运算符复制数组</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">slice()&#96;已经能让我们从一个数组中选择一些元素来复制到新数组中了，而 ES6 中又新引入了一个简洁且可读性强的语法展开运算符（spread operator），它能让我们方便地复制数组中的*所有*元素。展开语法是这样的：&#96;...</span><br></pre></td></tr></table></figure>
+
+<p>在实践中，我们可以这样用展开运算符来复制一个数组：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> thisArray = [<span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">undefined</span>, <span class="literal">false</span>, <span class="literal">null</span>];</span><br><span class="line"><span class="keyword">let</span> thatArray = [...thisArray];</span><br><span class="line"><span class="comment">// thatArray 等于 [true, true, undefined, false, null]</span></span><br><span class="line"><span class="comment">// thisArray 保持不变，并等于 thatArray</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-indexOf-检查元素是否存在"><a href="#使用-indexOf-检查元素是否存在" class="headerlink" title="使用 indexOf() 检查元素是否存在"></a>使用 indexOf() 检查元素是否存在</h3><p>由于数组可以在任意时间被修改或者说<em>被改变（mutated）</em>，我们不能保证某个数据在一个给定数组中的位置，甚至不能保证该元素还存在于该数组中。幸运的是，JavaScript 给我们提供了另一个内置方法<code>indexOf()</code>。这个方法让我们可以便捷地检查某个元素是否存在于一个数组中。<code>indexOf()</code>方法接受一个元素作为输入参数，并返回该元素在数组中的位置（索引）；若该元素不存在于数组中则返回<code>-1</code>。</p>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">'apples'</span>, <span class="string">'pears'</span>, <span class="string">'oranges'</span>, <span class="string">'peaches'</span>, <span class="string">'pears'</span>];</span><br><span class="line"></span><br><span class="line">fruits.indexOf(<span class="string">'dates'</span>) <span class="comment">// 返回 -1</span></span><br><span class="line">fruits.indexOf(<span class="string">'oranges'</span>) <span class="comment">// 返回 2</span></span><br><span class="line">fruits.indexOf(<span class="string">'pears'</span>) <span class="comment">// 返回 1，即第一个出现的 'pears' 元素在数组中的索引为 1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-For-循环迭代数组的所有项"><a href="#使用-For-循环迭代数组的所有项" class="headerlink" title="使用 For 循环迭代数组的所有项"></a>使用 For 循环迭代数组的所有项</h3><p>在进行与数组有关的编程时，我们有时需要遍历数组的所有元素来找出我们需要的元素，或者对数组执行特定的操作。JavaScript 提供了几个内置的方法，它们以不同的方式遍历数组来获得不同的结果（如<code>every()</code>、<code>forEach()</code>、<code>map()</code>等等）。而简单的<code>for</code>循环不仅能实现这些功能，而且相比之下也更灵活。</p>
+<p>请看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greaterThanTen</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">let</span> newArr = [];</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (arr[i] &gt; <span class="number">10</span>) &#123;</span><br><span class="line">   newArr.push(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greaterThanTen([<span class="number">2</span>, <span class="number">12</span>, <span class="number">8</span>, <span class="number">14</span>, <span class="number">80</span>, <span class="number">0</span>, <span class="number">1</span>]);</span><br><span class="line"><span class="comment">// 返回 [12, 14, 80]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用方括号访问属性名称"><a href="#使用方括号访问属性名称" class="headerlink" title="使用方括号访问属性名称"></a>使用方括号访问属性名称</h3><p>我们可以使用点操作符和方括号访问对象的属性值。</p>
+<p>假设一个超市的收银台的程序中使用了一个<code>foods</code>对象，并且有一些程序逻辑会设置<code>selectedFood</code>，我们需要查询<code>foods</code>对象来检查某种食物是否存在，我们可以这样写检查逻辑：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> selectedFood = getCurrentFood(scannedItem);</span><br><span class="line"><span class="keyword">let</span> inventory = foods[selectedFood];</span><br></pre></td></tr></table></figure>
+
+
+
+<p>上述代码会先计算<code>selectedFood</code>变量的值，并返回<code>foods</code>对象中以该值命名的属性对应的值，若没有以该值命名的属性则会返回<code>undefined</code>。有时候对象的属性名在运行之前是不确定的，或者我们需要动态地访问对象的属性，这时方括号符号就会很有用。</p>
+<h3 id="使用-delete-关键字删除对象属性"><a href="#使用-delete-关键字删除对象属性" class="headerlink" title="使用 delete 关键字删除对象属性"></a>使用 delete 关键字删除对象属性</h3><p>果我们想移除<code>apples</code>属性，我们可以使用<code>delete</code>关键字：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> foods.apples;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-for…in-语句迭代对象"><a href="#使用-for…in-语句迭代对象" class="headerlink" title="使用 for…in 语句迭代对象"></a>使用 for…in 语句迭代对象</h3><p>有时候你需要遍历一个对象中的所有键。这需要 JavaScript 中的一个特殊语法：for…in 语句。以遍历 <code>users</code>对象的键为例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> user <span class="keyword">in</span> users) &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(user);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出：</span></span><br><span class="line">Alan</span><br><span class="line">Jeff</span><br><span class="line">Sarah</span><br><span class="line">Ryan</span><br></pre></td></tr></table></figure>
+
+<p>在这个语句中，我们定义了一个<code>user</code>变量，你可以看到，这个变量在 for…in 语句对对象的每一个键的遍历中都会被重置。</p>
+<p><strong>注意：</strong><br>跟数组不同，对象中的键是无序的，因此一个对象中某个键的位置，或者说它出现的相对顺序，在引用或访问该键时是不确定的。</p>
+<h3 id="使用-Object-keys-生成对象所有键组成的数组"><a href="#使用-Object-keys-生成对象所有键组成的数组" class="headerlink" title="使用 Object.keys() 生成对象所有键组成的数组"></a>使用 Object.keys() 生成对象所有键组成的数组</h3><p>我们还可以输入一个对象作为参数来调用<code>Object.keys()</code>方法，使其生成一个包含对象中所有键的数组。这会返回一个由对象中所有键的名称（字符串）组成的数组。再次说明，这个数组中的项的顺序是不确定的。</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+        <category>js笔记</category>
+      </categories>
+      <tags>
+        <tag>FCC</tag>
+        <tag>基础笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1135,6 +1135,107 @@
       <tags>
         <tag>FCC</tag>
         <tag>编程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fcc算法中级</title>
+    <url>/2021/03/17/10FCC%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7/</url>
+    <content><![CDATA[<h1 id="FCC算法中级"><a href="#FCC算法中级" class="headerlink" title="FCC算法中级"></a>FCC算法中级</h1><h3 id="范围内数字求和"><a href="#范围内数字求和" class="headerlink" title="范围内数字求和"></a>范围内数字求和</h3><p>给出一个含有两个数字的数组，我们需要写一个函数，让它返回这两个数字间所有数字（包含这两个数字）的总和。</p>
+<p>注意，较小数不一定总是出现在数组的第一个元素。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumAll</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sumBetween = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="built_in">Math</span>.min(...arr); i &lt;= <span class="built_in">Math</span>.max(...arr); i++) &#123;</span><br><span class="line">    sumBetween += i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sumBetween;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumAll([<span class="number">1</span>, <span class="number">4</span>]);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="区分两个数组"><a href="#区分两个数组" class="headerlink" title="区分两个数组"></a>区分两个数组</h3><p>写一个函数，比较两个数组，返回一个新的数组。这个新数组需要包含传入的两个数组所有元素中，仅在其中一个数组里出现的元素。如果某个元素同时出现在两个数组中，则不应包含在返回的数组里。换言之，我们需要返回这两个数组的对称差。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">diffArray</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = [];</span><br><span class="line">  <span class="comment">// 这是一个党异伐同的过程</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">secondInFirst</span>(<span class="params">first, second</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; second.length; i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(first.indexOf(second[i]) === <span class="number">-1</span>)&#123;</span><br><span class="line">        newArr.push(second[i])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  secondInFirst(arr1, arr2)</span><br><span class="line">  secondInFirst(arr2, arr1)</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">diffArray([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">diffArray</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 这是一个党异伐同的过程</span></span><br><span class="line">  <span class="keyword">return</span> arr1.concat(arr2).filter(<span class="function"><span class="params">item</span>=&gt;</span>arr1.indexOf(item)===<span class="number">-1</span> || arr2.indexOf(item)===<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">diffArray([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="瞄准和消灭"><a href="#瞄准和消灭" class="headerlink" title="瞄准和消灭"></a>瞄准和消灭</h3><p>传给它的第一个参数是数组，我们称他为初始数组。后续的参数数量是不确定的，可能有一个或多个。你需要做的是，从初始数组中移除所有与后续参数相等的元素，并返回移除元素后的数组。使用<code>...</code>，即“剩余参数”（Rest Parameters）语法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">destroyer</span>(<span class="params">arr, ...arr2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 删掉那些值</span></span><br><span class="line">  <span class="keyword">return</span> arr.filter(<span class="function"><span class="params">item</span>=&gt;</span>!arr2.includes(item));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">destroyer([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="短线连接格式"><a href="#短线连接格式" class="headerlink" title="短线连接格式"></a>短线连接格式</h3><p>写一个函数，把一个字符串转换为“短线连接格式”。短线连接格式的意思是，所有字母都是小写，且用<code>-</code>连接。比如，对于<code>Hello World</code>，应该转换为<code>hello-world</code>；对于<code>I love_Javascript-VeryMuch</code>，应该转换为<code>i-love-javascript-very-much</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">spinalCase</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> str.split(<span class="regexp">/\s|_|(?=[A-Z])/</span>)</span><br><span class="line">    .join(<span class="string">'-'</span>)</span><br><span class="line">    .toLowerCase();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">spinalCase(<span class="string">'This Is Spinal Tap'</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="儿童黑话"><a href="#儿童黑话" class="headerlink" title="儿童黑话"></a>儿童黑话</h3><p>写一个函数，把传入的字符串翻译成“儿童黑话”。</p>
+<p><a href="http://en.wikipedia.org/wiki/Pig_Latin" target="_blank" rel="noopener">儿童黑话</a>的基本转换规则很简单，只需要把一个英文单词的第一个辅音字母或第一组辅音从移到单词的结尾，并在后面加上<code>ay</code>即可。在英语中，字母 a、e、i、o、u 为元音，其余的字母均为辅音。辅音从的意思是连续的多个辅音字母。</p>
+<p>额外地，如果单词本身是以元音开头的，那只需要在结尾加上<code>way</code>。</p>
+<p>在本题中，传入的单词一定会是英文单词，且所有字母均为小写。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">translatePigLatin</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> consonantRegex = <span class="regexp">/^[^aeiou]+/</span>;</span><br><span class="line">  <span class="keyword">let</span> myConsonants = str.match(consonantRegex);</span><br><span class="line">  <span class="keyword">return</span> myConsonants !== <span class="literal">null</span></span><br><span class="line">    ? str</span><br><span class="line">        .replace(consonantRegex, <span class="string">""</span>)</span><br><span class="line">        .concat(myConsonants)</span><br><span class="line">        .concat(<span class="string">"ay"</span>)</span><br><span class="line">    : str.concat(<span class="string">"way"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">translatePigLatin(<span class="string">"consonant"</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="搜索和替换"><a href="#搜索和替换" class="headerlink" title="搜索和替换"></a>搜索和替换</h3><p>在这道题目中，我们需要写一个字符串的搜索与替换函数，它的返回值为完成替换后的新字符串。</p>
+<p>这个函数接收的第一个参数为待替换的句子。</p>
+<p>第二个参数为句中需要被替换的单词。</p>
+<p>第三个参数为替换后的单词。</p>
+<p><strong>注意：</strong><br>你需要保留被替换单词首字母的大小写格式。即如果传入的第二个参数为 “Book”，第三个参数为 “dog”，那么替换后的结果应为 “Dog”</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">myReplace</span>(<span class="params">str, before, after</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(<span class="regexp">/^[A-Z]/</span>.test(before))&#123;</span><br><span class="line">         after = after[<span class="number">0</span>].toUpperCase() + after.substring(<span class="number">1</span>)</span><br><span class="line">     &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         after = after[<span class="number">0</span>].toLowerCase() + after.substring(<span class="number">1</span>)</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> str.replace(before, after)  <span class="comment">// 不会改变原字符串，会生成新的字符串</span></span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">var</span> strr = myReplace(<span class="string">"A quick brown fox jumped over the lazy dog"</span>, <span class="string">"jumped"</span>, <span class="string">"leaped"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(strr)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="DNA-配对"><a href="#DNA-配对" class="headerlink" title="DNA 配对"></a>DNA 配对</h3><p>在这道题目中，我们需要写一个函数，为 DNA 中的碱基配对。这个函数只接收一个表示碱基的字符串为参数，最后返回完成配对的二维数组。</p>
+<p><a href="http://en.wikipedia.org/wiki/Base_pair" target="_blank" rel="noopener">碱基对</a> 由一对碱基组成。碱基有四种，分别为 A（腺嘌呤）、T（胸腺嘧啶）、G（鸟嘌呤）和 C（胞嘧啶）。配对原则是：A 与 T 配对，C 与 G 配对。我们需要根据这个原则对传入的所有碱基进行配对。</p>
+<p>对于每个传入的碱基，我们应采用数组的形式展示配对结果。其中，传入的碱基需要作为数组的第一个元素出现。最终返回的数组中应当包含参数中每一个碱基的配对结果。</p>
+<p>比如，传入的参数是 GCG，那么函数的返回值应为 [[“G”, “C”], [“C”,”G”],[“G”, “C”]]</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pairElement</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = str.split(<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">var</span> arr2 = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i ++)&#123;</span><br><span class="line">        <span class="keyword">switch</span>(arr[i])&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'A'</span>: </span><br><span class="line">                arr2.push([<span class="string">'A'</span>,<span class="string">'T'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">'T'</span>: </span><br><span class="line">                arr2.push([<span class="string">'T'</span>,<span class="string">'A'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">'G'</span>: </span><br><span class="line">                arr2.push([<span class="string">'G'</span>,<span class="string">'C'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">'C'</span>: </span><br><span class="line">                arr2.push([<span class="string">'C'</span>,<span class="string">'G'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr3 = pairElement(<span class="string">"GCG"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr3)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="丢失的字母"><a href="#丢失的字母" class="headerlink" title="丢失的字母"></a>丢失的字母</h3><p>写一个函数，找到传入的字符串里缺失的字母并返回它。</p>
+<p>判断缺失的依据是字母顺序，比如 abcdfg 中缺失了 e。而 abcdef 中就没有字母缺失，此时我们需要返回<code>undefined</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fearNotLetter</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> num = str[<span class="number">0</span>].charCodeAt()</span><br><span class="line">  <span class="keyword">var</span> flag</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,j=<span class="number">1</span>; i &lt; str.length<span class="number">-1</span>; i++, j++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(str[i].charCodeAt() + <span class="number">1</span> == str[j].charCodeAt())&#123;</span><br><span class="line">          </span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          flag = <span class="built_in">String</span>.fromCharCode(str[i].charCodeAt() + <span class="number">1</span>)</span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> flag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fearNotLetter(<span class="string">"abce"</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="集合排序"><a href="#集合排序" class="headerlink" title="集合排序"></a>集合排序</h3><p>写一个函数，它接收两个或多个数组为参数。我们需要对这些数组中所有元素进行去除重复元素的处理，并以数组的形式返回去重结果。</p>
+<p>需要注意的是，结果数组中的元素顺序必须与其传入的顺序保持一致。</p>
+<p><code>uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1])</code>应该返回<code>[1, 3, 2, 5, 4]</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniteUnique</span>(<span class="params">...arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [...new <span class="built_in">Set</span>(arr.flat())]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">uniteUnique([<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>], [<span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>], [<span class="number">2</span>, <span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat" target="_blank" rel="noopener">flat()用法</a></p>
+<h3 id="转换HTML"><a href="#转换HTML" class="headerlink" title="转换HTML"></a>转换HTML</h3><p>写一个转换 HTML entity 的函数。需要转换的 HTML entity 有<code>&amp;</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&quot;</code>（双引号）和<code>&#39;</code>（单引号）。转换的规则你可以在 <a href="https://dev.w3.org/html5/html-author/charref" target="_blank" rel="noopener">W3C</a> 官网找到。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertHTML</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = str.split(<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i&lt; arr.length; i++)&#123;</span><br><span class="line">        <span class="keyword">switch</span>(arr[i])&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"&lt;"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;lt;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"&amp;"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;amp;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"&gt;"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;gt;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'"'</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;quot;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"'"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;apos;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr.join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(convertHTML(<span class="string">"Dolce &amp; Gabbana"</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="求斐波那契数列奇数和"><a href="#求斐波那契数列奇数和" class="headerlink" title="求斐波那契数列奇数和"></a>求斐波那契数列奇数和</h3><p>写一个函数，参数为一个正整数<code>num</code>。它的作用是计算斐波那契数列中，小于或等于<code>num</code>的奇数之和。</p>
+<p>斐波那契数列中，第一和第二个数字都是 1，后面的每个数字由之前两数相加得出。斐波那契数列的前六个数字分别为：1、1、2、3、5、8。</p>
+<p>比如，<code>sumFibs(10)</code>应该返回<code>10</code>。因为斐波那契数列中，比<code>10</code>小的数字只有 1、1、3、5。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumFibs</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> preNum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> curNum = <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span>(curNum &lt;= num)&#123;</span><br><span class="line">      <span class="keyword">if</span>(curNum % <span class="number">2</span> !== <span class="number">0</span>)&#123;</span><br><span class="line">          result += curNum</span><br><span class="line">      &#125;</span><br><span class="line">      curNum += preNum</span><br><span class="line">      preNum = curNum - preNum</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumFibs(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="对所有素数求和"><a href="#对所有素数求和" class="headerlink" title="对所有素数求和"></a>对所有素数求和</h3><p>写一个函数，它接收一个数字参数<code>num</code>，返回值为不大于这个数字的所有质数之和。</p>
+<p>质数是大于 1 且仅可以被 1 和自己整除的数。比如，2 就是一个质数，因为它只可以被 1 和 2（它本身）整除。</p>
+<p>注意，传入函数的<code>num</code>不一定是质数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumPrimes</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">2</span>; i &lt;= num; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">2</span>; j &lt;= <span class="built_in">Math</span>.sqrt(i); j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i % j === <span class="number">0</span>)&#123;</span><br><span class="line">                flag = <span class="number">1</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span>(flag === <span class="number">0</span>)&#123;</span><br><span class="line">            result += i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sumPrimes(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="最小公倍数"><a href="#最小公倍数" class="headerlink" title="最小公倍数"></a>最小公倍数</h3><p>写一个函数，它接收一个包含两个数字的数组参数<code>arr</code>，它的返回值为这两个数字范围内所有数字（包含这两个数字）的最小公倍数。</p>
+<p>注意，较小数不一定总是出现在数组的第一个元素。</p>
+<p>比如，传入<code>[1, 3]</code>，那么函数的返回结果应为 1、2、3 的最小公倍数，即为 6。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">smallestCommons</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">1</span></span><br><span class="line">    <span class="keyword">const</span> [min, max] = arr.sort(<span class="function">(<span class="params">a, b</span>)=&gt;</span>a - b)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = min; j &lt;= max; j++)&#123;</span><br><span class="line">        result *= j</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> geshu = max - min + <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=max; i &lt;= result; i+=<span class="number">5</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> shijigeshu = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> k=min; k &lt;= max; k++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i % k === <span class="number">0</span>)&#123;</span><br><span class="line">                shijigeshu++</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(shijigeshu === geshu)&#123;</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="built_in">console</span>.log(smallestCommons([<span class="number">1</span>,<span class="number">5</span>]));</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">container-fluid</span>	 <span class="selector-tag">div</span>适应页面宽度</span><br><span class="line"><span class="selector-tag">img-responsive</span>   <span class="selector-tag">img</span>适应页面的宽度</span><br><span class="line"><span class="selector-tag">text-center</span>      文本居中  例如：<span class="selector-tag">h2</span></span><br><span class="line"><span class="selector-tag">btn-block</span> 		 <span class="selector-tag">button</span>成为块级元素独占一行</span><br><span class="line"><span class="selector-tag">form-control</span> 	 表单元素占满一行</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>web前端</category>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>FCC</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1600,96 +1701,89 @@
       </tags>
   </entry>
   <entry>
-    <title>fcc算法中级</title>
-    <url>/2021/03/17/10FCC%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7/</url>
-    <content><![CDATA[<h1 id="FCC算法中级"><a href="#FCC算法中级" class="headerlink" title="FCC算法中级"></a>FCC算法中级</h1><h3 id="范围内数字求和"><a href="#范围内数字求和" class="headerlink" title="范围内数字求和"></a>范围内数字求和</h3><p>给出一个含有两个数字的数组，我们需要写一个函数，让它返回这两个数字间所有数字（包含这两个数字）的总和。</p>
-<p>注意，较小数不一定总是出现在数组的第一个元素。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumAll</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sumBetween = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="built_in">Math</span>.min(...arr); i &lt;= <span class="built_in">Math</span>.max(...arr); i++) &#123;</span><br><span class="line">    sumBetween += i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sumBetween;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumAll([<span class="number">1</span>, <span class="number">4</span>]);</span><br></pre></td></tr></table></figure>
+    <title>Sass</title>
+    <url>/2021/03/25/11Sass/</url>
+    <content><![CDATA[<h1 id="Introduction-to-the-Sass"><a href="#Introduction-to-the-Sass" class="headerlink" title="Introduction to the Sass"></a>Introduction to the Sass</h1><p>Sass，英文全称“Syntactically Awesome StyleSheets”，是对 CSS 的扩展。它添加了一些 CSS 语法不具有的新特性。Sass 让开发者维护样式表变得更简单。</p>
+<p>Sass 完全兼容 CSS，因为它是一个预处理器。它用 Sass 语法写代码，然后转换成标准的 CSS。它允许你使用变量、嵌套规则、导入等众多功能。有助于保持大型样式表结构良好，让 CSS 语言更强大，优雅。</p>
+<p>Sass 有两种语法。第一种被称为 SCSS（Sassy CSS），也是我们接下来的挑战采用的语法，它是 CSS 语法的扩充版本。也就是说，CSS 样式表也是合法的 SCSS 文件。这种语法的样式表文件以 .scss 为扩展名。</p>
+<p>第二种比较古老的语法，就是所说的缩排语法（或者直接就称为“Sass”），它不使用花括号，而是通过缩排的方式来表达选择符的嵌套层级，它也不使用分号，而是用换行符来分隔属性。此种语法的样式表文件需要以 .sass 作为扩展名</p>
+<h3 id="用-Sass-变量存储数据"><a href="#用-Sass-变量存储数据" class="headerlink" title="用 Sass 变量存储数据"></a>用 Sass 变量存储数据</h3><p>Sass 不同于 CSS 的一个特点是它允许使用变量。我们可以在 Sass 中声明变量，并为它赋值，就像我们在 JavaScript 中一样。</p>
+<p>在 JavaScript 中，变量是使用<code>let</code>和<code>const</code>关键字定义的。在 Sass 中，变量以<code>$</code>开头的，后跟变量名。</p>
+<p>这里有个例子：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$main-fonts: Arial, sans-serif;</span><br><span class="line">$headings-color: green;</span><br><span class="line"></span><br><span class="line">//To use variables:</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: $main-fonts;</span><br><span class="line">  <span class="attribute">color</span>: $headings-color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当需要把多个元素设置成相同颜色时，变量就会很有用。一旦我们需要更改颜色，只需要改变这个变量的值就好。</p>
+<h3 id="用-Sass-嵌套-CSS"><a href="#用-Sass-嵌套-CSS" class="headerlink" title="用 Sass 嵌套 CSS"></a>用 Sass 嵌套 CSS</h3><p>对于一个大型项目，CSS 规则会很复杂。这时，引入<code>嵌套</code>功能（即在对应的父元素中写子元素的样式）可以有效地简化代码：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">nav</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line"></span><br><span class="line">  ul &#123;</span><br><span class="line">    <span class="selector-tag">list-style</span>: <span class="selector-tag">none</span>;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">li</span> &#123;</span><br><span class="line">      <span class="attribute">display</span>: inline-block;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="区分两个数组"><a href="#区分两个数组" class="headerlink" title="区分两个数组"></a>区分两个数组</h3><p>写一个函数，比较两个数组，返回一个新的数组。这个新数组需要包含传入的两个数组所有元素中，仅在其中一个数组里出现的元素。如果某个元素同时出现在两个数组中，则不应包含在返回的数组里。换言之，我们需要返回这两个数组的对称差。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">diffArray</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = [];</span><br><span class="line">  <span class="comment">// 这是一个党异伐同的过程</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">secondInFirst</span>(<span class="params">first, second</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; second.length; i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(first.indexOf(second[i]) === <span class="number">-1</span>)&#123;</span><br><span class="line">        newArr.push(second[i])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  secondInFirst(arr1, arr2)</span><br><span class="line">  secondInFirst(arr2, arr1)</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">diffArray([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
+<h3 id="用-Mixins-创建可重用-CSS"><a href="#用-Mixins-创建可重用-CSS" class="headerlink" title="用 Mixins 创建可重用 CSS"></a>用 Mixins 创建可重用 CSS</h3><p>在 Sass 中，<code>mixin</code>是一组 CSS 声明，可以在整个样式表中重复使用。</p>
+<p>CSS 的新功能需要一段时间适配后，所有浏览器后才能完全使用。随着浏览器的不断升级，使用这些 CSS 规则时可能需要添加浏览器前缀。比如 “box-shadow”:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">-webkit-box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">-moz-box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">-ms-box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">diffArray</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 这是一个党异伐同的过程</span></span><br><span class="line">  <span class="keyword">return</span> arr1.concat(arr2).filter(<span class="function"><span class="params">item</span>=&gt;</span>arr1.indexOf(item)===<span class="number">-1</span> || arr2.indexOf(item)===<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">diffArray([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br></pre></td></tr></table></figure>
+<p>对于所有具有<code>box-shadow</code>属性的元素重写此规则，或者更改每个值以测试不同的效果，需要花费大量的精力。</p>
+<p><code>Mixins</code>就像 CSS 的函数。以下是一个例子：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> box-shadow($x, $y, $blur, $c)&#123;</span><br><span class="line">  -webkit-box-shadow: $x, $y, $blur, $c;</span><br><span class="line">  -moz-box-shadow: $x, $y, $blur, $c;</span><br><span class="line">  -ms-box-shadow: $x, $y, $blur, $c;</span><br><span class="line">  box-shadow: $x, $y, $blur, $c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-<h3 id="瞄准和消灭"><a href="#瞄准和消灭" class="headerlink" title="瞄准和消灭"></a>瞄准和消灭</h3><p>传给它的第一个参数是数组，我们称他为初始数组。后续的参数数量是不确定的，可能有一个或多个。你需要做的是，从初始数组中移除所有与后续参数相等的元素，并返回移除元素后的数组。使用<code>...</code>，即“剩余参数”（Rest Parameters）语法</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">destroyer</span>(<span class="params">arr, ...arr2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 删掉那些值</span></span><br><span class="line">  <span class="keyword">return</span> arr.filter(<span class="function"><span class="params">item</span>=&gt;</span>!arr2.includes(item));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">destroyer([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="短线连接格式"><a href="#短线连接格式" class="headerlink" title="短线连接格式"></a>短线连接格式</h3><p>写一个函数，把一个字符串转换为“短线连接格式”。短线连接格式的意思是，所有字母都是小写，且用<code>-</code>连接。比如，对于<code>Hello World</code>，应该转换为<code>hello-world</code>；对于<code>I love_Javascript-VeryMuch</code>，应该转换为<code>i-love-javascript-very-much</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">spinalCase</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> str.split(<span class="regexp">/\s|_|(?=[A-Z])/</span>)</span><br><span class="line">    .join(<span class="string">'-'</span>)</span><br><span class="line">    .toLowerCase();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">spinalCase(<span class="string">'This Is Spinal Tap'</span>);</span><br></pre></td></tr></table></figure>
+<p>定义以<code>@mixin</code>开头，后跟自定义名称。参数（<code>$x</code>，<code>$y</code>，<code>$blur</code>，以及上例中的<code>$c</code>是可选的。</p>
+<p>现在，只要在需要的地方使用<code>@include</code>调用上面定义的<code>mixin</code>，就可以自动添加好所有的浏览器前缀：<code>mixin</code>使用<code>@include</code>指令调用：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  @include box-shadow(0px, 0px, 4px, #fff);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="儿童黑话"><a href="#儿童黑话" class="headerlink" title="儿童黑话"></a>儿童黑话</h3><p>写一个函数，把传入的字符串翻译成“儿童黑话”。</p>
-<p><a href="http://en.wikipedia.org/wiki/Pig_Latin" target="_blank" rel="noopener">儿童黑话</a>的基本转换规则很简单，只需要把一个英文单词的第一个辅音字母或第一组辅音从移到单词的结尾，并在后面加上<code>ay</code>即可。在英语中，字母 a、e、i、o、u 为元音，其余的字母均为辅音。辅音从的意思是连续的多个辅音字母。</p>
-<p>额外地，如果单词本身是以元音开头的，那只需要在结尾加上<code>way</code>。</p>
-<p>在本题中，传入的单词一定会是英文单词，且所有字母均为小写。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">translatePigLatin</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> consonantRegex = <span class="regexp">/^[^aeiou]+/</span>;</span><br><span class="line">  <span class="keyword">let</span> myConsonants = str.match(consonantRegex);</span><br><span class="line">  <span class="keyword">return</span> myConsonants !== <span class="literal">null</span></span><br><span class="line">    ? str</span><br><span class="line">        .replace(consonantRegex, <span class="string">""</span>)</span><br><span class="line">        .concat(myConsonants)</span><br><span class="line">        .concat(<span class="string">"ay"</span>)</span><br><span class="line">    : str.concat(<span class="string">"way"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">translatePigLatin(<span class="string">"consonant"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="使用-if-和-else-为你的样式添加逻辑"><a href="#使用-if-和-else-为你的样式添加逻辑" class="headerlink" title="使用 @if 和 @else 为你的样式添加逻辑"></a>使用 @if 和 @else 为你的样式添加逻辑</h3><p>Sass 中的<code>@if</code>指令对于测试特定情况非常有用–它的工作方式与 JavaScript中的<code>if</code>语句类似。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> make-bold($bool) &#123;</span><br><span class="line">  <span class="keyword">@if</span> $bool == true &#123;</span><br><span class="line">    <span class="selector-tag">font-weight</span>: <span class="selector-tag">bold</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类似 JavaScript，你可以在 Sass 中使用<code>@else if</code>和<code>@else</code>添加更多条件：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> text-effect($val) &#123;</span><br><span class="line">  <span class="keyword">@if</span> $val == danger &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">red</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> if $val == alert &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">yellow</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> if $val == success &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">green</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">black</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="搜索和替换"><a href="#搜索和替换" class="headerlink" title="搜索和替换"></a>搜索和替换</h3><p>在这道题目中，我们需要写一个字符串的搜索与替换函数，它的返回值为完成替换后的新字符串。</p>
-<p>这个函数接收的第一个参数为待替换的句子。</p>
-<p>第二个参数为句中需要被替换的单词。</p>
-<p>第三个参数为替换后的单词。</p>
-<p><strong>注意：</strong><br>你需要保留被替换单词首字母的大小写格式。即如果传入的第二个参数为 “Book”，第三个参数为 “dog”，那么替换后的结果应为 “Dog”</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">myReplace</span>(<span class="params">str, before, after</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(<span class="regexp">/^[A-Z]/</span>.test(before))&#123;</span><br><span class="line">         after = after[<span class="number">0</span>].toUpperCase() + after.substring(<span class="number">1</span>)</span><br><span class="line">     &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         after = after[<span class="number">0</span>].toLowerCase() + after.substring(<span class="number">1</span>)</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> str.replace(before, after)  <span class="comment">// 不会改变原字符串，会生成新的字符串</span></span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">var</span> strr = myReplace(<span class="string">"A quick brown fox jumped over the lazy dog"</span>, <span class="string">"jumped"</span>, <span class="string">"leaped"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(strr)</span><br></pre></td></tr></table></figure>
+<h3 id="使用-for-创建一个-Sass-循环"><a href="#使用-for-创建一个-Sass-循环" class="headerlink" title="使用 @for 创建一个 Sass 循环"></a>使用 @for 创建一个 Sass 循环</h3><p>在 Sass 中使用<code>@for</code>循环，它的表现类似与 JavaScript 中的<code>for</code>循环。</p>
+<p><code>@for</code>以两种方式使用：”start through end” 或 “start to end”。主要区别在于“开始结束” <em>排除</em> 结束号码，而“开始结束” <em>包括</em> 结束号码。</p>
+<p>这是一个开始 <strong>到</strong> 结束示例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@for</span> $i from <span class="number">1</span> through <span class="number">12</span> &#123;</span><br><span class="line">    // through包括12    to不包括12</span><br><span class="line">  .col-#&#123;$i&#125; &#123; width: 100%/12 * $i; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>#{$i}</code>部分是将变量（<code>i</code>）与文本组合成字符串的语法。当 Sass 文件转换为 CSS 时，它看起来像这样：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.col-1</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">8.33333%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.col-2</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">16.66667%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.col-12</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是创建网格布局的有效方法。现在，你有 12 个可用作 CSS classes 的列宽选项。</p>
+<h3 id="使用-each-遍历列表中的项目"><a href="#使用-each-遍历列表中的项目" class="headerlink" title="使用 @each 遍历列表中的项目"></a>使用 @each 遍历列表中的项目</h3><p>最后一个挑战显示了<code>@for</code>指令如何使用起始值和结束值循环一定次数。Sass 还提供<code>@each</code>指令，该指令循环遍历列表或映射中的每个项目。</p>
+<p>在每次迭代时，变量将从列表映射赋值给当前值。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@each</span> $color in blue, red, green &#123;</span><br><span class="line">  .#&#123;$color&#125;-text &#123;color: $color;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>map 的语法略有不同。这是一个例子：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$colors: (color1: blue, color2: red, color3: green);</span><br><span class="line"></span><br><span class="line"><span class="keyword">@each</span> $key, $color in $colors &#123;</span><br><span class="line">  .#&#123;$color&#125;-text &#123;color: $color;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>请注意，需要<code>$key</code>变量来引用 map 中的键。否则，编译后的 CSS 将包含<code>color1</code>，<code>color2</code>……</p>
+<p>以上两个代码示例都转换为以下 CSS：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.blue-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.red-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.green-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="DNA-配对"><a href="#DNA-配对" class="headerlink" title="DNA 配对"></a>DNA 配对</h3><p>在这道题目中，我们需要写一个函数，为 DNA 中的碱基配对。这个函数只接收一个表示碱基的字符串为参数，最后返回完成配对的二维数组。</p>
-<p><a href="http://en.wikipedia.org/wiki/Base_pair" target="_blank" rel="noopener">碱基对</a> 由一对碱基组成。碱基有四种，分别为 A（腺嘌呤）、T（胸腺嘧啶）、G（鸟嘌呤）和 C（胞嘧啶）。配对原则是：A 与 T 配对，C 与 G 配对。我们需要根据这个原则对传入的所有碱基进行配对。</p>
-<p>对于每个传入的碱基，我们应采用数组的形式展示配对结果。其中，传入的碱基需要作为数组的第一个元素出现。最终返回的数组中应当包含参数中每一个碱基的配对结果。</p>
-<p>比如，传入的参数是 GCG，那么函数的返回值应为 [[“G”, “C”], [“C”,”G”],[“G”, “C”]]</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pairElement</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = str.split(<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">var</span> arr2 = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i ++)&#123;</span><br><span class="line">        <span class="keyword">switch</span>(arr[i])&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'A'</span>: </span><br><span class="line">                arr2.push([<span class="string">'A'</span>,<span class="string">'T'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">'T'</span>: </span><br><span class="line">                arr2.push([<span class="string">'T'</span>,<span class="string">'A'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">'G'</span>: </span><br><span class="line">                arr2.push([<span class="string">'G'</span>,<span class="string">'C'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">'C'</span>: </span><br><span class="line">                arr2.push([<span class="string">'C'</span>,<span class="string">'G'</span>])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr3 = pairElement(<span class="string">"GCG"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr3)</span><br></pre></td></tr></table></figure>
+<h3 id="使用-while-当条件满足时样式生效"><a href="#使用-while-当条件满足时样式生效" class="headerlink" title="使用 @while 当条件满足时样式生效"></a>使用 @while 当条件满足时样式生效</h3><p>Sass 中的<code>@while</code>指令与 JavaScript 中的<code>while</code>类似。只要满足条件，它就会一直创建 CSS 代码。</p>
+<p><code>@for</code>挑战提供了一个创建简单网格系统的示例。这也适用于<code>@while</code>。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$x: 1;</span><br><span class="line"><span class="keyword">@while</span> $x&lt; <span class="number">13</span> &#123;</span><br><span class="line">  .col-#&#123;$x&#125; &#123; width: 100%/12 * $x;&#125;</span><br><span class="line">  $x: $x + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>首先，定义变量<code>$x</code>并将其设置为 1。接下来，使用<code>@while</code>指令，当<code>$x</code>小于 13 时创建网格系统 。</p>
+<p>在设置<code>width</code>的 CSS 规则后，<code>$x</code>增加 1 以避免无限循环。</p>
+<h3 id="用-Partials-将你的样式分成小块"><a href="#用-Partials-将你的样式分成小块" class="headerlink" title="用 Partials 将你的样式分成小块"></a>用 Partials 将你的样式分成小块</h3><p>Sass 中的<code>Partials</code>是包含 CSS 代码段的单独文件。这些是在其他 Sass 文件中导入和使用的。我们可以把类似代码放到模块中，以保持代码结构规整且易于管理。</p>
+<p><code>partials</code>的名称以下划线（<code>_</code>）字符开头，告诉 Sass 它是 CSS 的一小部分，而不是将其转换为 CSS 文件。此外，Sass 文件以<code>.scss</code>文件扩展名结尾。要将<code>partial</code>中的代码放入另一个 Sass 文件中，请使用<code>@import</code>指令。</p>
+<p>例如，如果所有<code>mixins</code>都保存在名为 “_mixins.scss “ 的<code>partial</code>中，并且在”main.scss “文件中需要它们，这是如何在主文件中使用它们：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">// In the main.scss file</span><br><span class="line"></span><br><span class="line"><span class="keyword">@import</span> <span class="string">'mixins'</span></span><br></pre></td></tr></table></figure>
 
+<p>请注意，<code>import</code>语句中不需要下划线——Sass 知道它是<code>partial</code>。将<code>partial</code>导入文件后，可以使用所有变量<code>mixins</code>和其他代码。</p>
+<h3 id="将一组CSS样式扩展到另一个元素"><a href="#将一组CSS样式扩展到另一个元素" class="headerlink" title="将一组CSS样式扩展到另一个元素"></a>将一组CSS样式扩展到另一个元素</h3><p>Sass 有一个名为<code>extend</code>的功能，可以很容易地从一个元素中借用 CSS 规则并在另一个元素上重用它们。</p>
+<p>例如，下面的 CSS 规则块设置了<code>.panel</code>class 的样式。它有<code>background-color</code>，<code>height</code>和<code>border</code>。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.panel</span>&#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">70px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">2px</span> solid green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="丢失的字母"><a href="#丢失的字母" class="headerlink" title="丢失的字母"></a>丢失的字母</h3><p>写一个函数，找到传入的字符串里缺失的字母并返回它。</p>
-<p>判断缺失的依据是字母顺序，比如 abcdfg 中缺失了 e。而 abcdef 中就没有字母缺失，此时我们需要返回<code>undefined</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fearNotLetter</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> num = str[<span class="number">0</span>].charCodeAt()</span><br><span class="line">  <span class="keyword">var</span> flag</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,j=<span class="number">1</span>; i &lt; str.length<span class="number">-1</span>; i++, j++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(str[i].charCodeAt() + <span class="number">1</span> == str[j].charCodeAt())&#123;</span><br><span class="line">          </span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          flag = <span class="built_in">String</span>.fromCharCode(str[i].charCodeAt() + <span class="number">1</span>)</span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> flag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fearNotLetter(<span class="string">"abce"</span>);</span><br></pre></td></tr></table></figure>
+<p>现在你需要另一个名为<code>.big-panel</code>的面板。它具有与<code>.panel</code>相同的基本属性，但还需要<code>width</code>和<code>font-size</code>。</p>
+<p>可以从<code>.panel</code>复制并粘贴初始 CSS 规则，但是当你添加更多类型的面板时，代码会变得重复。</p>
+<p><code>extend</code>指令是一种重用为一个元素编写的规则的简单方法，然后为另一个元素添加更多：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.big-panel</span>&#123;</span><br><span class="line">  @extend .panel;</span><br><span class="line">  <span class="selector-tag">width</span>: 150<span class="selector-tag">px</span>;</span><br><span class="line">  <span class="selector-tag">font-size</span>: 2<span class="selector-tag">em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-<h3 id="集合排序"><a href="#集合排序" class="headerlink" title="集合排序"></a>集合排序</h3><p>写一个函数，它接收两个或多个数组为参数。我们需要对这些数组中所有元素进行去除重复元素的处理，并以数组的形式返回去重结果。</p>
-<p>需要注意的是，结果数组中的元素顺序必须与其传入的顺序保持一致。</p>
-<p><code>uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1])</code>应该返回<code>[1, 3, 2, 5, 4]</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniteUnique</span>(<span class="params">...arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [...new <span class="built_in">Set</span>(arr.flat())]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">uniteUnique([<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>], [<span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>], [<span class="number">2</span>, <span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat" target="_blank" rel="noopener">flat()用法</a></p>
-<h3 id="转换HTML"><a href="#转换HTML" class="headerlink" title="转换HTML"></a>转换HTML</h3><p>写一个转换 HTML entity 的函数。需要转换的 HTML entity 有<code>&amp;</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&quot;</code>（双引号）和<code>&#39;</code>（单引号）。转换的规则你可以在 <a href="https://dev.w3.org/html5/html-author/charref" target="_blank" rel="noopener">W3C</a> 官网找到。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertHTML</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = str.split(<span class="string">''</span>)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i&lt; arr.length; i++)&#123;</span><br><span class="line">        <span class="keyword">switch</span>(arr[i])&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"&lt;"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;lt;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"&amp;"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;amp;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"&gt;"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;gt;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'"'</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;quot;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"'"</span>:</span><br><span class="line">                arr[i] = <span class="string">"&amp;apos;"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr.join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(convertHTML(<span class="string">"Dolce &amp; Gabbana"</span>));</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="求斐波那契数列奇数和"><a href="#求斐波那契数列奇数和" class="headerlink" title="求斐波那契数列奇数和"></a>求斐波那契数列奇数和</h3><p>写一个函数，参数为一个正整数<code>num</code>。它的作用是计算斐波那契数列中，小于或等于<code>num</code>的奇数之和。</p>
-<p>斐波那契数列中，第一和第二个数字都是 1，后面的每个数字由之前两数相加得出。斐波那契数列的前六个数字分别为：1、1、2、3、5、8。</p>
-<p>比如，<code>sumFibs(10)</code>应该返回<code>10</code>。因为斐波那契数列中，比<code>10</code>小的数字只有 1、1、3、5。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumFibs</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> preNum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> curNum = <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span>(curNum &lt;= num)&#123;</span><br><span class="line">      <span class="keyword">if</span>(curNum % <span class="number">2</span> !== <span class="number">0</span>)&#123;</span><br><span class="line">          result += curNum</span><br><span class="line">      &#125;</span><br><span class="line">      curNum += preNum</span><br><span class="line">      preNum = curNum - preNum</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sumFibs(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="对所有素数求和"><a href="#对所有素数求和" class="headerlink" title="对所有素数求和"></a>对所有素数求和</h3><p>写一个函数，它接收一个数字参数<code>num</code>，返回值为不大于这个数字的所有质数之和。</p>
-<p>质数是大于 1 且仅可以被 1 和自己整除的数。比如，2 就是一个质数，因为它只可以被 1 和 2（它本身）整除。</p>
-<p>注意，传入函数的<code>num</code>不一定是质数。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumPrimes</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">2</span>; i &lt;= num; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">2</span>; j &lt;= <span class="built_in">Math</span>.sqrt(i); j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i % j === <span class="number">0</span>)&#123;</span><br><span class="line">                flag = <span class="number">1</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span>(flag === <span class="number">0</span>)&#123;</span><br><span class="line">            result += i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sumPrimes(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="最小公倍数"><a href="#最小公倍数" class="headerlink" title="最小公倍数"></a>最小公倍数</h3><p>写一个函数，它接收一个包含两个数字的数组参数<code>arr</code>，它的返回值为这两个数字范围内所有数字（包含这两个数字）的最小公倍数。</p>
-<p>注意，较小数不一定总是出现在数组的第一个元素。</p>
-<p>比如，传入<code>[1, 3]</code>，那么函数的返回结果应为 1、2、3 的最小公倍数，即为 6。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">smallestCommons</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">1</span></span><br><span class="line">    <span class="keyword">const</span> [min, max] = arr.sort(<span class="function">(<span class="params">a, b</span>)=&gt;</span>a - b)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = min; j &lt;= max; j++)&#123;</span><br><span class="line">        result *= j</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> geshu = max - min + <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=max; i &lt;= result; i+=<span class="number">5</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> shijigeshu = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> k=min; k &lt;= max; k++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i % k === <span class="number">0</span>)&#123;</span><br><span class="line">                shijigeshu++</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(shijigeshu === geshu)&#123;</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="built_in">console</span>.log(smallestCommons([<span class="number">1</span>,<span class="number">5</span>]));</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">container-fluid</span>	 <span class="selector-tag">div</span>适应页面宽度</span><br><span class="line"><span class="selector-tag">img-responsive</span>   <span class="selector-tag">img</span>适应页面的宽度</span><br><span class="line"><span class="selector-tag">text-center</span>      文本居中  例如：<span class="selector-tag">h2</span></span><br><span class="line"><span class="selector-tag">btn-block</span> 		 <span class="selector-tag">button</span>成为块级元素独占一行</span><br><span class="line"><span class="selector-tag">form-control</span> 	 表单元素占满一行</span><br></pre></td></tr></table></figure>
-
+<p>除了新样式之外，<code>.big-panel</code>将具有与<code>.panel</code>相同的属性。</p>
 ]]></content>
       <categories>
         <category>web前端</category>
@@ -1697,12 +1791,12 @@
       </categories>
       <tags>
         <tag>FCC</tag>
-        <tag>算法</tag>
+        <tag>Sass</tag>
       </tags>
   </entry>
   <entry>
     <title>Sass</title>
-    <url>/2021/03/25/11Sass/</url>
+    <url>/2021/03/28/Sass/</url>
     <content><![CDATA[<h1 id="Introduction-to-the-Sass"><a href="#Introduction-to-the-Sass" class="headerlink" title="Introduction to the Sass"></a>Introduction to the Sass</h1><p>Sass，英文全称“Syntactically Awesome StyleSheets”，是对 CSS 的扩展。它添加了一些 CSS 语法不具有的新特性。Sass 让开发者维护样式表变得更简单。</p>
 <p>Sass 完全兼容 CSS，因为它是一个预处理器。它用 Sass 语法写代码，然后转换成标准的 CSS。它允许你使用变量、嵌套规则、导入等众多功能。有助于保持大型样式表结构良好，让 CSS 语言更强大，优雅。</p>
 <p>Sass 有两种语法。第一种被称为 SCSS（Sassy CSS），也是我们接下来的挑战采用的语法，它是 CSS 语法的扩充版本。也就是说，CSS 样式表也是合法的 SCSS 文件。这种语法的样式表文件以 .scss 为扩展名。</p>
@@ -1936,109 +2030,6 @@
         <tag>服务端笔记</tag>
         <tag>Node</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Sass</title>
-    <url>/2021/03/28/Sass/</url>
-    <content><![CDATA[<h1 id="Introduction-to-the-Sass"><a href="#Introduction-to-the-Sass" class="headerlink" title="Introduction to the Sass"></a>Introduction to the Sass</h1><p>Sass，英文全称“Syntactically Awesome StyleSheets”，是对 CSS 的扩展。它添加了一些 CSS 语法不具有的新特性。Sass 让开发者维护样式表变得更简单。</p>
-<p>Sass 完全兼容 CSS，因为它是一个预处理器。它用 Sass 语法写代码，然后转换成标准的 CSS。它允许你使用变量、嵌套规则、导入等众多功能。有助于保持大型样式表结构良好，让 CSS 语言更强大，优雅。</p>
-<p>Sass 有两种语法。第一种被称为 SCSS（Sassy CSS），也是我们接下来的挑战采用的语法，它是 CSS 语法的扩充版本。也就是说，CSS 样式表也是合法的 SCSS 文件。这种语法的样式表文件以 .scss 为扩展名。</p>
-<p>第二种比较古老的语法，就是所说的缩排语法（或者直接就称为“Sass”），它不使用花括号，而是通过缩排的方式来表达选择符的嵌套层级，它也不使用分号，而是用换行符来分隔属性。此种语法的样式表文件需要以 .sass 作为扩展名</p>
-<h3 id="用-Sass-变量存储数据"><a href="#用-Sass-变量存储数据" class="headerlink" title="用 Sass 变量存储数据"></a>用 Sass 变量存储数据</h3><p>Sass 不同于 CSS 的一个特点是它允许使用变量。我们可以在 Sass 中声明变量，并为它赋值，就像我们在 JavaScript 中一样。</p>
-<p>在 JavaScript 中，变量是使用<code>let</code>和<code>const</code>关键字定义的。在 Sass 中，变量以<code>$</code>开头的，后跟变量名。</p>
-<p>这里有个例子：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$main-fonts: Arial, sans-serif;</span><br><span class="line">$headings-color: green;</span><br><span class="line"></span><br><span class="line">//To use variables:</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: $main-fonts;</span><br><span class="line">  <span class="attribute">color</span>: $headings-color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当需要把多个元素设置成相同颜色时，变量就会很有用。一旦我们需要更改颜色，只需要改变这个变量的值就好。</p>
-<h3 id="用-Sass-嵌套-CSS"><a href="#用-Sass-嵌套-CSS" class="headerlink" title="用 Sass 嵌套 CSS"></a>用 Sass 嵌套 CSS</h3><p>对于一个大型项目，CSS 规则会很复杂。这时，引入<code>嵌套</code>功能（即在对应的父元素中写子元素的样式）可以有效地简化代码：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">nav</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line"></span><br><span class="line">  ul &#123;</span><br><span class="line">    <span class="selector-tag">list-style</span>: <span class="selector-tag">none</span>;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">li</span> &#123;</span><br><span class="line">      <span class="attribute">display</span>: inline-block;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="用-Mixins-创建可重用-CSS"><a href="#用-Mixins-创建可重用-CSS" class="headerlink" title="用 Mixins 创建可重用 CSS"></a>用 Mixins 创建可重用 CSS</h3><p>在 Sass 中，<code>mixin</code>是一组 CSS 声明，可以在整个样式表中重复使用。</p>
-<p>CSS 的新功能需要一段时间适配后，所有浏览器后才能完全使用。随着浏览器的不断升级，使用这些 CSS 规则时可能需要添加浏览器前缀。比如 “box-shadow”:</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">-webkit-box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">-moz-box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">-ms-box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">0px</span> <span class="number">4px</span> <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对于所有具有<code>box-shadow</code>属性的元素重写此规则，或者更改每个值以测试不同的效果，需要花费大量的精力。</p>
-<p><code>Mixins</code>就像 CSS 的函数。以下是一个例子：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> box-shadow($x, $y, $blur, $c)&#123;</span><br><span class="line">  -webkit-box-shadow: $x, $y, $blur, $c;</span><br><span class="line">  -moz-box-shadow: $x, $y, $blur, $c;</span><br><span class="line">  -ms-box-shadow: $x, $y, $blur, $c;</span><br><span class="line">  box-shadow: $x, $y, $blur, $c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>定义以<code>@mixin</code>开头，后跟自定义名称。参数（<code>$x</code>，<code>$y</code>，<code>$blur</code>，以及上例中的<code>$c</code>是可选的。</p>
-<p>现在，只要在需要的地方使用<code>@include</code>调用上面定义的<code>mixin</code>，就可以自动添加好所有的浏览器前缀：<code>mixin</code>使用<code>@include</code>指令调用：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  @include box-shadow(0px, 0px, 4px, #fff);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-if-和-else-为你的样式添加逻辑"><a href="#使用-if-和-else-为你的样式添加逻辑" class="headerlink" title="使用 @if 和 @else 为你的样式添加逻辑"></a>使用 @if 和 @else 为你的样式添加逻辑</h3><p>Sass 中的<code>@if</code>指令对于测试特定情况非常有用–它的工作方式与 JavaScript中的<code>if</code>语句类似。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> make-bold($bool) &#123;</span><br><span class="line">  <span class="keyword">@if</span> $bool == true &#123;</span><br><span class="line">    <span class="selector-tag">font-weight</span>: <span class="selector-tag">bold</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>类似 JavaScript，你可以在 Sass 中使用<code>@else if</code>和<code>@else</code>添加更多条件：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> text-effect($val) &#123;</span><br><span class="line">  <span class="keyword">@if</span> $val == danger &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">red</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> if $val == alert &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">yellow</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> if $val == success &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">green</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> &#123;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">black</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-for-创建一个-Sass-循环"><a href="#使用-for-创建一个-Sass-循环" class="headerlink" title="使用 @for 创建一个 Sass 循环"></a>使用 @for 创建一个 Sass 循环</h3><p>在 Sass 中使用<code>@for</code>循环，它的表现类似与 JavaScript 中的<code>for</code>循环。</p>
-<p><code>@for</code>以两种方式使用：”start through end” 或 “start to end”。主要区别在于“开始结束” <em>排除</em> 结束号码，而“开始结束” <em>包括</em> 结束号码。</p>
-<p>这是一个开始 <strong>到</strong> 结束示例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@for</span> $i from <span class="number">1</span> through <span class="number">12</span> &#123;</span><br><span class="line">    // through包括12    to不包括12</span><br><span class="line">  .col-#&#123;$i&#125; &#123; width: 100%/12 * $i; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>#{$i}</code>部分是将变量（<code>i</code>）与文本组合成字符串的语法。当 Sass 文件转换为 CSS 时，它看起来像这样：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.col-1</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">8.33333%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.col-2</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">16.66667%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.col-12</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这是创建网格布局的有效方法。现在，你有 12 个可用作 CSS classes 的列宽选项。</p>
-<h3 id="使用-each-遍历列表中的项目"><a href="#使用-each-遍历列表中的项目" class="headerlink" title="使用 @each 遍历列表中的项目"></a>使用 @each 遍历列表中的项目</h3><p>最后一个挑战显示了<code>@for</code>指令如何使用起始值和结束值循环一定次数。Sass 还提供<code>@each</code>指令，该指令循环遍历列表或映射中的每个项目。</p>
-<p>在每次迭代时，变量将从列表映射赋值给当前值。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@each</span> $color in blue, red, green &#123;</span><br><span class="line">  .#&#123;$color&#125;-text &#123;color: $color;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>map 的语法略有不同。这是一个例子：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$colors: (color1: blue, color2: red, color3: green);</span><br><span class="line"></span><br><span class="line"><span class="keyword">@each</span> $key, $color in $colors &#123;</span><br><span class="line">  .#&#123;$color&#125;-text &#123;color: $color;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>请注意，需要<code>$key</code>变量来引用 map 中的键。否则，编译后的 CSS 将包含<code>color1</code>，<code>color2</code>……</p>
-<p>以上两个代码示例都转换为以下 CSS：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.blue-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.red-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.green-text</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用-while-当条件满足时样式生效"><a href="#使用-while-当条件满足时样式生效" class="headerlink" title="使用 @while 当条件满足时样式生效"></a>使用 @while 当条件满足时样式生效</h3><p>Sass 中的<code>@while</code>指令与 JavaScript 中的<code>while</code>类似。只要满足条件，它就会一直创建 CSS 代码。</p>
-<p><code>@for</code>挑战提供了一个创建简单网格系统的示例。这也适用于<code>@while</code>。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">$x: 1;</span><br><span class="line"><span class="keyword">@while</span> $x&lt; <span class="number">13</span> &#123;</span><br><span class="line">  .col-#&#123;$x&#125; &#123; width: 100%/12 * $x;&#125;</span><br><span class="line">  $x: $x + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>首先，定义变量<code>$x</code>并将其设置为 1。接下来，使用<code>@while</code>指令，当<code>$x</code>小于 13 时创建网格系统 。</p>
-<p>在设置<code>width</code>的 CSS 规则后，<code>$x</code>增加 1 以避免无限循环。</p>
-<h3 id="用-Partials-将你的样式分成小块"><a href="#用-Partials-将你的样式分成小块" class="headerlink" title="用 Partials 将你的样式分成小块"></a>用 Partials 将你的样式分成小块</h3><p>Sass 中的<code>Partials</code>是包含 CSS 代码段的单独文件。这些是在其他 Sass 文件中导入和使用的。我们可以把类似代码放到模块中，以保持代码结构规整且易于管理。</p>
-<p><code>partials</code>的名称以下划线（<code>_</code>）字符开头，告诉 Sass 它是 CSS 的一小部分，而不是将其转换为 CSS 文件。此外，Sass 文件以<code>.scss</code>文件扩展名结尾。要将<code>partial</code>中的代码放入另一个 Sass 文件中，请使用<code>@import</code>指令。</p>
-<p>例如，如果所有<code>mixins</code>都保存在名为 “_mixins.scss “ 的<code>partial</code>中，并且在”main.scss “文件中需要它们，这是如何在主文件中使用它们：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">// In the main.scss file</span><br><span class="line"></span><br><span class="line"><span class="keyword">@import</span> <span class="string">'mixins'</span></span><br></pre></td></tr></table></figure>
-
-<p>请注意，<code>import</code>语句中不需要下划线——Sass 知道它是<code>partial</code>。将<code>partial</code>导入文件后，可以使用所有变量<code>mixins</code>和其他代码。</p>
-<h3 id="将一组CSS样式扩展到另一个元素"><a href="#将一组CSS样式扩展到另一个元素" class="headerlink" title="将一组CSS样式扩展到另一个元素"></a>将一组CSS样式扩展到另一个元素</h3><p>Sass 有一个名为<code>extend</code>的功能，可以很容易地从一个元素中借用 CSS 规则并在另一个元素上重用它们。</p>
-<p>例如，下面的 CSS 规则块设置了<code>.panel</code>class 的样式。它有<code>background-color</code>，<code>height</code>和<code>border</code>。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.panel</span>&#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">70px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">2px</span> solid green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>现在你需要另一个名为<code>.big-panel</code>的面板。它具有与<code>.panel</code>相同的基本属性，但还需要<code>width</code>和<code>font-size</code>。</p>
-<p>可以从<code>.panel</code>复制并粘贴初始 CSS 规则，但是当你添加更多类型的面板时，代码会变得重复。</p>
-<p><code>extend</code>指令是一种重用为一个元素编写的规则的简单方法，然后为另一个元素添加更多：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.big-panel</span>&#123;</span><br><span class="line">  @extend .panel;</span><br><span class="line">  <span class="selector-tag">width</span>: 150<span class="selector-tag">px</span>;</span><br><span class="line">  <span class="selector-tag">font-size</span>: 2<span class="selector-tag">em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>除了新样式之外，<code>.big-panel</code>将具有与<code>.panel</code>相同的属性。</p>
-]]></content>
-      <categories>
-        <category>web前端</category>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>FCC</tag>
-        <tag>Sass</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>blog</title>
-    <url>/2020/05/26/blog/</url>
-    <content><![CDATA[<ul>
-<li>项目的模板文件的外链资源是浏览器解析的，其相对路径是相对于浏览器的请求路径的，请求路径可能会变化，不安全。所以在模板文件中要使用绝对路径，添加‘<strong>/</strong>’可以改变成绝对路径。</li>
-<li>子模板中的路径是用模板引擎解析的，使用相对路径相对的就是当前路径</li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>http协议和Node.js异步编程</title>
@@ -2308,6 +2299,15 @@ define(<span class="string">'SYSTEM_ENABLE'</span>, <span class="keyword">true</
         <tag>服务端笔记</tag>
         <tag>php</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>blog</title>
+    <url>/2020/05/26/blog/</url>
+    <content><![CDATA[<ul>
+<li>项目的模板文件的外链资源是浏览器解析的，其相对路径是相对于浏览器的请求路径的，请求路径可能会变化，不安全。所以在模板文件中要使用绝对路径，添加‘<strong>/</strong>’可以改变成绝对路径。</li>
+<li>子模板中的路径是用模板引擎解析的，使用相对路径相对的就是当前路径</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>服务器开发基础</title>
