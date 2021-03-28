@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ultraman-agul.github.io/"/>
-  <updated>2021-03-25T14:11:01.022Z</updated>
+  <updated>2021-03-28T02:00:39.910Z</updated>
   <id>https://ultraman-agul.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Sass</title>
-    <link href="https://ultraman-agul.github.io/2021/03/25/Sass/"/>
-    <id>https://ultraman-agul.github.io/2021/03/25/Sass/</id>
+    <link href="https://ultraman-agul.github.io/2021/03/25/11Sass/"/>
+    <id>https://ultraman-agul.github.io/2021/03/25/11Sass/</id>
     <published>2021-03-25T12:49:15.838Z</published>
-    <updated>2021-03-25T14:11:01.022Z</updated>
+    <updated>2021-03-28T02:00:39.910Z</updated>
     
     <summary type="html">
     
@@ -43,14 +43,16 @@
     
       <category term="FCC" scheme="https://ultraman-agul.github.io/tags/FCC/"/>
     
+      <category term="Sass" scheme="https://ultraman-agul.github.io/tags/Sass/"/>
+    
   </entry>
   
   <entry>
     <title>fcc算法中级</title>
-    <link href="https://ultraman-agul.github.io/2021/03/17/fcc%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7/"/>
-    <id>https://ultraman-agul.github.io/2021/03/17/fcc%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7/</id>
+    <link href="https://ultraman-agul.github.io/2021/03/17/10FCC%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7/"/>
+    <id>https://ultraman-agul.github.io/2021/03/17/10FCC%E7%AE%97%E6%B3%95%E4%B8%AD%E7%BA%A7/</id>
     <published>2021-03-17T15:45:01.000Z</published>
-    <updated>2021-03-25T12:48:51.293Z</updated>
+    <updated>2021-03-28T02:05:22.600Z</updated>
     
     <summary type="html">
     
@@ -71,6 +73,8 @@
     
     
       <category term="FCC" scheme="https://ultraman-agul.github.io/tags/FCC/"/>
+    
+      <category term="算法" scheme="https://ultraman-agul.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -218,7 +222,7 @@
     <link href="https://ultraman-agul.github.io/2020/05/10/09jQuery/"/>
     <id>https://ultraman-agul.github.io/2020/05/10/09jQuery/</id>
     <published>2020-05-10T00:51:40.000Z</published>
-    <updated>2020-05-10T01:53:42.579Z</updated>
+    <updated>2021-03-28T02:08:08.814Z</updated>
     
     <summary type="html">
     
@@ -236,7 +240,7 @@
       <category term="jQuery" scheme="https://ultraman-agul.github.io/categories/jQuery/"/>
     
     
-      <category term="jQuery 笔记" scheme="https://ultraman-agul.github.io/tags/jQuery-%E7%AC%94%E8%AE%B0/"/>
+      <category term="jQuery" scheme="https://ultraman-agul.github.io/tags/jQuery/"/>
     
   </entry>
   
@@ -463,8 +467,8 @@
   
   <entry>
     <title>WebDesign</title>
-    <link href="https://ultraman-agul.github.io/2020/05/04/01Fcc/"/>
-    <id>https://ultraman-agul.github.io/2020/05/04/01Fcc/</id>
+    <link href="https://ultraman-agul.github.io/2020/05/04/01htmlCss/"/>
+    <id>https://ultraman-agul.github.io/2020/05/04/01htmlCss/</id>
     <published>2020-05-04T06:24:58.935Z</published>
     <updated>2020-05-07T03:41:52.370Z</updated>
     
